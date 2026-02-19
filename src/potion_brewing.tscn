@@ -1,3 +1,23 @@
 [gd_scene format=3 uid="uid://cbbeilop6nngp"]
 
+[ext_resource type="Texture2D" uid="uid://dp6bq2e7goybu" path="res://Textures/Background - Interior.png" id="1_hlnv1"]
+[ext_resource type="Texture2D" uid="uid://bplna885h5d5y" path="res://Textures/Cauldron.png" id="2_sgo1m"]
+[ext_resource type="Texture2D" uid="uid://bxjs7vx1m3soe" path="res://Textures/Shelf.png" id="3_b05j4"]
+
 [node name="Potion Brewing" type="Node2D" unique_id=965922724]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1804067386]
+texture = ExtResource("1_hlnv1")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1260672056]
+zoom = Vector2(0.6, 0.6)
+
+[node name="Cauldron" type="Sprite2D" parent="." unique_id=1335512008]
+position = Vector2(0, 219)
+scale = Vector2(4.312081, 4.3120804)
+texture = ExtResource("2_sgo1m")
+
+[node name="Shelf" type="Sprite2D" parent="." unique_id=164151715]
+position = Vector2(-628, 71.25)
+scale = Vector2(2.7478263, 6.298658)
+texture = ExtResource("3_b05j4")
