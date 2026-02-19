@@ -1,20 +1,22 @@
-extends Sprite2D
+extends CharacterBody2D;
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+const SPEED = 80.0;
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var sprint = 2 if Input.is_physical_key_pressed(KEY_SHIFT) else 1;
-	if (Input.is_physical_key_pressed(KEY_W)):
-		self.position.y -= sprint*20*delta;
-	elif (Input.is_physical_key_pressed(KEY_S)):
-		self.position.y += sprint*20*delta;
-	if (Input.is_physical_key_pressed(KEY_A)):
-		self.position.x -= sprint*20*delta;
-	elif (Input.is_physical_key_pressed(KEY_D)):
-		self.position.x += sprint*20*delta;
-	pass
+func _physics_process(delta):
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var vertDir = Input.get_axis("ui_left", "ui_right");
+	var horDir = Input.get_axis("ui_up", "ui_down");
+	if vertDir:
+		velocity.x = vertDir * SPEED;
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED);
+	if horDir:
+		velocity.y = horDir * SPEED;
+	else:
+		velocity.y = move_toward(velocity.y, 0, SPEED);
+
+	move_and_slide();
