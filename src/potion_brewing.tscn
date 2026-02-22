@@ -5,6 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bxjs7vx1m3soe" path="res://Textures/Shelf.png" id="3_b05j4"]
 [ext_resource type="Texture2D" uid="uid://br8f8aoq4e8oi" path="res://Textures/Cauldron_Inside.png" id="3_so1hj"]
 [ext_resource type="Texture2D" uid="uid://b8ok6dlccu2ab" path="res://Textures/Potion.png" id="4_5dfir"]
+[ext_resource type="Script" uid="uid://cy24hpu12mau6" path="res://Spoon.gd" id="6_xks6y"]
+[ext_resource type="Texture2D" uid="uid://dy2m2ayd1ulkh" path="res://Textures/Spoon.png" id="7_3ii5e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2f47"]
+radius = 6.462035
+height = 56.86591
 
 [node name="Potion Brewing" type="Node2D" unique_id=965922724]
 
@@ -33,3 +39,17 @@ texture = ExtResource("4_5dfir")
 position = Vector2(0, 219)
 scale = Vector2(4.312081, 4.3120804)
 texture = ExtResource("2_sgo1m")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1306469700]
+position = Vector2(505, 112)
+script = ExtResource("6_xks6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=736801461]
+position = Vector2(-1.4305115e-05, 112.00001)
+scale = Vector2(1.9199997, 1.9733334)
+texture = ExtResource("7_3ii5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1071572395]
+position = Vector2(4.673004e-05, 7.6293945e-06)
+scale = Vector2(6.19, 6.19)
+shape = SubResource("CapsuleShape2D_g2f47")
