@@ -23,6 +23,11 @@ height = 212.0
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2f47"]
 friction = 0.0
+rough = true
+bounce = 0.2
+absorbent = true
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ii5e"]
 
 [node name="Potion Brewing" type="Node2D" unique_id=965922724]
 
@@ -61,8 +66,14 @@ texture = ExtResource("7_g2f47")
 position = Vector2(137, -240)
 disable_mode = 2
 input_pickable = true
+mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_3ii5e")
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 300)
 can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 5
 script = ExtResource("6_xks6y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Spoon" unique_id=736801461]
@@ -91,4 +102,10 @@ physics_material_override = SubResource("PhysicsMaterial_g2f47")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron Hitbox" unique_id=828861719]
 position = Vector2(-317, 320)
-polygon = PackedVector2Array(32, 39, 38, 151, 318, 204, 597, 160, 593, 49, 622, 13, 660, 15, 657, 63, 723, 129, 726, 219, 318, 254, -16, 224, -63, 222, -72, 136, -6, 53, -24, -1, 12, -1)
+polygon = PackedVector2Array(32, 39, 32, 171, 317, 229, 593, 177, 593, 49, 622, 13, 660, 15, 657, 63, 723, 129, 726, 219, 317, 254, -16, 224, -63, 222, -72, 136, -6, 53, -24, -1, 12, -1)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=41236175]
+position = Vector2(0, 544)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=803338476]
+shape = SubResource("WorldBoundaryShape2D_3ii5e")

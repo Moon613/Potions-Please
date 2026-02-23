@@ -13,6 +13,15 @@ func _physics_process(delta: float) -> void:
 		
 		self.linear_velocity.y += (goal - self.position).normalized().y * (1000*abs(goal.y - self.position.y)) * delta;
 		self.linear_velocity.x += (goal - self.position).normalized().x * (1000*abs(goal.x - self.position.x)) * delta;
+		self.linear_velocity.x = clamp(self.linear_velocity.x, -1000, 1000);
+		self.linear_velocity.y = clamp(self.linear_velocity.y, -1000, 1000);
+		
+		if get_colliding_bodies().is_empty():
+			self.constant_torque = -100000000 * self.rotation * delta;
+		else:
+			self.constant_torque = 0;
+			#self.linear_velocity.x = clamp(self.linear_velocity.x, -100, 100);
+			#self.linear_velocity.y = clamp(self.linear_velocity.y, -100, 100);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -25,12 +34,15 @@ func _input_event(viewport, event, shape_idx):
 		if event.button_index == 1:
 			# A mouse press OR release.
 			if event.pressed:
-				self.gravity_scale = 50;
+				self.gravity_scale = 5;
 				self.linear_damp = 10;
 				FOLLOW_MOUSE = true;
 				RELATIVE_MOUSE_POSITION = self.position - get_global_mouse_position();
+				self.center_of_mass = RELATIVE_MOUSE_POSITION;
 			else:
 				self.linear_damp = 0;
 				self.gravity_scale = 1;
+				self.constant_torque = 0;
 				FOLLOW_MOUSE = false;
+				self.center_of_mass = Vector2(0,300);
 	pass
