@@ -5,51 +5,90 @@
 [ext_resource type="Texture2D" uid="uid://bxjs7vx1m3soe" path="res://Textures/Shelf.png" id="3_b05j4"]
 [ext_resource type="Texture2D" uid="uid://br8f8aoq4e8oi" path="res://Textures/Cauldron_Inside.png" id="3_so1hj"]
 [ext_resource type="Texture2D" uid="uid://b8ok6dlccu2ab" path="res://Textures/Potion.png" id="4_5dfir"]
-[ext_resource type="Script" uid="uid://cy24hpu12mau6" path="res://Spoon.gd" id="6_xks6y"]
+[ext_resource type="Script" uid="uid://dsxhue2e16y4i" path="res://Spoon.gd" id="6_xks6y"]
 [ext_resource type="Texture2D" uid="uid://dy2m2ayd1ulkh" path="res://Textures/Spoon.png" id="7_3ii5e"]
+[ext_resource type="Texture2D" uid="uid://behirfcds2hru" path="res://Textures/Cauldron_Top.png" id="7_g2f47"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ii5e"]
+friction = 0.0
+bounce = 0.1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2f47"]
 radius = 6.462035
 height = 56.86591
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ii5e"]
+radius = 71.0
+height = 212.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2f47"]
+friction = 0.0
+
 [node name="Potion Brewing" type="Node2D" unique_id=965922724]
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1804067386]
+texture_filter = 1
 texture = ExtResource("1_hlnv1")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1260672056]
 zoom = Vector2(0.6, 0.6)
 
 [node name="Shelf" type="Sprite2D" parent="." unique_id=164151715]
+texture_filter = 1
 position = Vector2(-628, 71.25)
 scale = Vector2(2.7478263, 6.298658)
 texture = ExtResource("3_b05j4")
 
 [node name="Cauldron Inside" type="Sprite2D" parent="." unique_id=1780531648]
+texture_filter = 1
 position = Vector2(1.8110995, 328)
 scale = Vector2(4.4001594, 4.6666665)
 texture = ExtResource("3_so1hj")
 
 [node name="Potion" type="Sprite2D" parent="." unique_id=1080880378]
+texture_filter = 1
 position = Vector2(-7.999977, 308)
 scale = Vector2(5.2266665, 5.8285723)
 texture = ExtResource("4_5dfir")
 
-[node name="Cauldron" type="Sprite2D" parent="." unique_id=1335512008]
-position = Vector2(0, 219)
-scale = Vector2(4.312081, 4.3120804)
-texture = ExtResource("2_sgo1m")
+[node name="Cauldron Top" type="Sprite2D" parent="." unique_id=733638436]
+texture_filter = 1
+position = Vector2(2.0000463, 250.5)
+scale = Vector2(4.3144655, 4.4857144)
+texture = ExtResource("7_g2f47")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1306469700]
-position = Vector2(505, 112)
+[node name="Spoon" type="RigidBody2D" parent="." unique_id=1458366467]
+position = Vector2(137, -240)
+disable_mode = 2
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_3ii5e")
+can_sleep = false
 script = ExtResource("6_xks6y")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D" unique_id=736801461]
+[node name="Sprite2D" type="Sprite2D" parent="Spoon" unique_id=736801461]
+texture_filter = 1
 position = Vector2(-1.4305115e-05, 112.00001)
 scale = Vector2(1.9199997, 1.9733334)
 texture = ExtResource("7_3ii5e")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1071572395]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spoon" unique_id=1071572395]
 position = Vector2(4.673004e-05, 7.6293945e-06)
 scale = Vector2(6.19, 6.19)
 shape = SubResource("CapsuleShape2D_g2f47")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Spoon" unique_id=1732083214]
+position = Vector2(0, 281)
+shape = SubResource("CapsuleShape2D_3ii5e")
+
+[node name="Cauldron" type="Sprite2D" parent="." unique_id=1335512008]
+texture_filter = 1
+position = Vector2(0, 219)
+scale = Vector2(4.312081, 4.3120804)
+texture = ExtResource("2_sgo1m")
+
+[node name="Cauldron Hitbox" type="StaticBody2D" parent="." unique_id=1769598805]
+physics_material_override = SubResource("PhysicsMaterial_g2f47")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron Hitbox" unique_id=828861719]
+position = Vector2(-317, 320)
+polygon = PackedVector2Array(32, 39, 38, 151, 318, 204, 597, 160, 593, 49, 622, 13, 660, 15, 657, 63, 723, 129, 726, 219, 318, 254, -16, 224, -63, 222, -72, 136, -6, 53, -24, -1, 12, -1)
