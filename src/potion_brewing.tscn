@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cbbeilop6nngp"]
 
+[ext_resource type="Script" uid="uid://ccaqqx0te1oji" path="res://potion_brewing.gd" id="1_g2f47"]
 [ext_resource type="Texture2D" uid="uid://dp6bq2e7goybu" path="res://Textures/Background - Interior.png" id="1_hlnv1"]
 [ext_resource type="Texture2D" uid="uid://bplna885h5d5y" path="res://Textures/Cauldron.png" id="2_sgo1m"]
 [ext_resource type="Texture2D" uid="uid://bxjs7vx1m3soe" path="res://Textures/Shelf.png" id="3_b05j4"]
@@ -29,7 +30,12 @@ absorbent = true
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ii5e"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g2f47"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7n1qr"]
+
 [node name="Potion Brewing" type="Node2D" unique_id=965922724]
+script = ExtResource("1_g2f47")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1804067386]
 texture_filter = 1
@@ -91,21 +97,37 @@ shape = SubResource("CapsuleShape2D_g2f47")
 position = Vector2(0, 281)
 shape = SubResource("CapsuleShape2D_3ii5e")
 
-[node name="Cauldron" type="Sprite2D" parent="." unique_id=1335512008]
+[node name="Cauldron Hitbox" type="StaticBody2D" parent="." unique_id=1769598805]
+physics_material_override = SubResource("PhysicsMaterial_g2f47")
+
+[node name="Cauldron" type="Sprite2D" parent="Cauldron Hitbox" unique_id=1335512008]
 texture_filter = 1
 position = Vector2(0, 219)
 scale = Vector2(4.312081, 4.3120804)
 texture = ExtResource("2_sgo1m")
 
-[node name="Cauldron Hitbox" type="StaticBody2D" parent="." unique_id=1769598805]
-physics_material_override = SubResource("PhysicsMaterial_g2f47")
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron Hitbox" unique_id=828861719]
 position = Vector2(-317, 320)
-polygon = PackedVector2Array(32, 39, 32, 171, 317, 229, 593, 177, 593, 49, 622, 13, 660, 15, 657, 63, 723, 129, 726, 219, 317, 254, -16, 224, -63, 222, -72, 136, -6, 53, -24, -1, 12, -1)
+polygon = PackedVector2Array(32, 39, 45, 176, 317, 229, 581, 176, 593, 49, 617, 6, 667, 6, 661, 51, 649, 63, 723, 129, 726, 219, 317, 254, -16, 224, -63, 222, -72, 136, -10, 53, -22, 26, -25, -1, 12, -1)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=41236175]
 position = Vector2(0, 544)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=803338476]
 shape = SubResource("WorldBoundaryShape2D_3ii5e")
+
+[node name="Right Wall" type="StaticBody2D" parent="." unique_id=377390823]
+position = Vector2(960, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall" unique_id=1628582213]
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_g2f47")
+
+[node name="Left Wall" type="StaticBody2D" parent="." unique_id=1331714611]
+position = Vector2(-960, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall" unique_id=804179925]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_7n1qr")
+
+[connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]

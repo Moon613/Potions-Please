@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cnxcvpb8kmku3"]
+
+[ext_resource type="SpriteFrames" uid="uid://wshwtxsb71q7" path="res://Textures/Dewdrops/DewdropFrames.tres" id="1_tx7ck"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gdft7"]
+radius = 32.0
+
+[node name="Dewdrop" type="RigidBody2D" unique_id=244673847]
+mass = 0.001
+gravity_scale = 0.0
+contact_monitor = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1043170340]
+shape = SubResource("CircleShape2D_gdft7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=939696187]
+sprite_frames = ExtResource("1_tx7ck")
+speed_scale = 0.0

@@ -40,9 +40,16 @@ func _input_event(viewport, event, shape_idx):
 				RELATIVE_MOUSE_POSITION = self.position - get_global_mouse_position();
 				self.center_of_mass = RELATIVE_MOUSE_POSITION;
 			else:
-				self.linear_damp = 0;
-				self.gravity_scale = 1;
-				self.constant_torque = 0;
-				FOLLOW_MOUSE = false;
-				self.center_of_mass = Vector2(0,300);
+				Reset();
 	pass
+
+func Reset():
+	self.linear_damp = 0;
+	self.gravity_scale = 1;
+	self.constant_torque = 0;
+	FOLLOW_MOUSE = false;
+	self.center_of_mass = Vector2(0,300);
+
+
+func _on_potion_brewing_click_released():
+	Reset();

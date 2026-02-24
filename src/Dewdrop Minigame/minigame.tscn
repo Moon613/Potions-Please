@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dkp3t1gaoj6to"]
+
+[ext_resource type="Texture2D" uid="uid://qf740q015e4f" path="res://Textures/GrassDewBG.png" id="1_4bqly"]
+[ext_resource type="Script" uid="uid://ba2mlrm70cku2" path="res://Dewdrop Minigame/minigame.gd" id="1_oemwr"]
+[ext_resource type="Script" uid="uid://dspvuxr20661j" path="res://Dewdrop Minigame/rag.gd" id="3_gdft7"]
+[ext_resource type="Texture2D" uid="uid://dvrmlgmc7a6b8" path="res://Textures/RagOpenDry.png" id="4_oemwr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ff77p"]
+size = Vector2(680, 456)
+
+[node name="Minigame" type="Node2D" unique_id=2048969862]
+script = ExtResource("1_oemwr")
+number_of_dewdrops = 30
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1025465349]
+texture = ExtResource("1_4bqly")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=775456443]
+zoom = Vector2(0.6, 0.6)
+
+[node name="Rag" type="Area2D" parent="." unique_id=1390846491]
+position = Vector2(544, 688)
+script = ExtResource("3_gdft7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Rag" unique_id=1533846315]
+z_index = 1
+texture = ExtResource("4_oemwr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rag" unique_id=15627907]
+z_index = 1
+position = Vector2(-4, -4)
+shape = SubResource("RectangleShape2D_ff77p")
