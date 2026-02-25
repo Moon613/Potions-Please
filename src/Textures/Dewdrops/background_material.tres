@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c5qxiaop4coa8"]
+
+[ext_resource type="Shader" uid="uid://cynfbcpk2d1xk" path="res://Dewdrop Minigame/minigame_background.gdshader" id="1_7dslv"]
+
+[resource]
+shader = ExtResource("1_7dslv")
+shader_parameter/blur_amount = 0.0

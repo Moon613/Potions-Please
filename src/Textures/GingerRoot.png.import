@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mpkh7opoxurj"
-path="res://.godot/imported/BlurryGrass.png-a13ff16d4fc151d627330114b2775082.ctex"
+uid="uid://b5mmkloiikro2"
+path="res://.godot/imported/GingerRoot.png-294c591426f38b8e4123e11c6861b075.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/BlurryGrass.png"
-dest_files=["res://.godot/imported/BlurryGrass.png-a13ff16d4fc151d627330114b2775082.ctex"]
+source_file="res://Textures/GingerRoot.png"
+dest_files=["res://.godot/imported/GingerRoot.png-294c591426f38b8e4123e11c6861b075.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
