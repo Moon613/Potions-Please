@@ -1,13 +1,9 @@
 [gd_scene format=4 uid="uid://dp8wfcjr2iyo4"]
 
 [ext_resource type="TileSet" uid="uid://dbk4ou7hhx3qw" path="res://Overworld_Tileset.tres" id="1_824ie"]
-[ext_resource type="Texture2D" uid="uid://d3h7t4dd0ey5q" path="res://Textures/Player.png" id="2_nyb65"]
-[ext_resource type="Script" uid="uid://t7o3hnud8s8b" path="res://player.gd" id="3_824ie"]
+[ext_resource type="PackedScene" uid="uid://c0i865a3jt162" path="res://overworld_player.tscn" id="2_824ie"]
 [ext_resource type="Script" uid="uid://3rpvrs0d3d0l" path="res://overworld_playercam.gd" id="4_824ie"]
 [ext_resource type="Script" uid="uid://buvdukl7mfjb3" path="res://house_loading_zone.gd" id="5_omswd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyb65"]
-size = Vector2(6, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4qw5"]
 size = Vector2(10, 2)
@@ -24,19 +20,7 @@ scale = Vector2(0.08, 0.08)
 tile_map_data = PackedByteArray("AAD6//z/AAABAAAAAAA=")
 tile_set = ExtResource("1_824ie")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=986466906]
-disable_mode = 2
-slide_on_ceiling = false
-script = ExtResource("3_824ie")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=942140448]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_nyb65")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=44208867]
-position = Vector2(0, 2)
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("2_nyb65")
+[node name="Player" parent="." unique_id=2042437237 instance=ExtResource("2_824ie")]
 
 [node name="Trees" type="TileMapLayer" parent="." unique_id=828420190]
 scale = Vector2(0.08, 0.08)
@@ -45,10 +29,10 @@ tile_set = ExtResource("1_824ie")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2082594869]
 zoom = Vector2(7.395, 7.395)
-limit_left = -96
+limit_left = -88
 limit_top = -64
-limit_right = 96
-limit_bottom = 64
+limit_right = 88
+limit_bottom = 56
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_824ie")

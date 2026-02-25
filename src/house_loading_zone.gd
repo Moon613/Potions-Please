@@ -14,5 +14,5 @@ func _process(delta: float) -> void:
 	# Lambda function here for checking if the area has collided with a player.
 	if get_overlapping_bodies().any(func(obj): return obj is CharacterBody2D):
 		print("Collided with player")
-		switch_scene.emit(1);
+		switch_scene.emit(2);
 	pass
