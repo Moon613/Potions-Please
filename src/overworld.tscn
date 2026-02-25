@@ -4,9 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://d3h7t4dd0ey5q" path="res://Textures/Player.png" id="2_nyb65"]
 [ext_resource type="Script" uid="uid://t7o3hnud8s8b" path="res://player.gd" id="3_824ie"]
 [ext_resource type="Script" uid="uid://3rpvrs0d3d0l" path="res://overworld_playercam.gd" id="4_824ie"]
+[ext_resource type="Script" uid="uid://buvdukl7mfjb3" path="res://house_loading_zone.gd" id="5_omswd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyb65"]
 size = Vector2(6, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4qw5"]
+size = Vector2(10, 2)
 
 [node name="Overworld" type="Node2D" unique_id=340257523]
 
@@ -48,3 +52,11 @@ limit_bottom = 64
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_824ie")
+
+[node name="House Loading Zone" type="Area2D" parent="." unique_id=1398531453]
+position = Vector2(0, 1)
+script = ExtResource("5_omswd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="House Loading Zone" unique_id=766383397]
+position = Vector2(-44, 1)
+shape = SubResource("RectangleShape2D_m4qw5")
