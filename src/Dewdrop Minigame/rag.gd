@@ -1,7 +1,10 @@
 extends Area2D
 
+signal collectedDrop;
+
 var FOLLOW_MOUSE = false;
 var RELATIVE_MOUSE_POSITION = Vector2();
+var fading = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,6 +33,7 @@ func _process(delta: float) -> void:
 				var ragBottom = ragCenter.y + ragSizeY;
 				if circleLeft > ragLeft and circleRight < ragRight and circleTop > ragTop and circleBottom < ragBottom:
 					body.queue_free();
+					collectedDrop.emit();
 	pass
 
 func _physics_process(delta):
@@ -39,7 +43,7 @@ func _physics_process(delta):
 	pass
 
 func _input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
+	if !fading and event is InputEventMouseButton:
 		if event.button_index == 1:
 			print("Pressed")
 			print(event.pressed)
@@ -48,3 +52,7 @@ func _input_event(viewport, event, shape_idx):
 				RELATIVE_MOUSE_POSITION = self.position - get_global_mouse_position();
 			else:
 				FOLLOW_MOUSE = false;
+
+func _on_minigame_transition_to_drying():
+	fading = true;
+	FOLLOW_MOUSE = false;

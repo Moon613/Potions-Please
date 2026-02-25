@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://qf740q015e4f" path="res://Textures/GrassDewBG.png" id="1_4bqly"]
 [ext_resource type="Script" uid="uid://ba2mlrm70cku2" path="res://Dewdrop Minigame/minigame.gd" id="1_oemwr"]
+[ext_resource type="Material" uid="uid://c5qxiaop4coa8" path="res://Textures/Dewdrops/background_material.tres" id="2_6y45g"]
 [ext_resource type="Script" uid="uid://dspvuxr20661j" path="res://Dewdrop Minigame/rag.gd" id="3_gdft7"]
+[ext_resource type="Script" uid="uid://7atqylklawoc" path="res://Dewdrop Minigame/background.gd" id="4_6y45g"]
 [ext_resource type="Texture2D" uid="uid://dvrmlgmc7a6b8" path="res://Textures/RagOpenDry.png" id="4_oemwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ff77p"]
@@ -13,7 +15,10 @@ script = ExtResource("1_oemwr")
 number_of_dewdrops = 30
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1025465349]
+texture_filter = 4
+material = ExtResource("2_6y45g")
 texture = ExtResource("1_4bqly")
+script = ExtResource("4_6y45g")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=775456443]
 zoom = Vector2(0.6, 0.6)
@@ -30,3 +35,7 @@ texture = ExtResource("4_oemwr")
 z_index = 1
 position = Vector2(-4, -4)
 shape = SubResource("RectangleShape2D_ff77p")
+
+[connection signal="TransitionToDrying" from="." to="Background" method="_on_minigame_transition_to_drying"]
+[connection signal="TransitionToDrying" from="." to="Rag" method="_on_minigame_transition_to_drying"]
+[connection signal="collectedDrop" from="Rag" to="." method="_on_rag_collected_drop"]
