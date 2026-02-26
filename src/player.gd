@@ -22,6 +22,14 @@ func _physics_process(delta):
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED);
 	
+	if velocity.x < 0:
+		$AnimatedSprite2D.frame = 2;
+	elif velocity.x > 0:
+		$AnimatedSprite2D.frame = 3;
+	elif velocity.y < 0:
+		$AnimatedSprite2D.frame = 0;
+	elif velocity.y > 0:
+		$AnimatedSprite2D.frame = 1;
 	if collidedWithTransition:
 		if canTriggerSceneTransitions:
 			print($Area2D.get_overlapping_areas())
