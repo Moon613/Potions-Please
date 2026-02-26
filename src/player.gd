@@ -32,8 +32,8 @@ func _physics_process(delta):
 		$AnimatedSprite2D.frame = 1;
 	if collidedWithTransition:
 		if canTriggerSceneTransitions:
-			print($Area2D.get_overlapping_areas())
-			var transitionIndex = $Area2D.get_overlapping_areas().find_custom(func(obj: Node2D): return obj is Area2D and obj.name == "Loading Zone");
+			print($"Transition Buffer".get_overlapping_areas())
+			var transitionIndex = $"Transition Buffer".get_overlapping_areas().find_custom(func(obj: Node2D): return obj is Area2D and obj.name == "Loading Zone");
 			print(transitionIndex)
 			if transitionIndex == -1:
 				collidedWithTransition = false;
