@@ -5,8 +5,9 @@ signal collectedDrop;
 var FOLLOW_MOUSE = false;
 var RELATIVE_MOUSE_POSITION = Vector2();
 var fading = false;
-var fadeTimer = 1;
+var fadeTimer = 0.1;
 var reappearing = false;
+var startPos: Vector2;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,16 +15,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if fading:
-		if self.position.y < 1000:
-			fadeTimer *= 1.05;
-			self.position.y += 0.1 * fadeTimer;
+	if fading: 
+		if fadeTimer < 1:
+			self.position.y = lerpf(startPos.y, 1000, 0.0 if fadeTimer == 0 else pow(2, 10 * fadeTimer - 10));
+			fadeTimer += 0.025;
 		else:
 			$AnimatedSprite2D.frame = 1;
 			fading = false;
 			reappearing = true;
+			fadeTimer = 0;
+			startPos = self.position;
 	if reappearing:
-		self.position = Vector2(0,0);
+		if fadeTimer < 1:
+			self.position = lerp(startPos, Vector2(0,-200), 1.0 if fadeTimer == 1 else 1-pow(2, -10*fadeTimer));
+			fadeTimer += 0.025;
 	for body in get_overlapping_bodies():
 		if body is RigidBody2D and body.name.contains("Dewdrop"):
 			var collider = body.get_node("CollisionShape2D");
@@ -55,7 +60,7 @@ func _physics_process(delta):
 	pass
 
 func _input_event(viewport, event, shape_idx):
-	if !fading and event is InputEventMouseButton:
+	if !fading and !reappearing and event is InputEventMouseButton:
 		if event.button_index == 1:
 			print("Pressed")
 			print(event.pressed)
@@ -64,7 +69,10 @@ func _input_event(viewport, event, shape_idx):
 				RELATIVE_MOUSE_POSITION = self.position - get_global_mouse_position();
 			else:
 				FOLLOW_MOUSE = false;
+	elif reappearing and event is InputEventMouseButton and event.button_index == 1 and event.pressed:
+		pass
 
 func _on_minigame_transition_to_drying():
+	startPos = self.position;
 	fading = true;
 	FOLLOW_MOUSE = false;
