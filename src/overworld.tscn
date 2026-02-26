@@ -4,8 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://c0i865a3jt162" path="res://overworld_player.tscn" id="2_824ie"]
 [ext_resource type="Script" uid="uid://3rpvrs0d3d0l" path="res://overworld_playercam.gd" id="4_824ie"]
 [ext_resource type="PackedScene" uid="uid://chkduo5t1kjb6" path="res://loading_zone.tscn" id="4_omswd"]
+[ext_resource type="PackedScene" uid="uid://dtivjjebe4l3q" path="res://interaction_trigger.tscn" id="5_omswd"]
+[ext_resource type="Texture2D" uid="uid://cp1ptyo7flil0" path="res://Textures/DewTile.png" id="6_m4qw5"]
 
 [node name="Overworld" type="Node2D" unique_id=340257523]
+y_sort_enabled = true
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=40031046]
 scale = Vector2(0.08, 0.08)
@@ -13,11 +16,14 @@ tile_map_data = PackedByteArray("AAD2//r/AAAAAAAAAAD3//r/AAAAAAkAAAD4//r/AAAAAAA
 tile_set = ExtResource("1_824ie")
 
 [node name="House" type="TileMapLayer" parent="." unique_id=1681513159]
+z_index = 1
+y_sort_enabled = true
 scale = Vector2(0.08, 0.08)
 tile_map_data = PackedByteArray("AAD6//z/AAABAAAAAAA=")
 tile_set = ExtResource("1_824ie")
 
 [node name="Trees" type="TileMapLayer" parent="." unique_id=828420190]
+z_index = 2
 scale = Vector2(0.08, 0.08)
 tile_map_data = PackedByteArray("AAD2//n/AAAGAAkAAAD2//r/AAAGAAkAAAD1//v/AAAGAAkAAAD1//r/AAAGAAkAAAD1//n/AAAGAAkAAAD1//j/AAAGAAkAAAD2//j/AAAGAAkAAAD3//j/AAAGAAkAAAD5//j/AAAGAAoAAAAKAPz/AAAGAAkAAAAKAPj/AAAGAAkAAAAKAPn/AAAGAAkAAAAKAPr/AAAGAAkAAAAKAPv/AAAGAAkAAAAIAPj/AAAGAAkAAAAJAPj/AAAGAAkAAAAJAPn/AAAGAAkAAAAIAPn/AAAGAAkAAAAJAPr/AAAGAAkAAAAFAPj/AAAGAAoAAAAKAP3/AAAGAAkAAAAKAP7/AAAGAAkAAAAKAP//AAAGAAkAAAAKAAAAAAAGAAkAAAAKAAEAAAAGAAkAAAAKAAIAAAAGAAkAAAAKAAMAAAAGAAkAAAAKAAQAAAAGAAkAAAAKAAUAAAAGAAkAAAAKAAYAAAAGAAkAAAD1//z/AAAGAAkAAAD1//3/AAAGAAkAAAD1//7/AAAGAAkAAAD1////AAAGAAkAAAD1/wAAAAAGAAkAAAD1/wEAAAAGAAkAAAD1/wIAAAAGAAkAAAD1/wMAAAAGAAkAAAD1/wQAAAAGAAkAAAD1/wUAAAAGAAkAAAD1/wYAAAAGAAkAAAD2/wYAAAAGAAkAAAD3/wYAAAAGAAkAAAD4/wYAAAAGAAkAAAD5/wYAAAAGAAgAAAD2/wUAAAAGAAkAAAD3/wUAAAAGAAkAAAD2/wQAAAAGAAkAAAAHAAYAAAAGAAkAAAAIAAYAAAAGAAkAAAAIAAUAAAAGAAkAAAAJAAUAAAAGAAkAAAAJAAQAAAAGAAkAAAAJAAYAAAAGAAkAAAAGAAYAAAAGAAgAAAAFAAYAAAAGAAgAAAAEAAYAAAAGAAgAAAADAAYAAAAGAAgAAAACAAYAAAAGAAgAAAABAAYAAAAGAAgAAAAAAAYAAAAGAAgAAAD//wYAAAAGAAgAAAD+/wYAAAAGAAgAAAD9/wYAAAAGAAgAAAD8/wYAAAAGAAgAAAD7/wYAAAAGAAgAAAD6/wYAAAAGAAgAAAAJAPz/AAAFAAkAAAAJAP3/AAAFAAkAAAAJAP7/AAAFAAkAAAAJAP//AAAFAAkAAAAJAAAAAAAFAAkAAAAJAAEAAAAFAAkAAAAJAAIAAAAFAAkAAAD2//v/AAAHAAkAAAD2//z/AAAHAAkAAAD2//3/AAAHAAkAAAD2//7/AAAHAAkAAAD2////AAAHAAkAAAD2/wAAAAAHAAkAAAD2/wEAAAAHAAkAAAD2/wIAAAAHAAkAAAD6//j/AAAGAAoAAAD7//j/AAAGAAoAAAD8//j/AAAGAAoAAAD9//j/AAAGAAoAAAD+//j/AAAGAAoAAAD///j/AAAGAAoAAAAAAPj/AAAGAAoAAAABAPj/AAAGAAoAAAACAPj/AAAGAAoAAAADAPj/AAAGAAoAAAAEAPj/AAAGAAoAAAAGAPj/AAAGAAoAAAAHAPn/AAAFAAoAAAAIAPr/AAAFAAoAAAAJAPv/AAAFAAkAAAAJAAMAAAAFAAkAAAD2/wMAAAAHAAkAAAD3/wQAAAAHAAgAAAD4/wUAAAAHAAgAAAAHAAUAAAAFAAgAAAAIAAQAAAAFAAgAAAAHAPj/AAAGAAkAAAD3//n/AAAGAAkAAAD4//j/AAAGAAkAAAD3//r/AAAHAAoAAAD4//n/AAAHAAoAAAA=")
 tile_set = ExtResource("1_824ie")
@@ -38,3 +44,14 @@ SceneID = 2
 Size = Vector2(10, 2)
 
 [node name="Player" parent="." unique_id=2042437237 instance=ExtResource("2_824ie")]
+z_index = 1
+y_sort_enabled = true
+
+[node name="Interaction Trigger" parent="." unique_id=557724366 instance=ExtResource("5_omswd")]
+position = Vector2(-61, 7)
+Size = Vector2(14.135, 9.85)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1364830688]
+position = Vector2(-61.000004, 7.0000005)
+scale = Vector2(0.049999997, 0.049999997)
+texture = ExtResource("6_m4qw5")

@@ -8,6 +8,7 @@ var fading = false;
 var fadeTimer = 0.1;
 var reappearing = false;
 var startPos: Vector2;
+var grabbedForWringing = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -51,6 +52,10 @@ func _process(delta: float) -> void:
 				if circleLeft > ragLeft and circleRight < ragRight and circleTop > ragTop and circleBottom < ragBottom:
 					body.queue_free();
 					collectedDrop.emit();
+	
+	if grabbedForWringing and ((RELATIVE_MOUSE_POSITION.x < 0 and get_global_mouse_position().x < RELATIVE_MOUSE_POSITION.x) or (RELATIVE_MOUSE_POSITION.x > 0 and get_global_mouse_position().x > RELATIVE_MOUSE_POSITION.x)):
+		$AnimatedSprite2D.scale.x = minf(1.8, maxf(1.0, (abs(RELATIVE_MOUSE_POSITION.x - get_global_mouse_position().x)+200)/200.0))
+	
 	pass
 
 func _physics_process(delta):
@@ -70,7 +75,8 @@ func _input_event(viewport, event, shape_idx):
 			else:
 				FOLLOW_MOUSE = false;
 	elif reappearing and event is InputEventMouseButton and event.button_index == 1 and event.pressed:
-		pass
+		grabbedForWringing = true;
+		RELATIVE_MOUSE_POSITION = get_global_mouse_position();
 
 func _on_minigame_transition_to_drying():
 	startPos = self.position;
