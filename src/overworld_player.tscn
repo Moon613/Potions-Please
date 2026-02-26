@@ -1,10 +1,34 @@
 [gd_scene format=3 uid="uid://c0i865a3jt162"]
 
 [ext_resource type="Script" uid="uid://t7o3hnud8s8b" path="res://player.gd" id="1_a5myp"]
-[ext_resource type="Texture2D" uid="uid://d3h7t4dd0ey5q" path="res://Textures/Player.png" id="2_utdjk"]
+[ext_resource type="Texture2D" uid="uid://csi750b107h5r" path="res://Textures/YasmeenBack.png" id="2_vy3ma"]
+[ext_resource type="Texture2D" uid="uid://c34k6xmou8p3p" path="res://Textures/YasmeenFront.png" id="3_x51wo"]
+[ext_resource type="Texture2D" uid="uid://b4vij74rambem" path="res://Textures/YasmeenLeftSide.png" id="4_e7n8m"]
+[ext_resource type="Texture2D" uid="uid://3yyns5sbey2w" path="res://Textures/YasmeenRightSide.png" id="5_ecbct"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyb65"]
 size = Vector2(6, 5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_buwj1"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vy3ma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_x51wo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e7n8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ecbct")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5myp"]
 size = Vector2(8, 7)
@@ -18,13 +42,13 @@ script = ExtResource("1_a5myp")
 position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_nyb65")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1568081329]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1104933842]
 position = Vector2(0, 2)
-scale = Vector2(0.23, 0.23)
-texture = ExtResource("2_utdjk")
+scale = Vector2(0.048076924, 0.048076943)
+sprite_frames = SubResource("SpriteFrames_buwj1")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=2127013718]
+[node name="Transition Buffer" type="Area2D" parent="." unique_id=2127013718]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=447121408]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transition Buffer" unique_id=447121408]
 position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_a5myp")
