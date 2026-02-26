@@ -16,7 +16,6 @@ func _process(delta):
 			self.material.set_shader_parameter("blur_amount", currentBlur + BLUR_AMOUNT*delta);
 			self.scale -= Vector2(0.2, 0.2) * delta;
 			self.position.y -= 180 * delta;
-			print(currentBlur)
 		elif currentBlur >= 5:
 			blurring = false;
 

@@ -2,6 +2,8 @@ extends CharacterBody2D;
 
 
 const SPEED = 40.0;
+var collidedWithTransition = false;
+var canTriggerSceneTransitions = false;
 
 
 func _physics_process(delta):
@@ -19,5 +21,16 @@ func _physics_process(delta):
 		velocity.y = horDir * SPEED * sprinting;
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED);
+	
+	if collidedWithTransition:
+		if canTriggerSceneTransitions:
+			print($Area2D.get_overlapping_areas())
+			var transitionIndex = $Area2D.get_overlapping_areas().find_custom(func(obj: Node2D): return obj is Area2D and obj.name == "Loading Zone");
+			print(transitionIndex)
+			if transitionIndex == -1:
+				collidedWithTransition = false;
+				canTriggerSceneTransitions = false;
+		else:
+			canTriggerSceneTransitions = true;
 
 	move_and_slide();

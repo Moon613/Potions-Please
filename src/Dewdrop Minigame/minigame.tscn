@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://dspvuxr20661j" path="res://Dewdrop Minigame/rag.gd" id="3_gdft7"]
 [ext_resource type="Script" uid="uid://7atqylklawoc" path="res://Dewdrop Minigame/background.gd" id="4_6y45g"]
 [ext_resource type="SpriteFrames" uid="uid://oologo0y6j6m" path="res://Dewdrop Minigame/rag_frames.tres" id="6_6y45g"]
+[ext_resource type="Texture2D" uid="uid://dehwxkhqmi4qo" path="res://Textures/DewJarEmpty.png" id="7_mat7q"]
+[ext_resource type="Script" uid="uid://bin3g35q8wcy3" path="res://Dewdrop Minigame/collection_jar.gd" id="8_osxt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ff77p"]
 size = Vector2(680, 456)
@@ -36,6 +38,12 @@ z_index = 1
 position = Vector2(-4, -4)
 shape = SubResource("RectangleShape2D_ff77p")
 
+[node name="Collection Jar" type="Sprite2D" parent="." unique_id=77311594]
+position = Vector2(0, 928)
+texture = ExtResource("7_mat7q")
+script = ExtResource("8_osxt6")
+
 [connection signal="TransitionToDrying" from="." to="Background" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Rag" method="_on_minigame_transition_to_drying"]
+[connection signal="TransitionToDrying" from="." to="Collection Jar" method="_on_minigame_transition_to_drying"]
 [connection signal="collectedDrop" from="Rag" to="." method="_on_rag_collected_drop"]

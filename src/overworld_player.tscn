@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyb65"]
 size = Vector2(6, 5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5myp"]
+size = Vector2(8, 7)
+
 [node name="Player" type="CharacterBody2D" unique_id=2042437237]
 disable_mode = 2
 slide_on_ceiling = false
@@ -19,3 +22,9 @@ shape = SubResource("RectangleShape2D_nyb65")
 position = Vector2(0, 2)
 scale = Vector2(0.23, 0.23)
 texture = ExtResource("2_utdjk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2127013718]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=447121408]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_a5myp")
