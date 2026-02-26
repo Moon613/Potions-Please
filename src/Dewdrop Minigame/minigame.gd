@@ -1,10 +1,12 @@
 extends Node2D
 signal TransitionToDrying;
 signal ReturnToOverworld(id: int);
+signal RemoveJar;
 
 @export var dewdrop: PackedScene = preload("res://Dewdrop Minigame/dewdrop.tscn")
 @export var number_of_dewdrops: int
 var numberOfDropsCollected = 0;
+var removedJar: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,7 +23,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	for child in get_children():
+		if child is RigidBody2D and child.position.y > 380:
+			remove_child(child);
+	if get_children().size() == 4 and $Rag.farthestStretch >= 1.8 and !removedJar:
+		$"Collection Jar".frame = 1;
+		RemoveJar.emit();
+		removedJar = true;
 
 func _on_rag_collected_drop():
 	numberOfDropsCollected += 1;
@@ -31,3 +39,7 @@ func _on_rag_collected_drop():
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		ReturnToOverworld.emit(0);
+
+
+func _on_collection_jar_done_move_down():
+	ReturnToOverworld.emit(0);

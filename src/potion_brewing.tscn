@@ -15,8 +15,8 @@ friction = 0.0
 bounce = 0.1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2f47"]
-radius = 6.462035
-height = 56.86591
+radius = 3.715662
+height = 59.450714
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ii5e"]
 radius = 71.0
@@ -84,12 +84,13 @@ script = ExtResource("6_xks6y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Spoon" unique_id=736801461]
 texture_filter = 1
-position = Vector2(-1.4305115e-05, 112.00001)
-scale = Vector2(1.9199997, 1.9733334)
+position = Vector2(-17, 103.99999)
+rotation = -0.49218285
+scale = Vector2(0.74103856, 0.57123756)
 texture = ExtResource("7_3ii5e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spoon" unique_id=1071572395]
-position = Vector2(4.673004e-05, 7.6293945e-06)
+position = Vector2(-0.9999989, -8.000008)
 scale = Vector2(6.19, 6.19)
 shape = SubResource("CapsuleShape2D_g2f47")
 

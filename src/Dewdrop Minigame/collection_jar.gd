@@ -1,8 +1,10 @@
-extends Sprite2D
+extends AnimatedSprite2D
+signal DoneMoveDown;
 
 var moveIn = false;
 var moveTimer = -1;
 var startPos: Vector2;
+var moveOut = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,8 +19,21 @@ func _process(delta):
 			moveTimer += 0.025;
 		else:
 			moveIn = false;
+	if moveOut:
+		if moveTimer < 1:
+			self.position = lerp(startPos, Vector2(0, 800), 0.0 if moveTimer == 0 else pow(2, 10*moveTimer-10));
+			moveTimer += 0.025;
+		else:
+			moveOut = false;
+			DoneMoveDown.emit();
 
 
 func _on_minigame_transition_to_drying():
 	moveIn = true;
+	startPos = self.position;
+
+
+func _on_minigame_remove_jar():
+	moveOut = true;
+	moveTimer = 0;
 	startPos = self.position;

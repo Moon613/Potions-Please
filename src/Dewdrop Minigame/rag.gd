@@ -1,4 +1,5 @@
 extends Area2D
+@export var dewdrop: PackedScene = preload("res://Dewdrop Minigame/dewdrop.tscn")
 
 signal collectedDrop;
 
@@ -9,6 +10,7 @@ var fadeTimer = 0.1;
 var reappearing = false;
 var startPos: Vector2;
 var grabbedForWringing = false;
+var farthestStretch: float = 1.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,7 +60,15 @@ func _process(delta: float) -> void:
 						$AnimatedSprite2D.material.set_shader_parameter("wetness", wetness + (0.4/self.get_parent().number_of_dewdrops));
 	
 	if grabbedForWringing and ((RELATIVE_MOUSE_POSITION.x < 0 and get_global_mouse_position().x < RELATIVE_MOUSE_POSITION.x) or (RELATIVE_MOUSE_POSITION.x > 0 and get_global_mouse_position().x > RELATIVE_MOUSE_POSITION.x)):
+		var newFarthestStretch = minf(1.8, maxf(1.0, (abs(RELATIVE_MOUSE_POSITION.x - get_global_mouse_position().x)+200)/200.0))
 		$AnimatedSprite2D.scale.x = minf(1.8, maxf(1.0, (abs(RELATIVE_MOUSE_POSITION.x - get_global_mouse_position().x)+200)/200.0))
+		if newFarthestStretch > farthestStretch:
+			$AnimatedSprite2D.material.set_shader_parameter("wetness", lerp(1.0, 0.6, ((newFarthestStretch-1.0)/0.8)));
+			farthestStretch = newFarthestStretch;
+			var drop = dewdrop.instantiate();
+			drop.name = "Dewdrop";
+			drop.gravity_scale = 1;
+			get_parent().add_child(drop);
 	pass
 
 func _physics_process(delta):

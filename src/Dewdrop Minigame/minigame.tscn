@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dehwxkhqmi4qo" path="res://Textures/DewJarEmpty.png" id="7_mat7q"]
 [ext_resource type="Texture2D" uid="uid://d32ktq4hitttn" path="res://Textures/OpenRagOverlay.png" id="7_vuaru"]
 [ext_resource type="Script" uid="uid://bin3g35q8wcy3" path="res://Dewdrop Minigame/collection_jar.gd" id="8_osxt6"]
+[ext_resource type="Texture2D" uid="uid://bpwb1xatmcl8v" path="res://Textures/DewJarFull.png" id="11_vuaru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ff77p"]
 size = Vector2(680, 456)
@@ -21,6 +22,20 @@ shader_parameter/overlay_open = ExtResource("7_vuaru")
 shader_parameter/overlay_closed = ExtResource("7_augy1")
 shader_parameter/wetness = 0.60000002384186
 shader_parameter/open = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2l8w5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_mat7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_vuaru")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Minigame" type="Node2D" unique_id=2048969862]
 script = ExtResource("1_oemwr")
@@ -49,12 +64,14 @@ z_index = 1
 material = SubResource("ShaderMaterial_vuaru")
 sprite_frames = ExtResource("6_6y45g")
 
-[node name="Collection Jar" type="Sprite2D" parent="." unique_id=77311594]
+[node name="Collection Jar" type="AnimatedSprite2D" parent="." unique_id=1729812968]
 position = Vector2(0, 928)
-texture = ExtResource("7_mat7q")
+sprite_frames = SubResource("SpriteFrames_2l8w5")
 script = ExtResource("8_osxt6")
 
+[connection signal="RemoveJar" from="." to="Collection Jar" method="_on_minigame_remove_jar"]
 [connection signal="TransitionToDrying" from="." to="Background" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Rag" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Collection Jar" method="_on_minigame_transition_to_drying"]
 [connection signal="collectedDrop" from="Rag" to="." method="_on_rag_collected_drop"]
+[connection signal="DoneMoveDown" from="Collection Jar" to="." method="_on_collection_jar_done_move_down"]
