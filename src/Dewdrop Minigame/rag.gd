@@ -5,6 +5,8 @@ signal collectedDrop;
 var FOLLOW_MOUSE = false;
 var RELATIVE_MOUSE_POSITION = Vector2();
 var fading = false;
+var fadeTimer = 1;
+var reappearing = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +14,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if fading:
+		if self.position.y < 1000:
+			fadeTimer *= 1.05;
+			self.position.y += 0.1 * fadeTimer;
+		else:
+			$AnimatedSprite2D.frame = 1;
+			fading = false;
+			reappearing = true;
+	if reappearing:
+		self.position = Vector2(0,0);
 	for body in get_overlapping_bodies():
 		if body is RigidBody2D and body.name.contains("Dewdrop"):
 			var collider = body.get_node("CollisionShape2D");

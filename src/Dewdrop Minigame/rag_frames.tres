@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://oologo0y6j6m"]
+
+[ext_resource type="Texture2D" uid="uid://dvrmlgmc7a6b8" path="res://Textures/RagOpenDry.png" id="1_67iek"]
+[ext_resource type="Texture2D" uid="uid://b003k4boa47r1" path="res://Textures/RagTwistDry.png" id="2_c5881"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_67iek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c5881")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
