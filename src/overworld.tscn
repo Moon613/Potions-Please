@@ -3,10 +3,7 @@
 [ext_resource type="TileSet" uid="uid://dbk4ou7hhx3qw" path="res://Overworld_Tileset.tres" id="1_824ie"]
 [ext_resource type="PackedScene" uid="uid://c0i865a3jt162" path="res://overworld_player.tscn" id="2_824ie"]
 [ext_resource type="Script" uid="uid://3rpvrs0d3d0l" path="res://overworld_playercam.gd" id="4_824ie"]
-[ext_resource type="Script" uid="uid://buvdukl7mfjb3" path="res://house_loading_zone.gd" id="5_omswd"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4qw5"]
-size = Vector2(10, 2)
+[ext_resource type="PackedScene" uid="uid://chkduo5t1kjb6" path="res://loading_zone.tscn" id="4_omswd"]
 
 [node name="Overworld" type="Node2D" unique_id=340257523]
 
@@ -37,10 +34,7 @@ limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("4_824ie")
 
-[node name="House Loading Zone" type="Area2D" parent="." unique_id=1398531453]
-position = Vector2(0, 1)
-script = ExtResource("5_omswd")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="House Loading Zone" unique_id=766383397]
-position = Vector2(-44, 1)
-shape = SubResource("RectangleShape2D_m4qw5")
+[node name="Loading Zone" parent="." unique_id=1889046867 instance=ExtResource("4_omswd")]
+position = Vector2(-44, 2)
+SceneID = 2
+Size = Vector2(10, 2)
