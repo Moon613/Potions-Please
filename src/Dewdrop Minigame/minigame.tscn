@@ -24,7 +24,7 @@ shader_parameter/open = true
 
 [node name="Minigame" type="Node2D" unique_id=2048969862]
 script = ExtResource("1_oemwr")
-number_of_dewdrops = 6
+number_of_dewdrops = 20
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1025465349]
 texture_filter = 4
