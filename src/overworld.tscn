@@ -49,6 +49,7 @@ y_sort_enabled = true
 
 [node name="Interaction Trigger" parent="." unique_id=557724366 instance=ExtResource("5_omswd")]
 position = Vector2(-61, 7)
+SceneID = 3
 Size = Vector2(14.135, 9.85)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1364830688]

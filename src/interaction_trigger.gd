@@ -1,5 +1,6 @@
 @tool
 extends Area2D
+@export var SceneID: int;
 @export var Size: Vector2 = Vector2(20,20):
 	set(value):
 		Size = value;
@@ -27,4 +28,4 @@ func _input(event):
 		if playerIndex != -1:
 			interactionCooldown = 240
 			print("Interacted");
-			InteractedWith.emit(3);
+			InteractedWith.emit(SceneID);

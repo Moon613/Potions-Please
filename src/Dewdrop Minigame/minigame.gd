@@ -1,5 +1,6 @@
 extends Node2D
 signal TransitionToDrying;
+signal ReturnToOverworld(id: int);
 
 @export var dewdrop: PackedScene = preload("res://Dewdrop Minigame/dewdrop.tscn")
 @export var number_of_dewdrops: int
@@ -7,6 +8,8 @@ var numberOfDropsCollected = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
+		ReturnToOverworld.connect(get_tree().current_scene._switch_scene)
 	for n:int in abs(number_of_dewdrops):
 		var dewdropInstance = dewdrop.instantiate();
 		dewdropInstance.position = Vector2(randi_range(-900, 900), randi_range(-500, 360));
@@ -24,3 +27,7 @@ func _on_rag_collected_drop():
 	numberOfDropsCollected += 1;
 	if numberOfDropsCollected >= number_of_dewdrops:
 		TransitionToDrying.emit();
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		ReturnToOverworld.emit(0);

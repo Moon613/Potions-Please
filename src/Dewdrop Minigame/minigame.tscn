@@ -6,11 +6,21 @@
 [ext_resource type="Script" uid="uid://dspvuxr20661j" path="res://Dewdrop Minigame/rag.gd" id="3_gdft7"]
 [ext_resource type="Script" uid="uid://7atqylklawoc" path="res://Dewdrop Minigame/background.gd" id="4_6y45g"]
 [ext_resource type="SpriteFrames" uid="uid://oologo0y6j6m" path="res://Dewdrop Minigame/rag_frames.tres" id="6_6y45g"]
+[ext_resource type="Shader" uid="uid://dtogdf1h0de1k" path="res://Dewdrop Minigame/rag_wetness.gdshader" id="6_augy1"]
+[ext_resource type="Texture2D" uid="uid://dj4ckgxuyxxiq" path="res://Textures/TwistRagOverlay.png" id="7_augy1"]
 [ext_resource type="Texture2D" uid="uid://dehwxkhqmi4qo" path="res://Textures/DewJarEmpty.png" id="7_mat7q"]
+[ext_resource type="Texture2D" uid="uid://d32ktq4hitttn" path="res://Textures/OpenRagOverlay.png" id="7_vuaru"]
 [ext_resource type="Script" uid="uid://bin3g35q8wcy3" path="res://Dewdrop Minigame/collection_jar.gd" id="8_osxt6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ff77p"]
 size = Vector2(680, 456)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vuaru"]
+shader = ExtResource("6_augy1")
+shader_parameter/overlay_open = ExtResource("7_vuaru")
+shader_parameter/overlay_closed = ExtResource("7_augy1")
+shader_parameter/wetness = 0.60000002384186
+shader_parameter/open = true
 
 [node name="Minigame" type="Node2D" unique_id=2048969862]
 script = ExtResource("1_oemwr")
@@ -26,17 +36,18 @@ script = ExtResource("4_6y45g")
 zoom = Vector2(0.6, 0.6)
 
 [node name="Rag" type="Area2D" parent="." unique_id=1390846491]
-position = Vector2(544, 688)
+position = Vector2(544, 608)
 script = ExtResource("3_gdft7")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rag" unique_id=1091684985]
-z_index = 1
-sprite_frames = ExtResource("6_6y45g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rag" unique_id=15627907]
 z_index = 1
 position = Vector2(-4, -4)
 shape = SubResource("RectangleShape2D_ff77p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Rag" unique_id=1091684985]
+z_index = 1
+material = SubResource("ShaderMaterial_vuaru")
+sprite_frames = ExtResource("6_6y45g")
 
 [node name="Collection Jar" type="Sprite2D" parent="." unique_id=77311594]
 position = Vector2(0, 928)

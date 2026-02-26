@@ -17,3 +17,5 @@ func _input(event):
 		if event.button_index == 1:
 			if !event.pressed:
 				clickReleased.emit();
+	else:
+		pass

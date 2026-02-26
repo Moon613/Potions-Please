@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 			startPos = self.position;
 	if reappearing:
 		if fadeTimer < 1:
+			$AnimatedSprite2D.material.set_shader_parameter("open", false);
 			self.position = lerp(startPos, Vector2(0,-200), 1.0 if fadeTimer == 1 else 1-pow(2, -10*fadeTimer));
 			fadeTimer += 0.025;
 	for body in get_overlapping_bodies():
@@ -52,10 +53,12 @@ func _process(delta: float) -> void:
 				if circleLeft > ragLeft and circleRight < ragRight and circleTop > ragTop and circleBottom < ragBottom:
 					body.queue_free();
 					collectedDrop.emit();
+					if $AnimatedSprite2D.material is ShaderMaterial:
+						var wetness = $AnimatedSprite2D.material.get_shader_parameter("wetness");
+						$AnimatedSprite2D.material.set_shader_parameter("wetness", wetness + (0.4/self.get_parent().number_of_dewdrops));
 	
 	if grabbedForWringing and ((RELATIVE_MOUSE_POSITION.x < 0 and get_global_mouse_position().x < RELATIVE_MOUSE_POSITION.x) or (RELATIVE_MOUSE_POSITION.x > 0 and get_global_mouse_position().x > RELATIVE_MOUSE_POSITION.x)):
 		$AnimatedSprite2D.scale.x = minf(1.8, maxf(1.0, (abs(RELATIVE_MOUSE_POSITION.x - get_global_mouse_position().x)+200)/200.0))
-	
 	pass
 
 func _physics_process(delta):

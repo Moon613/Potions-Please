@@ -4,6 +4,7 @@
 [ext_resource type="TileSet" uid="uid://dbk4ou7hhx3qw" path="res://Overworld_Tileset.tres" id="2_gkw0i"]
 [ext_resource type="Script" uid="uid://3rpvrs0d3d0l" path="res://overworld_playercam.gd" id="4_giixd"]
 [ext_resource type="PackedScene" uid="uid://chkduo5t1kjb6" path="res://loading_zone.tscn" id="4_gkw0i"]
+[ext_resource type="PackedScene" uid="uid://dtivjjebe4l3q" path="res://interaction_trigger.tscn" id="5_xypit"]
 
 [node name="inside_house" type="Node2D" unique_id=1222120684]
 
@@ -33,3 +34,8 @@ script = ExtResource("4_giixd")
 [node name="Loading Zone" parent="." unique_id=1889046867 instance=ExtResource("4_gkw0i")]
 position = Vector2(0, 39)
 Size = Vector2(59.815, 2)
+
+[node name="Interaction Trigger" parent="." unique_id=557724366 instance=ExtResource("5_xypit")]
+position = Vector2(16, -8)
+SceneID = 1
+Size = Vector2(19.065, 19.065)
