@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://d30fpofbcxa5d"]
 
-[ext_resource type="PackedScene" uid="uid://c0i865a3jt162" path="res://overworld_player.tscn" id="2_10rr3"]
-[ext_resource type="TileSet" uid="uid://dbk4ou7hhx3qw" path="res://Overworld_Tileset.tres" id="2_gkw0i"]
-[ext_resource type="Script" uid="uid://3rpvrs0d3d0l" path="res://overworld_playercam.gd" id="4_giixd"]
-[ext_resource type="PackedScene" uid="uid://chkduo5t1kjb6" path="res://loading_zone.tscn" id="4_gkw0i"]
-[ext_resource type="PackedScene" uid="uid://dtivjjebe4l3q" path="res://interaction_trigger.tscn" id="5_xypit"]
+[ext_resource type="PackedScene" uid="uid://c0i865a3jt162" path="res://Overworld/overworld_player.tscn" id="2_10rr3"]
+[ext_resource type="TileSet" uid="uid://dbk4ou7hhx3qw" path="res://Overworld/Overworld_Tileset.tres" id="2_gkw0i"]
+[ext_resource type="Script" uid="uid://3rpvrs0d3d0l" path="res://Overworld/overworld_playercam.gd" id="4_giixd"]
+[ext_resource type="PackedScene" uid="uid://chkduo5t1kjb6" path="res://Overworld/loading_zone.tscn" id="4_gkw0i"]
+[ext_resource type="PackedScene" uid="uid://dtivjjebe4l3q" path="res://Overworld/interaction_trigger.tscn" id="5_xypit"]
 
 [node name="inside_house" type="Node2D" unique_id=1222120684]
 

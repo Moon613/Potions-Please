@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c0i865a3jt162"]
 
-[ext_resource type="Script" uid="uid://t7o3hnud8s8b" path="res://player.gd" id="1_a5myp"]
+[ext_resource type="Script" uid="uid://t7o3hnud8s8b" path="res://Overworld/player.gd" id="1_a5myp"]
 [ext_resource type="Texture2D" uid="uid://csi750b107h5r" path="res://Textures/YasmeenBack.png" id="2_vy3ma"]
 [ext_resource type="Texture2D" uid="uid://c34k6xmou8p3p" path="res://Textures/YasmeenFront.png" id="3_x51wo"]
 [ext_resource type="Texture2D" uid="uid://b4vij74rambem" path="res://Textures/YasmeenLeftSide.png" id="4_e7n8m"]

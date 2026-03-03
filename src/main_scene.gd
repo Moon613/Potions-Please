@@ -1,7 +1,7 @@
 extends Node2D
-@export var overworld: PackedScene = preload("res://overworld.tscn")
-@export var potionBrewing: PackedScene = preload("res://potion_brewing.tscn")
-@export var insideHouse: PackedScene = preload("res://inside_house.tscn")
+@export var overworld: PackedScene = preload("res://Overworld/overworld.tscn")
+@export var potionBrewing: PackedScene = preload("res://Potion Brewing/potion_brewing.tscn")
+@export var insideHouse: PackedScene = preload("res://Overworld/inside_house.tscn")
 @export var dewdrops: PackedScene = preload("res://Dewdrop Minigame/minigame.tscn")
 
 var overworldScene;

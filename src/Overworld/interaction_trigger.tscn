@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtivjjebe4l3q"]
 
-[ext_resource type="Script" uid="uid://dvby1ojni5ccf" path="res://interaction_trigger.gd" id="1_521b6"]
+[ext_resource type="Script" uid="uid://dvby1ojni5ccf" path="res://Overworld/interaction_trigger.gd" id="1_521b6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjyl4"]
 resource_local_to_scene = true

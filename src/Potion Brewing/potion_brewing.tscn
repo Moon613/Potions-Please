@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://cbbeilop6nngp"]
 
-[ext_resource type="Script" uid="uid://ccaqqx0te1oji" path="res://potion_brewing.gd" id="1_g2f47"]
+[ext_resource type="Script" uid="uid://ccaqqx0te1oji" path="res://Potion Brewing/potion_brewing.gd" id="1_g2f47"]
 [ext_resource type="Texture2D" uid="uid://dp6bq2e7goybu" path="res://Textures/Background - Interior.png" id="1_hlnv1"]
 [ext_resource type="Texture2D" uid="uid://bplna885h5d5y" path="res://Textures/Cauldron.png" id="2_sgo1m"]
 [ext_resource type="Texture2D" uid="uid://bxjs7vx1m3soe" path="res://Textures/Shelf.png" id="3_b05j4"]
 [ext_resource type="Texture2D" uid="uid://br8f8aoq4e8oi" path="res://Textures/Cauldron_Inside.png" id="3_so1hj"]
 [ext_resource type="Texture2D" uid="uid://b8ok6dlccu2ab" path="res://Textures/Potion.png" id="4_5dfir"]
-[ext_resource type="Script" uid="uid://dsxhue2e16y4i" path="res://Spoon.gd" id="6_xks6y"]
+[ext_resource type="Script" uid="uid://dsxhue2e16y4i" path="res://Potion Brewing/Spoon.gd" id="6_xks6y"]
 [ext_resource type="Texture2D" uid="uid://dy2m2ayd1ulkh" path="res://Textures/Spoon.png" id="7_3ii5e"]
 [ext_resource type="Texture2D" uid="uid://behirfcds2hru" path="res://Textures/Cauldron_Top.png" id="7_g2f47"]
 

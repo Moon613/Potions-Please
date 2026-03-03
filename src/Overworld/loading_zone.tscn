@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://chkduo5t1kjb6"]
 
-[ext_resource type="Script" uid="uid://buvdukl7mfjb3" path="res://loading_zone.gd" id="1_xkf7v"]
+[ext_resource type="Script" uid="uid://buvdukl7mfjb3" path="res://Overworld/loading_zone.gd" id="1_xkf7v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkf7v"]
 resource_local_to_scene = true
