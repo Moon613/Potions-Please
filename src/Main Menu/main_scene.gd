@@ -41,7 +41,7 @@ func _switch_scene(id: int):
 	self.remove_child(self.get_children()[0]);
 	match id:
 		0:
-			self.add_child(overworldScene)
+			self.add_child(overworldScene);
 		1:
 			self.add_child(potionScene);
 		2:
