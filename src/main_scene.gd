@@ -30,7 +30,7 @@ func _ready() -> void:
 	var mainMenuInstance = mainMenu.instantiate();
 	mainMenuInstance.name = "Main Menu";
 	
-	add_child(overworldInstance);
+	add_child(mainMenuInstance);
 	
 	overworldScene = overworldInstance;
 	potionScene = brewingInstance;
