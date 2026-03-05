@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bw6ggvmlrdw6o"]
 
-[ext_resource type="Script" uid="uid://1om6rfhcw5ty" path="res://Main Menu/main_scene.gd" id="1_3mqji"]
-
+[ext_resource type="Script" uid="uid://1om6rfhcw5ty" path="res://main_scene.gd" id="1_3mqji"]
 
 [node name="MainScene" type="Node2D" unique_id=1114061648]
 y_sort_enabled = true
