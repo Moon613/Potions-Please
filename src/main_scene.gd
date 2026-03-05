@@ -45,6 +45,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _switch_scene(id: int):
+	print("Switching to scene " + str(id))
 	self.remove_child(self.get_children()[0]);
 	match id:
 		0:
