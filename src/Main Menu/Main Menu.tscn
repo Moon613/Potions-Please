@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://ceehah7li1w3b" path="res://Main Menu/main_menu.gd" id="1_ku1ks"]
 
-[node name="Main Menu" type="Control" unique_id=629038040]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=993294158]
+
+[node name="Main Menu" type="Control" parent="." unique_id=629038040]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ku1ks")
 
-[node name="Title" type="Label" parent="." unique_id=798943171]
+[node name="Title" type="Label" parent="Main Menu" unique_id=798943171]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -24,7 +26,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 50
 text = "Potions Please!"
 
-[node name="New Game" type="Button" parent="." unique_id=893188091]
+[node name="New Game" type="Button" parent="Main Menu" unique_id=893188091]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,7 +42,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "New Game"
 
-[node name="Load Game" type="Button" parent="." unique_id=1392912810]
+[node name="Load Game" type="Button" parent="Main Menu" unique_id=1392912810]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,7 +58,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "Load Game"
 
-[node name="Options" type="Button" parent="." unique_id=586258182]
+[node name="Options" type="Button" parent="Main Menu" unique_id=586258182]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -72,7 +74,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "Options"
 
-[node name="Quit" type="Button" parent="." unique_id=1320097620]
+[node name="Quit" type="Button" parent="Main Menu" unique_id=1320097620]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -88,5 +90,5 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 25
 text = "Quit Game"
 
-[connection signal="pressed" from="New Game" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Main Menu/New Game" to="Main Menu" method="_on_new_game_pressed"]
+[connection signal="pressed" from="Main Menu/Quit" to="Main Menu" method="_on_quit_pressed"]

@@ -3,11 +3,13 @@ extends Node2D
 @export var potionBrewing: PackedScene = preload("res://Potion Brewing/potion_brewing.tscn")
 @export var insideHouse: PackedScene = preload("res://Overworld/inside_house.tscn")
 @export var dewdrops: PackedScene = preload("res://Dewdrop Minigame/minigame.tscn")
+@export var mainMenu: PackedScene = preload("res://Main Menu/Main Menu.tscn")
 
 var overworldScene;
 var potionScene;
 var insideScene;
 var dewdropScene;
+var mainMenuScene;
 
 var dewdropsCollected = 0;
 
@@ -15,7 +17,6 @@ var dewdropsCollected = 0;
 func _ready() -> void:
 	var overworldInstance = overworld.instantiate();
 	overworldInstance.name = "Overworld";
-	add_child(overworldInstance);
 	
 	var brewingInstance = potionBrewing.instantiate();
 	brewingInstance.name = "Potion Brewing";
@@ -26,10 +27,16 @@ func _ready() -> void:
 	var dewdropInstance = dewdrops.instantiate();
 	dewdropInstance.name = "Dewdrop Collecting";
 	
+	var mainMenuInstance = mainMenu.instantiate();
+	mainMenuInstance.name = "Main Menu";
+	
+	add_child(mainMenuInstance);
+	
 	overworldScene = overworldInstance;
 	potionScene = brewingInstance;
 	insideScene = insideInstance;
 	dewdropScene = dewdropInstance;
+	mainMenuScene = mainMenuInstance;
 	pass # Replace with function body.
 
 
@@ -48,5 +55,7 @@ func _switch_scene(id: int):
 			self.add_child(insideScene);
 		3:
 			self.add_child(dewdropScene);
+		4:
+			self.add_child(mainMenuScene);
 		_:
 			print("Unknown SceneID!")

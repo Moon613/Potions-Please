@@ -1,9 +1,9 @@
 extends CharacterBody2D;
 
 
-const SPEED = 40.0;
-var collidedWithTransition = false;
-var canTriggerSceneTransitions = false;
+@export var SPEED = 40.0;
+@export var collidedWithTransition = false;
+@export var canTriggerSceneTransitions = false;
 
 
 func _physics_process(delta):
