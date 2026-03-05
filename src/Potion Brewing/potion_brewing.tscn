@@ -1,14 +1,25 @@
 [gd_scene format=3 uid="uid://cbbeilop6nngp"]
 
 [ext_resource type="Script" uid="uid://ccaqqx0te1oji" path="res://Potion Brewing/potion_brewing.gd" id="1_g2f47"]
-[ext_resource type="Texture2D" uid="uid://dp6bq2e7goybu" path="res://Textures/Background - Interior.png" id="1_hlnv1"]
-[ext_resource type="Texture2D" uid="uid://bplna885h5d5y" path="res://Textures/Cauldron.png" id="2_sgo1m"]
-[ext_resource type="Texture2D" uid="uid://bxjs7vx1m3soe" path="res://Textures/Shelf.png" id="3_b05j4"]
-[ext_resource type="Texture2D" uid="uid://br8f8aoq4e8oi" path="res://Textures/Cauldron_Inside.png" id="3_so1hj"]
-[ext_resource type="Texture2D" uid="uid://b8ok6dlccu2ab" path="res://Textures/Potion.png" id="4_5dfir"]
+[ext_resource type="Texture2D" uid="uid://bliwhqis5rdk" path="res://Textures/Background Potion UI.png" id="2_lm47i"]
+[ext_resource type="Texture2D" uid="uid://vxwtbumruws3" path="res://Textures/Bookshelf.png" id="3_lm47i"]
+[ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Textures/Nyx.png" id="4_dr7va"]
+[ext_resource type="Texture2D" uid="uid://cxns4cgtw3ynk" path="res://Textures/Caldron Front.png" id="6_lm47i"]
 [ext_resource type="Script" uid="uid://dsxhue2e16y4i" path="res://Potion Brewing/Spoon.gd" id="6_xks6y"]
 [ext_resource type="Texture2D" uid="uid://dy2m2ayd1ulkh" path="res://Textures/Spoon.png" id="7_3ii5e"]
-[ext_resource type="Texture2D" uid="uid://behirfcds2hru" path="res://Textures/Cauldron_Top.png" id="7_g2f47"]
+[ext_resource type="Texture2D" uid="uid://cryidjmdatyfi" path="res://Textures/Caldron Inside.png" id="7_dr7va"]
+[ext_resource type="Texture2D" uid="uid://st1osgmwcwix" path="res://Textures/BlankLiquid.png" id="8_o18r5"]
+[ext_resource type="Texture2D" uid="uid://d2ibvlk86fmu5" path="res://Textures/Caldron Back.png" id="9_wsuyr"]
+[ext_resource type="Texture2D" uid="uid://d1b8qy0gukt24" path="res://Textures/Spoon Holder.png" id="11_o18r5"]
+[ext_resource type="Texture2D" uid="uid://bwlkhcfqbgk2p" path="res://Textures/Journal Potion Ingredient List Icon.png" id="12_wsuyr"]
+[ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="13_8mvhn"]
+[ext_resource type="Texture2D" uid="uid://cgy3ndew38fyl" path="res://Textures/Trash Icon.png" id="14_dqwf3"]
+[ext_resource type="Texture2D" uid="uid://bg1utwc3blwav" path="res://Textures/Reputation Text.png" id="15_dqwf3"]
+[ext_resource type="Texture2D" uid="uid://6py0wpfmtxjt" path="res://Textures/Bad Reputation Icon.png" id="16_xc2nr"]
+[ext_resource type="Texture2D" uid="uid://cid1ceu338cuf" path="res://Textures/Reputation Icon.png" id="17_7gn2s"]
+[ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Textures/Stamina Text.png" id="18_g121f"]
+[ext_resource type="Texture2D" uid="uid://va85xlcf010t" path="res://Textures/Bad Stamina Icon.png" id="19_m6y6x"]
+[ext_resource type="Texture2D" uid="uid://c7k5a3cb88cfp" path="res://Textures/Stamina Icon.png" id="19_x0yta"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ii5e"]
 friction = 0.0
@@ -34,42 +45,46 @@ absorbent = true
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7n1qr"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc2nr"]
+atlas = ExtResource("16_xc2nr")
+region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_patwh"]
+atlas = ExtResource("17_7gn2s")
+region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3cj8"]
+atlas = ExtResource("19_m6y6x")
+region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6y6x"]
+atlas = ExtResource("19_x0yta")
+region = Rect2(0, 0, 400, 72)
+
 [node name="Potion Brewing" type="Node2D" unique_id=965922724]
 script = ExtResource("1_g2f47")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1804067386]
 texture_filter = 1
-texture = ExtResource("1_hlnv1")
+texture = ExtResource("2_lm47i")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1260672056]
 zoom = Vector2(0.6, 0.6)
 
 [node name="Shelf" type="Sprite2D" parent="." unique_id=164151715]
 texture_filter = 1
-position = Vector2(-628, 71.25)
-scale = Vector2(2.7478263, 6.298658)
-texture = ExtResource("3_b05j4")
+position = Vector2(-624.00006, 82.34799)
+scale = Vector2(0.9605734, 0.9032796)
+texture = ExtResource("3_lm47i")
 
-[node name="Cauldron Inside" type="Sprite2D" parent="." unique_id=1780531648]
-texture_filter = 1
-position = Vector2(1.8110995, 328)
-scale = Vector2(4.4001594, 4.6666665)
-texture = ExtResource("3_so1hj")
-
-[node name="Potion" type="Sprite2D" parent="." unique_id=1080880378]
-texture_filter = 1
-position = Vector2(-7.999977, 308)
-scale = Vector2(5.2266665, 5.8285723)
-texture = ExtResource("4_5dfir")
-
-[node name="Cauldron Top" type="Sprite2D" parent="." unique_id=733638436]
-texture_filter = 1
-position = Vector2(2.0000463, 250.5)
-scale = Vector2(4.3144655, 4.4857144)
-texture = ExtResource("7_g2f47")
+[node name="Nyx" type="Sprite2D" parent="." unique_id=103944378]
+position = Vector2(-96, -272)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_dr7va")
 
 [node name="Spoon" type="RigidBody2D" parent="." unique_id=1458366467]
-position = Vector2(137, -240)
+position = Vector2(-184.00002, 56.000004)
+rotation = 0.20249069
 disable_mode = 2
 input_pickable = true
 mass = 3.0
@@ -83,6 +98,7 @@ max_contacts_reported = 5
 script = ExtResource("6_xks6y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Spoon" unique_id=736801461]
+z_index = 1
 texture_filter = 1
 position = Vector2(-17, 103.99999)
 rotation = -0.49218285
@@ -90,26 +106,62 @@ scale = Vector2(0.74103856, 0.57123756)
 texture = ExtResource("7_3ii5e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spoon" unique_id=1071572395]
+z_index = 2
 position = Vector2(-0.9999989, -8.000008)
 scale = Vector2(6.19, 6.19)
 shape = SubResource("CapsuleShape2D_g2f47")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Spoon" unique_id=1732083214]
+z_index = 2
 position = Vector2(0, 281)
 shape = SubResource("CapsuleShape2D_3ii5e")
 
-[node name="Cauldron Hitbox" type="StaticBody2D" parent="." unique_id=1769598805]
+[node name="Cauldron" type="StaticBody2D" parent="." unique_id=1769598805]
+position = Vector2(416.00003, 296.00003)
+scale = Vector2(1.3, 1.3)
 physics_material_override = SubResource("PhysicsMaterial_g2f47")
 
-[node name="Cauldron" type="Sprite2D" parent="Cauldron Hitbox" unique_id=1335512008]
+[node name="Cauldron Front" type="Sprite2D" parent="Cauldron" unique_id=1335512008]
+z_index = 2
 texture_filter = 1
-position = Vector2(0, 219)
-scale = Vector2(4.312081, 4.3120804)
-texture = ExtResource("2_sgo1m")
+position = Vector2(0, 3.7075195)
+scale = Vector2(0.682, 0.682)
+texture = ExtResource("6_lm47i")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron Hitbox" unique_id=828861719]
-position = Vector2(-317, 320)
-polygon = PackedVector2Array(32, 39, 45, 176, 317, 229, 581, 176, 593, 49, 617, 6, 667, 6, 661, 51, 649, 63, 723, 129, 726, 219, 317, 254, -16, 224, -63, 222, -72, 136, -10, 53, -22, 26, -25, -1, 12, -1)
+[node name="Cauldron Inside" type="Sprite2D" parent="Cauldron" unique_id=1780531648]
+texture_filter = 1
+position = Vector2(-3.9145012, -83.054474)
+scale = Vector2(0.6788134, 0.7295409)
+texture = ExtResource("7_dr7va")
+
+[node name="Potion" type="Sprite2D" parent="Cauldron" unique_id=1080880378]
+texture_filter = 1
+position = Vector2(0, -187.69241)
+scale = Vector2(0.77132267, 0.8562738)
+texture = ExtResource("8_o18r5")
+
+[node name="Cauldron Top" type="Sprite2D" parent="Cauldron" unique_id=733638436]
+texture_filter = 1
+position = Vector2(-1.5239899, -281.79248)
+scale = Vector2(0.67724895, 0.711)
+texture = ExtResource("9_wsuyr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron" unique_id=828861719]
+z_index = 3
+position = Vector2(-317, -212.29248)
+polygon = PackedVector2Array(32, 39, 45, 176, 77, 280, 187.76921, 341.52325, 317, 359.9848, 433.9231, 341.52325, 549, 280, 581, 176, 605, 28.29248, 613, -19.70752, 669, -19.70752, 677, 20.29248, 669, 64, 653, 144, 645, 224, 597, 336, 469, 424, 317, 464, 157, 416, 29, 328, -11, 224, -19, 112, -35, 60.29248, -43, -8, 21, -8)
+
+[node name="Spoon Holder" type="StaticBody2D" parent="." unique_id=100427475]
+position = Vector2(-168, 328)
+
+[node name="Sprite2D" type="Sprite2D" parent="Spoon Holder" unique_id=983839674]
+position = Vector2(-8.000008, -72)
+rotation = -0.5881493
+scale = Vector2(2.9686744, 3.767742)
+texture = ExtResource("11_o18r5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spoon Holder" unique_id=658356064]
+polygon = PackedVector2Array(32, -376, 56, -392, 80, -384, 96, -360, 56, 152, 40, 176, 16, 184, -144, 152, -168, 136, -168, 112, -152, 104, -8, 128)
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=41236175]
 position = Vector2(0, 544)
@@ -130,5 +182,82 @@ position = Vector2(-960, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall" unique_id=804179925]
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_7n1qr")
+
+[node name="UI" type="Node2D" parent="." unique_id=2122860457]
+top_level = true
+z_index = 126
+position = Vector2(0, -504)
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=700355254]
+offset_left = -960.0
+offset_top = -36.0
+offset_right = 960.0
+offset_bottom = 72.0
+color = Color(0.19, 0.1159, 0.18258996, 1)
+
+[node name="Button" type="Button" parent="UI" unique_id=15710205]
+offset_left = 480.0
+offset_top = 72.0
+offset_right = 616.0
+offset_bottom = 225.15315
+icon = ExtResource("12_wsuyr")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="UI" unique_id=1824063359]
+offset_left = 640.0
+offset_top = 72.0
+offset_right = 776.0
+offset_bottom = 225.0
+icon = ExtResource("13_8mvhn")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button3" type="Button" parent="UI" unique_id=1785011166]
+offset_left = 800.0
+offset_top = 72.0
+offset_right = 936.0
+offset_bottom = 224.0
+icon = ExtResource("14_dqwf3")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Reputation" type="Sprite2D" parent="UI" unique_id=2136125084]
+position = Vector2(-696, 16)
+scale = Vector2(1, 1.1428572)
+texture = ExtResource("15_dqwf3")
+
+[node name="Reputation Bar" type="TextureProgressBar" parent="UI" unique_id=166074016]
+texture_repeat = 2
+offset_left = -464.0
+offset_top = -16.0
+offset_right = -64.0
+offset_bottom = 56.0
+max_value = 5.0
+step = 0.1
+value = 5.0
+texture_under = SubResource("AtlasTexture_xc2nr")
+texture_progress = SubResource("AtlasTexture_patwh")
+tint_progress = Color(1, 0.13999999, 0.13999999, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="UI" unique_id=2063012279]
+position = Vector2(280, 16)
+scale = Vector2(1.2741935, 1.2741935)
+texture = ExtResource("18_g121f")
+
+[node name="Stamina Bar" type="TextureProgressBar" parent="UI" unique_id=161621447]
+texture_repeat = 2
+offset_left = 480.0
+offset_top = -16.0
+offset_right = 880.0
+offset_bottom = 56.0
+max_value = 5.0
+step = 0.1
+value = 5.0
+texture_under = SubResource("AtlasTexture_a3cj8")
+texture_progress = SubResource("AtlasTexture_m6y6x")
 
 [connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]
