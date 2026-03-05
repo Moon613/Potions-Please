@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c34k6xmou8p3p" path="res://Textures/YasmeenFront.png" id="3_x51wo"]
 [ext_resource type="Texture2D" uid="uid://b4vij74rambem" path="res://Textures/YasmeenLeftSide.png" id="4_e7n8m"]
 [ext_resource type="Texture2D" uid="uid://3yyns5sbey2w" path="res://Textures/YasmeenRightSide.png" id="5_ecbct"]
+[ext_resource type="PackedScene" uid="uid://dh3sgkg60ryli" path="res://Items/Inventory.tscn" id="6_mvqdm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyb65"]
 size = Vector2(6, 5)
@@ -52,3 +53,7 @@ sprite_frames = SubResource("SpriteFrames_buwj1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transition Buffer" unique_id=447121408]
 position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_a5myp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1864223296]
+
+[node name="Inventory" parent="CanvasLayer" unique_id=1453173247 instance=ExtResource("6_mvqdm")]
