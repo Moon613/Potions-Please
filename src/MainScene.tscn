@@ -1,7 +1,25 @@
 [gd_scene format=3 uid="uid://bw6ggvmlrdw6o"]
 
 [ext_resource type="Script" uid="uid://1om6rfhcw5ty" path="res://main_scene.gd" id="1_3mqji"]
+[ext_resource type="PackedScene" uid="uid://dh3sgkg60ryli" path="res://Items/Inventory.tscn" id="2_x4av3"]
+[ext_resource type="PackedScene" uid="uid://co23w30nw5f67" path="res://Items/InventoryItem.tscn" id="3_uxrcv"]
+[ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="4_rf2cd"]
 
-[node name="MainScene" type="Node2D" unique_id=1114061648]
+[node name="MainScene" type="Node2D" unique_id=1114061648 node_paths=PackedStringArray("inventory")]
 y_sort_enabled = true
 script = ExtResource("1_3mqji")
+inventory = NodePath("CanvasLayer/Inventory")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=165236089]
+
+[node name="Inventory" parent="CanvasLayer" unique_id=1453173247 instance=ExtResource("2_x4av3")]
+
+[node name="InventoryItem" parent="." unique_id=617301616 instance=ExtResource("3_uxrcv")]
+offset_left = 720.0
+offset_top = 328.0
+offset_right = 728.0
+offset_bottom = 336.0
+amount = 3
+item_name = "Morning Dew"
+icon = ExtResource("4_rf2cd")
+is_stackable = true

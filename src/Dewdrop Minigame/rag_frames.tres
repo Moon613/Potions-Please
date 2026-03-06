@@ -1,16 +1,16 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://oologo0y6j6m"]
 
-[ext_resource type="Texture2D" uid="uid://dvrmlgmc7a6b8" path="res://Textures/RagOpenDry.png" id="1_67iek"]
-[ext_resource type="Texture2D" uid="uid://b003k4boa47r1" path="res://Textures/RagTwistDry.png" id="2_c5881"]
+[ext_resource type="Texture2D" uid="uid://ctxvo0cklv3nv" path="res://Textures/OpenRagClean.png" id="1_jqiae"]
+[ext_resource type="Texture2D" uid="uid://bdovvbm5w81b0" path="res://Textures/TwistRagClean.png" id="2_5py3d"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_67iek")
+"texture": ExtResource("1_jqiae")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_c5881")
+"texture": ExtResource("2_5py3d")
 }],
 "loop": true,
 "name": &"default",

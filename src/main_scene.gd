@@ -3,6 +3,9 @@ extends Node2D
 @export var potionBrewing: PackedScene = preload("res://Potion Brewing/potion_brewing.tscn")
 @export var insideHouse: PackedScene = preload("res://Overworld/inside_house.tscn")
 @export var dewdrops: PackedScene = preload("res://Dewdrop Minigame/minigame.tscn")
+@export var inventory: Inventory
+@export var test_hint_item: InventoryItem
+var busy = false
 
 var overworldScene;
 var potionScene;
@@ -13,6 +16,7 @@ var dewdropsCollected = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	inventory.visible = false
 	var overworldInstance = overworld.instantiate();
 	overworldInstance.name = "Overworld";
 	add_child(overworldInstance);
@@ -30,12 +34,18 @@ func _ready() -> void:
 	potionScene = brewingInstance;
 	insideScene = insideInstance;
 	dewdropScene = dewdropInstance;
+	
+	
+	test_hint_item.get_parent().remove_child.call_deferred(test_hint_item)
+	test_hint_item.name = "Morning Dew"
+	inventory.slots[0].set_item_hint.call_deferred(test_hint_item)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("inventory") and !busy:
+		inventory.visible = !inventory.visible
 
 func _switch_scene(id: int):
 	self.remove_child(self.get_children()[0]);

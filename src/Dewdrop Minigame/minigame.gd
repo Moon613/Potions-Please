@@ -2,6 +2,7 @@ extends Node2D
 signal TransitionToDrying;
 signal ReturnToOverworld(id: int);
 signal RemoveJar;
+signal DewCollected(drops_collected: int)
 
 @export var dewdrop: PackedScene = preload("res://Dewdrop Minigame/dewdrop.tscn")
 @export var number_of_dewdrops: int

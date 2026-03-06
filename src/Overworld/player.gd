@@ -1,6 +1,5 @@
 extends CharacterBody2D;
 
-
 const SPEED = 40.0;
 var collidedWithTransition = false;
 var canTriggerSceneTransitions = false;
@@ -21,6 +20,7 @@ func _physics_process(delta):
 		velocity.y = horDir * SPEED * sprinting;
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED);
+	
 	
 	if velocity.x < 0:
 		$AnimatedSprite2D.frame = 2;
