@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://co23w30nw5f67" path="res://Items/InventoryItem.tscn" id="3_uxrcv"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="4_rf2cd"]
 
-[node name="MainScene" type="Node2D" unique_id=1114061648 node_paths=PackedStringArray("inventory")]
+[node name="MainScene" type="Node2D" unique_id=1114061648 node_paths=PackedStringArray("inventory", "test_hint_item")]
 y_sort_enabled = true
 script = ExtResource("1_3mqji")
 inventory = NodePath("CanvasLayer/Inventory")
+test_hint_item = NodePath("InventoryItem")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=165236089]
 

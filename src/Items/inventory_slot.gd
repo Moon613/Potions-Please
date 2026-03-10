@@ -143,3 +143,10 @@ func update_slot():
 			if not self.get_children().has(hint_item):
 				add_child(hint_item)
 			hint_item.fade()
+
+func set_item_hint(new_item_hint: InventoryItem):
+	if self.hint_item:
+		self.hint_item.free()
+	self.hint_item = new_item_hint
+	self.add_child(new_item_hint)
+	update_slot()
