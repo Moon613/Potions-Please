@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://ch2s5cbjit2nu"]
 
 [ext_resource type="Script" uid="uid://blmr2dg5yonn6" path="res://Potion Brewing/ingredient.gd" id="1_r4ld2"]
+[ext_resource type="Texture2D" uid="uid://buaxvlcxodha5" path="res://Textures/Honey.png" id="2_ph7md"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ph7md"]
 radius = 24.0
 height = 64.0
 
 [node name="Ingredient" type="RigidBody2D" unique_id=1075928097]
+gravity_scale = 0.0
 script = ExtResource("1_r4ld2")
+Sprite = ExtResource("2_ph7md")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1255018325]
 rotation = 1.5707964
