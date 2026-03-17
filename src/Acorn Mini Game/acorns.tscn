@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dsfse7d2c0klu"]
+
+[ext_resource type="Script" uid="uid://cdlktmh8ctxcg" path="res://Acorn Mini Game/acorns.gd" id="1_02l1p"]
+[ext_resource type="Texture2D" uid="uid://bvng0yafiqfry" path="res://Textures/acorn.png" id="1_qm8q2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eliiu"]
+
+[node name="Acorn" type="Area2D" unique_id=797448071]
+collision_mask = 2
+script = ExtResource("1_02l1p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1127988372]
+position = Vector2(600, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_qm8q2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714163098]
+shape = SubResource("CircleShape2D_eliiu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

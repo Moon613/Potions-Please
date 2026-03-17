@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bc4ommp6o0qax"]
+
+[ext_resource type="Script" uid="uid://70wfms86ut61" path="res://Acorn Mini Game/acorn.gd" id="1_xc6ns"]
+[ext_resource type="Texture2D" uid="uid://b1sww4qkiynfe" path="res://Textures/tree.png" id="2_0rldd"]
+[ext_resource type="Script" uid="uid://m4m03d2irf6f" path="res://Acorn Mini Game/tree.gd" id="2_h1tt5"]
+[ext_resource type="PackedScene" uid="uid://dsfse7d2c0klu" path="res://Acorn Mini Game/acorns.tscn" id="3_6dtyt"]
+[ext_resource type="Shader" uid="uid://d245ild5vhgje" path="res://Acorn Mini Game/treeshake.gdshader" id="3_xvegq"]
+[ext_resource type="Script" uid="uid://cdae412rdiih5" path="res://Acorn Mini Game/basket.gd" id="4_bi5ov"]
+[ext_resource type="Texture2D" uid="uid://bwmwancl640ld" path="res://Textures/basket.png" id="4_w4kgs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1tt5"]
+size = Vector2(500, 500)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dtyt"]
+shader = ExtResource("3_xvegq")
+shader_parameter/shake_intensity = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4kgs"]
+
+[node name="minigame" type="Node2D" unique_id=686096718]
+script = ExtResource("1_xc6ns")
+
+[node name="Tree" type="Area2D" parent="." unique_id=1458463570]
+script = ExtResource("2_h1tt5")
+acorns_scene = ExtResource("3_6dtyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree" unique_id=398835468]
+position = Vector2(550, 300)
+scale = Vector2(0.5, 0.8)
+shape = SubResource("RectangleShape2D_h1tt5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree" unique_id=514344871]
+material = SubResource("ShaderMaterial_6dtyt")
+position = Vector2(550, 300)
+scale = Vector2(0.5, 0.2)
+texture = ExtResource("2_0rldd")
+
+[node name="Timer" type="Timer" parent="Tree" unique_id=752807949]
+wait_time = 10.0
+one_shot = true
+
+[node name="Basket" type="CharacterBody2D" parent="." unique_id=690234474]
+collision_layer = 2
+script = ExtResource("4_bi5ov")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket" unique_id=1901264533]
+position = Vector2(0, 250)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_w4kgs")
+
+[node name="Sprite2D" type="Sprite2D" parent="Basket" unique_id=406818900]
+position = Vector2(0, 250)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_w4kgs")
+
+[connection signal="timeout" from="Tree/Timer" to="Tree" method="_on_timer_timeout"]

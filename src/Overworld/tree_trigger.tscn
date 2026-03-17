@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://blle0g4wg7wlf"]
+
+[ext_resource type="Script" uid="uid://bxhmec0yea84q" path="res://Overworld/tree_trigger.gd" id="1_cl7gv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xytvu"]
+
+[node name="Tree Trigger" type="Area2D" unique_id=431093836]
+script = ExtResource("1_cl7gv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=249418877]
+shape = SubResource("RectangleShape2D_xytvu")

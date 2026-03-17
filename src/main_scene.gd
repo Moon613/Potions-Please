@@ -4,14 +4,17 @@ extends Node2D
 @export var insideHouse: PackedScene = preload("res://Overworld/inside_house.tscn")
 @export var dewdrops: PackedScene = preload("res://Dewdrop Minigame/minigame.tscn")
 @export var mainMenu: PackedScene = preload("res://Main Menu/Main Menu.tscn")
+@export var acorns: PackedScene = preload("res://Acorn Mini Game/acorn.tscn")
 
 var overworldScene;
 var potionScene;
 var insideScene;
 var dewdropScene;
 var mainMenuScene;
+var acornScene;
 
 var dewdropsCollected = 0;
+var acornsCollected = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,6 +33,9 @@ func _ready() -> void:
 	var mainMenuInstance = mainMenu.instantiate();
 	mainMenuInstance.name = "Main Menu";
 	
+	var acornInstance = acorns.instantiate();
+	acornInstance.name = "Acorn Minigame"
+	
 	add_child(mainMenuInstance);
 	
 	overworldScene = overworldInstance;
@@ -37,6 +43,7 @@ func _ready() -> void:
 	insideScene = insideInstance;
 	dewdropScene = dewdropInstance;
 	mainMenuScene = mainMenuInstance;
+	acornScene = acornInstance;
 	pass # Replace with function body.
 
 
@@ -58,5 +65,7 @@ func _switch_scene(id: int):
 			self.add_child(dewdropScene);
 		4:
 			self.add_child(mainMenuScene);
+		5:
+			self.add_child(acornScene);
 		_:
 			print("Unknown SceneID!")
