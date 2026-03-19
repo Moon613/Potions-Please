@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://st1osgmwcwix" path="res://Textures/BlankLiquid.png" id="8_o18r5"]
 [ext_resource type="Texture2D" uid="uid://d2ibvlk86fmu5" path="res://Textures/Caldron Back.png" id="9_wsuyr"]
 [ext_resource type="Texture2D" uid="uid://d1b8qy0gukt24" path="res://Textures/Spoon Holder.png" id="11_o18r5"]
+[ext_resource type="Script" uid="uid://btfoqfcybk40q" path="res://Potion Brewing/inside_cauldron_hitbox.gd" id="11_yupxn"]
 [ext_resource type="Texture2D" uid="uid://bwlkhcfqbgk2p" path="res://Textures/Journal Potion Ingredient List Icon.png" id="12_wsuyr"]
 [ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="13_8mvhn"]
 [ext_resource type="Texture2D" uid="uid://cgy3ndew38fyl" path="res://Textures/Trash Icon.png" id="14_dqwf3"]
@@ -20,6 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Textures/Stamina Text.png" id="18_g121f"]
 [ext_resource type="Texture2D" uid="uid://va85xlcf010t" path="res://Textures/Bad Stamina Icon.png" id="19_m6y6x"]
 [ext_resource type="Texture2D" uid="uid://c7k5a3cb88cfp" path="res://Textures/Stamina Icon.png" id="19_x0yta"]
+[ext_resource type="PackedScene" uid="uid://ch2s5cbjit2nu" path="res://Potion Brewing/Ingredient.tscn" id="21_m6y6x"]
+[ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="22_a3cj8"]
+[ext_resource type="Texture2D" uid="uid://buaxvlcxodha5" path="res://Textures/Honey.png" id="22_cgc07"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ii5e"]
 friction = 0.0
@@ -38,6 +42,9 @@ friction = 0.0
 rough = true
 bounce = 0.2
 absorbent = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgc07"]
+size = Vector2(776, 272)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ii5e"]
 
@@ -61,6 +68,16 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("19_x0yta")
 region = Rect2(0, 0, 400, 72)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yupxn"]
+resource_local_to_scene = true
+radius = 49.76
+height = 198.94
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc17n"]
+resource_local_to_scene = true
+radius = 51.42856
+height = 177.14282
+
 [node name="Potion Brewing" type="Node2D" unique_id=965922724]
 script = ExtResource("1_g2f47")
 
@@ -82,7 +99,7 @@ position = Vector2(-96, -272)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("4_dr7va")
 
-[node name="Spoon" type="RigidBody2D" parent="." unique_id=1458366467]
+[node name="Spoon" type="RigidBody2D" parent="." unique_id=1458366467 groups=["Spoon"]]
 position = Vector2(-184.00002, 56.000004)
 rotation = 0.20249069
 disable_mode = 2
@@ -150,6 +167,13 @@ texture = ExtResource("9_wsuyr")
 z_index = 3
 position = Vector2(-317, -212.29248)
 polygon = PackedVector2Array(32, 39, 45, 176, 77, 280, 187.76921, 341.52325, 317, 359.9848, 433.9231, 341.52325, 549, 280, 581, 176, 605, 28.29248, 613, -19.70752, 669, -19.70752, 677, 20.29248, 669, 64, 653, 144, 645, 224, 597, 336, 469, 424, 317, 464, 157, 416, 29, 328, -11, 224, -19, 112, -35, 60.29248, -43, -8, 21, -8)
+
+[node name="InsideCauldronHitbox" type="Area2D" parent="." unique_id=1966607047 groups=["Cauldron Inside Hitbox"]]
+script = ExtResource("11_yupxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InsideCauldronHitbox" unique_id=2041093753]
+position = Vector2(416, 221)
+shape = SubResource("RectangleShape2D_cgc07")
 
 [node name="Spoon Holder" type="StaticBody2D" parent="." unique_id=100427475]
 position = Vector2(-168, 328)
@@ -260,4 +284,27 @@ value = 5.0
 texture_under = SubResource("AtlasTexture_a3cj8")
 texture_progress = SubResource("AtlasTexture_m6y6x")
 
+[node name="Honey" parent="." unique_id=1075928097 instance=ExtResource("21_m6y6x")]
+position = Vector2(-786, -212)
+mass = 0.61
+Sprite = ExtResource("22_cgc07")
+Shape = SubResource("CapsuleShape2D_yupxn")
+Type = "honey"
+
+[node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
+position = Vector2(-626, -173)
+mass = 0.605
+Sprite = ExtResource("22_a3cj8")
+Shape = SubResource("CapsuleShape2D_sc17n")
+Type = "dewdrops"
+
+[node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
+texture = ExtResource("22_a3cj8")
+
+[node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_sc17n")
+
 [connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]
+
+[editable path="Dewdrops"]

@@ -1,6 +1,7 @@
 extends Node2D
 signal TransitionToDrying;
 signal ReturnToOverworld(id: int);
+signal ChangeIngredients(ingr: String, amt: int);
 signal RemoveJar;
 
 @export var dewdrop: PackedScene = preload("res://Dewdrop Minigame/dewdrop.tscn")
@@ -10,8 +11,10 @@ var removedJar: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
-		ReturnToOverworld.connect(get_tree().current_scene._switch_scene)
+	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene") and get_tree().current_scene.has_method("_change_ingredient_amount"):
+		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
+		ChangeIngredients.connect(get_tree().current_scene._change_ingredient_amount);
+		
 	for n:int in abs(number_of_dewdrops):
 		var dewdropInstance = dewdrop.instantiate();
 		dewdropInstance.position = Vector2(randi_range(-900, 900), randi_range(-500, 360));
@@ -40,6 +43,6 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		ReturnToOverworld.emit(0);
 
-
 func _on_collection_jar_done_move_down():
+	ChangeIngredients.emit("dewdrops", 1);
 	ReturnToOverworld.emit(0);

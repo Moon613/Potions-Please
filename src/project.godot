@@ -24,6 +24,10 @@ mouse_cursor/custom_image="uid://cmcidn00vfcs3"
 import/main_scene=""
 import/icon="uid://cm2ufk7sg4qsf"
 
+[global_group]
+
+"Draggable Ingredients"="The ingredients that can be dragged into the cauldron in the potion-making \"minigame\""
+
 [input]
 
 ui_accept={

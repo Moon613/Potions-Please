@@ -15,6 +15,10 @@ var acornScene;
 
 var dewdropsCollected = 0;
 var acornsCollected = 0;
+var resources: Dictionary[String, int] = {
+	"dewdrops": 0,
+	"acorns": 0
+};
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -50,6 +54,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _change_ingredient_amount(ingredient: String, amount: int):
+	if ingredient in resources:
+		resources[ingredient] += amount;
 
 func _switch_scene(id: int):
 	print("Switching to scene " + str(id))

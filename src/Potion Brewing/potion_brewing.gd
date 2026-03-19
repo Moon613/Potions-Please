@@ -2,11 +2,15 @@ extends Node2D
 
 signal clickReleased;
 signal ReturnToOverworld;
+signal ChangeIngredients(ingr: String, amt: int);
+
+var activeIngredients: Array[String] = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
-		ReturnToOverworld.connect(get_tree().current_scene._switch_scene)
+	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene") and get_tree().current_scene.has_method("_change_ingredient_amount"):
+		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
+		ChangeIngredients.connect(get_tree().current_scene._change_ingredient_amount);
 	pass # Replace with function body.
 
 
