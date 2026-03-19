@@ -6,6 +6,8 @@ extends Node2D
 @export var mainMenu: PackedScene = preload("res://Main Menu/Main Menu.tscn")
 @export var acorns: PackedScene = preload("res://Acorn Mini Game/acorn.tscn")
 
+@export var startingScene: int = -1;
+
 var overworldScene;
 var potionScene;
 var insideScene;
@@ -48,6 +50,9 @@ func _ready() -> void:
 	dewdropScene = dewdropInstance;
 	mainMenuScene = mainMenuInstance;
 	acornScene = acornInstance;
+	
+	if startingScene != -1:
+		_switch_scene(startingScene);
 	pass # Replace with function body.
 
 
@@ -56,7 +61,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _change_ingredient_amount(ingredient: String, amount: int):
-	if ingredient in resources:
+	if ingredient in resources and resources[ingredient] > 0:
 		resources[ingredient] += amount;
 
 func _switch_scene(id: int):

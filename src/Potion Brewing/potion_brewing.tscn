@@ -78,6 +78,9 @@ resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
 
+[sub_resource type="Theme" id="Theme_yupxn"]
+default_font_size = 29
+
 [node name="Potion Brewing" type="Node2D" unique_id=965922724]
 script = ExtResource("1_g2f47")
 
@@ -304,6 +307,16 @@ texture = ExtResource("22_a3cj8")
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_sc17n")
+
+[node name="DewdropText" type="RichTextLabel" parent="." unique_id=734500506]
+offset_left = -569.0
+offset_top = -159.0
+offset_right = -552.0
+offset_bottom = -118.0
+theme = SubResource("Theme_yupxn")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "1"
 
 [connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]
 

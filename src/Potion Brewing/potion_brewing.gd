@@ -11,6 +11,8 @@ func _ready():
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene") and get_tree().current_scene.has_method("_change_ingredient_amount"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
 		ChangeIngredients.connect(get_tree().current_scene._change_ingredient_amount);
+		#$HoneyText.text = get_tree().current_scene.resources[]
+		$DewdropText.text = str(get_tree().current_scene.resources["dewdrops"]);
 	pass # Replace with function body.
 
 

@@ -47,7 +47,7 @@ func _input_event(viewport, event, shape_idx):
 			mouseOffset = self.position - get_global_mouse_position();
 			beingMoved = true;
 			self.gravity_scale = 0.0;
-		else:
+		elif "resources" in get_tree().current_scene and Type in get_tree().current_scene.resources and get_tree().current_scene.resources[self.Type] > 0:
 			var copy = self.duplicate();
 			copy.movable = true;
 			copy.mouseOffset = Vector2.ZERO;
