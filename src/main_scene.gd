@@ -18,8 +18,9 @@ var acornScene;
 var dewdropsCollected = 0;
 var acornsCollected = 0;
 var resources: Dictionary[String, int] = {
-	"dewdrops": 0,
-	"acorns": 0
+	"dewdrops": 2,
+	"acorns": 2,
+	"honey": -1
 };
 
 # Called when the node enters the scene tree for the first time.

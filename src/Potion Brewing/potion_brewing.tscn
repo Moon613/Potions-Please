@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://ch2s5cbjit2nu" path="res://Potion Brewing/Ingredient.tscn" id="21_m6y6x"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="22_a3cj8"]
 [ext_resource type="Texture2D" uid="uid://buaxvlcxodha5" path="res://Textures/Honey.png" id="22_cgc07"]
+[ext_resource type="Texture2D" uid="uid://bvng0yafiqfry" path="res://Textures/acorn.png" id="25_sc17n"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ii5e"]
 friction = 0.0
@@ -68,15 +69,19 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("19_x0yta")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yupxn"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc17n"]
 resource_local_to_scene = true
 radius = 49.76
 height = 198.94
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc17n"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5i5b"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ndod"]
+radius = 39.83
+height = 182.85713
 
 [sub_resource type="Theme" id="Theme_yupxn"]
 default_font_size = 29
@@ -291,14 +296,14 @@ texture_progress = SubResource("AtlasTexture_m6y6x")
 position = Vector2(-786, -212)
 mass = 0.61
 Sprite = ExtResource("22_cgc07")
-Shape = SubResource("CapsuleShape2D_yupxn")
+Shape = SubResource("CapsuleShape2D_sc17n")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
-position = Vector2(-626, -173)
+position = Vector2(-774, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_sc17n")
+Shape = SubResource("CapsuleShape2D_m5i5b")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -306,18 +311,44 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_sc17n")
+shape = SubResource("CapsuleShape2D_m5i5b")
+
+[node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
+position = Vector2(-615, 4)
+mass = 0.212
+Sprite = ExtResource("25_sc17n")
+Shape = SubResource("CapsuleShape2D_7ndod")
+Type = "acorns"
+
+[node name="Sprite2D" parent="Acorn" index="0" unique_id=806268029]
+scale = Vector2(0.275, 0.275)
+texture = ExtResource("25_sc17n")
+
+[node name="CollisionShape2D" parent="Acorn" index="1" unique_id=1255018325]
+shape = SubResource("CapsuleShape2D_7ndod")
 
 [node name="DewdropText" type="RichTextLabel" parent="." unique_id=734500506]
-offset_left = -569.0
-offset_top = -159.0
-offset_right = -552.0
-offset_bottom = -118.0
+offset_left = -717.0
+offset_top = 42.0
+offset_right = -700.0
+offset_bottom = 83.0
+theme = SubResource("Theme_yupxn")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "1"
+
+[node name="AcornText" type="RichTextLabel" parent="." unique_id=1311890683]
+offset_left = -582.0
+offset_top = 42.0
+offset_right = -565.0
+offset_bottom = 83.0
 theme = SubResource("Theme_yupxn")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "1"
 
 [connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]
+[connection signal="ConsumeIngredient" from="InsideCauldronHitbox" to="." method="_on_ingredient_consumed"]
 
 [editable path="Dewdrops"]
+[editable path="Acorn"]

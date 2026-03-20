@@ -43,11 +43,12 @@ func _process(delta):
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
+		var root = get_tree().current_scene;
 		if movable:
 			mouseOffset = self.position - get_global_mouse_position();
 			beingMoved = true;
 			self.gravity_scale = 0.0;
-		elif "resources" in get_tree().current_scene and Type in get_tree().current_scene.resources and get_tree().current_scene.resources[self.Type] > 0:
+		elif "resources" in root and Type in root.resources and ((root.resources[self.Type] > 0 and get_parent().spawnedIngredients[self.Type] < root.resources[self.Type]) or root.resources[self.Type] < 0):
 			var copy = self.duplicate();
 			copy.movable = true;
 			copy.mouseOffset = Vector2.ZERO;
@@ -56,6 +57,7 @@ func _input_event(viewport, event, shape_idx):
 			copy.collision_layer = 1;
 			copy.beingMoved = true;
 			get_parent().add_child(copy);
+			get_parent().spawnedIngredients[self.Type] += 1;
 
 func released():
 	if beingMoved:

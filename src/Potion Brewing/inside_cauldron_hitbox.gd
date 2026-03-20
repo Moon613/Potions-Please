@@ -1,6 +1,7 @@
 extends Area2D
 
 signal StartStirring;
+signal ConsumeIngredient(type: String);
 var startedStirring: bool = false;
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +16,8 @@ func _process(delta: float) -> void:
 		if body.is_in_group("Draggable Ingredients"):
 			body.queue_free();
 			# This is a little bit lazy, but we know that the signal will always exist so it's harmless
-			get_parent().ChangeIngredients.emit(body.Type, -1);
+			ConsumeIngredient.emit(body.Type);
 		if body.is_in_group("Spoon") and !startedStirring:
+			print("Started Stirring")
 			StartStirring.emit();
 			startedStirring = true;
