@@ -17,6 +17,7 @@ config/icon="uid://cm2ufk7sg4qsf"
 
 [autoload]
 
+GameInfo="*uid://dsxoopnx1kodm"
 SignalLens="*uid://85rkx60vm7a7"
 
 [display]

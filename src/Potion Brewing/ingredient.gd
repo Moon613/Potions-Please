@@ -50,7 +50,7 @@ func _input_event(viewport, event, shape_idx):
 			mouseOffset = self.position - get_global_mouse_position();
 			beingMoved = true;
 			self.gravity_scale = 0.0;
-		elif "resources" in root and Type in root.resources and ((root.resources[self.Type] > 0 and get_parent().spawnedIngredients[self.Type] < root.resources[self.Type]) or root.resources[self.Type] < 0):
+		elif Type in GameInfo.resources and ((GameInfo.resources[self.Type] > 0 and get_parent().spawnedIngredients[self.Type] < GameInfo.resources[self.Type]) or GameInfo.resources[self.Type] < 0):
 			var copy = self.duplicate();
 			copy.movable = true;
 			copy.mouseOffset = Vector2.ZERO;

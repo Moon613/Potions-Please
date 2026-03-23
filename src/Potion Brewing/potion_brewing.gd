@@ -11,14 +11,14 @@ var stirCyclesCompleted: int = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene") and get_tree().current_scene.has_method("_change_ingredient_amount"):
+	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
+	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
-		ChangeIngredients.connect(get_tree().current_scene._change_ingredient_amount);
 		ReloadIngredientCount();
-		for resource in get_tree().current_scene.resources:
+		for resource in GameInfo.resources:
 			spawnedIngredients[resource] = 0;
-		$"UI/Reputation Bar".value = get_tree().current_scene.reputation;
-		$"UI/Stamina Bar".value = get_tree().current_scene.energy;
+		$"UI/Reputation Bar".value = GameInfo.reputation;
+		$"UI/Stamina Bar".value = GameInfo.energy;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,8 +29,8 @@ func _process(delta):
 
 func ReloadIngredientCount():
 	#$HoneyText.text = get_tree().current_scene.resources[]
-	$DewdropText.text = str(get_tree().current_scene.resources["dewdrops"]);
-	$AcornText.text = str(get_tree().current_scene.resources["acorns"]);
+	$DewdropText.text = str(GameInfo.resources["dewdrops"]);
+	$AcornText.text = str(GameInfo.resources["acorns"]);
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
