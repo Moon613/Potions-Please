@@ -25,7 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="22_a3cj8"]
 [ext_resource type="Texture2D" uid="uid://buaxvlcxodha5" path="res://Textures/Honey.png" id="22_cgc07"]
 [ext_resource type="Texture2D" uid="uid://bvng0yafiqfry" path="res://Textures/acorn.png" id="25_sc17n"]
+[ext_resource type="Texture2D" uid="uid://b5mmkloiikro2" path="res://Textures/GingerRoot.png" id="26_7ndod"]
 [ext_resource type="Script" uid="uid://0bn1itn1vduw" path="res://Potion Brewing/stir_trigger.gd" id="26_m5i5b"]
+[ext_resource type="Theme" uid="uid://bguvjymyr647x" path="res://Potion Brewing/Infinite Text.tres" id="27_yffeo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc17n"]
 size = Vector2(493.45544, 23.248623)
@@ -54,7 +56,7 @@ height = 212.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2f47"]
 friction = 0.0
 rough = true
-bounce = 0.8
+bounce = 0.95
 absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgc07"]
@@ -82,12 +84,12 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("19_x0yta")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sc17n"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pr62"]
 resource_local_to_scene = true
 radius = 49.76
 height = 198.94
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5i5b"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y8v3d"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -96,8 +98,8 @@ height = 177.14282
 radius = 39.83
 height = 182.85713
 
-[sub_resource type="Theme" id="Theme_yupxn"]
-default_font_size = 29
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pr62"]
+size = Vector2(151.18, 117.365)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sc17n"]
 radius = 48.0
@@ -115,6 +117,7 @@ radius = 85.0
 script = ExtResource("1_g2f47")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1804067386]
+z_index = -10
 texture_filter = 1
 texture = ExtResource("2_lm47i")
 
@@ -156,6 +159,7 @@ scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("4_dr7va")
 
 [node name="Spoon" type="RigidBody2D" parent="." unique_id=1458366467 groups=["Spoon"]]
+z_index = 1
 position = Vector2(-184.00002, 56.000004)
 rotation = 0.20249069
 disable_mode = 2
@@ -171,7 +175,6 @@ max_contacts_reported = 5
 script = ExtResource("6_xks6y")
 
 [node name="Sprite2D" type="Sprite2D" parent="Spoon" unique_id=736801461]
-z_index = 1
 texture_filter = 1
 position = Vector2(-17, 103.99999)
 rotation = -0.49218285
@@ -194,30 +197,31 @@ position = Vector2(416.00003, 296.00003)
 scale = Vector2(1.3, 1.3)
 physics_material_override = SubResource("PhysicsMaterial_g2f47")
 
-[node name="Cauldron Front" type="Sprite2D" parent="Cauldron" unique_id=1335512008]
-z_index = 2
-texture_filter = 1
-position = Vector2(0, 3.7075195)
-scale = Vector2(0.682, 0.682)
-texture = ExtResource("6_lm47i")
-
 [node name="Cauldron Inside" type="Sprite2D" parent="Cauldron" unique_id=1780531648]
 texture_filter = 1
 position = Vector2(-3.9145012, -83.054474)
 scale = Vector2(0.6788134, 0.7295409)
 texture = ExtResource("7_dr7va")
 
-[node name="Potion" type="Sprite2D" parent="Cauldron" unique_id=1080880378]
-texture_filter = 1
-position = Vector2(0, -187.69241)
-scale = Vector2(0.77132267, 0.8562738)
-texture = ExtResource("8_o18r5")
-
 [node name="Cauldron Top" type="Sprite2D" parent="Cauldron" unique_id=733638436]
 texture_filter = 1
-position = Vector2(-1.5239899, -281.79248)
-scale = Vector2(0.67724895, 0.711)
+position = Vector2(-1.5240173, -281.79248)
+scale = Vector2(0.677249, 0.71100014)
 texture = ExtResource("9_wsuyr")
+
+[node name="Potion" type="Sprite2D" parent="Cauldron" unique_id=1080880378]
+z_index = 1
+texture_filter = 1
+position = Vector2(-0.3846426, -185.53084)
+scale = Vector2(0.7330987, 0.8727116)
+texture = ExtResource("8_o18r5")
+
+[node name="Cauldron Front" type="Sprite2D" parent="Cauldron" unique_id=1335512008]
+z_index = 1
+texture_filter = 1
+position = Vector2(0, 3.7075043)
+scale = Vector2(0.68200004, 0.68200004)
+texture = ExtResource("6_lm47i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron" unique_id=828861719]
 z_index = 3
@@ -225,6 +229,8 @@ position = Vector2(-317, -212.29248)
 polygon = PackedVector2Array(32, 39, 45, 176, 77, 280, 187.76921, 341.52325, 317, 359.9848, 433.9231, 341.52325, 549, 280, 581, 176, 605, 28.29248, 613, -19.70752, 669, -19.70752, 677, 20.29248, 669, 64, 653, 144, 645, 224, 597, 336, 469, 424, 317, 464, 157, 416, 29, 328, -11, 224, -19, 112, -35, 60.29248, -43, -8, 21, -8)
 
 [node name="InsideCauldronHitbox" type="Area2D" parent="." unique_id=1966607047 groups=["Cauldron Inside Hitbox"]]
+visible = false
+z_index = 2
 script = ExtResource("11_yupxn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InsideCauldronHitbox" unique_id=2041093753]
@@ -344,14 +350,14 @@ texture_progress = SubResource("AtlasTexture_m6y6x")
 position = Vector2(-786, -212)
 mass = 0.61
 Sprite = ExtResource("22_cgc07")
-Shape = SubResource("CapsuleShape2D_sc17n")
+Shape = SubResource("CapsuleShape2D_5pr62")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-774, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_m5i5b")
+Shape = SubResource("CapsuleShape2D_y8v3d")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -359,7 +365,7 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_m5i5b")
+shape = SubResource("CapsuleShape2D_y8v3d")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
 position = Vector2(-615, 2)
@@ -375,12 +381,18 @@ texture = ExtResource("25_sc17n")
 [node name="CollisionShape2D" parent="Acorn" index="1" unique_id=1255018325]
 shape = SubResource("CapsuleShape2D_7ndod")
 
+[node name="Ginger" parent="." unique_id=1018620730 instance=ExtResource("21_m6y6x")]
+position = Vector2(-672, -182)
+Sprite = ExtResource("26_7ndod")
+Shape = SubResource("RectangleShape2D_5pr62")
+Type = "ginger"
+
 [node name="DewdropText" type="RichTextLabel" parent="." unique_id=734500506]
 offset_left = -717.0
 offset_top = 42.0
 offset_right = -700.0
 offset_bottom = 83.0
-theme = SubResource("Theme_yupxn")
+theme = ExtResource("27_yffeo")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "1"
@@ -390,7 +402,7 @@ offset_left = -582.0
 offset_top = 42.0
 offset_right = -565.0
 offset_bottom = 83.0
-theme = SubResource("Theme_yupxn")
+theme = ExtResource("27_yffeo")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "1"
@@ -400,9 +412,17 @@ offset_left = -752.0
 offset_top = -166.0
 offset_right = -731.0
 offset_bottom = -125.0
-theme = SubResource("Theme_yupxn")
+theme = ExtResource("27_yffeo")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "∞"
+
+[node name="GingerText" type="RichTextLabel" parent="." unique_id=1795827248]
+offset_left = -628.0
+offset_top = -166.0
+offset_right = -607.0
+offset_bottom = -125.0
+theme = ExtResource("27_yffeo")
 text = "∞"
 
 [node name="Stir Trigger 1" type="Area2D" parent="." unique_id=103883032]

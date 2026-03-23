@@ -8,6 +8,15 @@ extends Node2D
 
 @export var startingScene: int = -1;
 
+const DEWDROPS: String = "dewdrops";
+const ACORNS: String = "acorns";
+const HONEY: String = "honey";
+const GINGER: String = "ginger";
+const MANDRAKE: String = "mandrake";
+const LAVENDER: String = "lavender";
+const MILK: String = "milk";
+const WINGS: String = "wings";
+
 var overworldScene;
 var potionScene;
 var insideScene;
@@ -15,13 +24,20 @@ var dewdropScene;
 var mainMenuScene;
 var acornScene;
 
-var dewdropsCollected = 0;
-var acornsCollected = 0;
+#var dewdropsCollected = 0;
+#var acornsCollected = 0;
 var resources: Dictionary[String, int] = {
-	"dewdrops": 2,
-	"acorns": 2,
-	"honey": -1
+	DEWDROPS: 2,
+	ACORNS: 2,
+	HONEY: -1,
+	GINGER: -1
 };
+# Apparently GDScript has a nested collection type restriction so the inner array cannot be Array[String], but for reference for anyone else, that is what it is.
+var validRecipies: Array[Recipe] = [
+	Recipe.new([HONEY, DEWDROPS, GINGER], "energy", 0.5),
+	Recipe.new([ACORNS, MILK, WINGS], "shrink", 1.25)
+];
+# Both of these are on a scale of 0.0 - 5.0
 var reputation: float = 2.5;
 var energy: float = 5.0;
 
@@ -87,3 +103,15 @@ func _switch_scene(id: int):
 			self.add_child(acornScene);
 		_:
 			print("Unknown SceneID!")
+
+class Recipe:
+	# A list of ingredients needed for this recipe
+	var ingredients: Array[String];
+	# The amount of energy used to make this potion.
+	var energyDrain: float;
+	# The name of the output potion.
+	var output: String;
+	func _init(ingredients: Array[String], output: String, energyDrain: float = 1):
+		self.ingredients = ingredients;
+		self.output = output;
+		self.energyDrain = energyDrain;
