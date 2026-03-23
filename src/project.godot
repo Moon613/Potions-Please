@@ -15,9 +15,17 @@ run/main_scene="uid://cudrh3q3fxld2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://cm2ufk7sg4qsf"
 
+[autoload]
+
+SignalLens="*uid://85rkx60vm7a7"
+
 [display]
 
 mouse_cursor/custom_image="uid://cmcidn00vfcs3"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/signal_lens/plugin.cfg")
 
 [filesystem]
 
