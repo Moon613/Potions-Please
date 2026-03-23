@@ -25,6 +25,19 @@
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="22_a3cj8"]
 [ext_resource type="Texture2D" uid="uid://buaxvlcxodha5" path="res://Textures/Honey.png" id="22_cgc07"]
 [ext_resource type="Texture2D" uid="uid://bvng0yafiqfry" path="res://Textures/acorn.png" id="25_sc17n"]
+[ext_resource type="Script" uid="uid://0bn1itn1vduw" path="res://Potion Brewing/stir_trigger.gd" id="26_m5i5b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc17n"]
+size = Vector2(493.45544, 23.248623)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5i5b"]
+size = Vector2(493.45532, 23.248604)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ndod"]
+size = Vector2(491.37323, 23.248627)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yffeo"]
+size = Vector2(505.94788, 32.105164)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ii5e"]
 friction = 0.0
@@ -41,7 +54,7 @@ height = 212.0
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2f47"]
 friction = 0.0
 rough = true
-bounce = 0.2
+bounce = 0.8
 absorbent = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgc07"]
@@ -86,6 +99,18 @@ height = 182.85713
 [sub_resource type="Theme" id="Theme_yupxn"]
 default_font_size = 29
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sc17n"]
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5i5b"]
+radius = 85.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ndod"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yffeo"]
+radius = 85.0
+
 [node name="Potion Brewing" type="Node2D" unique_id=965922724]
 script = ExtResource("1_g2f47")
 
@@ -96,11 +121,34 @@ texture = ExtResource("2_lm47i")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1260672056]
 zoom = Vector2(0.6, 0.6)
 
-[node name="Shelf" type="Sprite2D" parent="." unique_id=164151715]
-texture_filter = 1
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=90021651]
 position = Vector2(-624.00006, 82.34799)
 scale = Vector2(0.9605734, 0.9032796)
+
+[node name="Shelf" type="Sprite2D" parent="StaticBody2D" unique_id=164151715]
+texture_filter = 1
+scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("3_lm47i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1740281027]
+position = Vector2(6.1035156e-05, -5.367096)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_sc17n")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1451657785]
+position = Vector2(6.1035156e-05, -232.31783)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_m5i5b")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=80691552]
+position = Vector2(6.1035156e-05, 221.58365)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_7ndod")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1214785227]
+position = Vector2(6.1035156e-05, 450.7485)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_yffeo")
 
 [node name="Nyx" type="Sprite2D" parent="." unique_id=103944378]
 position = Vector2(-96, -272)
@@ -136,7 +184,7 @@ position = Vector2(-0.9999989, -8.000008)
 scale = Vector2(6.19, 6.19)
 shape = SubResource("CapsuleShape2D_g2f47")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Spoon" unique_id=1732083214]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Spoon" unique_id=1732083214 groups=["Spoon Stir Hitbox"]]
 z_index = 2
 position = Vector2(0, 281)
 shape = SubResource("CapsuleShape2D_3ii5e")
@@ -314,7 +362,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_m5i5b")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
-position = Vector2(-615, 4)
+position = Vector2(-615, 2)
 mass = 0.212
 Sprite = ExtResource("25_sc17n")
 Shape = SubResource("CapsuleShape2D_7ndod")
@@ -347,8 +395,62 @@ theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "1"
 
+[node name="HoneyText" type="RichTextLabel" parent="." unique_id=1677473520]
+offset_left = -752.0
+offset_top = -166.0
+offset_right = -731.0
+offset_bottom = -125.0
+theme = SubResource("Theme_yupxn")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "∞"
+
+[node name="Stir Trigger 1" type="Area2D" parent="." unique_id=103883032]
+z_index = 5
+position = Vector2(413, 160)
+script = ExtResource("26_m5i5b")
+number = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 1" unique_id=50584870]
+position = Vector2(0, -23)
+shape = SubResource("CircleShape2D_sc17n")
+
+[node name="Stir Trigger 2" type="Area2D" parent="." unique_id=629833310]
+z_index = 5
+position = Vector2(697, 264)
+script = ExtResource("26_m5i5b")
+number = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 2" unique_id=1058995198]
+position = Vector2(-29, 0)
+shape = SubResource("CircleShape2D_m5i5b")
+
+[node name="Stir Trigger 3" type="Area2D" parent="." unique_id=947052509]
+z_index = 5
+position = Vector2(416, 428)
+script = ExtResource("26_m5i5b")
+number = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 3" unique_id=484242611]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_7ndod")
+
+[node name="Stir Trigger 4" type="Area2D" parent="." unique_id=2079091926]
+z_index = 5
+position = Vector2(123, 267)
+script = ExtResource("26_m5i5b")
+number = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 4" unique_id=955978559]
+position = Vector2(33, 0)
+shape = SubResource("CircleShape2D_yffeo")
+
 [connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]
 [connection signal="ConsumeIngredient" from="InsideCauldronHitbox" to="." method="_on_ingredient_consumed"]
+[connection signal="SpoonEnteredArea" from="Stir Trigger 1" to="." method="_on_stir_checkpoint_reached"]
+[connection signal="SpoonEnteredArea" from="Stir Trigger 2" to="." method="_on_stir_checkpoint_reached"]
+[connection signal="SpoonEnteredArea" from="Stir Trigger 3" to="." method="_on_stir_checkpoint_reached"]
+[connection signal="SpoonEnteredArea" from="Stir Trigger 4" to="." method="_on_stir_checkpoint_reached"]
 
 [editable path="Dewdrops"]
 [editable path="Acorn"]

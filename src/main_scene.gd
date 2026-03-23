@@ -22,6 +22,8 @@ var resources: Dictionary[String, int] = {
 	"acorns": 2,
 	"honey": -1
 };
+var reputation: float = 2.5;
+var energy: float = 5.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -62,11 +64,13 @@ func _process(delta: float) -> void:
 	pass
 
 func _change_ingredient_amount(ingredient: String, amount: int):
-	if ingredient in resources and resources[ingredient] > 0:
+	if ingredient in resources and resources[ingredient] >= 0:
 		resources[ingredient] += amount;
 
 func _switch_scene(id: int):
 	print("Switching to scene " + str(id))
+	if self.get_children()[0].has_method("Reset"):
+		self.get_children()[0].Reset();
 	self.remove_child(self.get_children()[0]);
 	match id:
 		0:

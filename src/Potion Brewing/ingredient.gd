@@ -3,6 +3,7 @@ extends RigidBody2D
 
 @export var Sprite: Texture2D
 @export var Shape : Shape2D
+# This should match something in main_scene.gd's resource Dictionary.
 @export var Type: String
 
 var movable: bool = false;
@@ -14,7 +15,8 @@ var locked: bool = false;
 func _ready():
 	$Sprite2D.texture = Sprite;
 	$CollisionShape2D.shape = Shape;
-	if get_parent().has_signal("clickReleased"):
+	# Prevents from running in editor to stop errors, and only works if the parent has the correct signal.
+	if !Engine.is_editor_hint() and get_parent().has_signal("clickReleased"):
 		get_parent().clickReleased.connect(released);
 	# Have to do the connection here because duplicate() does not copy incoming signals
 	for child in get_parent().get_children().filter(func(child: Node2D): return child.is_in_group("Cauldron Inside Hitbox")):
