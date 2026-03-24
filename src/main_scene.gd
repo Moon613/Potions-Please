@@ -7,6 +7,10 @@ extends Node2D
 @export var acorns: PackedScene = preload("res://Acorn Mini Game/acorn.tscn")
 @export var treesap: PackedScene = preload("res://Treesap Minigame/minigame.tscn")
 
+@export var inventory: Inventory
+var busy = false
+@onready var morning_dew: Item = $MorningDew
+
 @export var startingScene: int = -1;
 
 var overworldScene;
@@ -18,7 +22,8 @@ var acornScene;
 var sapScene;
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready() -> void:	
+	inventory.visible = false
 	var overworldInstance = overworld.instantiate();
 	overworldInstance.name = "Overworld";
 	
@@ -40,7 +45,7 @@ func _ready() -> void:
 	var sapInstance = treesap.instantiate();
 	sapInstance.name = "Treesap Minigame"
 	
-	add_child(mainMenuInstance);
+	#add_child(mainMenuInstance);
 	
 	overworldScene = overworldInstance;
 	potionScene = brewingInstance;
@@ -52,12 +57,14 @@ func _ready() -> void:
 	
 	if startingScene != -1:
 		_switch_scene(startingScene);
+	inventory.add_item(morning_dew, 8)
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("inventory") and !busy:
+		inventory.visible = !inventory.visible
 
 func _switch_scene(id: int):
 	print("Switching to scene " + str(id))

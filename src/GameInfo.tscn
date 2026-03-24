@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dsxoopnx1kodm"]
 
 [ext_resource type="Script" uid="uid://cuihnj4k45gj3" path="res://game_info.gd" id="1_fcjhs"]
+[ext_resource type="PackedScene" uid="uid://dh3sgkg60ryli" path="res://Items/Inventory.tscn" id="2_uk7sp"]
 
 [node name="GameInfo" type="Node2D" unique_id=571529810]
 script = ExtResource("1_fcjhs")
+
+[node name="Inventory" parent="." unique_id=1453173247 instance=ExtResource("2_uk7sp")]
