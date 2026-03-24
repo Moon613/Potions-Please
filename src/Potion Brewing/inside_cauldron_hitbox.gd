@@ -2,6 +2,7 @@ extends Area2D
 
 signal StartStirring;
 signal ConsumeIngredient(type: String);
+signal WaterlogSpoonToggle;
 var startedStirring: bool = false;
 
 # Called when the node enters the scene tree for the first time.
@@ -21,3 +22,12 @@ func _process(delta: float) -> void:
 			print("Started Stirring")
 			StartStirring.emit();
 			startedStirring = true;
+
+
+func _on_body_entered(body: Node2D):
+	if body.is_in_group("Spoon"):
+		WaterlogSpoonToggle.emit();
+
+func _on_body_exited(body: Node2D):
+	if body.is_in_group("Spoon"):
+		WaterlogSpoonToggle.emit();

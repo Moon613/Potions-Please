@@ -1,5 +1,7 @@
 extends Node2D
 
+var ruinedPotionSprite: Texture2D = preload("res://Textures/BurntPotion.png");
+
 # Ingredients
 	# Minigame
 const MOSS: String = "moss";
@@ -23,6 +25,7 @@ const SLEEP: String = "sleep";
 const STRENGTH: String = "strength";
 const HEALING: String = "healing";
 const SHRINK: String = "shrink";
+const RUINED: String = "burnt";
 
 # Apparently GDScript has a nested collection type restriction so the inner array cannot be Array[String], but for reference for anyone else, that is what it is.
 var validRecipies: Array[Recipe] = [
@@ -57,7 +60,8 @@ var potions: Dictionary[String, int] = {
 	SLEEP: 0,
 	STRENGTH: 0,
 	HEALING: 0,
-	SHRINK: 0
+	SHRINK: 0,
+	RUINED: 0
 }
 
 # Called when the node enters the scene tree for the first time.
