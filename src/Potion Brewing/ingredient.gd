@@ -21,7 +21,7 @@ func _ready():
 	# Have to do the connection here because duplicate() does not copy incoming signals
 	for child in get_parent().get_children().filter(func(child: Node2D): return child.is_in_group("Cauldron Inside Hitbox")):
 		child.StartStirring.connect(_on_start_stirring);
-	if GameInfo.resources[self.Type] == 0:
+	if !Engine.is_editor_hint() and GameInfo.resources[self.Type] == 0:
 		self.freeze = true;
 		self.visible = false;
 

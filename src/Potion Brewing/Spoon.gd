@@ -3,6 +3,7 @@ extends RigidBody2D
 var FOLLOW_MOUSE = false;
 var RELATIVE_MOUSE_POSITION = Vector2();
 var resetPositionAndRotation: bool = true;
+var inWater: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,15 +24,22 @@ func _physics_process(delta: float) -> void:
 			self.constant_torque = 0;
 			#self.linear_velocity.x = clamp(self.linear_velocity.x, -100, 100);
 			#self.linear_velocity.y = clamp(self.linear_velocity.y, -100, 100);
+		if inWater:
+			self.angular_velocity *= 0.8;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	for body in get_colliding_bodies():
+		if body.is_in_group("Cauldron Inside Hitbox"):
+			inWater = true;
+			return;
+	inWater = false;
 	pass
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if !resetPositionAndRotation:
 		resetPositionAndRotation = true;
-		state.transform = Transform2D(deg_to_rad(11.6), Vector2(-220, 40));
+		state.transform = Transform2D(deg_to_rad(11.6), Vector2(-240, 0));
 		self.reset_physics_interpolation();
 		pass
 
@@ -53,8 +61,6 @@ func _input_event(viewport, event, shape_idx):
 
 func Reset():
 	SoftReset();
-	self.rotation = 11.6;
-	self.position = Vector2(-195, 50);
 	self.linear_velocity = Vector2.ZERO;
 	self.angular_velocity = 0.0;
 	resetPositionAndRotation = false;
@@ -70,3 +76,7 @@ func SoftReset():
 
 func _on_potion_brewing_click_released():
 	SoftReset();
+
+
+func _on_waterlog_toggle():
+	inWater = !inWater;

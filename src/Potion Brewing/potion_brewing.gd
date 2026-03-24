@@ -37,14 +37,20 @@ func _process(delta):
 		for recipe: GameInfo.Recipe in GameInfo.validRecipies:
 			# Checks if every ingredient in the cauldron is in the recipe.
 			# This check is preformed for each valid recipe until a candidate is found.
-			if activeIngredients.all(func(ingredient): return ingredient in recipe):
-				GameInfo.potions[recipe.output] += 1;
-				var potion = Sprite2D.new();
-				potion.texture = recipe.image;
-				potion.position = Vector2(416, 296);
-				potion.name = "spawned potion";
-				potion.set_script(load("res://Potion Brewing/spawned_potion.gd"))
-				add_child(potion);
+			if recipe.ingredients.all(func(ingredient): return ingredient in activeIngredients) and recipe.ingredients.size() == activeIngredients.size():
+				SpawnPotion(recipe.output, recipe.image);
+				return;
+		SpawnPotion(GameInfo.RUINED, GameInfo.ruinedPotionSprite);
+
+func SpawnPotion(type: String, image: Texture2D):
+	GameInfo.potions[type] += 1;
+	var potion = Sprite2D.new();
+	potion.texture = image;
+	potion.position = Vector2(416, 296);
+	potion.name = "spawned potion";
+	potion.set_script(load("res://Potion Brewing/spawned_potion.gd"))
+	add_child(potion);
+	
 
 func ReloadIngredientCount():
 	#$HoneyText.text = get_tree().current_scene.resources[]
