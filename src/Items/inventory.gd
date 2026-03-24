@@ -24,10 +24,11 @@ func _ready():
 		slot.slot_input.connect(self._on_slot_input)
 		slot.slot_hovered.connect(self._on_slot_hovered)
 	tooltip.visible = false
+	
 
 # moves selected item with mouse
 func _process(_delta):
-	tooltip.global_position = get_global_mouse_position() + Vector2.ONE * 8
+	tooltip.global_position = get_global_mouse_position() - Vector2(0, tooltip.size.y/2)
 	if selected_item:
 		tooltip.visible = false
 		selected_item.global_position = get_global_mouse_position()

@@ -56,9 +56,9 @@ columns = 6
 
 [node name="Tooltip" parent="InvPanel" unique_id=1933263128 instance=ExtResource("4_0qjnm")]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 528.0
-offset_right = 384.0
-offset_bottom = 728.09705
-scale = Vector2(0.11586082, 0.039980605)
+offset_left = 160.0
+offset_top = 256.0
+offset_right = 192.0
+offset_bottom = 272.0
+scale = Vector2(1, 1)
 mouse_filter = 2

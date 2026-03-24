@@ -3,25 +3,27 @@
 [ext_resource type="Script" uid="uid://dqd3rk6dr60ie" path="res://inventory_item.gd" id="1_p3rej"]
 [ext_resource type="Texture2D" uid="uid://kdg4aal83y27" path="res://icon.svg" id="2_sdmvc"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_sdmvc"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
 [node name="InventoryItem" type="Control" unique_id=617301616 node_paths=PackedStringArray("sprite", "label")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 8.0
-offset_bottom = 8.0
 script = ExtResource("1_p3rej")
 sprite = NodePath("Sprite2D")
 label = NodePath("Label")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1809101134]
 position = Vector2(4.7683716e-07, 2.842171e-14)
-scale = Vector2(0.06550001, 0.06550001)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_sdmvc")
 
 [node name="Label" type="Label" parent="." unique_id=1398762460]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 3.0
-offset_right = 52.690605
-offset_bottom = 26.0
-scale = Vector2(0.300992, 0.2626824)
-text = "Alpha"
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 129.0
+offset_bottom = 69.0
+text = "42"
+label_settings = SubResource("LabelSettings_sdmvc")

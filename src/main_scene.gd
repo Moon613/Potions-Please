@@ -4,8 +4,9 @@ extends Node2D
 @export var insideHouse: PackedScene = preload("res://Overworld/inside_house.tscn")
 @export var dewdrops: PackedScene = preload("res://Dewdrop Minigame/minigame.tscn")
 @export var inventory: Inventory
-@export var test_hint_item: InventoryItem
+@export var inventory_item: InventoryItem
 var busy = false
+@onready var morning_dew: Item = $MorningDew
 
 var overworldScene;
 var potionScene;
@@ -36,9 +37,7 @@ func _ready() -> void:
 	dewdropScene = dewdropInstance;
 	
 	
-	test_hint_item.get_parent().remove_child.call_deferred(test_hint_item)
-	test_hint_item.name = "Morning Dew"
-	inventory.slots[0].set_item_hint.call_deferred(test_hint_item)
+	inventory.add_item(morning_dew, 8)
 	pass # Replace with function body.
 
 

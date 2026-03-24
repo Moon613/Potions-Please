@@ -15,7 +15,7 @@ func set_data(_name: String, _icon: Texture2D, _is_stackable: bool, _amount: int
 	
 func _process(_delta) -> void:
 	self.sprite.texture = self.icon
-	self.set_sprite_size_to(sprite, Vector2(5, 5))
+	self.set_sprite_size_to(sprite, Vector2(124, 124))
 	if is_stackable:
 		self.label.text = str(self.amount)
 	else:
