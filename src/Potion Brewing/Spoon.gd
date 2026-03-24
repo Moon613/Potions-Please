@@ -2,6 +2,7 @@ extends RigidBody2D
 
 var FOLLOW_MOUSE = false;
 var RELATIVE_MOUSE_POSITION = Vector2();
+var resetPositionAndRotation: bool = true;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,6 +28,13 @@ func _physics_process(delta: float) -> void:
 func _process(delta):
 	pass
 
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if !resetPositionAndRotation:
+		resetPositionAndRotation = true;
+		state.transform = Transform2D(deg_to_rad(11.6), Vector2(-220, 40));
+		self.reset_physics_interpolation();
+		pass
+
 func _input_event(viewport, event, shape_idx):
 	# An Area2D treats it's CollisionShap2D children as itself.
 	if event is InputEventMouseButton:
@@ -40,16 +48,25 @@ func _input_event(viewport, event, shape_idx):
 				RELATIVE_MOUSE_POSITION = self.position - get_global_mouse_position();
 				self.center_of_mass = RELATIVE_MOUSE_POSITION;
 			else:
-				Reset();
+				SoftReset();
 	pass
 
 func Reset():
+	SoftReset();
+	self.rotation = 11.6;
+	self.position = Vector2(-195, 50);
+	self.linear_velocity = Vector2.ZERO;
+	self.angular_velocity = 0.0;
+	resetPositionAndRotation = false;
+
+func SoftReset():
 	self.linear_damp = 0;
 	self.gravity_scale = 1;
 	self.constant_torque = 0;
 	FOLLOW_MOUSE = false;
 	self.center_of_mass = Vector2(0,300);
+	RELATIVE_MOUSE_POSITION = self.position - get_global_mouse_position();
 
 
 func _on_potion_brewing_click_released():
-	Reset();
+	SoftReset();

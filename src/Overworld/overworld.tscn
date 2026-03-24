@@ -49,7 +49,7 @@ Size = Vector2(10, 2)
 z_index = 1
 y_sort_enabled = true
 
-[node name="Interaction Trigger" parent="." unique_id=557724366 instance=ExtResource("5_omswd")]
+[node name="Dewdrop Trigger" parent="." unique_id=557724366 instance=ExtResource("5_omswd")]
 position = Vector2(-61, 7)
 SceneID = 3
 Size = Vector2(14.135, 9.85)
@@ -67,3 +67,9 @@ SceneID = 5
 position = Vector2(70, 0)
 scale = Vector2(0.005, 0.005)
 texture = ExtResource("8_yv805")
+
+[node name="Sap Trigger" parent="." unique_id=1496835320 instance=ExtResource("5_omswd")]
+z_index = 1
+position = Vector2(-2, -42)
+SceneID = 6
+Size = Vector2(9, 12)

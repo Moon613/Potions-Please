@@ -1,28 +1,64 @@
 extends Node2D
 
-const DEWDROPS: String = "dewdrops";
+# Ingredients
+	# Minigame
+const MOSS: String = "moss";
 const ACORNS: String = "acorns";
+const DEWDROPS: String = "dewdrops";
+const MANDRAKE: String = "mandrake";
+const EGGS: String = "eggs";
+const SAP: String = "sap";
+	# Infinite
 const HONEY: String = "honey";
 const GINGER: String = "ginger";
-const MANDRAKE: String = "mandrake";
 const LAVENDER: String = "lavender";
 const MILK: String = "milk";
+const SALTS: String = "salts";
+const GARLIC: String = "garlic";
 const WINGS: String = "wings";
+
+# Potions
+const ENERGY: String = "energy";
+const SLEEP: String = "sleep";
+const STRENGTH: String = "strength";
+const HEALING: String = "healing";
+const SHRINK: String = "shrink";
 
 # Apparently GDScript has a nested collection type restriction so the inner array cannot be Array[String], but for reference for anyone else, that is what it is.
 var validRecipies: Array[Recipe] = [
-	Recipe.new([HONEY, DEWDROPS, GINGER], "energy", 0.5),
-	Recipe.new([ACORNS, MILK, WINGS], "shrink", 1.25)
+	Recipe.new([HONEY, DEWDROPS, GINGER], ENERGY, 0.5, "res://Textures/EnergyElixir.png"),
+	Recipe.new([MANDRAKE, LAVENDER, MILK], SLEEP, 2),
+	Recipe.new([SALTS, GARLIC, EGGS], STRENGTH, 1.5),
+	Recipe.new([WINGS, MOSS, SAP], HEALING, 0.75),
+	Recipe.new([ACORNS, MILK, WINGS], SHRINK, 1.25, "res://Textures/ShrinkElixir.png"),
 ];
 # Both of these are on a scale of 0.0 - 5.0
 var reputation: float = 2.5;
 var energy: float = 5.0;
+# -1 means that it is infinite
 var resources: Dictionary[String, int] = {
 	DEWDROPS: 2,
 	ACORNS: 2,
+	MOSS: 0,
+	MANDRAKE: 0,
+	EGGS: 0,
+	SAP: 0,
 	HONEY: -1,
-	GINGER: -1
+	GINGER: -1,
+	LAVENDER: -1,
+	MILK: -1,
+	SALTS: -1,
+	GARLIC: -1,
+	WINGS: -1
 };
+# Completed potions
+var potions: Dictionary[String, int] = {
+	ENERGY: 0,
+	SLEEP: 0,
+	STRENGTH: 0,
+	HEALING: 0,
+	SHRINK: 0
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,7 +79,10 @@ class Recipe:
 	var energyDrain: float;
 	# The name of the output potion.
 	var output: String;
-	func _init(ingredients: Array[String], output: String, energyDrain: float = 1):
+	# The image of the resulting potion
+	var image: Texture2D;
+	func _init(ingredients: Array[String], output: String, energyDrain: float = 1, pathToImage: String = "res://Textures/EnergyElixir.png"):
 		self.ingredients = ingredients;
 		self.output = output;
+		self.image = load(pathToImage);
 		self.energyDrain = energyDrain;
