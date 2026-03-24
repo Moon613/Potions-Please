@@ -1,5 +1,9 @@
 extends Node2D
 
+@export var inventory: Inventory
+var busy = false
+@onready var morning_dew: Item = $MorningDew
+
 var ruinedPotionSprite: Texture2D = preload("res://Textures/BurntPotion.png");
 
 # Ingredients
@@ -66,6 +70,8 @@ var potions: Dictionary[String, int] = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	inventory.visible = false
+	inventory.add_item(morning_dew, 8)
 	pass # Replace with function body.
 
 func _change_ingredient_amount(ingredient: String, amount: int):
@@ -74,6 +80,8 @@ func _change_ingredient_amount(ingredient: String, amount: int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("inventory") and !busy:
+		inventory.visible = !inventory.visible
 	pass
 
 class Recipe:

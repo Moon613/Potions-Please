@@ -2,8 +2,21 @@
 
 [ext_resource type="Script" uid="uid://cuihnj4k45gj3" path="res://game_info.gd" id="1_fcjhs"]
 [ext_resource type="PackedScene" uid="uid://dh3sgkg60ryli" path="res://Items/Inventory.tscn" id="2_uk7sp"]
+[ext_resource type="PackedScene" uid="uid://h3jtck7pkff6" path="res://Items/MorningDew.tscn" id="3_saxbk"]
 
-[node name="GameInfo" type="Node2D" unique_id=571529810]
+[node name="GameInfo" type="Node2D" unique_id=571529810 node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_fcjhs")
+inventory = NodePath("CanvasLayer/Inventory")
 
-[node name="Inventory" parent="." unique_id=1453173247 instance=ExtResource("2_uk7sp")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1222121063]
+
+[node name="Inventory" parent="CanvasLayer" unique_id=1453173247 instance=ExtResource("2_uk7sp")]
+offset_left = 141.0
+offset_top = 22.0
+offset_right = 141.0
+offset_bottom = 22.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MorningDew" parent="." unique_id=659737758 instance=ExtResource("3_saxbk")]
+position = Vector2(144, 4)
+scale = Vector2(0.5, 0.5)

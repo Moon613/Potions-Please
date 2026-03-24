@@ -1,23 +1,8 @@
 [gd_scene format=3 uid="uid://cudrh3q3fxld2"]
 
 [ext_resource type="Script" uid="uid://1om6rfhcw5ty" path="res://main_scene.gd" id="1_3mqji"]
-[ext_resource type="PackedScene" uid="uid://dh3sgkg60ryli" path="res://Items/Inventory.tscn" id="2_rpqi1"]
-[ext_resource type="PackedScene" uid="uid://h3jtck7pkff6" path="res://Items/MorningDew.tscn" id="3_uxrcv"]
 
-[node name="MainScene" type="Node2D" unique_id=1114061648 node_paths=PackedStringArray("inventory")]
+[node name="MainScene" type="Node2D" unique_id=1114061648]
 y_sort_enabled = true
 script = ExtResource("1_3mqji")
-inventory = NodePath("CanvasLayer/Inventory")
-startingScene = 0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=293864930]
-
-[node name="Inventory" parent="CanvasLayer" unique_id=1453173247 instance=ExtResource("2_rpqi1")]
-offset_left = 141.0
-offset_top = 22.0
-offset_right = 141.0
-offset_bottom = 22.0
-
-[node name="MorningDew" parent="." unique_id=659737758 instance=ExtResource("3_uxrcv")]
-position = Vector2(144, 4)
-scale = Vector2(0.5, 0.5)
+startingScene = 1
