@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cykdhfoxlmqwn"
-path="res://.godot/imported/ShrinkPotion.png-ae6b73b713d8341011b865cdfbb7b793.ctex"
+uid="uid://kallvnua4qjc"
+path="res://.godot/imported/saptree.png-ce3a8cecf2205bf01211dd16fb4a0612.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/ShrinkPotion.png"
-dest_files=["res://.godot/imported/ShrinkPotion.png-ae6b73b713d8341011b865cdfbb7b793.ctex"]
+source_file="res://Textures/saptree.png"
+dest_files=["res://.godot/imported/saptree.png-ce3a8cecf2205bf01211dd16fb4a0612.ctex"]
 
 [params]
 

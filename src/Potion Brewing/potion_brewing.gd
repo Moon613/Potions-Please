@@ -33,14 +33,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if stirCyclesCompleted == 1 and mostRecentCheckpoint == 1:
-		Reset();
 		for recipe: GameInfo.Recipe in GameInfo.validRecipies:
 			# Checks if every ingredient in the cauldron is in the recipe.
 			# This check is preformed for each valid recipe until a candidate is found.
 			if recipe.ingredients.all(func(ingredient): return ingredient in activeIngredients) and recipe.ingredients.size() == activeIngredients.size():
 				SpawnPotion(recipe.output, recipe.image);
+				Reset();
 				return;
 		SpawnPotion(GameInfo.RUINED, GameInfo.ruinedPotionSprite);
+		Reset();
 
 func SpawnPotion(type: String, image: Texture2D):
 	GameInfo.potions[type] += 1;

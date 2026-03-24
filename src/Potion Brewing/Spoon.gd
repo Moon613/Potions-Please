@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 			#self.linear_velocity.x = clamp(self.linear_velocity.x, -100, 100);
 			#self.linear_velocity.y = clamp(self.linear_velocity.y, -100, 100);
 		if inWater:
-			self.angular_velocity *= 0.8;
+			self.angular_velocity *= 0.01;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

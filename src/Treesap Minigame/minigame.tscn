@@ -1,3 +1,26 @@
 [gd_scene format=3 uid="uid://cgg45nlib2axv"]
 
+[ext_resource type="Texture2D" uid="uid://diyh4o05itml3" path="res://Textures/forest.jpg" id="1_cc5ov"]
+[ext_resource type="Script" uid="uid://ccgll20cqvqhs" path="res://Treesap Minigame/minigame.gd" id="1_nejc8"]
+[ext_resource type="Texture2D" uid="uid://kallvnua4qjc" path="res://Textures/saptree.png" id="2_73w66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nejc8"]
+size = Vector2(384, 672)
+
 [node name="Minigame" type="Node2D" unique_id=730915079]
+script = ExtResource("1_nejc8")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1459313766]
+scale = Vector2(1.125, 0.95626825)
+texture = ExtResource("1_cc5ov")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=225997859]
+
+[node name="Tree" type="StaticBody2D" parent="." unique_id=1373070526]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree" unique_id=879880997]
+scale = Vector2(1.2159998, 0.60740745)
+texture = ExtResource("2_73w66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree" unique_id=459549325]
+shape = SubResource("RectangleShape2D_nejc8")
