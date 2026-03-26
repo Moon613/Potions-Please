@@ -19,7 +19,9 @@ offset_bottom = 22.0
 metadata/_edit_use_anchors_ = true
 
 [node name="DewdropItem" parent="." unique_id=659737758 instance=ExtResource("3_saxbk")]
+visible = false
 position = Vector2(144, 4)
 scale = Vector2(0.5, 0.5)
 
 [node name="AcornItem" parent="." unique_id=1364042111 instance=ExtResource("4_1iqmt")]
+visible = false

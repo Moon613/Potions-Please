@@ -28,14 +28,14 @@ func _ready():
 		slot.slot_hovered.connect(self._on_slot_hovered)
 	tooltip.visible = false
 	
-	#add items from game reasources
-	var res = GameInfo.resources
-	for item in res:
-		var amount = res[item]
-		if amount > 0:
-			add_item(res,amount);
-			pass
-		pass
+	##add items from game reasources
+	#var res = GameInfo.resources
+	#for item in res:
+		#var amount = res[item]
+		#if amount > 0:
+			#add_item(res,amount);
+			#pass
+		#pass
 
 # moves selected item with mouse
 func _process(_delta):

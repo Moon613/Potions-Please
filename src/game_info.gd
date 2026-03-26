@@ -2,7 +2,7 @@ extends Node2D
 
 @export var inventory: Inventory
 var busy = false
-@onready var morning_dew: Item = $MorningDew
+@onready var morning_dew: Item = $DewdropItem
 
 var ruinedPotionSprite: Texture2D = preload("res://Textures/BurntPotion.png");
 
