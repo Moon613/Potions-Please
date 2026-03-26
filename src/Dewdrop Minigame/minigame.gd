@@ -11,9 +11,9 @@ var removedJar: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene") and get_tree().current_scene.has_method("_change_ingredient_amount"):
+	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
+	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
-		ChangeIngredients.connect(get_tree().current_scene._change_ingredient_amount);
 		
 	for n:int in abs(number_of_dewdrops):
 		var dewdropInstance = dewdrop.instantiate();
