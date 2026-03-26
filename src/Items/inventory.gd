@@ -15,6 +15,9 @@ var slots: Array[InventorySlot]
 
 static var selected_item: Item = null
 
+# create a String : Item dictionary
+# add add_item to any increase to item
+
 func _ready():
 	inventory_grid.columns = cols
 	for i in range(rows * cols):
@@ -25,6 +28,14 @@ func _ready():
 		slot.slot_hovered.connect(self._on_slot_hovered)
 	tooltip.visible = false
 	
+	#add items from game reasources
+	var res = GameInfo.resources
+	for item in res:
+		var amount = res[item]
+		if amount > 0:
+			add_item(res,amount);
+			pass
+		pass
 
 # moves selected item with mouse
 func _process(_delta):

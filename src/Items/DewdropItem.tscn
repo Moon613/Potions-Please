@@ -5,7 +5,7 @@
 
 [node name="MorningDew" type="Node2D" unique_id=659737758]
 script = ExtResource("1_p3rej")
-item_name = "Morning Dew"
+item_name = "Dewdrops"
 icon = ExtResource("2_q2v3t")
 is_stackable = true
 

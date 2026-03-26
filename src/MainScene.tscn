@@ -5,4 +5,3 @@
 [node name="MainScene" type="Node2D" unique_id=1114061648]
 y_sort_enabled = true
 script = ExtResource("1_3mqji")
-startingScene = 1
