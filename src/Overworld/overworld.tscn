@@ -54,7 +54,7 @@ position = Vector2(-61, 7)
 SceneID = 3
 Size = Vector2(14.135, 9.85)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1364830688]
+[node name="Dewdrop Sprite" type="Sprite2D" parent="." unique_id=1364830688]
 position = Vector2(-61.000004, 7.0000005)
 scale = Vector2(0.049999997, 0.049999997)
 texture = ExtResource("6_m4qw5")

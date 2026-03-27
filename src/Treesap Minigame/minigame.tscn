@@ -3,9 +3,16 @@
 [ext_resource type="Texture2D" uid="uid://diyh4o05itml3" path="res://Textures/forest.jpg" id="1_cc5ov"]
 [ext_resource type="Script" uid="uid://ccgll20cqvqhs" path="res://Treesap Minigame/minigame.gd" id="1_nejc8"]
 [ext_resource type="Texture2D" uid="uid://kallvnua4qjc" path="res://Textures/saptree.png" id="2_73w66"]
+[ext_resource type="Script" uid="uid://drs1yxu7cbumm" path="res://Treesap Minigame/tap_control.gd" id="4_54yem"]
+[ext_resource type="Material" uid="uid://uigebe08r0x1" path="res://Treesap Minigame/Indicator_Material.tres" id="5_6wqjb"]
+[ext_resource type="Texture2D" uid="uid://r6813p1r7xeh" path="res://Textures/tap.png" id="5_oboel"]
+[ext_resource type="SpriteFrames" uid="uid://bwb6rx1wipaeh" path="res://Treesap Minigame/Indicator_Frames.tres" id="5_pscpq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nejc8"]
 size = Vector2(384, 672)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nejc8"]
+radius = 8.0
 
 [node name="Minigame" type="Node2D" unique_id=730915079]
 script = ExtResource("1_nejc8")
@@ -24,3 +31,20 @@ texture = ExtResource("2_73w66")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tree" unique_id=459549325]
 shape = SubResource("RectangleShape2D_nejc8")
+
+[node name="TapControl" type="StaticBody2D" parent="." unique_id=1729705908]
+script = ExtResource("4_54yem")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TapControl" unique_id=1603787120]
+shape = SubResource("CircleShape2D_nejc8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TapControl" unique_id=506614082]
+material = ExtResource("5_6wqjb")
+scale = Vector2(0.29090908, 0.21818182)
+sprite_frames = ExtResource("5_pscpq")
+frame = 2
+frame_progress = 0.82691413
+
+[node name="Sprite2D" type="Sprite2D" parent="TapControl" unique_id=1269452882]
+position = Vector2(48, 64)
+texture = ExtResource("5_oboel")

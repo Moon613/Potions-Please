@@ -78,6 +78,7 @@ func _switch_scene(id: int):
 		5:
 			self.add_child(acornScene);
 		6:
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(sapScene);
 		_:
 			print("Unknown SceneID!")
