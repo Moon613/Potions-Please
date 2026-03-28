@@ -89,14 +89,35 @@ vec3 LABToXYZ(vec3 input) {
 	}
 	return ret;
 }
-//https://www.oceanopticsbook.info/view/photometry-and-visibility/from-xyz-to-rgb
 vec3 XYZTosRGB(vec3 input) {
-	mat3 matrix = mat3(
-		vec3(3.2404542, -0.969266, 0.0556434),
-		vec3(-1.5371385, 1.8760108, -0.2040259),
-		vec3(-0.4985314, 0.041556, 1.0572252)
-		);
-	return matrix * input;
+	float X = input.r / 100.0;
+	float Y = input.g / 100.0;
+	float Z = input.b / 100.0;
+	
+	float R = X *  3.2406 + Y * -1.5372 + Z * -0.4986;
+	float G = X * -0.9689 + Y *  1.8758 + Z *  0.0415;
+	float B = X *  0.0557 + Y * -0.2040 + Z *  1.0570;
+	
+	if (R > 0.0031308) {
+		R = 1.055 * pow(R, 1.0 / 2.4) - 0.055;
+	}
+	else {
+		R = 12.92 * R;
+	}
+	if (G > 0.0031308) {
+		G = 1.055 * pow(G, 1.0 / 2.4) - 0.055;
+	}
+	else {
+		G = 12.92 * G;
+	}
+	if (B > 0.0031308) {
+		B = 1.055 * pow(B, 1.0 / 2.4) - 0.055;
+	}
+	else {
+		B = 12.92 * B;
+	}
+	
+	return vec3(R,G,B);
 }
 
 
@@ -108,22 +129,15 @@ void fragment() {
 	vec3 xyzOrig = RGBToXYZ(COLOR.rgb);
 	vec3 cie = XYZToLAB(xyzOrig);
 	
-	cie.r = 100.0;
-	cie.g = 128.0;
-	cie.b = 128.0;
-	//cie.r = 53.0;
-	//cie.g = 49.0;
-	//cie.b = mix(-128.0, 128.0, closeness);
+	//cie.r = 100.0;
+	//cie.g = 128.0;
+	//cie.b = -128.0;
+	cie.r = 53.0;
+	cie.g = 49.0;
+	cie.b = mix(-128.0, 128.0, closeness);
 	
 	vec3 xyzNew = LABToXYZ(cie);
 	COLOR.rgb = XYZTosRGB(xyzNew);
-	
-	
-	//COLOR.rgb = mix(vec3(22.0/255.0,65.0/255.0,255.0/255.0), vec3(255.0/255.0,0.0/255.0,12.0/255.0), closeness);
-	//COLOR.r *= closeness;
-	//COLOR.g *= clamp(1.0-closeness, 0.25, 1.0);
-	//COLOR.b *= 1.0-closeness;
-	// Called for every pixel the material is visible on.
 }
 
 //void light() {
