@@ -4,7 +4,29 @@
 [ext_resource type="PackedScene" uid="uid://c83ixwud83q11" path="res://Items/InventorySlot.tscn" id="2_caf4b"]
 [ext_resource type="PackedScene" uid="uid://dn0k0s0uuvla2" path="res://Items/Tooltip.tscn" id="4_0qjnm"]
 [ext_resource type="Texture2D" uid="uid://g071lbrhavh2" path="res://Textures/Inventory UI pt 1.png" id="4_pd3k5"]
+[ext_resource type="Texture2D" uid="uid://bg1utwc3blwav" path="res://Textures/Reputation Text.png" id="4_v4wl6"]
 [ext_resource type="Texture2D" uid="uid://crcgo2ic0657s" path="res://Textures/Inventory UI pt 2.png" id="5_rl46y"]
+[ext_resource type="Texture2D" uid="uid://c3d5s54h65fq6" path="res://Textures/BadReputation.png" id="5_v4wl6"]
+[ext_resource type="Texture2D" uid="uid://bawphj6nvrrti" path="res://Textures/GoodReputation.png" id="6_q72hy"]
+[ext_resource type="PackedScene" uid="uid://h3jtck7pkff6" path="res://Items/DewdropItem.tscn" id="6_rl46y"]
+[ext_resource type="PackedScene" uid="uid://cmfjji3mf0u0d" path="res://Items/AcornItem.tscn" id="7_j1wyx"]
+[ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Textures/Stamina Text.png" id="7_q72hy"]
+[ext_resource type="PackedScene" uid="uid://dosak45c72mij" path="res://Items/WIPItem.tscn" id="8_j1wyx"]
+[ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="8_mdst7"]
+[ext_resource type="Texture2D" uid="uid://bwlkhcfqbgk2p" path="res://Textures/Journal Potion Ingredient List Icon.png" id="10_hwedm"]
+[ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="11_rhxlg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u23ir"]
+atlas = ExtResource("5_v4wl6")
+region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q72hy"]
+atlas = ExtResource("6_q72hy")
+region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwedm"]
+atlas = ExtResource("8_mdst7")
+region = Rect2(0, 0, 400, 72)
 
 [node name="Inventory" type="Control" unique_id=1453173247 node_paths=PackedStringArray("inventory_grid", "tooltip")]
 layout_mode = 3
@@ -32,6 +54,73 @@ offset_top = -528.0
 offset_right = -577.0
 offset_bottom = 353.0
 texture = ExtResource("4_pd3k5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerPanel" unique_id=459165467]
+layout_mode = 1
+offset_left = 120.0
+offset_top = 474.0
+offset_right = 520.0
+offset_bottom = 851.0
+alignment = 1
+
+[node name="Reputation" type="TextureRect" parent="PlayerPanel/VBoxContainer" unique_id=2127221808]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(45, 50)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_v4wl6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Reputation Bar" type="TextureProgressBar" parent="PlayerPanel/VBoxContainer" unique_id=1899302036]
+texture_repeat = 2
+layout_mode = 2
+max_value = 5.0
+step = 0.1
+value = 5.0
+texture_under = SubResource("AtlasTexture_u23ir")
+texture_progress = SubResource("AtlasTexture_q72hy")
+tint_under = Color(0.12156863, 0.3137255, 0.7058824, 1)
+
+[node name="Stamina" type="TextureRect" parent="PlayerPanel/VBoxContainer" unique_id=1281442009]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+texture = ExtResource("7_q72hy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Stamina Bar" type="TextureProgressBar" parent="PlayerPanel/VBoxContainer" unique_id=1753917181]
+texture_repeat = 2
+layout_mode = 2
+max_value = 5.0
+step = 0.1
+value = 5.0
+texture_under = SubResource("AtlasTexture_hwedm")
+texture_progress = ExtResource("8_mdst7")
+tint_under = Color(0.32024416, 0.32024416, 0.32024413, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerPanel/VBoxContainer" unique_id=2081991958]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Journal" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=798060606]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("10_hwedm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Orders" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=2142444398]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("11_rhxlg")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="InvPanel" type="TextureRect" parent="." unique_id=2103535010]
 layout_mode = 0
@@ -61,3 +150,12 @@ offset_top = 256.0
 offset_right = 192.0
 offset_bottom = 272.0
 mouse_filter = 2
+
+[node name="AcornItem" parent="." unique_id=1364042111 instance=ExtResource("7_j1wyx")]
+visible = false
+
+[node name="DewdropItem" parent="." unique_id=659737758 instance=ExtResource("6_rl46y")]
+visible = false
+
+[node name="WIPItem" parent="." unique_id=613830622 instance=ExtResource("8_j1wyx")]
+visible = false
