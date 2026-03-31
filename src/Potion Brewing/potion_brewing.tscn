@@ -84,12 +84,12 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("19_x0yta")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yffeo"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y8v3d"]
 resource_local_to_scene = true
 radius = 49.76
 height = 198.94
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pr62"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xbtdn"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -349,14 +349,14 @@ texture_progress = SubResource("AtlasTexture_m6y6x")
 position = Vector2(-829, -212)
 mass = 0.61
 Sprite = ExtResource("22_cgc07")
-Shape = SubResource("CapsuleShape2D_yffeo")
+Shape = SubResource("CapsuleShape2D_y8v3d")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-803, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_5pr62")
+Shape = SubResource("CapsuleShape2D_xbtdn")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -364,7 +364,7 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_5pr62")
+shape = SubResource("CapsuleShape2D_xbtdn")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
 position = Vector2(-689, 2)

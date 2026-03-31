@@ -45,6 +45,9 @@ func _ready():
 		slot.slot_hovered.connect(self._on_slot_hovered)
 	tooltip.visible = false
 	
+	
+	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
+	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
 	#add items from game reasources
 	var res = GameInfo.resources
 	for item in res:

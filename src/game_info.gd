@@ -47,7 +47,7 @@ var resources: Dictionary[String, int] = {
 	ACORNS: 2,
 	MOSS: 0,
 	MANDRAKE: 0,
-	EGGS: 0,
+	EGGS: 1,
 	SAP: 0,
 	HONEY: -1,
 	GINGER: -1,
