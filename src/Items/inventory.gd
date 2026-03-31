@@ -6,17 +6,17 @@ class_name Inventory
 @onready var invConvert: Dictionary[String, Item] = {
 	"dewdrops": $DewdropItem,
 	"acorns": $AcornItem,
-	#"moss": moss_item,
-	#"mandrake": mandrake_item,
-	#"eggs": egg_item,
-	#"sap": sap_item,
-	#
-	#"energy": energy_item,
-	#"sleep": sleep_item,
-	#"strength": strength_item,
-	#"healing": healing_item,
-	#"shrink": shrink_item,
-	#"burnt": burnt_item
+	"moss": $WIPItem,
+	"mandrake": $WIPItem,
+	"eggs": $WIPItem,
+	"sap": $WIPItem,
+	
+	"energy": $WIPItem,
+	"sleep": $WIPItem,
+	"strength": $WIPItem,
+	"healing": $WIPItem,
+	"shrink": $WIPItem,
+	"burnt": $WIPItem
 };
 
 var inventory_item_scene = preload("res://Items/InventoryItem.tscn")

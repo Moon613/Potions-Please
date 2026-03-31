@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://crcgo2ic0657s" path="res://Textures/Inventory UI pt 2.png" id="5_rl46y"]
 [ext_resource type="PackedScene" uid="uid://h3jtck7pkff6" path="res://Items/DewdropItem.tscn" id="6_rl46y"]
 [ext_resource type="PackedScene" uid="uid://cmfjji3mf0u0d" path="res://Items/AcornItem.tscn" id="7_j1wyx"]
+[ext_resource type="PackedScene" uid="uid://dosak45c72mij" path="res://Items/WIPItem.tscn" id="8_j1wyx"]
 
 [node name="Inventory" type="Control" unique_id=1453173247 node_paths=PackedStringArray("inventory_grid", "tooltip")]
 layout_mode = 3
@@ -68,4 +69,7 @@ mouse_filter = 2
 visible = false
 
 [node name="DewdropItem" parent="." unique_id=659737758 instance=ExtResource("6_rl46y")]
+visible = false
+
+[node name="WIPItem" parent="." unique_id=613830622 instance=ExtResource("8_j1wyx")]
 visible = false

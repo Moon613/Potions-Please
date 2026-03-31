@@ -80,6 +80,8 @@ func _ready() -> void:
 func _change_ingredient_amount(ingredient: String, amount: int):
 	if ingredient in resources and resources[ingredient] >= 0:
 		resources[ingredient] += amount;
+		#update inventory panel
+		inventory.add_item(ingredient, amount)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
