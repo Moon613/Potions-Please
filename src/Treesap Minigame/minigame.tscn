@@ -43,7 +43,7 @@ material = ExtResource("5_6wqjb")
 scale = Vector2(0.29090908, 0.21818182)
 sprite_frames = ExtResource("5_pscpq")
 frame = 2
-frame_progress = 0.82691413
+frame_progress = 0.8313791
 
 [node name="Sprite2D" type="Sprite2D" parent="TapControl" unique_id=1269452882]
 position = Vector2(48, 64)
