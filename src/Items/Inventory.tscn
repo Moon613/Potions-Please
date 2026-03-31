@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://crcgo2ic0657s" path="res://Textures/Inventory UI pt 2.png" id="5_rl46y"]
 [ext_resource type="Texture2D" uid="uid://c3d5s54h65fq6" path="res://Textures/BadReputation.png" id="5_v4wl6"]
 [ext_resource type="Texture2D" uid="uid://bawphj6nvrrti" path="res://Textures/GoodReputation.png" id="6_q72hy"]
-[ext_resource type="PackedScene" path="res://Items/AcornItem.tscn" id="7_j1wyx"]
+[ext_resource type="PackedScene" uid="uid://cmfjji3mf0u0d" path="res://Items/AcornItem.tscn" id="7_j1wyx"]
 [ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Textures/Stamina Text.png" id="7_q72hy"]
 [ext_resource type="PackedScene" uid="uid://dosak45c72mij" path="res://Items/WIPItem.tscn" id="8_j1wyx"]
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="8_mdst7"]
@@ -158,3 +158,4 @@ visible = false
 visible = false
 
 [node name="DewdropItem" parent="." unique_id=659737758 instance=ExtResource("15_mdst7")]
+visible = false
