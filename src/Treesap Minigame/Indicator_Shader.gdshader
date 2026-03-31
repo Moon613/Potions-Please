@@ -129,9 +129,6 @@ void fragment() {
 	vec3 xyzOrig = RGBToXYZ(COLOR.rgb);
 	vec3 cie = XYZToLAB(xyzOrig);
 	
-	//cie.r = 100.0;
-	//cie.g = 128.0;
-	//cie.b = -128.0;
 	cie.r = 53.0;
 	cie.g = 49.0;
 	cie.b = mix(-128.0, 128.0, closeness);
