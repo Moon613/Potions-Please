@@ -42,9 +42,11 @@ shape = SubResource("CircleShape2D_nejc8")
 material = ExtResource("5_6wqjb")
 scale = Vector2(0.29090908, 0.21818182)
 sprite_frames = ExtResource("5_pscpq")
-frame = 2
-frame_progress = 0.8313791
+animation = &"Far"
+autoplay = "Close"
 
 [node name="Sprite2D" type="Sprite2D" parent="TapControl" unique_id=1269452882]
 position = Vector2(48, 64)
 texture = ExtResource("5_oboel")
+
+[connection signal="PlaceTap" from="TapControl" to="." method="_on_tap_control_place_tap"]

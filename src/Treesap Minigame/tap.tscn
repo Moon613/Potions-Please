@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://crvdsd7f8671h"]
+
+[ext_resource type="Script" uid="uid://bomrlhk17a2pu" path="res://Treesap Minigame/tap.gd" id="1_lp3re"]
+[ext_resource type="Texture2D" uid="uid://r6813p1r7xeh" path="res://Textures/tap.png" id="1_oeynv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jcext"]
+radius = 8.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lp3re"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oeynv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tap" type="Area2D" unique_id=653122875 groups=["Tap"]]
+script = ExtResource("1_lp3re")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1487370918]
+shape = SubResource("CircleShape2D_jcext")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2008498394]
+position = Vector2(48, 64)
+sprite_frames = SubResource("SpriteFrames_lp3re")
