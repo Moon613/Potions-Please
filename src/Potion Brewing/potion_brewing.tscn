@@ -16,12 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="13_8mvhn"]
 [ext_resource type="Texture2D" uid="uid://cgy3ndew38fyl" path="res://Textures/Trash Icon.png" id="14_dqwf3"]
 [ext_resource type="Texture2D" uid="uid://bg1utwc3blwav" path="res://Textures/Reputation Text.png" id="15_dqwf3"]
-[ext_resource type="Texture2D" uid="uid://6py0wpfmtxjt" path="res://Textures/Bad Reputation Icon.png" id="16_xc2nr"]
-[ext_resource type="Texture2D" uid="uid://cid1ceu338cuf" path="res://Textures/Reputation Icon.png" id="17_7gn2s"]
+[ext_resource type="Texture2D" uid="uid://c3d5s54h65fq6" path="res://Textures/BadReputation.png" id="17_yffeo"]
+[ext_resource type="Texture2D" uid="uid://bawphj6nvrrti" path="res://Textures/GoodReputation.png" id="18_5pr62"]
 [ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Textures/Stamina Text.png" id="18_g121f"]
-[ext_resource type="Texture2D" uid="uid://va85xlcf010t" path="res://Textures/Bad Stamina Icon.png" id="19_m6y6x"]
-[ext_resource type="Texture2D" uid="uid://c7k5a3cb88cfp" path="res://Textures/Stamina Icon.png" id="19_x0yta"]
+[ext_resource type="Texture2D" uid="uid://bfoveypfrtn02" path="res://Textures/BadStaminaReputation.png" id="20_y8v3d"]
 [ext_resource type="PackedScene" uid="uid://ch2s5cbjit2nu" path="res://Potion Brewing/Ingredient.tscn" id="21_m6y6x"]
+[ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="22_a3cj8"]
 [ext_resource type="Texture2D" uid="uid://buaxvlcxodha5" path="res://Textures/Honey.png" id="22_cgc07"]
 [ext_resource type="Texture2D" uid="uid://bvng0yafiqfry" path="res://Textures/acorn.png" id="25_sc17n"]
@@ -69,27 +69,27 @@ absorbent = true
 size = Vector2(768, 392)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xc2nr"]
-atlas = ExtResource("16_xc2nr")
+atlas = ExtResource("17_yffeo")
 region = Rect2(0, 0, 400, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_patwh"]
-atlas = ExtResource("17_7gn2s")
+atlas = ExtResource("18_5pr62")
 region = Rect2(0, 0, 400, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3cj8"]
-atlas = ExtResource("19_m6y6x")
+atlas = ExtResource("20_y8v3d")
 region = Rect2(0, 0, 400, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m6y6x"]
-atlas = ExtResource("19_x0yta")
+atlas = ExtResource("21_xbtdn")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y8v3d"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ako6u"]
 resource_local_to_scene = true
 radius = 49.76
 height = 198.94
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xbtdn"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fim6t"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -349,14 +349,14 @@ texture_progress = SubResource("AtlasTexture_m6y6x")
 position = Vector2(-829, -212)
 mass = 0.61
 Sprite = ExtResource("22_cgc07")
-Shape = SubResource("CapsuleShape2D_y8v3d")
+Shape = SubResource("CapsuleShape2D_ako6u")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-803, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_xbtdn")
+Shape = SubResource("CapsuleShape2D_fim6t")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -364,7 +364,7 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_xbtdn")
+shape = SubResource("CapsuleShape2D_fim6t")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
 position = Vector2(-689, 2)
