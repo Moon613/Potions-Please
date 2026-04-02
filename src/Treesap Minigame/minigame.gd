@@ -73,6 +73,8 @@ func _on_tap_control_place_tap(placedTapSpot: Vector2) -> void:
 func _on_tap_sap_collection(resourceAmount: int):
 	tapsFinishedCollecting += 1;
 	resourceAmountCollected += resourceAmount;
+	if tapsFinishedCollecting >= numberOfTapSpots:
+		ShowIngredient.emit();
 
 func _on_ingredient_done_showing():
 	ChangeIngredients.emit("sap", resourceAmountCollected);
