@@ -21,12 +21,12 @@ func _process(delta):
 	var closeness = 1.0 - clamp((self.position - closestSpot.position).length() / 200.0, 0.0, 1.0);
 	$AnimatedSprite2D.material.set_shader_parameter("closeness", closeness);
 	
-	if closeness >= 0.5 and $AnimatedSprite2D.animation == "Far":
+	if closeness >= 0.7 and $AnimatedSprite2D.animation == "Far":
 		var frameBefore = $AnimatedSprite2D.frame;
 		var progress = $AnimatedSprite2D.frame_progress;
 		$AnimatedSprite2D.animation = "Close";
 		$AnimatedSprite2D.set_frame_and_progress(frameBefore, progress);
-	elif closeness < 0.5 and $AnimatedSprite2D.animation == "Close":
+	elif closeness < 0.7 and $AnimatedSprite2D.animation == "Close":
 		var frameBefore = clamp($AnimatedSprite2D.frame, 0, 1);
 		var progress = $AnimatedSprite2D.frame_progress;
 		$AnimatedSprite2D.animation = "Far";

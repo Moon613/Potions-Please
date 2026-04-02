@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://r6813p1r7xeh" path="res://Textures/tap.png" id="5_oboel"]
 [ext_resource type="SpriteFrames" uid="uid://bwb6rx1wipaeh" path="res://Treesap Minigame/Indicator_Frames.tres" id="5_pscpq"]
 [ext_resource type="Texture2D" uid="uid://dxlqhh1hukk6s" path="res://Textures/Sap.png" id="8_88io5"]
-[ext_resource type="Script" uid="uid://dtj76gdumhd7k" path="res://Treesap Minigame/sap_ingredient.gd" id="9_78kki"]
+[ext_resource type="Script" path="res://Treesap Minigame/sap_ingredient.gd" id="9_78kki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nejc8"]
 size = Vector2(384, 672)
