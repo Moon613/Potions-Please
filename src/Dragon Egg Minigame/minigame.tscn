@@ -21,3 +21,11 @@ offset_bottom = 328.0
 color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=228805459]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=896025509]
+offset_left = -56.0
+offset_top = -312.0
+offset_right = 56.0
+offset_bottom = -272.0
+text = "8:00"
+scroll_active = false

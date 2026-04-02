@@ -17,7 +17,9 @@ func _process(delta):
 	$ColorRect.material.set_shader_parameter("mousePos", get_global_mouse_position() / -(get_viewport_rect().size / $Camera2D.zoom));
 	if timer >= maxTime:
 		pass
-	timer += 1*delta;
+	
+	timer += delta;
+	$RichTextLabel.text = "%01d:%02d" % [(maxTime)/60-1 - int(timer)/60, 59-int(timer)%60];
 	pass
 
 func Reset():
