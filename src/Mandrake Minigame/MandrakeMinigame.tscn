@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dj7q8wo011gxc"]
+
+[ext_resource type="Script" uid="uid://1kf56v0ebe5u" path="res://Mandrake Minigame/mandrake_minigame.gd" id="1_nv7hg"]
+
+[node name="MandrakeMinigame" type="Node2D" unique_id=1821473577]
+script = ExtResource("1_nv7hg")

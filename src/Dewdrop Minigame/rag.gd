@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	if fading: 
 		if fadeTimer < 1:
 			self.position.y = lerpf(startPos.y, 1000, 0.0 if fadeTimer == 0 else pow(2, 10 * fadeTimer - 10));
-			fadeTimer += 0.025;
+			fadeTimer += 1 * delta;
 		else:
 			$AnimatedSprite2D.frame = 1;
 			fading = false;
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		if fadeTimer < 1:
 			$AnimatedSprite2D.material.set_shader_parameter("open", false);
 			self.position = lerp(startPos, Vector2(0,-200), 1.0 if fadeTimer == 1 else 1-pow(2, -10*fadeTimer));
-			fadeTimer += 0.025;
+			fadeTimer += 1 * delta;
 	for body in get_overlapping_bodies():
 		if body is RigidBody2D and body.name.contains("Dewdrop"):
 			var collider = body.get_node("CollisionShape2D");

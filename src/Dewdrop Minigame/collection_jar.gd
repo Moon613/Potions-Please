@@ -16,13 +16,13 @@ func _process(delta):
 	if moveIn:
 		if moveTimer < 1:
 			self.position = lerp(startPos, Vector2(0,300), 1.0 if moveTimer == 1 else 1-pow(2, -10*moveTimer));
-			moveTimer += 0.025;
+			moveTimer += 1 * delta;
 		else:
 			moveIn = false;
 	if moveOut:
 		if moveTimer < 1:
 			self.position = lerp(startPos, Vector2(0, 800), 0.0 if moveTimer == 0 else pow(2, 10*moveTimer-10));
-			moveTimer += 0.025;
+			moveTimer += 1 * delta;
 		else:
 			moveOut = false;
 			DoneMoveDown.emit();

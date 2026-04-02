@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://v8gj4y4a7wra"]
 
+[ext_resource type="Texture2D" uid="uid://cp1ptyo7flil0" path="res://Textures/DewTile.png" id="1_o7kpu"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6fhdj"]
 radius = 64.0
 
-[node name="TapSpot" type="StaticBody2D" unique_id=730370155]
+[node name="TapSpot" type="StaticBody2D" unique_id=730370155 groups=["Tree Tap Spot"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2142605829]
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("1_o7kpu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=670220231]
 shape = SubResource("CircleShape2D_6fhdj")

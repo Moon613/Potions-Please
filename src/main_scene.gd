@@ -9,6 +9,7 @@ extends Node2D
 
 @export var startingScene: int = -1;
 
+@export var busy_scenes = [1, 3, 4, 5, 6]
 var overworldScene;
 var potionScene;
 var insideScene;
@@ -64,6 +65,7 @@ func _switch_scene(id: int):
 	if self.get_children()[0].has_method("Reset"):
 		self.get_children()[0].Reset();
 	self.remove_child(self.get_children()[0]);
+	inv_panel_control(id)
 	match id:
 		0:
 			self.add_child(overworldScene);
@@ -82,3 +84,10 @@ func _switch_scene(id: int):
 			self.add_child(sapScene);
 		_:
 			print("Unknown SceneID!")
+
+func inv_panel_control(id: int):
+	if id in busy_scenes:
+		GameInfo.inventory.visible = false
+		GameInfo.busy = true
+	else:
+		GameInfo.busy = false

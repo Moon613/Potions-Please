@@ -7,6 +7,8 @@
 [ext_resource type="Material" uid="uid://uigebe08r0x1" path="res://Treesap Minigame/Indicator_Material.tres" id="5_6wqjb"]
 [ext_resource type="Texture2D" uid="uid://r6813p1r7xeh" path="res://Textures/tap.png" id="5_oboel"]
 [ext_resource type="SpriteFrames" uid="uid://bwb6rx1wipaeh" path="res://Treesap Minigame/Indicator_Frames.tres" id="5_pscpq"]
+[ext_resource type="Texture2D" uid="uid://dxlqhh1hukk6s" path="res://Textures/Sap.png" id="8_88io5"]
+[ext_resource type="Script" path="res://Treesap Minigame/sap_ingredient.gd" id="9_78kki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nejc8"]
 size = Vector2(384, 672)
@@ -42,9 +44,22 @@ shape = SubResource("CircleShape2D_nejc8")
 material = ExtResource("5_6wqjb")
 scale = Vector2(0.29090908, 0.21818182)
 sprite_frames = ExtResource("5_pscpq")
-frame = 2
-frame_progress = 0.82691413
+animation = &"Far"
+autoplay = "Close"
 
 [node name="Sprite2D" type="Sprite2D" parent="TapControl" unique_id=1269452882]
 position = Vector2(48, 64)
 texture = ExtResource("5_oboel")
+
+[node name="SapIngredient" type="Sprite2D" parent="." unique_id=1796937563]
+z_index = 1
+texture_filter = 5
+position = Vector2(0, 451)
+scale = Vector2(2.266667, 2.2666667)
+texture = ExtResource("8_88io5")
+script = ExtResource("9_78kki")
+
+[connection signal="DrainTaps" from="." to="TapControl" method="_on_minigame_drain_taps"]
+[connection signal="ShowIngredient" from="." to="SapIngredient" method="_on_minigame_show_ingredient"]
+[connection signal="PlaceTap" from="TapControl" to="." method="_on_tap_control_place_tap"]
+[connection signal="IngredientDoneShowing" from="SapIngredient" to="." method="_on_ingredient_done_showing"]

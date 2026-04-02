@@ -1,6 +1,24 @@
 extends Control
 class_name Inventory
 
+# create a String : Item dictionary
+# add add_item to any increase to item
+@onready var invConvert: Dictionary[String, Item] = {
+	"dewdrops": $DewdropItem,
+	"acorns": $AcornItem,
+	"moss": $WIPItem,
+	"mandrake": $WIPItem,
+	"eggs": $WIPItem,
+	"sap": $WIPItem,
+	
+	"energy": $WIPItem,
+	"sleep": $WIPItem,
+	"strength": $WIPItem,
+	"healing": $WIPItem,
+	"shrink": $WIPItem,
+	"burnt": $WIPItem
+};
+
 var inventory_item_scene = preload("res://Items/InventoryItem.tscn")
 
 @export var rows: int = 4
@@ -15,8 +33,7 @@ var slots: Array[InventorySlot]
 
 static var selected_item: Item = null
 
-# create a String : Item dictionary
-# add add_item to any increase to item
+
 
 func _ready():
 	inventory_grid.columns = cols
@@ -28,14 +45,17 @@ func _ready():
 		slot.slot_hovered.connect(self._on_slot_hovered)
 	tooltip.visible = false
 	
-	##add items from game reasources
-	#var res = GameInfo.resources
-	#for item in res:
-		#var amount = res[item]
-		#if amount > 0:
-			#add_item(res,amount);
-			#pass
-		#pass
+	
+	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
+	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
+	#add items from game reasources
+	var res = GameInfo.resources
+	for item in res:
+		var amount = res[item]
+		if amount > 0:
+			add_item(item,amount);
+			pass
+		pass
 
 # moves selected item with mouse
 func _process(_delta):
@@ -65,14 +85,13 @@ func _on_slot_hovered(which: InventorySlot, is_hovering: bool):
 		tooltip.visible = is_hovering
 
 # removes item from world and adds it to inventory
-func add_item(item: Item, amount: int) -> void:
-	# duplicate item
+func add_item(item_name: String, amount: int) -> void:
+	# convert string to Item
+	var item: Item = invConvert[item_name]
 	var _item: InventoryItem = inventory_item_scene.instantiate()
 	_item.set_data(
 		item.item_name, item.icon, item.is_stackable, amount
 	)
-	# delete world item
-	item.queue_free()
 	if item.is_stackable:
 		for slot in slots:
 			if slot.item and slot.item.item_name == _item.item_name: # if item and is of same type
