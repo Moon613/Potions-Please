@@ -73,3 +73,8 @@ z_index = 1
 position = Vector2(-2, -42)
 SceneID = 6
 Size = Vector2(9, 12)
+
+[node name="Dragon Egg Trigger" parent="." unique_id=725651684 instance=ExtResource("5_omswd")]
+z_index = 1
+position = Vector2(-56, 40)
+SceneID = 7

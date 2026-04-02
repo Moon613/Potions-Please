@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bwb6wrjq7g7sh"]
+
+[ext_resource type="Script" uid="uid://cvxd5us5flyj8" path="res://Dragon Egg Minigame/minigame.gd" id="1_7s6ni"]
+[ext_resource type="Shader" uid="uid://hj5u48gx2pva" path="res://Dragon Egg Minigame/spotlight.gdshader" id="2_61rhm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61rhm"]
+shader = ExtResource("2_61rhm")
+shader_parameter/mousePos = Vector2(0, 0)
+shader_parameter/radius = 0.1
+shader_parameter/feather = 0.2
+
+[node name="Minigame" type="Node2D" unique_id=502785114]
+script = ExtResource("1_7s6ni")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=737755325]
+material = SubResource("ShaderMaterial_61rhm")
+offset_left = -576.0
+offset_top = -328.0
+offset_right = 576.0
+offset_bottom = 328.0
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=228805459]
