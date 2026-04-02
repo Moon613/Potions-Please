@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 signal PlaceTap(spot: Node2D);
+var canPlaceMoretaps: bool = true;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,5 +34,9 @@ func _process(delta):
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
+	if canPlaceMoretaps and event is InputEventMouseButton and event.button_index == 1 and event.pressed:
 		PlaceTap.emit(self.position);
+
+func _on_minigame_drain_taps() -> void:
+	canPlaceMoretaps = false;
+	self.visible = false;

@@ -3,6 +3,7 @@ extends Node2D
 signal ReturnToOverworld(id: int);
 signal ChangeIngredients(ingr: String, amt: int);
 signal DrainTaps;
+signal ShowIngredient;
 @export var numberOfTapSpots: int = 4;
 var tapSpot: PackedScene = preload("res://Treesap Minigame/Tap Spot.tscn");
 var tap: PackedScene = preload("res://Treesap Minigame/tap.tscn");
@@ -18,11 +19,12 @@ func _ready():
 	PlaceTapSpots();
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if tapsPlaced >= numberOfTapSpots:
 		DrainTaps.emit();
+		tapsPlaced = 0;
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
 
 func PlaceTapSpots():
 	var spawnedSpots: Array[Node2D] = [];
@@ -38,6 +40,8 @@ func PlaceTapSpots():
 		spawnedSpots.append(tapInstance);
 
 func Reset():
+	$TapControl.canPlaceMoretaps = true;
+	$TapControl.visible = true;
 	for child in get_children().filter(func(obj: Node2D): return obj.is_in_group("Tap") or obj.is_in_group("Tree Tap Spot")):
 		child.queue_free();
 	tapsPlaced = 0;
@@ -56,6 +60,7 @@ func _on_tap_control_place_tap(placedTapSpot: Vector2) -> void:
 	tapInstance.set_script(load("res://Treesap Minigame/tap.gd"))
 	tapInstance.position = placedTapSpot;
 	DrainTaps.connect(tapInstance._on_drain_taps);
+	tapInstance.SapCollected.connect(self._on_tap_sap_collection);
 	add_child(tapInstance);
 	tapsPlaced += 1;
 	var closestTapSpot: Node2D = null;
@@ -68,3 +73,7 @@ func _on_tap_control_place_tap(placedTapSpot: Vector2) -> void:
 func _on_tap_sap_collection(resourceAmount: int):
 	tapsFinishedCollecting += 1;
 	resourceAmountCollected += resourceAmount;
+
+func _on_ingredient_done_showing():
+	ChangeIngredients.emit("sap", resourceAmountCollected);
+	ReturnToOverworld.emit(0);

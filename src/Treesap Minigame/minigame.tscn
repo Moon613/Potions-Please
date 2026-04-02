@@ -49,4 +49,5 @@ autoplay = "Close"
 position = Vector2(48, 64)
 texture = ExtResource("5_oboel")
 
+[connection signal="DrainTaps" from="." to="TapControl" method="_on_minigame_drain_taps"]
 [connection signal="PlaceTap" from="TapControl" to="." method="_on_tap_control_place_tap"]

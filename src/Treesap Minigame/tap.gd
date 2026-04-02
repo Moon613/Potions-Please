@@ -23,3 +23,4 @@ func _on_drain_taps():
 	const MAX_TIME_ANIMATION_PLAYS: float = 20.0;
 	$AnimatedSprite2D.play();
 	timeToStop = MAX_TIME_ANIMATION_PLAYS * (1.0 - clamp((self.position - closestNodePos).length() / 200.0, 0.0, 1.0));
+	timer = 0;
