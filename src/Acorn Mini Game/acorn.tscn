@@ -7,6 +7,7 @@
 [ext_resource type="Shader" uid="uid://d245ild5vhgje" path="res://Acorn Mini Game/treeshake.gdshader" id="3_xvegq"]
 [ext_resource type="Script" uid="uid://cdae412rdiih5" path="res://Acorn Mini Game/basket.gd" id="4_bi5ov"]
 [ext_resource type="Texture2D" uid="uid://bwmwancl640ld" path="res://Textures/basket.png" id="4_w4kgs"]
+[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1tt5"]
 size = Vector2(500, 500)
@@ -53,4 +54,25 @@ position = Vector2(0, 250)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_w4kgs")
 
+[node name="Tutorial" type="Popup" parent="." unique_id=995485000]
+oversampling_override = 1.0
+position = Vector2i(250, 150)
+size = Vector2i(500, 300)
+visible = true
+script = ExtResource("8_oqhy2")
+
+[node name="Message" type="Label" parent="Tutorial" unique_id=1972057386]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "
+Shake the tree by holding the trunk with the mouse.
+As acorns fall move the basket with A and D to collect them.
+Left or Right arrows also work."
+
+[node name="Button" type="Button" parent="Tutorial" unique_id=1592922115]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Close"
+
 [connection signal="timeout" from="Tree/Timer" to="Tree" method="_on_timer_timeout"]
+[connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]

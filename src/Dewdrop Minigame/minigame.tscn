@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d32ktq4hitttn" path="res://Textures/OpenRagOverlay.png" id="7_vuaru"]
 [ext_resource type="Script" uid="uid://bin3g35q8wcy3" path="res://Dewdrop Minigame/collection_jar.gd" id="8_osxt6"]
 [ext_resource type="Texture2D" uid="uid://bpwb1xatmcl8v" path="res://Textures/DewJarFull.png" id="11_vuaru"]
+[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="13_2l8w5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ff77p"]
 size = Vector2(680, 456)
@@ -69,9 +70,29 @@ position = Vector2(0, 928)
 sprite_frames = SubResource("SpriteFrames_2l8w5")
 script = ExtResource("8_osxt6")
 
+[node name="Tutorial" type="Popup" parent="." unique_id=1524810777]
+oversampling_override = 1.0
+position = Vector2i(250, 150)
+size = Vector2i(665, 300)
+visible = true
+script = ExtResource("13_2l8w5")
+
+[node name="Message" type="Label" parent="Tutorial" unique_id=2140615164]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "
+Press and hold the mouse on the rag to move it over the drops.
+Once all the drops are cleaned up, pull the rag horizontally to stretch it and fill the jug."
+
+[node name="Button" type="Button" parent="Tutorial" unique_id=611323206]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Close"
+
 [connection signal="RemoveJar" from="." to="Collection Jar" method="_on_minigame_remove_jar"]
 [connection signal="TransitionToDrying" from="." to="Background" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Rag" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Collection Jar" method="_on_minigame_transition_to_drying"]
 [connection signal="collectedDrop" from="Rag" to="." method="_on_rag_collected_drop"]
 [connection signal="DoneMoveDown" from="Collection Jar" to="." method="_on_collection_jar_done_move_down"]
+[connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]
