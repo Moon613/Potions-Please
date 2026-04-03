@@ -86,9 +86,11 @@ func _switch_scene(id: int):
 		5:
 			self.add_child(acornScene);
 		6:
+			Input.warp_mouse(get_viewport_rect().size * 0.5);
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(sapScene);
 		7:
+			Input.warp_mouse(get_viewport_rect().size * 0.5);
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(eggScene);
 		_:
