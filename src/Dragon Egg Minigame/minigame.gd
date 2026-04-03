@@ -34,7 +34,7 @@ func _process(delta):
 		ReturnToOverworld.emit(0);
 	
 	timer += delta;
-	$ColorRect/RichTextLabel.text = "%01d:%02d" % [(_maxTimeSeconds)/60-1 - int(timer)/60, 59-int(timer)%60];
+	$ColorRect/RichTextLabel.text = "%01d:%02d" % [_maxTimeSeconds/60-1 - int(timer)/60, 59-int(timer)%60];
 	pass
 
 func Reset():
