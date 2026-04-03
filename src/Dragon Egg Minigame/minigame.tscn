@@ -11,8 +11,10 @@ shader_parameter/feather = 0.2
 
 [node name="Minigame" type="Node2D" unique_id=502785114]
 script = ExtResource("1_7s6ni")
+eggAmount = 3
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=737755325]
+z_index = 5
 material = SubResource("ShaderMaterial_61rhm")
 offset_left = -576.0
 offset_top = -328.0
@@ -20,12 +22,13 @@ offset_right = 576.0
 offset_bottom = 328.0
 color = Color(0, 0, 0, 1)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=228805459]
-
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=896025509]
-offset_left = -56.0
-offset_top = -312.0
-offset_right = 56.0
-offset_bottom = -272.0
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=896025509]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 16.0
+offset_right = 632.0
+offset_bottom = 56.0
 text = "8:00"
 scroll_active = false
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=228805459]

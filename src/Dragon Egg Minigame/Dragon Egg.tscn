@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://bb3fs823qrhv"]
 
+[ext_resource type="Script" uid="uid://cgbjcqo8akr5d" path="res://Dragon Egg Minigame/dragon_egg.gd" id="1_5pgsm"]
 [ext_resource type="Texture2D" uid="uid://6rrdal8spl5j" path="res://Textures/Dragon Egg.png" id="1_h58r2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pgsm"]
 radius = 19.0
 height = 54.0
 
-[node name="DragonEgg" type="Area2D" unique_id=928087416]
+[node name="DragonEgg" type="Area2D" unique_id=928087416 groups=["Dragon Egg"]]
+script = ExtResource("1_5pgsm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1782727066]
 texture = ExtResource("1_h58r2")
