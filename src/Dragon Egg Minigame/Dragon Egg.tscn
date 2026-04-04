@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://6rrdal8spl5j" path="res://Textures/Dragon Egg.png" id="1_h58r2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pgsm"]
+resource_local_to_scene = true
 radius = 19.0
 height = 54.0
 
@@ -15,3 +16,6 @@ texture = ExtResource("1_h58r2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=135366479]
 shape = SubResource("CapsuleShape2D_5pgsm")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

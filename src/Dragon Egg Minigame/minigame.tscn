@@ -2,12 +2,34 @@
 
 [ext_resource type="Script" uid="uid://cvxd5us5flyj8" path="res://Dragon Egg Minigame/minigame.gd" id="1_7s6ni"]
 [ext_resource type="Shader" uid="uid://hj5u48gx2pva" path="res://Dragon Egg Minigame/spotlight.gdshader" id="2_61rhm"]
+[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="3_x7ccp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_61rhm"]
 shader = ExtResource("2_61rhm")
 shader_parameter/mousePos = Vector2(0, 0)
 shader_parameter/radius = 0.1
 shader_parameter/feather = 0.2
+
+[sub_resource type="FontFile" id="FontFile_61rhm"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/34/0/ascent = 0.0
+cache/0/34/0/descent = 0.0
+cache/0/34/0/underline_position = 0.0
+cache/0/34/0/underline_thickness = 0.0
+cache/0/34/0/scale = 1.0
 
 [node name="Minigame" type="Node2D" unique_id=502785114]
 script = ExtResource("1_7s6ni")
@@ -20,15 +42,44 @@ offset_left = -576.0
 offset_top = -328.0
 offset_right = 576.0
 offset_bottom = 328.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=896025509]
 layout_mode = 0
-offset_left = 520.0
+offset_left = 541.0
 offset_top = 16.0
-offset_right = 632.0
+offset_right = 610.0
 offset_bottom = 56.0
+theme_override_fonts/normal_font = SubResource("FontFile_61rhm")
+theme_override_font_sizes/normal_font_size = 34
 text = "8:00"
 scroll_active = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=228805459]
+
+[node name="Tutorial" type="Popup" parent="." unique_id=557695211]
+oversampling_override = 1.0
+title = "Tutorial"
+size = Vector2i(480, 164)
+visible = true
+borderless = false
+script = ExtResource("3_x7ccp")
+
+[node name="Message" type="Label" parent="Tutorial" unique_id=1597603360]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "
+Move the spotlight with your mouse to find the dragon eggs!
+
+Click on a dragon egg to collect it.
+
+Hurry, you're on the clock for this one!"
+
+[node name="Button" type="Button" parent="Tutorial" unique_id=1052014742]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Close"
+
+[connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
+[connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]
