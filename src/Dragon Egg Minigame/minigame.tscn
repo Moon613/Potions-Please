@@ -2,7 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cvxd5us5flyj8" path="res://Dragon Egg Minigame/minigame.gd" id="1_7s6ni"]
 [ext_resource type="Shader" uid="uid://hj5u48gx2pva" path="res://Dragon Egg Minigame/spotlight.gdshader" id="2_61rhm"]
+[ext_resource type="Texture2D" uid="uid://d4emvyohacve7" path="res://Dragon Egg Minigame/Textures/Dragon Cave Background.png" id="2_trafo"]
+[ext_resource type="Texture2D" uid="uid://c6voxqdj4lav3" path="res://Dragon Egg Minigame/Textures/Dragon Cave Spikes 1.png" id="3_frocf"]
+[ext_resource type="Texture2D" uid="uid://bn3cl4jwsxs2o" path="res://Dragon Egg Minigame/Textures/Dragon Cave Spikes 2.png" id="3_rl7ms"]
 [ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="3_x7ccp"]
+[ext_resource type="Texture2D" uid="uid://dl4gndyllxjlj" path="res://Dragon Egg Minigame/Textures/Dragon Caves Columns 1.png" id="4_cofny"]
+[ext_resource type="Texture2D" uid="uid://v7lc3d3bco5n" path="res://Dragon Egg Minigame/Textures/Dragon Cave Spikes 3.png" id="6_d0mbj"]
+[ext_resource type="Texture2D" uid="uid://dnsc6sxpj8sd7" path="res://Dragon Egg Minigame/Textures/Dragon Cave Columns 2.png" id="7_heqhd"]
+[ext_resource type="Texture2D" uid="uid://besagowc6ilut" path="res://Dragon Egg Minigame/Textures/Dragon Cave Spikes 4.png" id="8_e8liw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_61rhm"]
 shader = ExtResource("2_61rhm")
@@ -11,6 +18,9 @@ shader_parameter/radius = 0.1
 shader_parameter/feather = 0.2
 
 [sub_resource type="FontFile" id="FontFile_61rhm"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
 cache/0/embolden = 0.0
@@ -35,8 +45,42 @@ cache/0/34/0/scale = 1.0
 script = ExtResource("1_7s6ni")
 eggAmount = 3
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=737755325]
+[node name="Background" type="Sprite2D" parent="." unique_id=346592142]
+scale = Vector2(0.6, 0.6074074)
+texture = ExtResource("2_trafo")
+
+[node name="Background Floor Spikes" type="Sprite2D" parent="Background" unique_id=1769817134]
+z_index = 1
+z_as_relative = false
+texture = ExtResource("3_rl7ms")
+
+[node name="Background Columns" type="Sprite2D" parent="Background" unique_id=1188161240]
+z_index = 2
+z_as_relative = false
+texture = ExtResource("7_heqhd")
+
+[node name="Spikes" type="Sprite2D" parent="Background" unique_id=1923588762]
+z_index = 3
+z_as_relative = false
+texture = ExtResource("3_frocf")
+
+[node name="Middle Columns" type="Sprite2D" parent="Background" unique_id=1770958506]
+z_index = 4
+z_as_relative = false
+texture = ExtResource("4_cofny")
+
+[node name="Top Right Spikes" type="Sprite2D" parent="Background" unique_id=2055380948]
 z_index = 5
+z_as_relative = false
+texture = ExtResource("6_d0mbj")
+
+[node name="Left Spikes" type="Sprite2D" parent="Background" unique_id=1696898958]
+z_index = 6
+z_as_relative = false
+texture = ExtResource("8_e8liw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=737755325]
+z_index = 83
 material = SubResource("ShaderMaterial_61rhm")
 offset_left = -576.0
 offset_top = -328.0
@@ -61,9 +105,8 @@ scroll_active = false
 [node name="Tutorial" type="Popup" parent="." unique_id=557695211]
 oversampling_override = 1.0
 title = "Tutorial"
+position = Vector2i(0, 36)
 size = Vector2i(480, 164)
-visible = true
-borderless = false
 script = ExtResource("3_x7ccp")
 
 [node name="Message" type="Label" parent="Tutorial" unique_id=1597603360]
