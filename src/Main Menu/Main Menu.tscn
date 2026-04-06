@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ceehah7li1w3b" path="res://Main Menu/main_menu.gd" id="1_ku1ks"]
 [ext_resource type="Texture2D" uid="uid://o0v6bni5b4jv" path="res://Textures/Paper+WoodUI.png" id="2_5ms5j"]
+[ext_resource type="Texture2D" uid="uid://vho3y7pnkero" path="res://Textures/TitleTypeGlow.PNG" id="2_i0jnm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ms5j"]
 content_margin_top = 36.0
@@ -74,18 +75,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ku1ks")
 
-[node name="Title" type="Label" parent="Main Menu" unique_id=798943171]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -182.0
-offset_top = 40.0
-offset_right = 182.0
-offset_bottom = 109.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
-text = "Potions Please!"
+[node name="Title" type="TextureRect" parent="Main Menu" unique_id=1011283025]
+layout_mode = 0
+offset_left = 330.0
+offset_right = 2250.0
+offset_bottom = 1080.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_i0jnm")
 
 [node name="New Game" type="Button" parent="Main Menu" unique_id=893188091]
 layout_mode = 1
@@ -100,11 +96,11 @@ offset_right = 91.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.5815684, 0.9612661, 0.8645351, 1)
-theme_override_colors/font_focus_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_pressed_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_hover_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
+theme_override_colors/font_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_focus_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_hover_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8500209, 0.41071337, 0.7167868, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_5ms5j")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_wlfof")
@@ -124,11 +120,11 @@ offset_right = 91.0
 offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_focus_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_pressed_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_hover_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
+theme_override_colors/font_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_focus_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_hover_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_bgqmh")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_4wqtw")
@@ -148,11 +144,11 @@ offset_right = 91.0
 offset_bottom = 113.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_focus_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_pressed_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_hover_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
+theme_override_colors/font_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_focus_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_hover_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_62v7d")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hx6c7")
@@ -172,11 +168,11 @@ offset_right = 91.0
 offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_focus_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_pressed_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_hover_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.5803922, 0.9607843, 0.8627451, 1)
+theme_override_colors/font_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_focus_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_hover_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxTexture_re3ss")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_4myfj")
