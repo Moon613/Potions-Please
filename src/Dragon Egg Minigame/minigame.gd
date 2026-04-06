@@ -3,7 +3,7 @@ extends Node2D
 signal ReturnToOverworld(id: int);
 signal ChangeIngredients(ingr: String, amt: int);
 
-@export var maxMinutes: int = 2;
+@export var maxMinutes: float = 2;
 @export var eggAmount: int = 0;
 var _maxTimeSeconds: int;
 var _eggAmount: int;
@@ -42,7 +42,7 @@ func _process(delta):
 		Reset();
 		ReturnToOverworld.emit(0);
 	
-	$ColorRect/RichTextLabel.text = "%01d:%02d" % [_maxTimeSeconds/60-1 - int(timer)/60, 59-int(timer)%60];
+	$ColorRect/RichTextLabel.text = "%01d:%02d" % [max(_maxTimeSeconds/60-1, 0) - int(timer)/60, (maxMinutes-floori(maxMinutes))*60-int(timer)%60];
 	pass
 
 func Reset():

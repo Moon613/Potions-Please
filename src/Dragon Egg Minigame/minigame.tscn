@@ -43,10 +43,11 @@ cache/0/34/0/scale = 1.0
 
 [node name="Minigame" type="Node2D" unique_id=502785114]
 script = ExtResource("1_7s6ni")
+maxMinutes = 0.25
 eggAmount = 3
 
 [node name="Background" type="Sprite2D" parent="." unique_id=346592142]
-scale = Vector2(0.6, 0.6074074)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_trafo")
 
 [node name="Background Floor Spikes" type="Sprite2D" parent="Background" unique_id=1769817134]
@@ -83,17 +84,17 @@ texture = ExtResource("8_e8liw")
 z_index = 83
 material = SubResource("ShaderMaterial_61rhm")
 offset_left = -576.0
-offset_top = -328.0
+offset_top = -324.0
 offset_right = 576.0
-offset_bottom = 328.0
+offset_bottom = 324.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=896025509]
 layout_mode = 0
-offset_left = 541.0
+offset_left = 542.0
 offset_top = 16.0
-offset_right = 610.0
+offset_right = 611.0
 offset_bottom = 56.0
 theme_override_fonts/normal_font = SubResource("FontFile_61rhm")
 theme_override_font_sizes/normal_font_size = 34
@@ -107,6 +108,7 @@ oversampling_override = 1.0
 title = "Tutorial"
 position = Vector2i(0, 36)
 size = Vector2i(480, 164)
+visible = true
 script = ExtResource("3_x7ccp")
 
 [node name="Message" type="Label" parent="Tutorial" unique_id=1597603360]
