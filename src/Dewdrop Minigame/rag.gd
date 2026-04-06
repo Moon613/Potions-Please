@@ -80,8 +80,6 @@ func _physics_process(delta):
 func _input_event(viewport, event, shape_idx):
 	if !fading and !reappearing and event is InputEventMouseButton:
 		if event.button_index == 1:
-			print("Pressed")
-			print(event.pressed)
 			if event.pressed:
 				FOLLOW_MOUSE = true;
 				RELATIVE_MOUSE_POSITION = self.position - get_global_mouse_position();

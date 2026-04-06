@@ -6,6 +6,7 @@ extends Node2D
 @export var mainMenu: PackedScene = preload("res://Main Menu/Main Menu.tscn")
 @export var acorns: PackedScene = preload("res://Acorn Mini Game/acorn.tscn")
 @export var treesap: PackedScene = preload("res://Treesap Minigame/minigame.tscn")
+@export var dragonEggs: PackedScene = preload("res://Dragon Egg Minigame/minigame.tscn")
 
 @export var startingScene: int = -1;
 
@@ -17,6 +18,7 @@ var dewdropScene;
 var mainMenuScene;
 var acornScene;
 var sapScene;
+var eggScene;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
@@ -41,6 +43,9 @@ func _ready() -> void:
 	var sapInstance = treesap.instantiate();
 	sapInstance.name = "Treesap Minigame"
 	
+	var eggInstance = dragonEggs.instantiate();
+	eggInstance.name = "Dragon Eggs Minigame"
+	
 	add_child(mainMenuInstance);
 	
 	overworldScene = overworldInstance;
@@ -50,6 +55,7 @@ func _ready() -> void:
 	mainMenuScene = mainMenuInstance;
 	acornScene = acornInstance;
 	sapScene = sapInstance;
+	eggScene = eggInstance;
 	
 	if startingScene != -1:
 		_switch_scene(startingScene);
@@ -80,8 +86,13 @@ func _switch_scene(id: int):
 		5:
 			self.add_child(acornScene);
 		6:
+			Input.warp_mouse(get_viewport_rect().size * 0.5);
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(sapScene);
+		7:
+			Input.warp_mouse(get_viewport_rect().size * 0.5);
+			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
+			self.add_child(eggScene);
 		_:
 			print("Unknown SceneID!")
 
