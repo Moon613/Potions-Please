@@ -8,8 +8,8 @@ class_name Inventory
 	"acorns": $AcornItem,
 	"moss": $WIPItem,
 	"mandrake": $MandrakeItem,
-	"eggs": $WIPItem,
-	"sap": $WIPItem,
+	"eggs": $EggItem,
+	"sap": $SapItem,
 	
 	"energy": $WIPItem,
 	"sleep": $WIPItem,
