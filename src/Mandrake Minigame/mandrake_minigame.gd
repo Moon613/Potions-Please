@@ -67,6 +67,7 @@ func _input(event):
 	pass
 
 func minigame_end():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	ChangeIngredients.emit("mandrake", mandrakesCollected);
 	ReturnToOverworld.emit(0);
 

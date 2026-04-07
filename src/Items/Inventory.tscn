@@ -16,6 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="11_rhxlg"]
 [ext_resource type="PackedScene" uid="uid://btyjcv8jeer3c" path="res://Items/DewdropItem.tscn" id="15_mdst7"]
 [ext_resource type="PackedScene" uid="uid://bdui1edksqcc1" path="res://Items/MandrakeItem.tscn" id="16_v4wl6"]
+[ext_resource type="PackedScene" uid="uid://bjs32axxwibeo" path="res://Items/EggItem.tscn" id="17_hwedm"]
+[ext_resource type="PackedScene" uid="uid://b14ab1uycb1e5" path="res://Items/SapItem.tscn" id="18_rhxlg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u23ir"]
 atlas = ExtResource("5_v4wl6")
@@ -162,4 +164,10 @@ visible = false
 visible = false
 
 [node name="MandrakeItem" parent="." unique_id=1066113484 instance=ExtResource("16_v4wl6")]
+visible = false
+
+[node name="EggItem" parent="." unique_id=1629014469 instance=ExtResource("17_hwedm")]
+visible = false
+
+[node name="SapItem" parent="." unique_id=1881400684 instance=ExtResource("18_rhxlg")]
 visible = false

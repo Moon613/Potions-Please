@@ -119,3 +119,7 @@ Size = Vector2(13.18, 15.795)
 z_index = 1
 position = Vector2(-56, 40)
 SceneID = 7
+
+[node name="Mandrake Trigger" parent="." unique_id=1283742692 instance=ExtResource("5_omswd")]
+position = Vector2(36, 37)
+SceneID = 8

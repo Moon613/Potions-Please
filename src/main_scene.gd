@@ -7,15 +7,13 @@ extends Node2D
 @export var mainMenu: PackedScene = preload("res://Main Menu/Main Menu.tscn")
 @export var acorns: PackedScene = preload("res://Acorn Mini Game/acorn.tscn")
 @export var treesap: PackedScene = preload("res://Treesap Minigame/minigame.tscn")
-<<<<<<< HEAD
 @export var dragonEggs: PackedScene = preload("res://Dragon Egg Minigame/minigame.tscn")
-=======
 @export var mandrakes: PackedScene = preload("res://Mandrake Minigame/MandrakeMinigame.tscn")
->>>>>>> 549c6ff (created mandrake minigame)
+
 
 @export var startingScene: int;
 
-@export var busy_scenes = [1, 3, 4, 5, 6, 7]
+@export var busy_scenes = [1, 3, 4, 5, 6, 7, 8]
 var overworldScene;
 var potionScene;
 var insideScene;
@@ -23,11 +21,8 @@ var dewdropScene;
 var mainMenuScene;
 var acornScene;
 var sapScene;
-<<<<<<< HEAD
 var eggScene;
-=======
 var mandrakeScene;
->>>>>>> 549c6ff (created mandrake minigame)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
@@ -52,13 +47,11 @@ func _ready() -> void:
 	var sapInstance = treesap.instantiate();
 	sapInstance.name = "Treesap Minigame"
 	
-<<<<<<< HEAD
 	var eggInstance = dragonEggs.instantiate();
 	eggInstance.name = "Dragon Eggs Minigame"
-=======
+	
 	var mandrakeInstance = mandrakes.instantiate();
 	mandrakeInstance.name = "Mandrake Minigame"
->>>>>>> 549c6ff (created mandrake minigame)
 	
 	add_child(mainMenuInstance);
 	
@@ -69,11 +62,8 @@ func _ready() -> void:
 	mainMenuScene = mainMenuInstance;
 	acornScene = acornInstance;
 	sapScene = sapInstance;
-<<<<<<< HEAD
 	eggScene = eggInstance;
-=======
 	mandrakeScene = mandrakeInstance;
->>>>>>> 549c6ff (created mandrake minigame)
 	
 	if startingScene != -1:
 		_switch_scene(startingScene);
@@ -108,14 +98,13 @@ func _switch_scene(id: int):
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(sapScene);
 		7:
-<<<<<<< HEAD
 			Input.warp_mouse(get_viewport_rect().size * 0.5);
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(eggScene);
-=======
+		8:
+			Input.warp_mouse(get_viewport_rect().size * 0.5);
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(mandrakeScene);
->>>>>>> 549c6ff (created mandrake minigame)
 		_:
 			print("Unknown SceneID!")
 
