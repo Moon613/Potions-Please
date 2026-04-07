@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dtivjjebe4l3q"]
 
 [ext_resource type="Script" uid="uid://dvby1ojni5ccf" path="res://Overworld/interaction_trigger.gd" id="1_521b6"]
+[ext_resource type="Texture2D" uid="uid://ok1md2j0gsvp" path="res://Textures/Cursor.png" id="2_in81f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjyl4"]
 resource_local_to_scene = true
@@ -10,3 +11,10 @@ script = ExtResource("1_521b6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1677971649]
 shape = SubResource("RectangleShape2D_yjyl4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=225099356]
+z_index = 259
+position = Vector2(0, -8)
+rotation = 3.817035
+scale = Vector2(0.025769526, 0.025769532)
+texture = ExtResource("2_in81f")

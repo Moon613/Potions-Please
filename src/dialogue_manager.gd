@@ -39,6 +39,7 @@ func PlayNextDialogue():
 	static func IntroDialogue():
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Ugh, I am not feeling well.\nMaybe I can brew myself an energy potion.", DialogueManager.Dialogue.YASMEEN));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I'd better go outside to gather ingredients.", DialogueManager.Dialogue.YASMEEN));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("(Use the WASD keys to move around!)", DialogueManager.Dialogue.YASMEEN));
 
 class DialogueText:
 	extends Dialogue
