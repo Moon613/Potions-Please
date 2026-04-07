@@ -9,6 +9,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bwb6rx1wipaeh" path="res://Treesap Minigame/Indicator_Frames.tres" id="5_pscpq"]
 [ext_resource type="Texture2D" uid="uid://dxlqhh1hukk6s" path="res://Textures/Sap.png" id="8_88io5"]
 [ext_resource type="Script" path="res://Treesap Minigame/sap_ingredient.gd" id="9_78kki"]
+[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="10_78kki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nejc8"]
 size = Vector2(384, 672)
@@ -59,7 +60,27 @@ scale = Vector2(2.266667, 2.2666667)
 texture = ExtResource("8_88io5")
 script = ExtResource("9_78kki")
 
+[node name="Tutorial" type="Popup" parent="." unique_id=1918330580]
+oversampling_override = 1.0
+position = Vector2i(250, 150)
+size = Vector2i(669, 300)
+visible = true
+script = ExtResource("10_78kki")
+
+[node name="Message" type="Label" parent="Tutorial" unique_id=2142682041]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "
+Move the tap around with the mouse.
+Try to guess where the juiciest tapping spots are, and left-click to place a tap."
+
+[node name="Button" type="Button" parent="Tutorial" unique_id=1427212090]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Close"
+
 [connection signal="DrainTaps" from="." to="TapControl" method="_on_minigame_drain_taps"]
 [connection signal="ShowIngredient" from="." to="SapIngredient" method="_on_minigame_show_ingredient"]
 [connection signal="PlaceTap" from="TapControl" to="." method="_on_tap_control_place_tap"]
 [connection signal="IngredientDoneShowing" from="SapIngredient" to="." method="_on_ingredient_done_showing"]
+[connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]
