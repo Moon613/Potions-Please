@@ -7,7 +7,7 @@ class_name Inventory
 	"dewdrops": $DewdropItem,
 	"acorns": $AcornItem,
 	"moss": $WIPItem,
-	"mandrake": $WIPItem,
+	"mandrake": $MandrakeItem,
 	"eggs": $WIPItem,
 	"sap": $WIPItem,
 	

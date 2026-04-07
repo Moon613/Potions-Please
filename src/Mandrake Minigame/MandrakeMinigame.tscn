@@ -1,6 +1,31 @@
 [gd_scene format=3 uid="uid://dj7q8wo011gxc"]
 
 [ext_resource type="Script" uid="uid://1kf56v0ebe5u" path="res://Mandrake Minigame/mandrake_minigame.gd" id="1_nv7hg"]
+[ext_resource type="Texture2D" uid="uid://cs67jjgot1l44" path="res://Textures/MandrakeGame/MandrakePatchBG.png" id="2_2gjrs"]
+[ext_resource type="PackedScene" uid="uid://dy57pd12m8k2k" path="res://Mandrake Minigame/hammer.tscn" id="3_esnje"]
 
 [node name="MandrakeMinigame" type="Node2D" unique_id=1821473577]
 script = ExtResource("1_nv7hg")
+number_of_mandrakes = 6
+number_of_fakes = 24
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1146027918]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_2gjrs")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2043261828]
+zoom = Vector2(0.6, 0.6)
+
+[node name="Hammer" parent="." unique_id=1377296571 instance=ExtResource("3_esnje")]
+
+[node name="HammerCooldown" type="Timer" parent="." unique_id=645064358]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="HammerHit" type="Timer" parent="." unique_id=795813240]
+wait_time = 0.05
+one_shot = true
+
+[connection signal="area_entered" from="Hammer" to="." method="_on_hammer_area_entered"]
+[connection signal="timeout" from="HammerHit" to="." method="_on_hammer_hit_timeout"]

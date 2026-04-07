@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cyi18fjjtvjrr"]
+
+[ext_resource type="Script" uid="uid://bpf8w2drkyhb5" path="res://Mandrake Minigame/mandrake.gd" id="1_e2ia1"]
+[ext_resource type="Texture2D" uid="uid://u5p50lashrn4" path="res://Textures/MandrakeGame/MandrakeLeafs.png" id="1_l8srp"]
+[ext_resource type="Texture2D" uid="uid://cdgjg7tql7iqw" path="res://Textures/MandrakeGame/MandrakeRun.png" id="2_4s26e"]
+[ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Textures/MandrakeGame/MandrakeItem.png" id="2_axbfc"]
+[ext_resource type="Texture2D" uid="uid://j34p0setubu0" path="res://Textures/MandrakeGame/MandrakeLeafsShake.png" id="2_utqy3"]
+[ext_resource type="Texture2D" uid="uid://cr6csskwvf5yx" path="res://Textures/MandrakeGame/MandrakeUproot.png" id="4_e2ia1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_utqy3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_axbfc")
+}],
+"loop": true,
+"name": &"ded",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l8srp")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4s26e")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l8srp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_utqy3")
+}],
+"loop": true,
+"name": &"shake",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_e2ia1")
+}],
+"loop": true,
+"name": &"uproot",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4cuj8"]
+radius = 34.0
+height = 180.0
+
+[node name="Mandrake" type="Area2D" unique_id=522025920 groups=["Mandrakes"]]
+y_sort_enabled = true
+script = ExtResource("1_e2ia1")
+
+[node name="MandrakeAnimations" type="AnimatedSprite2D" parent="." unique_id=1590888414]
+position = Vector2(-2, 0)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_utqy3")
+animation = &"idle"
+
+[node name="MandrakeHurtbox" type="CollisionShape2D" parent="." unique_id=1061735226]
+top_level = true
+position = Vector2(8, 41)
+shape = SubResource("CapsuleShape2D_4cuj8")
+
+[node name="ActivationTimer" type="Timer" parent="." unique_id=1845659684]
+one_shot = true
+
+[node name="ShakeTimer" type="Timer" parent="." unique_id=1648208995]
+wait_time = 1.5
+one_shot = true
+
+[node name="UprootTimer" type="Timer" parent="." unique_id=2032892383]
+wait_time = 0.5
+one_shot = true
+
+[node name="DespawnTimer" type="Timer" parent="." unique_id=1459077391]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="ActivationTimer" to="." method="_on_activation_timer_timeout"]
+[connection signal="timeout" from="ShakeTimer" to="." method="_on_shake_timer_timeout"]
+[connection signal="timeout" from="UprootTimer" to="." method="_on_uproot_timer_timeout"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bwlkhcfqbgk2p" path="res://Textures/Journal Potion Ingredient List Icon.png" id="10_hwedm"]
 [ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="11_rhxlg"]
 [ext_resource type="PackedScene" uid="uid://btyjcv8jeer3c" path="res://Items/DewdropItem.tscn" id="15_mdst7"]
+[ext_resource type="PackedScene" uid="uid://bdui1edksqcc1" path="res://Items/MandrakeItem.tscn" id="16_v4wl6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u23ir"]
 atlas = ExtResource("5_v4wl6")
@@ -158,4 +159,7 @@ visible = false
 visible = false
 
 [node name="DewdropItem" parent="." unique_id=659737758 instance=ExtResource("15_mdst7")]
+visible = false
+
+[node name="MandrakeItem" parent="." unique_id=1066113484 instance=ExtResource("16_v4wl6")]
 visible = false

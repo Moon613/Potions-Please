@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dy57pd12m8k2k"]
+
+[ext_resource type="Texture2D" uid="uid://besxbdhk426kg" path="res://Textures/MandrakeGame/HammerDefault.png" id="1_g23br"]
+[ext_resource type="Texture2D" uid="uid://ct8al2rubslv2" path="res://Textures/MandrakeGame/HammerDown.png" id="2_atfjs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gjrs"]
+radius = 5.0
+height = 32.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mcg0t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g23br")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_atfjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_g23br")
+}],
+"loop": false,
+"name": &"whack",
+"speed": 10.0
+}]
+
+[node name="Hammer" type="Area2D" unique_id=1377296571 groups=["Hammer"]]
+top_level = true
+scale = Vector2(1.5, 1.5)
+
+[node name="HammerHitbox" type="CollisionShape2D" parent="." unique_id=1120652433]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_2gjrs")
+
+[node name="HammerAnimation" type="AnimatedSprite2D" parent="." unique_id=282179112]
+sprite_frames = SubResource("SpriteFrames_mcg0t")
+offset = Vector2(23.274475, -38.707718)

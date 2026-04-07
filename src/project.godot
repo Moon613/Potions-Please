@@ -39,7 +39,12 @@ import/icon="uid://cm2ufk7sg4qsf"
 "Draggable Ingredients"="The ingredients that can be dragged into the cauldron in the potion-making \"minigame\""
 "Tree Tap Spot"="The spots that randomly spawn as part of the sap-gathering minigame to be tapped."
 Tap=""
+<<<<<<< HEAD
 "Dragon Egg"="For the Dragon Egg collection minigame, to remove duplicate dragons eggs not collected"
+=======
+Mandrakes=""
+Hammer=""
+>>>>>>> 549c6ff (created mandrake minigame)
 
 [input]
 
