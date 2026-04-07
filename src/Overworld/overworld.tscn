@@ -88,6 +88,7 @@ Size = Vector2(10, 2)
 [node name="Player" parent="." unique_id=2042437237 instance=ExtResource("2_824ie")]
 z_index = 1
 y_sort_enabled = true
+position = Vector2(-44, -1)
 
 [node name="Dewdrop Trigger" parent="." unique_id=557724366 instance=ExtResource("5_omswd")]
 position = Vector2(-61, 7)
