@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dtivjjebe4l3q" path="res://Overworld/interaction_trigger.tscn" id="5_omswd"]
 [ext_resource type="Texture2D" uid="uid://cp1ptyo7flil0" path="res://Textures/DewTile.png" id="6_m4qw5"]
 [ext_resource type="PackedScene" uid="uid://blle0g4wg7wlf" path="res://Overworld/tree_trigger.tscn" id="7_hob5j"]
-[ext_resource type="Texture2D" uid="uid://p0a2mtdisgcb" path="res://Textures/square-png-25140.png" id="8_yv805"]
 
 [node name="Overworld" type="Node2D" unique_id=340257523]
 y_sort_enabled = true
@@ -101,13 +100,9 @@ scale = Vector2(0.049999997, 0.049999997)
 texture = ExtResource("6_m4qw5")
 
 [node name="Tree Trigger" parent="." unique_id=431093836 instance=ExtResource("7_hob5j")]
-position = Vector2(70, 0)
+z_index = 1
+position = Vector2(9, -162)
 SceneID = 5
-
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1694021169]
-position = Vector2(70, 0)
-scale = Vector2(0.005, 0.005)
-texture = ExtResource("8_yv805")
 
 [node name="Sap Trigger" parent="." unique_id=1496835320 instance=ExtResource("5_omswd")]
 z_index = 1
@@ -117,5 +112,5 @@ Size = Vector2(13.18, 15.795)
 
 [node name="Dragon Egg Trigger" parent="." unique_id=725651684 instance=ExtResource("5_omswd")]
 z_index = 1
-position = Vector2(-56, 40)
+position = Vector2(-73, 24)
 SceneID = 7
