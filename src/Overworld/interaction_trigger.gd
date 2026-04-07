@@ -27,5 +27,4 @@ func _input(event):
 		var playerIndex = get_overlapping_bodies().find_custom(func(obj: Node2D): return obj is CharacterBody2D and obj.name == "Player");
 		if playerIndex != -1:
 			interactionCooldown = 240
-			print("Interacted with " + str(SceneID));
 			InteractedWith.emit(SceneID);

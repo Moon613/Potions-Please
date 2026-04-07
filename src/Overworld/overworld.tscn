@@ -70,9 +70,9 @@ tile_set = ExtResource("1_824ie")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2082594869]
 zoom = Vector2(7.395, 7.395)
-limit_left = -88
-limit_top = -64
-limit_right = 88
+limit_left = -92
+limit_top = -90
+limit_right = 92
 limit_bottom = 56
 limit_smoothed = true
 position_smoothing_enabled = true
