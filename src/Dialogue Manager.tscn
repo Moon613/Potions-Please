@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dkgruj3r4tsmj"]
+
+[ext_resource type="Script" uid="uid://0a70vdwmi20t" path="res://dialogue_manager.gd" id="1_muyy6"]
+
+[node name="DialogueManager" type="CanvasLayer" unique_id=1399622759]
+offset = Vector2(576, 324)
+transform = Transform2D(1, 0, 0, 1, 576, 324)
+script = ExtResource("1_muyy6")

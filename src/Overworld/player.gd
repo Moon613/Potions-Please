@@ -11,8 +11,8 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var sprinting = 2 if Input.is_key_pressed(KEY_CTRL) else 1;
-	var vertDir = Input.get_axis("ui_left", "ui_right");
-	var horDir = Input.get_axis("ui_up", "ui_down");
+	var vertDir = Input.get_axis("ui_left", "ui_right") * float(!DialogueManager.inDialogue);
+	var horDir = Input.get_axis("ui_up", "ui_down") * float(!DialogueManager.inDialogue);
 	if vertDir:
 		velocity.x = vertDir * SPEED * sprinting;
 	else:

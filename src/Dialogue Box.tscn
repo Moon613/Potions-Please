@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dsovbokdd3n7k"]
+
+[ext_resource type="Texture2D" uid="uid://o0v6bni5b4jv" path="res://Textures/Paper+WoodUI.png" id="1_mxhn5"]
+[ext_resource type="Texture2D" uid="uid://dglpm154k2ck1" path="res://Textures/YasmeenPortrait.png" id="2_e3ibl"]
+[ext_resource type="Script" uid="uid://bwn8cygsdybup" path="res://dialogue_box.gd" id="2_ih62h"]
+[ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="3_kdsf3"]
+
+[node name="DialogueBox" type="Sprite2D" unique_id=1215306681]
+z_index = 512
+scale = Vector2(0.6, 0.532)
+texture = ExtResource("1_mxhn5")
+script = ExtResource("2_ih62h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=129194833]
+offset_left = -560.00006
+offset_top = -120.00001
+offset_right = 751.99994
+offset_bottom = 109.99999
+theme_override_fonts/normal_font = ExtResource("3_kdsf3")
+theme_override_font_sizes/normal_font_size = 60
+text = "adsetdrfhgx"
+fit_content = true
+
+[node name="Portrait" type="Sprite2D" parent="." unique_id=2031238851]
+position = Vector2(-746.6667, -15.000001)
+texture = ExtResource("2_e3ibl")

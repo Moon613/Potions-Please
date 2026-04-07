@@ -1,3 +1,4 @@
+class_name MainScene
 extends Node2D
 @export var overworld: PackedScene = preload("res://Overworld/overworld.tscn")
 @export var potionBrewing: PackedScene = preload("res://Potion Brewing/potion_brewing.tscn")
