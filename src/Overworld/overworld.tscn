@@ -54,6 +54,8 @@ tile_map_data = PackedByteArray("AAD6//z/AAABAAAAAAA=")
 tile_set = ExtResource("1_824ie")
 
 [node name="Trees & Bushes Front" type="TileMapLayer" parent="." unique_id=2130607667]
+z_index = 1
+y_sort_enabled = true
 scale = Vector2(0.08, 0.08)
 tile_map_data = PackedByteArray("AAAEAAQAAgAAAAEAAAD2/wAAAgAAAAEAAAAJAO7/AgAAAAEAAAD7/+b/AgAAAAEAAAALAOj/AgADAAgAAAALAOn/AgADAAkAAAALAOr/AgADAAoAAAALAOv/AgADAAsAAAALAOz/AgADAAwAAAAMAOj/AgAEAAgAAAAMAOn/AgAEAAkAAAAMAOr/AgAEAAoAAAAMAOv/AgAEAAsAAAAMAOz/AgAEAAwAAAANAOj/AgAFAAgAAAANAOn/AgAFAAkAAAANAOr/AgAFAAoAAAANAOv/AgAFAAsAAAANAOz/AgAFAAwAAAAOAOj/AgAGAAgAAAAOAOn/AgAGAAkAAAAOAOr/AgAGAAoAAAAOAOv/AgAGAAsAAAAOAOz/AgAGAAwAAAA=")
 tile_set = ExtResource("1_824ie")
@@ -108,9 +110,9 @@ texture = ExtResource("8_yv805")
 
 [node name="Sap Trigger" parent="." unique_id=1496835320 instance=ExtResource("5_omswd")]
 z_index = 1
-position = Vector2(-2, -42)
+position = Vector2(-8, -34)
 SceneID = 6
-Size = Vector2(9, 12)
+Size = Vector2(13.18, 15.795)
 
 [node name="Dragon Egg Trigger" parent="." unique_id=725651684 instance=ExtResource("5_omswd")]
 z_index = 1
