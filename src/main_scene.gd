@@ -102,8 +102,6 @@ func _switch_scene(id: int):
 			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(eggScene);
 		8:
-			Input.warp_mouse(get_viewport_rect().size * 0.5);
-			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(mandrakeScene);
 		_:
 			print("Unknown SceneID!")

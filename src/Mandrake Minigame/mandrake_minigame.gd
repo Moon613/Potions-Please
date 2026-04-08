@@ -15,9 +15,8 @@ signal ChangeIngredients(ingr: String, amt: int);
 
 @export var number_of_mandrakes: int
 @export var number_of_fakes: int
-var mandrakesEscaped = 0;
-var mandrakesCollected = 0;
-
+var mandrakesEscaped: int = 0;
+var mandrakesCollected: int = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,9 +35,12 @@ func _ready():
 		fakeInstance.position = Vector2(randi_range(-900, 900), randi_range(-500, 360));
 		fakeInstance.name = "Shrubs" + str(n);
 		add_child(fakeInstance);
-		
+	
 	hammer_anim.play("default")
 	hammer_hitbox.disabled = true
+	hammer.visible = false
+	$Tutorial.popup();
+	$Tutorial.move_to_center();
 	pass # Replace with function body.
 
 
@@ -57,8 +59,7 @@ func _process(delta):
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		ChangeIngredients.emit("mandrake", mandrakesCollected);
-		ReturnToOverworld.emit(0);
+		minigame_end()
 	if event is InputEventMouseButton and event.is_pressed():
 		hammer_anim.play("whack")
 		hammer_hitbox.disabled = false
@@ -83,4 +84,15 @@ func _on_hammer_area_entered(area: Area2D) -> void:
 
 func _on_hammer_hit_timeout() -> void:
 	hammer_hitbox.disabled = true
+	pass # Replace with function body.
+
+
+func _on_tutorial_popup_hide() -> void:
+	Input.warp_mouse(get_viewport_rect().size * 0.5);
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	
+	for child in get_children():
+		if child.is_in_group("Mandrakes"):
+			child.activation_timer.start()
+	hammer.visible = true
 	pass # Replace with function body.

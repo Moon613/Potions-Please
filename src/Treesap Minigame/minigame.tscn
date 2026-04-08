@@ -4,12 +4,12 @@
 [ext_resource type="Script" uid="uid://ccgll20cqvqhs" path="res://Treesap Minigame/minigame.gd" id="1_nejc8"]
 [ext_resource type="Texture2D" uid="uid://kallvnua4qjc" path="res://Textures/saptree.png" id="2_73w66"]
 [ext_resource type="Script" uid="uid://drs1yxu7cbumm" path="res://Treesap Minigame/tap_control.gd" id="4_54yem"]
-[ext_resource type="Material" path="res://Treesap Minigame/Indicator_Material.tres" id="5_6wqjb"]
+[ext_resource type="Material" uid="uid://uigebe08r0x1" path="res://Treesap Minigame/Indicator_Material.tres" id="5_6wqjb"]
 [ext_resource type="Texture2D" uid="uid://r6813p1r7xeh" path="res://Textures/tap.png" id="5_oboel"]
 [ext_resource type="SpriteFrames" uid="uid://bwb6rx1wipaeh" path="res://Treesap Minigame/Indicator_Frames.tres" id="5_pscpq"]
 [ext_resource type="Texture2D" uid="uid://dxlqhh1hukk6s" path="res://Textures/Sap.png" id="8_88io5"]
-[ext_resource type="Script" path="res://Treesap Minigame/sap_ingredient.gd" id="9_78kki"]
-[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="10_78kki"]
+[ext_resource type="Script" uid="uid://dtj76gdumhd7k" path="res://Treesap Minigame/sap_ingredient.gd" id="9_78kki"]
+[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="10_78kki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nejc8"]
 size = Vector2(384, 672)

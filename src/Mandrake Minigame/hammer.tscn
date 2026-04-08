@@ -29,7 +29,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Hammer" type="Area2D" unique_id=1377296571 groups=["Hammer"]]
+[node name="Hammer" type="Area2D" unique_id=1377296571]
 top_level = true
 scale = Vector2(1.5, 1.5)
 

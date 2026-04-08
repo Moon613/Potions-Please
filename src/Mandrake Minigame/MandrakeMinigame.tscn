@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://1kf56v0ebe5u" path="res://Mandrake Minigame/mandrake_minigame.gd" id="1_nv7hg"]
 [ext_resource type="Texture2D" uid="uid://cs67jjgot1l44" path="res://Textures/MandrakeGame/MandrakePatchBG.png" id="2_2gjrs"]
 [ext_resource type="PackedScene" uid="uid://dy57pd12m8k2k" path="res://Mandrake Minigame/hammer.tscn" id="3_esnje"]
+[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="4_2gjrs"]
 
 [node name="MandrakeMinigame" type="Node2D" unique_id=1821473577]
 script = ExtResource("1_nv7hg")
@@ -16,7 +17,7 @@ texture = ExtResource("2_2gjrs")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2043261828]
 zoom = Vector2(0.6, 0.6)
 
-[node name="Hammer" parent="." unique_id=1377296571 instance=ExtResource("3_esnje")]
+[node name="Hammer" parent="." unique_id=1377296571 groups=["Hammer"] instance=ExtResource("3_esnje")]
 
 [node name="HammerCooldown" type="Timer" parent="." unique_id=645064358]
 wait_time = 0.5
@@ -27,5 +28,27 @@ autostart = true
 wait_time = 0.05
 one_shot = true
 
+[node name="Tutorial" type="Popup" parent="." unique_id=1367693479]
+oversampling_override = 1.0
+title = "Tutorial"
+position = Vector2i(0, 36)
+size = Vector2i(480, 283)
+visible = true
+script = ExtResource("4_2gjrs")
+
+[node name="Message" type="Label" parent="Tutorial" unique_id=556280101]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "
+Bop the mandrakes before they get away!"
+
+[node name="Button" type="Button" parent="Tutorial" unique_id=95242322]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Close"
+
+[connection signal="ReturnToOverworld" from="." to="." method="_on_return_to_overworld"]
 [connection signal="area_entered" from="Hammer" to="." method="_on_hammer_area_entered"]
 [connection signal="timeout" from="HammerHit" to="." method="_on_hammer_hit_timeout"]
+[connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
+[connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]

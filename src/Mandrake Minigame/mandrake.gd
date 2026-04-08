@@ -7,8 +7,8 @@ extends Area2D
 @onready var uproot_timer: Timer = $UprootTimer
 @onready var despawn_timer: Timer = $DespawnTimer
 
-@export var speed_max: float = 5
-@export var speed_min: float = 10
+@export var speed_min: float = 5
+@export var speed_max: float = 10
 @export var timer_min: float = 1
 @export var timer_max: float = 10
 var wakeup_time = 1
@@ -21,7 +21,7 @@ func _ready() -> void:
 	mandrake_hurtbox.disabled = true
 	speed = randf_range(speed_min, speed_max)
 	wakeup_time = randf_range(timer_min, timer_max)
-	activation_timer.start(wakeup_time)
+	activation_timer.wait_time = wakeup_time
 	pass # Replace with function body.
 
 
