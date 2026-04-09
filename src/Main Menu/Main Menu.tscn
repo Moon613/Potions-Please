@@ -1,68 +1,9 @@
 [gd_scene format=3 uid="uid://ddpvkv0l2wv0h"]
 
 [ext_resource type="Script" uid="uid://ceehah7li1w3b" path="res://Main Menu/main_menu.gd" id="1_ku1ks"]
-[ext_resource type="Texture2D" uid="uid://o0v6bni5b4jv" path="res://Textures/Paper+WoodUI.png" id="2_5ms5j"]
 [ext_resource type="Texture2D" uid="uid://vho3y7pnkero" path="res://Textures/TitleTypeGlow.PNG" id="2_i0jnm"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ms5j"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wlfof"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i0jnm"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bgqmh"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4wqtw"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xm72b"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_62v7d"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hx6c7"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wpo0r"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_re3ss"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4myfj"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hat6j"]
-content_margin_top = 36.0
-content_margin_bottom = 36.0
-texture = ExtResource("2_5ms5j")
+[ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="3_wlfof"]
+[ext_resource type="StyleBox" uid="uid://bq2b4hswpggoq" path="res://Main Menu/Main Menu Selection.tres" id="4_wlfof"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=993294158]
 
@@ -85,26 +26,27 @@ texture = ExtResource("2_i0jnm")
 
 [node name="New Game" type="Button" parent="Main Menu" unique_id=893188091]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.43
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -71.0
-offset_right = 91.0
-offset_bottom = -20.0
+anchor_bottom = 0.43
+offset_left = -103.0
+offset_top = -25.640015
+offset_right = 104.0
+offset_bottom = 25.359985
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_hover_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.8500209, 0.41071337, 0.7167868, 1)
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxTexture_5ms5j")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_wlfof")
-theme_override_styles/hover = SubResource("StyleBoxTexture_i0jnm")
+theme_override_fonts/font = ExtResource("3_wlfof")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("4_wlfof")
+theme_override_styles/pressed = ExtResource("4_wlfof")
+theme_override_styles/hover = ExtResource("4_wlfof")
 text = "New Game"
 
 [node name="Load Game" type="Button" parent="Main Menu" unique_id=1392912810]
@@ -114,21 +56,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -5.0
-offset_right = 91.0
-offset_bottom = 46.0
+offset_left = -103.0
+offset_top = -4.0
+offset_right = 104.0
+offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_hover_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxTexture_bgqmh")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_4wqtw")
-theme_override_styles/hover = SubResource("StyleBoxTexture_xm72b")
+theme_override_fonts/font = ExtResource("3_wlfof")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("4_wlfof")
+theme_override_styles/pressed = ExtResource("4_wlfof")
+theme_override_styles/hover = ExtResource("4_wlfof")
 text = "Load Game"
 
 [node name="Options" type="Button" parent="Main Menu" unique_id=586258182]
@@ -138,21 +81,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = 62.0
-offset_right = 91.0
-offset_bottom = 113.0
+offset_left = -103.0
+offset_top = 60.0
+offset_right = 104.0
+offset_bottom = 115.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_hover_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxTexture_62v7d")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_hx6c7")
-theme_override_styles/hover = SubResource("StyleBoxTexture_wpo0r")
+theme_override_fonts/font = ExtResource("3_wlfof")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("4_wlfof")
+theme_override_styles/pressed = ExtResource("4_wlfof")
+theme_override_styles/hover = ExtResource("4_wlfof")
 text = "Options"
 
 [node name="Quit" type="Button" parent="Main Menu" unique_id=1320097620]
@@ -162,21 +106,22 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = 124.0
-offset_right = 91.0
-offset_bottom = 175.0
+offset_left = -103.0
+offset_top = 119.0
+offset_right = 104.0
+offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_hover_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxTexture_re3ss")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_4myfj")
-theme_override_styles/hover = SubResource("StyleBoxTexture_hat6j")
+theme_override_fonts/font = ExtResource("3_wlfof")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("4_wlfof")
+theme_override_styles/pressed = ExtResource("4_wlfof")
+theme_override_styles/hover = ExtResource("4_wlfof")
 text = "Quit Game"
 
 [connection signal="pressed" from="Main Menu/New Game" to="Main Menu" method="_on_new_game_pressed"]

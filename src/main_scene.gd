@@ -10,6 +10,8 @@ extends Node2D
 @export var dragonEggs: PackedScene = preload("res://Dragon Egg Minigame/minigame.tscn")
 @export var mandrakes: PackedScene = preload("res://Mandrake Minigame/MandrakeMinigame.tscn")
 
+@export var startingScene: int = -1;
+var finishedTutorial: bool = false;
 
 @export var startingScene: int;
 
@@ -62,6 +64,9 @@ func _switch_scene(id: int):
 	match id:
 		0:
 			self.add_child(overworldScene);
+			if !finishedTutorial:
+				DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I should move to the areas with arrows above them and interact with them by pressing 'Enter' to gather ingredients", DialogueManager.Dialogue.YASMEEN));
+				finishedTutorial = true;
 		1:
 			self.add_child(potionScene);
 		2:
