@@ -13,4 +13,5 @@ func collect():
 
 func _on_body_entered(body):
 	if body.name == "Basket":
+		body.collect()
 		queue_free()

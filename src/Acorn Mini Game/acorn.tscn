@@ -19,6 +19,30 @@ shader_parameter/shake_intensity = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4kgs"]
 size = Vector2(400, 20)
 
+[sub_resource type="FontFile" id="FontFile_oqhy2"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/34/0/ascent = 0.0
+cache/0/34/0/descent = 0.0
+cache/0/34/0/underline_position = 0.0
+cache/0/34/0/underline_thickness = 0.0
+cache/0/34/0/scale = 1.0
+
 [node name="minigame" type="Node2D" unique_id=686096718]
 script = ExtResource("1_xc6ns")
 
@@ -75,6 +99,16 @@ Left or Right arrows also work."
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Close"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=960170268]
+offset_left = 542.0
+offset_top = 16.0
+offset_right = 611.0
+offset_bottom = 56.0
+theme_override_fonts/normal_font = SubResource("FontFile_oqhy2")
+theme_override_font_sizes/normal_font_size = 34
+text = "8:00"
+scroll_active = false
 
 [connection signal="MinigameEnd" from="Tree" to="." method="_on_tree_minigame_end"]
 [connection signal="timeout" from="Tree/Timer" to="Tree" method="_on_timer_timeout"]

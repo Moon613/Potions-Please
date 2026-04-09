@@ -3,11 +3,19 @@
 [ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_f86tw"]
 [ext_resource type="Texture2D" uid="uid://6rrdal8spl5j" path="res://Textures/Dragon Egg.png" id="2_m4qfj"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4qfj"]
+atlas = ExtResource("2_m4qfj")
+region = Rect2(12.5, 0, 75, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f86tw"]
+atlas = ExtResource("2_m4qfj")
+region = Rect2(12.5, 0, 75, 0)
+
 [node name="EggItem" type="Node2D" unique_id=1629014469]
 script = ExtResource("1_f86tw")
 item_name = "Dragon Egg"
-icon = ExtResource("2_m4qfj")
+icon = SubResource("AtlasTexture_m4qfj")
 is_stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1240876455]
-texture = ExtResource("2_m4qfj")
+texture = SubResource("AtlasTexture_f86tw")
