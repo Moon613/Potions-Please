@@ -78,4 +78,5 @@ text = "Close"
 
 [connection signal="MinigameEnd" from="Tree" to="." method="_on_tree_minigame_end"]
 [connection signal="timeout" from="Tree/Timer" to="Tree" method="_on_timer_timeout"]
+[connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
 [connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]

@@ -18,7 +18,6 @@ signal ShowIngredient;
 @export var number_of_fakes: int
 var mandrakesEscaped: int = 0;
 var mandrakesCollected: int = 0;
-var closedPopup: bool = false
 var gameStart: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,14 +41,17 @@ func _ready():
 	hammer_anim.play("default")
 	hammer_hitbox.disabled = true
 	hammer.visible = false
-	$Tutorial.popup();
-	$Tutorial.move_to_center();
+	if GameInfo.mandrakeTutorial:
+		$Tutorial.popup();
+		$Tutorial.move_to_center();
+	else:
+		$Tutorial.hide()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if closedPopup && !gameStart:
+	if !GameInfo.mandrakeTutorial && !gameStart:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 		
 		for child in get_children():
@@ -100,7 +102,7 @@ func _on_hammer_hit_timeout() -> void:
 
 
 func _on_tutorial_popup_hide() -> void:
-	closedPopup = true
+	GameInfo.mandrakeTutorial = false
 	pass # Replace with function body.
 
 

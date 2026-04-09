@@ -58,3 +58,9 @@ class HidingSpot:
 		self.pos = pos;
 		self.occupied = occupied;
 		self.z_index = z_index;
+
+#cleanup hidingspot array
+func _exit_tree():
+	if currentHidingSpot != -1:
+		hidingSpots[currentHidingSpot].occupied = false
+		currentHidingSpot = -1

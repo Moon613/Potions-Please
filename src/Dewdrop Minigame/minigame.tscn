@@ -95,4 +95,5 @@ text = "Close"
 [connection signal="TransitionToDrying" from="." to="Collection Jar" method="_on_minigame_transition_to_drying"]
 [connection signal="collectedDrop" from="Rag" to="." method="_on_rag_collected_drop"]
 [connection signal="DoneMoveDown" from="Collection Jar" to="." method="_on_collection_jar_done_move_down"]
+[connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
 [connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]

@@ -10,8 +10,6 @@ var tap: PackedScene = preload("res://Treesap Minigame/tap.tscn");
 var tapsPlaced: int = 0;
 var resourceAmountCollected: int = 0;
 var tapsFinishedCollecting: int = 0;
-var triggeredPopup: bool = false;
-var closedPopup: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
@@ -24,11 +22,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !triggeredPopup:
+	if GameInfo.treesapTutorial:
 		$Tutorial.popup();
 		$Tutorial.move_to_center();
-		triggeredPopup = true;
-	if closedPopup:
+	if !GameInfo.treesapTutorial:
+		$Tutorial.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 	if tapsPlaced >= numberOfTapSpots:
 		DrainTaps.emit();
@@ -93,5 +91,5 @@ func _on_ingredient_done_showing():
 
 
 func _on_tutorial_popup_hide() -> void:
-	closedPopup = true
+	GameInfo.treesapTutorial = false
 	pass # Replace with function body.

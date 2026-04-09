@@ -10,8 +10,6 @@ var _eggAmount: int;
 var dragonEggScene: PackedScene = preload("res://Dragon Egg Minigame/Dragon Egg.tscn");
 var timer: float = 0;
 var eggsObtained: int = 0;
-var triggeredPopup: bool = false;
-var closedPopup: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,27 +19,32 @@ func _ready():
 	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
+	print("adding eggs")
 	for i in _eggAmount:
+		print("instantiating egg")
 		var egg: DragonEgg = dragonEggScene.instantiate();
+		print("tracking egg")
 		egg.name = "Egg" + str(i);
+		print("add egg to group")
 		egg.add_to_group("Dragon Egg");
+		print("connecting to egg")
 		egg.eggObtained.connect(self._on_egg_obtained);
+		print("adding egg to children")
 		add_child(egg);
+	print("Scene is readied")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !triggeredPopup:
+	if GameInfo.dragoneggTutorial:
 		$Tutorial.popup();
 		$Tutorial.move_to_center();
-		triggeredPopup = true;
-		closedPopup = false;
-	if closedPopup:
+	if !GameInfo.dragoneggTutorial:
+		$Tutorial.hide()
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 		$ColorRect.material.set_shader_parameter("mousePos", get_global_mouse_position() / -(get_viewport_rect().size / $Camera2D.zoom));
 		timer += delta;
 	if timer >= _maxTimeSeconds or eggsObtained == _eggAmount:
 		ChangeIngredients.emit(GameInfo.EGGS, eggsObtained);
-		Reset();
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
 		ReturnToOverworld.emit(0);
 		self.queue_free()
@@ -49,11 +52,11 @@ func _process(delta):
 	$ColorRect/RichTextLabel.text = "%01d:%02d" % [max(_maxTimeSeconds/60-1, 0) - int(timer)/60, (maxMinutes-floori(maxMinutes))*60-int(timer)%60];
 	pass
 
-func Reset():
-	timer = 0;
-	eggsObtained = 0;
-	for child in get_children().filter(func(c:Node2D): c.is_in_group("Dragon Egg")):
-		child.queue_free();
+#func Reset():
+	#timer = 0;
+	#eggsObtained = 0;
+	#for child in get_children().filter(func(c:Node2D): c.is_in_group("Dragon Egg")):
+		#child.queue_free();
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -65,4 +68,4 @@ func _on_egg_obtained():
 	eggsObtained += 1;
 
 func _on_tutorial_popup_hide() -> void:
-	closedPopup = true;
+	GameInfo.dragoneggTutorial = false

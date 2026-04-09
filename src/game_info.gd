@@ -5,6 +5,13 @@ var busy = false
 
 var ruinedPotionSprite: Texture2D = preload("res://Textures/BurntPotion.png");
 
+# Flags for saving various states
+var dewdropTutorial: bool = true
+var acornsTutorial: bool = true
+var dragoneggTutorial: bool = true
+var treesapTutorial: bool = true
+var mandrakeTutorial: bool = true
+
 # Ingredients
 	# Minigame
 const MOSS: String = "moss";

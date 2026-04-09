@@ -6,12 +6,15 @@ signal RemoveJar;
 
 @export var dewdrop: PackedScene = preload("res://Dewdrop Minigame/dewdrop.tscn")
 @export var number_of_dewdrops: int
+@onready var tutorial: Popup = $Tutorial
 var numberOfDropsCollected = 0;
 var removedJar: bool = false;
 var dropsDripped = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !GameInfo.dewdropTutorial:
+		tutorial.hide()
 	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
@@ -50,3 +53,8 @@ func _on_collection_jar_done_move_down():
 	ChangeIngredients.emit("dewdrops", 1);
 	ReturnToOverworld.emit(0);
 	self.queue_free()
+
+
+func _on_tutorial_popup_hide() -> void:
+	GameInfo.dewdropTutorial = false
+	pass # Replace with function body.
