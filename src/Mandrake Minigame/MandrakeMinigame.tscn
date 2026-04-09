@@ -4,13 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://cs67jjgot1l44" path="res://Textures/MandrakeGame/MandrakePatchBG.png" id="2_2gjrs"]
 [ext_resource type="PackedScene" uid="uid://dy57pd12m8k2k" path="res://Mandrake Minigame/hammer.tscn" id="3_esnje"]
 [ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="4_2gjrs"]
+[ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Textures/MandrakeGame/MandrakeItem.png" id="5_5p73w"]
+[ext_resource type="Script" uid="uid://ekw2mwhxvg6y" path="res://Mandrake Minigame/MandrakeIngredient.gd" id="6_nmbyf"]
 
 [node name="MandrakeMinigame" type="Node2D" unique_id=1821473577]
+y_sort_enabled = true
 script = ExtResource("1_nv7hg")
 number_of_mandrakes = 6
 number_of_fakes = 24
 
 [node name="BG" type="Sprite2D" parent="." unique_id=1146027918]
+z_index = -1
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_2gjrs")
 
@@ -47,8 +51,17 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Close"
 
+[node name="MandrakeIngredient" type="Sprite2D" parent="." unique_id=205717249]
+top_level = true
+position = Vector2(0, 902)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_5p73w")
+script = ExtResource("6_nmbyf")
+
 [connection signal="ReturnToOverworld" from="." to="." method="_on_return_to_overworld"]
+[connection signal="ShowIngredient" from="." to="MandrakeIngredient" method="_on_mandrake_minigame_show_ingredient"]
 [connection signal="area_entered" from="Hammer" to="." method="_on_hammer_area_entered"]
 [connection signal="timeout" from="HammerHit" to="." method="_on_hammer_hit_timeout"]
 [connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
 [connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="IngredientDoneShowing" from="MandrakeIngredient" to="." method="_on_mandrake_ingredient_ingredient_done_showing"]

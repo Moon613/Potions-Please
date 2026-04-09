@@ -15,6 +15,7 @@ var closedPopup: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.warp_mouse(get_viewport_rect().size * 0.5);
 	_maxTimeSeconds = 60 * maxMinutes;
 	_eggAmount = clamp(eggAmount, 1, DragonEgg.hidingSpots.size()-1);
 	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
@@ -40,6 +41,7 @@ func _process(delta):
 	if timer >= _maxTimeSeconds or eggsObtained == _eggAmount:
 		ChangeIngredients.emit(GameInfo.EGGS, eggsObtained);
 		Reset();
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 		ReturnToOverworld.emit(0);
 	
 	$ColorRect/RichTextLabel.text = "%01d:%02d" % [max(_maxTimeSeconds/60-1, 0) - int(timer)/60, (maxMinutes-floori(maxMinutes))*60-int(timer)%60];
@@ -61,3 +63,4 @@ func _on_egg_obtained():
 
 func _on_tutorial_popup_hide() -> void:
 	closedPopup = true;
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;

@@ -1,6 +1,7 @@
 extends Node2D
 signal ReturnToOverworld(id: int);
 signal ChangeIngredients(ingr: String, amt: int);
+signal ShowIngredient;
 
 
 
@@ -54,7 +55,7 @@ func _process(delta):
 				mandrakesEscaped += 1
 	
 	if (mandrakesCollected + mandrakesEscaped) >= number_of_mandrakes:
-		minigame_end()
+		ShowIngredient.emit()
 
 
 func _input(event):
@@ -71,6 +72,7 @@ func minigame_end():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	ChangeIngredients.emit("mandrake", mandrakesCollected);
 	ReturnToOverworld.emit(0);
+	self.queue_free()
 
 
 func _on_hammer_area_entered(area: Area2D) -> void:
@@ -95,4 +97,10 @@ func _on_tutorial_popup_hide() -> void:
 		if child.is_in_group("Mandrakes"):
 			child.activation_timer.start()
 	hammer.visible = true
+	pass # Replace with function body.
+
+
+func _on_mandrake_ingredient_ingredient_done_showing() -> void:
+	print("Movie done")
+	minigame_end()
 	pass # Replace with function body.

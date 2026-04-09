@@ -13,7 +13,8 @@ var tapsFinishedCollecting: int = 0;
 var triggeredPopup: bool = false;
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready():	
+	Input.warp_mouse(get_viewport_rect().size * 0.5);
 	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
@@ -84,3 +85,8 @@ func _on_tap_sap_collection(resourceAmount: int):
 func _on_ingredient_done_showing():
 	ChangeIngredients.emit("sap", resourceAmountCollected);
 	ReturnToOverworld.emit(0);
+
+
+func _on_tutorial_popup_hide() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
+	pass # Replace with function body.

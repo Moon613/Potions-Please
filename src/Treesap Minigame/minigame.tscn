@@ -83,4 +83,5 @@ text = "Close"
 [connection signal="ShowIngredient" from="." to="SapIngredient" method="_on_minigame_show_ingredient"]
 [connection signal="PlaceTap" from="TapControl" to="." method="_on_tap_control_place_tap"]
 [connection signal="IngredientDoneShowing" from="SapIngredient" to="." method="_on_ingredient_done_showing"]
+[connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
 [connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]

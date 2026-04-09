@@ -50,8 +50,8 @@ func _ready() -> void:
 	var eggInstance = dragonEggs.instantiate();
 	eggInstance.name = "Dragon Eggs Minigame"
 	
-	var mandrakeInstance = mandrakes.instantiate();
-	mandrakeInstance.name = "Mandrake Minigame"
+	#var mandrakeInstance = mandrakes.instantiate();
+	#mandrakeInstance.name = "Mandrake Minigame"
 	
 	add_child(mainMenuInstance);
 	
@@ -63,7 +63,7 @@ func _ready() -> void:
 	acornScene = acornInstance;
 	sapScene = sapInstance;
 	eggScene = eggInstance;
-	mandrakeScene = mandrakeInstance;
+	#mandrakeScene = mandrakeInstance;
 	
 	if startingScene != -1:
 		_switch_scene(startingScene);
@@ -94,14 +94,12 @@ func _switch_scene(id: int):
 		5:
 			self.add_child(acornScene);
 		6:
-			Input.warp_mouse(get_viewport_rect().size * 0.5);
-			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(sapScene);
 		7:
-			Input.warp_mouse(get_viewport_rect().size * 0.5);
-			Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 			self.add_child(eggScene);
 		8:
+			mandrakeScene = mandrakes.instantiate()
+			#mandrakeScene.name = "Mandrakes Minigame"
 			self.add_child(mandrakeScene);
 		_:
 			print("Unknown SceneID!")
