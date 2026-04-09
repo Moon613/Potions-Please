@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_g5uc5"]
 [ext_resource type="Texture2D" uid="uid://dxlqhh1hukk6s" path="res://Textures/Sap.png" id="2_yoya4"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5uc5"]
+atlas = ExtResource("2_yoya4")
+region = Rect2(0, -10, 0, 80)
+
 [node name="SapItem" type="Node2D" unique_id=1881400684]
 script = ExtResource("1_g5uc5")
 item_name = "Tree Sap"
-icon = ExtResource("2_yoya4")
+icon = SubResource("AtlasTexture_g5uc5")
 is_stackable = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=851779567]

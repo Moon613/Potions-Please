@@ -14,3 +14,6 @@ func _physics_process(_delta):
 	
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
+
+func collect():
+	$"..".acornsCollected += 1
