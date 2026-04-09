@@ -53,7 +53,6 @@ func _ready():
 func _process(delta):
 	if !GameInfo.mandrakeTutorial && !gameStart:
 		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
-		
 		for child in get_children():
 			if child.is_in_group("Mandrakes"):
 				child.activation_timer.start()
@@ -103,10 +102,21 @@ func _on_hammer_hit_timeout() -> void:
 
 func _on_tutorial_popup_hide() -> void:
 	GameInfo.mandrakeTutorial = false
+	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	pass # Replace with function body.
 
 
 func _on_mandrake_ingredient_ingredient_done_showing() -> void:
 	print("Movie done")
 	minigame_end()
+	pass # Replace with function body.
+
+
+func _on_info_button_pressed() -> void:
+	GameInfo.mandrakeTutorial = true
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$Tutorial.popup();
+	$Tutorial.move_to_center();
 	pass # Replace with function body.
