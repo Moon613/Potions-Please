@@ -8,6 +8,7 @@ signal RemoveJar;
 @export var number_of_dewdrops: int
 var numberOfDropsCollected = 0;
 var removedJar: bool = false;
+var dropsDripped = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,7 +30,8 @@ func _process(delta):
 	for child in get_children():
 		if child is RigidBody2D and child.position.y > 380:
 			remove_child(child);
-	if get_children().size() == 4 and $Rag.farthestStretch >= 1.8 and !removedJar:
+			dropsDripped += 1
+	if dropsDripped >= 4 and $Rag.farthestStretch >= 1.8 and !removedJar:
 		$"Collection Jar".frame = 1;
 		RemoveJar.emit();
 		removedJar = true;
@@ -42,7 +44,9 @@ func _on_rag_collected_drop():
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		ReturnToOverworld.emit(0);
+		self.queue_free()
 
 func _on_collection_jar_done_move_down():
 	ChangeIngredients.emit("dewdrops", 1);
 	ReturnToOverworld.emit(0);
+	self.queue_free()

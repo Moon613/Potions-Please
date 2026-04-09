@@ -36,13 +36,15 @@ func _process(delta):
 		triggeredPopup = true;
 		closedPopup = false;
 	if closedPopup:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 		$ColorRect.material.set_shader_parameter("mousePos", get_global_mouse_position() / -(get_viewport_rect().size / $Camera2D.zoom));
 		timer += delta;
 	if timer >= _maxTimeSeconds or eggsObtained == _eggAmount:
 		ChangeIngredients.emit(GameInfo.EGGS, eggsObtained);
 		Reset();
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
 		ReturnToOverworld.emit(0);
+		self.queue_free()
 	
 	$ColorRect/RichTextLabel.text = "%01d:%02d" % [max(_maxTimeSeconds/60-1, 0) - int(timer)/60, (maxMinutes-floori(maxMinutes))*60-int(timer)%60];
 	pass
@@ -57,10 +59,10 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
 		ReturnToOverworld.emit(0);
+		self.queue_free()
 
 func _on_egg_obtained():
 	eggsObtained += 1;
 
 func _on_tutorial_popup_hide() -> void:
 	closedPopup = true;
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;

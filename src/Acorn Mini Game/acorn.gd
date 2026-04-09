@@ -11,3 +11,10 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		ReturnToOverworld.emit(0);
+		self.queue_free()
+
+
+func _on_tree_minigame_end() -> void:
+	ReturnToOverworld.emit(0);
+	self.queue_free()
+	pass # Replace with function body.

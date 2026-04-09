@@ -7,7 +7,7 @@
 [ext_resource type="Shader" uid="uid://d245ild5vhgje" path="res://Acorn Mini Game/treeshake.gdshader" id="3_xvegq"]
 [ext_resource type="Script" uid="uid://cdae412rdiih5" path="res://Acorn Mini Game/basket.gd" id="4_bi5ov"]
 [ext_resource type="Texture2D" uid="uid://bwmwancl640ld" path="res://Textures/basket.png" id="4_w4kgs"]
-[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
+[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1tt5"]
 size = Vector2(500, 500)
@@ -76,5 +76,6 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Close"
 
+[connection signal="MinigameEnd" from="Tree" to="." method="_on_tree_minigame_end"]
 [connection signal="timeout" from="Tree/Timer" to="Tree" method="_on_timer_timeout"]
 [connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]

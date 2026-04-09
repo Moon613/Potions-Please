@@ -18,9 +18,11 @@ signal ShowIngredient;
 @export var number_of_fakes: int
 var mandrakesEscaped: int = 0;
 var mandrakesCollected: int = 0;
-
+var closedPopup: bool = false
+var gameStart: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.warp_mouse(get_viewport_rect().size * 0.5);
 	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
@@ -47,6 +49,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if closedPopup && !gameStart:
+		Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+		
+		for child in get_children():
+			if child.is_in_group("Mandrakes"):
+				child.activation_timer.start()
+		hammer.visible = true
+		gameStart = true
 	hammer.position = get_global_mouse_position()
 	for child in get_children():
 		if child.is_in_group("Mandrakes"):
@@ -90,13 +100,7 @@ func _on_hammer_hit_timeout() -> void:
 
 
 func _on_tutorial_popup_hide() -> void:
-	Input.warp_mouse(get_viewport_rect().size * 0.5);
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
-	
-	for child in get_children():
-		if child.is_in_group("Mandrakes"):
-			child.activation_timer.start()
-	hammer.visible = true
+	closedPopup = true
 	pass # Replace with function body.
 
 

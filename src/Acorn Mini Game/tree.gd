@@ -5,11 +5,10 @@ extends Area2D
 var shake_accumulator = 0.0
 var is_grabbing = false
 var game_active = true
-signal ReturnToOverworld(id: int);
+signal MinigameEnd
 
 func _ready() -> void:
-	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
-		ReturnToOverworld.connect(get_tree().current_scene._switch_scene)
+	pass
 
 func _input_event(_viewport, event, _shape_idx):
 	if game_active and event is InputEventMouseButton and event.pressed:
@@ -41,7 +40,8 @@ func _on_timer_timeout():
 	game_active = false
 	is_grabbing = false
 	print("Minigame Over!")
-	ReturnToOverworld.emit(0);
+	MinigameEnd.emit()
+	
 
 func drop_acorns():
 	var acorns = acorns_scene.instantiate()

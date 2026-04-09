@@ -35,35 +35,14 @@ func _ready() -> void:
 	var insideInstance = insideHouse.instantiate();
 	insideInstance.name = "Inside House";
 	
-	var dewdropInstance = dewdrops.instantiate();
-	dewdropInstance.name = "Dewdrop Collecting";
-	
 	var mainMenuInstance = mainMenu.instantiate();
 	mainMenuInstance.name = "Main Menu";
-	
-	var acornInstance = acorns.instantiate();
-	acornInstance.name = "Acorn Minigame"
-	
-	var sapInstance = treesap.instantiate();
-	sapInstance.name = "Treesap Minigame"
-	
-	var eggInstance = dragonEggs.instantiate();
-	eggInstance.name = "Dragon Eggs Minigame"
-	
-	#var mandrakeInstance = mandrakes.instantiate();
-	#mandrakeInstance.name = "Mandrake Minigame"
-	
 	add_child(mainMenuInstance);
 	
 	overworldScene = overworldInstance;
 	potionScene = brewingInstance;
 	insideScene = insideInstance;
-	dewdropScene = dewdropInstance;
 	mainMenuScene = mainMenuInstance;
-	acornScene = acornInstance;
-	sapScene = sapInstance;
-	eggScene = eggInstance;
-	#mandrakeScene = mandrakeInstance;
 	
 	if startingScene != -1:
 		_switch_scene(startingScene);
@@ -88,18 +67,31 @@ func _switch_scene(id: int):
 		2:
 			self.add_child(insideScene);
 		3:
+			var dewdropInstance = dewdrops.instantiate();
+			dewdropInstance.name = "Dewdrop Collecting";
+			dewdropScene = dewdropInstance;
 			self.add_child(dewdropScene);
 		4:
 			self.add_child(mainMenuScene);
 		5:
+			var acornInstance = acorns.instantiate();
+			acornInstance.name = "Acorn Minigame"
+			acornScene = acornInstance;
 			self.add_child(acornScene);
 		6:
+			var sapInstance = treesap.instantiate();
+			sapInstance.name = "Treesap Minigame"
+			sapScene = sapInstance;
 			self.add_child(sapScene);
 		7:
+			var eggInstance = dragonEggs.instantiate();
+			eggInstance.name = "Dragon Eggs Minigame"
+			eggScene = eggInstance;
 			self.add_child(eggScene);
 		8:
-			mandrakeScene = mandrakes.instantiate()
-			#mandrakeScene.name = "Mandrakes Minigame"
+			var mandrakeInstance = mandrakes.instantiate()
+			mandrakeInstance.name = "Mandrakes Minigame"
+			mandrakeScene = mandrakeInstance
 			self.add_child(mandrakeScene);
 		_:
 			print("Unknown SceneID!")

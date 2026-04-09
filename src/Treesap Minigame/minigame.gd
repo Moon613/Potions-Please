@@ -11,6 +11,7 @@ var tapsPlaced: int = 0;
 var resourceAmountCollected: int = 0;
 var tapsFinishedCollecting: int = 0;
 var triggeredPopup: bool = false;
+var closedPopup: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():	
@@ -27,6 +28,8 @@ func _process(delta):
 		$Tutorial.popup();
 		$Tutorial.move_to_center();
 		triggeredPopup = true;
+	if closedPopup:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 	if tapsPlaced >= numberOfTapSpots:
 		DrainTaps.emit();
 		tapsPlaced = 0;
@@ -59,6 +62,7 @@ func Reset():
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		ReturnToOverworld.emit(0);
+		self.queue_free()
 
 func _on_tap_control_place_tap(placedTapSpot: Vector2) -> void:
 	var tapInstance = tap.instantiate();
@@ -85,8 +89,9 @@ func _on_tap_sap_collection(resourceAmount: int):
 func _on_ingredient_done_showing():
 	ChangeIngredients.emit("sap", resourceAmountCollected);
 	ReturnToOverworld.emit(0);
+	self.queue_free()
 
 
 func _on_tutorial_popup_hide() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
+	closedPopup = true
 	pass # Replace with function body.
