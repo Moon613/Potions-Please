@@ -13,8 +13,6 @@ extends Node2D
 @export var startingScene: int = -1;
 var finishedTutorial: bool = false;
 
-@export var startingScene: int;
-
 @export var busy_scenes = [1, 3, 4, 5, 6, 7, 8]
 var overworldScene;
 var potionScene;
