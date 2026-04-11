@@ -20,14 +20,26 @@ func _ready():
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
 	
-	if GameInfo.resources["dewdrops"] == 0:
+	if GameInfo.resources[GameInfo.DEWDROPS] == 0:
 		$DewdropText.visible = false;
 	else:
 		$DewdropText.visible = true;
-	if GameInfo.resources["acorns"] == 0:
+	if GameInfo.resources[GameInfo.ACORNS] == 0:
 		$AcornText.visible = false;
 	else:
 		$AcornText.visible = true;
+	if GameInfo.resources[GameInfo.EGGS] == 0:
+		$DragonEggText.visible = false;
+	else:
+		$DragonEggText.visible = true;
+	if GameInfo.resources[GameInfo.MANDRAKE] == 0:
+		$MandrakeText.visible = false;
+	else:
+		$MandrakeText.visible = true;
+	if GameInfo.resources[GameInfo.SAP] == 0:
+		$SapText.visible = false;
+	else:
+		$SapText.visible = true;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,12 +63,14 @@ func SpawnPotion(type: String, image: Texture2D):
 	potion.name = "spawned potion";
 	potion.set_script(load("res://Potion Brewing/spawned_potion.gd"))
 	add_child(potion);
-	
 
 func ReloadIngredientCount():
 	#$HoneyText.text = get_tree().current_scene.resources[]
-	$DewdropText.text = str(GameInfo.resources["dewdrops"]);
-	$AcornText.text = str(GameInfo.resources["acorns"]);
+	$DewdropText.text = str(GameInfo.resources[GameInfo.DEWDROPS]);
+	$AcornText.text = str(GameInfo.resources[GameInfo.ACORNS]);
+	$DragonEggText.text = str(GameInfo.resources[GameInfo.EGGS]);
+	$MandrakeText.text = str(GameInfo.resources[GameInfo.MANDRAKE]);
+	$SapText.text = str(GameInfo.resources[GameInfo.SAP]);
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):

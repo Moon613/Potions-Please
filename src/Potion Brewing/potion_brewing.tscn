@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bliwhqis5rdk" path="res://Textures/Background Potion UI.png" id="2_lm47i"]
 [ext_resource type="Texture2D" uid="uid://vxwtbumruws3" path="res://Textures/Bookshelf.png" id="3_lm47i"]
 [ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Textures/Nyx.png" id="4_dr7va"]
+[ext_resource type="Texture2D" uid="uid://dxlqhh1hukk6s" path="res://Textures/Sap.png" id="4_xbtdn"]
 [ext_resource type="Texture2D" uid="uid://cxns4cgtw3ynk" path="res://Textures/Caldron Front.png" id="6_lm47i"]
 [ext_resource type="Script" uid="uid://dsxhue2e16y4i" path="res://Potion Brewing/Spoon.gd" id="6_xks6y"]
 [ext_resource type="Texture2D" uid="uid://dy2m2ayd1ulkh" path="res://Textures/Spoon.png" id="7_3ii5e"]
@@ -27,7 +28,9 @@
 [ext_resource type="Texture2D" uid="uid://bvng0yafiqfry" path="res://Textures/acorn.png" id="25_sc17n"]
 [ext_resource type="Texture2D" uid="uid://b5mmkloiikro2" path="res://Textures/GingerRoot.png" id="26_7ndod"]
 [ext_resource type="Script" uid="uid://0bn1itn1vduw" path="res://Potion Brewing/stir_trigger.gd" id="26_m5i5b"]
+[ext_resource type="Texture2D" uid="uid://6rrdal8spl5j" path="res://Textures/Dragon Egg.png" id="27_5pr62"]
 [ext_resource type="Theme" uid="uid://bguvjymyr647x" path="res://Potion Brewing/Infinite Text.tres" id="27_yffeo"]
+[ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Textures/MandrakeGame/MandrakeItem.png" id="28_y8v3d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc17n"]
 size = Vector2(493.45544, 23.248623)
@@ -84,7 +87,7 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("21_xbtdn")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ako6u"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xbtdn"]
 resource_local_to_scene = true
 radius = 49.76
 height = 198.94
@@ -100,6 +103,16 @@ height = 182.85713
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pr62"]
 size = Vector2(151.18, 117.365)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ako6u"]
+radius = 47.142822
+height = 134.2857
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ako6u"]
+radius = 82.85714
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fim6t"]
+radius = 31.28
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sc17n"]
 radius = 48.0
@@ -345,11 +358,11 @@ value = 5.0
 texture_under = SubResource("AtlasTexture_a3cj8")
 texture_progress = SubResource("AtlasTexture_m6y6x")
 
-[node name="Honey" parent="." unique_id=1075928097 instance=ExtResource("21_m6y6x")]
+[node name="Honey" parent="." unique_id=56422247 instance=ExtResource("21_m6y6x")]
 position = Vector2(-829, -212)
 mass = 0.61
 Sprite = ExtResource("22_cgc07")
-Shape = SubResource("CapsuleShape2D_ako6u")
+Shape = SubResource("CapsuleShape2D_xbtdn")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
@@ -385,6 +398,46 @@ position = Vector2(-723, -182)
 Sprite = ExtResource("26_7ndod")
 Shape = SubResource("RectangleShape2D_5pr62")
 Type = "ginger"
+
+[node name="Dragon Egg" parent="." unique_id=740306055 instance=ExtResource("21_m6y6x")]
+position = Vector2(-601, 18)
+Sprite = ExtResource("27_5pr62")
+Shape = SubResource("CapsuleShape2D_ako6u")
+Type = "eggs"
+
+[node name="Sprite2D" parent="Dragon Egg" index="0" unique_id=806268029]
+scale = Vector2(1.6266667, 1.6266665)
+texture = ExtResource("27_5pr62")
+
+[node name="CollisionShape2D" parent="Dragon Egg" index="1" unique_id=1255018325]
+shape = SubResource("CapsuleShape2D_ako6u")
+
+[node name="Mandrake" parent="." unique_id=941661909 instance=ExtResource("21_m6y6x")]
+position = Vector2(-501, 7)
+Sprite = ExtResource("28_y8v3d")
+Shape = SubResource("CircleShape2D_ako6u")
+Type = "mandrake"
+
+[node name="Sprite2D" parent="Mandrake" index="0" unique_id=806268029]
+scale = Vector2(0.27734372, 0.27734372)
+texture = ExtResource("28_y8v3d")
+
+[node name="CollisionShape2D" parent="Mandrake" index="1" unique_id=1255018325]
+shape = SubResource("CircleShape2D_ako6u")
+
+[node name="Sap" parent="." unique_id=1075928097 instance=ExtResource("21_m6y6x")]
+position = Vector2(-407, 44)
+Sprite = ExtResource("4_xbtdn")
+Shape = SubResource("CircleShape2D_fim6t")
+Type = "sap"
+
+[node name="Sprite2D" parent="Sap" index="0" unique_id=806268029]
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_xbtdn")
+
+[node name="CollisionShape2D" parent="Sap" index="1" unique_id=1255018325]
+position = Vector2(0, -1.9999999)
+shape = SubResource("CircleShape2D_fim6t")
 
 [node name="DewdropText" type="RichTextLabel" parent="." unique_id=734500506]
 offset_left = -746.0
@@ -423,6 +476,30 @@ offset_right = -658.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
+
+[node name="DragonEggText" type="RichTextLabel" parent="." unique_id=225149306]
+offset_left = -569.0
+offset_top = 42.0
+offset_right = -552.0
+offset_bottom = 82.0
+theme_override_font_sizes/normal_font_size = 29
+text = "1"
+
+[node name="MandrakeText" type="RichTextLabel" parent="." unique_id=1584366672]
+offset_left = -459.0
+offset_top = 42.0
+offset_right = -442.0
+offset_bottom = 82.0
+theme_override_font_sizes/normal_font_size = 29
+text = "1"
+
+[node name="SapText" type="RichTextLabel" parent="." unique_id=856901927]
+offset_left = -390.0
+offset_top = 42.0
+offset_right = -373.0
+offset_bottom = 82.0
+theme_override_font_sizes/normal_font_size = 29
+text = "1"
 
 [node name="Stir Trigger 1" type="Area2D" parent="." unique_id=103883032]
 z_index = 5
@@ -476,3 +553,6 @@ shape = SubResource("CircleShape2D_yffeo")
 
 [editable path="Dewdrops"]
 [editable path="Acorn"]
+[editable path="Dragon Egg"]
+[editable path="Mandrake"]
+[editable path="Sap"]
