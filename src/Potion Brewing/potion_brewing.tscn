@@ -31,6 +31,12 @@
 [ext_resource type="Texture2D" uid="uid://6rrdal8spl5j" path="res://Textures/Dragon Egg.png" id="27_5pr62"]
 [ext_resource type="Theme" uid="uid://bguvjymyr647x" path="res://Potion Brewing/Infinite Text.tres" id="27_yffeo"]
 [ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Textures/MandrakeGame/MandrakeItem.png" id="28_y8v3d"]
+[ext_resource type="Texture2D" uid="uid://dwlrqfnpn6ctx" path="res://Textures/Lavender.png" id="30_ako6u"]
+[ext_resource type="Texture2D" uid="uid://d2id1s064vj60" path="res://Textures/Milk.png" id="31_fim6t"]
+[ext_resource type="Texture2D" uid="uid://ceh0a6mexdf3j" path="res://Textures/Fire Salts.png" id="32_a67xv"]
+[ext_resource type="Texture2D" uid="uid://ccevdp500tae4" path="res://Textures/Garlic.png" id="33_y54vx"]
+[ext_resource type="Texture2D" uid="uid://d2k3ne2c7bw25" path="res://Textures/Fairy Wings.png" id="34_isq66"]
+[ext_resource type="Texture2D" uid="uid://cmwi3r522hfvt" path="res://Textures/Moss.png" id="35_isq66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc17n"]
 size = Vector2(493.45544, 23.248623)
@@ -87,12 +93,12 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("21_xbtdn")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xbtdn"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_isq66"]
 resource_local_to_scene = true
 radius = 49.76
 height = 198.94
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fim6t"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nhwd"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -113,6 +119,25 @@ radius = 82.85714
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fim6t"]
 radius = 31.28
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fim6t"]
+size = Vector2(100.57, 143.215)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y54vx"]
+radius = 40.58
+height = 141.66
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v25o"]
+size = Vector2(59.785, 142.67)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nhwd"]
+radius = 59.71
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mxup"]
+size = Vector2(101.18, 151.46)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hb5qm"]
+radius = 69.65
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sc17n"]
 radius = 48.0
@@ -362,14 +387,14 @@ texture_progress = SubResource("AtlasTexture_m6y6x")
 position = Vector2(-829, -212)
 mass = 0.61
 Sprite = ExtResource("22_cgc07")
-Shape = SubResource("CapsuleShape2D_xbtdn")
+Shape = SubResource("CapsuleShape2D_isq66")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-803, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_fim6t")
+Shape = SubResource("CapsuleShape2D_1nhwd")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -377,10 +402,10 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_fim6t")
+shape = SubResource("CapsuleShape2D_1nhwd")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
-position = Vector2(-689, 2)
+position = Vector2(-624, 2)
 mass = 0.212
 Sprite = ExtResource("25_sc17n")
 Shape = SubResource("CapsuleShape2D_7ndod")
@@ -400,7 +425,7 @@ Shape = SubResource("RectangleShape2D_5pr62")
 Type = "ginger"
 
 [node name="Dragon Egg" parent="." unique_id=740306055 instance=ExtResource("21_m6y6x")]
-position = Vector2(-601, 18)
+position = Vector2(-473, 18)
 Sprite = ExtResource("27_5pr62")
 Shape = SubResource("CapsuleShape2D_ako6u")
 Type = "eggs"
@@ -413,7 +438,7 @@ texture = ExtResource("27_5pr62")
 shape = SubResource("CapsuleShape2D_ako6u")
 
 [node name="Mandrake" parent="." unique_id=941661909 instance=ExtResource("21_m6y6x")]
-position = Vector2(-501, 7)
+position = Vector2(-627, 211)
 Sprite = ExtResource("28_y8v3d")
 Shape = SubResource("CircleShape2D_ako6u")
 Type = "mandrake"
@@ -426,7 +451,7 @@ texture = ExtResource("28_y8v3d")
 shape = SubResource("CircleShape2D_ako6u")
 
 [node name="Sap" parent="." unique_id=1075928097 instance=ExtResource("21_m6y6x")]
-position = Vector2(-407, 44)
+position = Vector2(-788, 249)
 Sprite = ExtResource("4_xbtdn")
 Shape = SubResource("CircleShape2D_fim6t")
 Type = "sap"
@@ -439,6 +464,42 @@ texture = ExtResource("4_xbtdn")
 position = Vector2(0, -1.9999999)
 shape = SubResource("CircleShape2D_fim6t")
 
+[node name="Lavender" parent="." unique_id=1111828340 instance=ExtResource("21_m6y6x")]
+position = Vector2(-626, -190)
+Sprite = ExtResource("30_ako6u")
+Shape = SubResource("RectangleShape2D_fim6t")
+Type = "lavender"
+
+[node name="Milk" parent="." unique_id=868895738 instance=ExtResource("21_m6y6x")]
+position = Vector2(-553, -190)
+Sprite = ExtResource("31_fim6t")
+Shape = SubResource("CapsuleShape2D_y54vx")
+Type = "milk"
+
+[node name="Salt" parent="." unique_id=535384879 instance=ExtResource("21_m6y6x")]
+position = Vector2(-480, -190)
+Sprite = ExtResource("32_a67xv")
+Shape = SubResource("RectangleShape2D_3v25o")
+Type = "salts"
+
+[node name="Garlic" parent="." unique_id=381945610 instance=ExtResource("21_m6y6x")]
+position = Vector2(-828, 431)
+Sprite = ExtResource("33_y54vx")
+Shape = SubResource("CircleShape2D_1nhwd")
+Type = "garlic"
+
+[node name="Fairy Wings" parent="." unique_id=742879731 instance=ExtResource("21_m6y6x")]
+position = Vector2(-733, 418)
+Sprite = ExtResource("34_isq66")
+Shape = SubResource("RectangleShape2D_0mxup")
+Type = "wings"
+
+[node name="Moss" parent="." unique_id=655631487 instance=ExtResource("21_m6y6x")]
+position = Vector2(-627, 422)
+Sprite = ExtResource("35_isq66")
+Shape = SubResource("CircleShape2D_hb5qm")
+Type = "moss"
+
 [node name="DewdropText" type="RichTextLabel" parent="." unique_id=734500506]
 offset_left = -746.0
 offset_top = 42.0
@@ -450,13 +511,37 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "1"
 
 [node name="AcornText" type="RichTextLabel" parent="." unique_id=1311890683]
-offset_left = -656.0
+offset_left = -591.0
 offset_top = 42.0
-offset_right = -639.0
+offset_right = -574.0
 offset_bottom = 83.0
 theme = ExtResource("27_yffeo")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "1"
+
+[node name="DragonEggText" type="RichTextLabel" parent="." unique_id=225149306]
+offset_left = -441.0
+offset_top = 42.0
+offset_right = -424.0
+offset_bottom = 82.0
+theme_override_font_sizes/normal_font_size = 29
+text = "1"
+
+[node name="MandrakeText" type="RichTextLabel" parent="." unique_id=1584366672]
+offset_left = -585.0
+offset_top = 246.0
+offset_right = -568.0
+offset_bottom = 286.0
+theme_override_font_sizes/normal_font_size = 29
+text = "1"
+
+[node name="SapText" type="RichTextLabel" parent="." unique_id=856901927]
+offset_left = -771.0
+offset_top = 247.0
+offset_right = -754.0
+offset_bottom = 287.0
+theme_override_font_sizes/normal_font_size = 29
 text = "1"
 
 [node name="HoneyText" type="RichTextLabel" parent="." unique_id=1677473520]
@@ -477,29 +562,53 @@ offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
 
-[node name="DragonEggText" type="RichTextLabel" parent="." unique_id=225149306]
-offset_left = -569.0
-offset_top = 42.0
-offset_right = -552.0
-offset_bottom = 82.0
-theme_override_font_sizes/normal_font_size = 29
-text = "1"
+[node name="LavenderText" type="RichTextLabel" parent="." unique_id=529834224]
+offset_left = -606.0
+offset_top = -166.0
+offset_right = -585.0
+offset_bottom = -125.0
+theme = ExtResource("27_yffeo")
+text = "∞"
 
-[node name="MandrakeText" type="RichTextLabel" parent="." unique_id=1584366672]
-offset_left = -459.0
-offset_top = 42.0
-offset_right = -442.0
-offset_bottom = 82.0
-theme_override_font_sizes/normal_font_size = 29
-text = "1"
+[node name="MilkText" type="RichTextLabel" parent="." unique_id=17329837]
+offset_left = -534.0
+offset_top = -166.0
+offset_right = -513.0
+offset_bottom = -125.0
+theme = ExtResource("27_yffeo")
+text = "∞"
 
-[node name="SapText" type="RichTextLabel" parent="." unique_id=856901927]
-offset_left = -390.0
-offset_top = 42.0
-offset_right = -373.0
-offset_bottom = 82.0
-theme_override_font_sizes/normal_font_size = 29
-text = "1"
+[node name="SaltText" type="RichTextLabel" parent="." unique_id=2085918353]
+offset_left = -460.0
+offset_top = -166.0
+offset_right = -439.0
+offset_bottom = -125.0
+theme = ExtResource("27_yffeo")
+text = "∞"
+
+[node name="GarlicText" type="RichTextLabel" parent="." unique_id=365051110]
+offset_left = -804.0
+offset_top = 446.0
+offset_right = -783.0
+offset_bottom = 487.0
+theme = ExtResource("27_yffeo")
+text = "∞"
+
+[node name="WingsText" type="RichTextLabel" parent="." unique_id=605420957]
+offset_left = -707.0
+offset_top = 446.0
+offset_right = -686.0
+offset_bottom = 487.0
+theme = ExtResource("27_yffeo")
+text = "∞"
+
+[node name="MossText" type="RichTextLabel" parent="." unique_id=1613657821]
+offset_left = -605.0
+offset_top = 446.0
+offset_right = -584.0
+offset_bottom = 487.0
+theme = ExtResource("27_yffeo")
+text = "∞"
 
 [node name="Stir Trigger 1" type="Area2D" parent="." unique_id=103883032]
 z_index = 5
