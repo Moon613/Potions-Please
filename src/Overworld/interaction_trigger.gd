@@ -18,13 +18,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if interactionCooldown > 0:
-		interactionCooldown -= 1;
-	pass
+	if !Engine.is_editor_hint():
+		if interactionCooldown > 0:
+			interactionCooldown -= 1;
+		var player: Node2D = get_parent().get_children().filter(func(obj: Node2D): return obj.is_in_group("Player"))[0];
+		var distance = (self.position - player.position).length();
+		$AnimatedSprite2D.modulate.a = lerp(1, 0, (distance-15)/30);
+		$Sprite2D.modulate.a = lerp(1, 0, (distance-15)/30);
+	
 
 func _input(event):
 	if event is InputEvent and event.is_action_pressed("ui_accept"):
-		var playerIndex = get_overlapping_bodies().find_custom(func(obj: Node2D): return obj is CharacterBody2D and obj.name == "Player");
+		var playerIndex = get_overlapping_bodies().find_custom(func(obj: Node2D): return obj.is_in_group("Player"));
 		if playerIndex != -1:
 			interactionCooldown = 240
 			InteractedWith.emit(SceneID);

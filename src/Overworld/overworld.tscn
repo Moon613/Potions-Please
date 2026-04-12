@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://chkduo5t1kjb6" path="res://Overworld/loading_zone.tscn" id="4_omswd"]
 [ext_resource type="PackedScene" uid="uid://dtivjjebe4l3q" path="res://Overworld/interaction_trigger.tscn" id="5_omswd"]
 [ext_resource type="Texture2D" uid="uid://cp1ptyo7flil0" path="res://Textures/DewTile.png" id="6_m4qw5"]
-[ext_resource type="PackedScene" uid="uid://blle0g4wg7wlf" path="res://Overworld/tree_trigger.tscn" id="7_hob5j"]
 
 [node name="Overworld" type="Node2D" unique_id=340257523]
 y_sort_enabled = true
@@ -99,11 +98,6 @@ position = Vector2(-61.000004, 7.0000005)
 scale = Vector2(0.049999997, 0.049999997)
 texture = ExtResource("6_m4qw5")
 
-[node name="Tree Trigger" parent="." unique_id=431093836 instance=ExtResource("7_hob5j")]
-z_index = 1
-position = Vector2(9, -162)
-SceneID = 5
-
 [node name="Sap Trigger" parent="." unique_id=1496835320 instance=ExtResource("5_omswd")]
 z_index = 1
 position = Vector2(-8, -34)
@@ -118,3 +112,8 @@ SceneID = 7
 [node name="Mandrake Trigger" parent="." unique_id=1283742692 instance=ExtResource("5_omswd")]
 position = Vector2(36, 37)
 SceneID = 8
+
+[node name="Acorn Trigger" parent="." unique_id=379559768 instance=ExtResource("5_omswd")]
+position = Vector2(8, -161)
+SceneID = 5
+Size = Vector2(18.99, 11.575)

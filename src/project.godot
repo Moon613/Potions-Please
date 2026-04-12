@@ -42,6 +42,7 @@ Tap=""
 "Dragon Egg"="For the Dragon Egg collection minigame, to remove duplicate dragons eggs not collected"
 Mandrakes=""
 Hammer=""
+Player="The overworld player character"
 
 [input]
 

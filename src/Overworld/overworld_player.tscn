@@ -33,7 +33,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5myp"]
 size = Vector2(8, 7)
 
-[node name="Player" type="CharacterBody2D" unique_id=2042437237]
+[node name="Player" type="CharacterBody2D" unique_id=2042437237 groups=["Player"]]
 disable_mode = 2
 slide_on_ceiling = false
 script = ExtResource("1_a5myp")
