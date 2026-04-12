@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bliwhqis5rdk" path="res://Textures/Background Potion UI.png" id="2_lm47i"]
 [ext_resource type="Texture2D" uid="uid://vxwtbumruws3" path="res://Textures/Bookshelf.png" id="3_lm47i"]
 [ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Textures/Nyx.png" id="4_dr7va"]
-[ext_resource type="Texture2D" uid="uid://dxlqhh1hukk6s" path="res://Textures/Sap.png" id="4_xbtdn"]
 [ext_resource type="Texture2D" uid="uid://cxns4cgtw3ynk" path="res://Textures/Caldron Front.png" id="6_lm47i"]
 [ext_resource type="Script" uid="uid://dsxhue2e16y4i" path="res://Potion Brewing/Spoon.gd" id="6_xks6y"]
 [ext_resource type="Texture2D" uid="uid://dy2m2ayd1ulkh" path="res://Textures/Spoon.png" id="7_3ii5e"]
@@ -25,13 +24,14 @@
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="22_a3cj8"]
 [ext_resource type="Texture2D" uid="uid://buaxvlcxodha5" path="res://Textures/Honey.png" id="22_cgc07"]
-[ext_resource type="Texture2D" uid="uid://bvng0yafiqfry" path="res://Textures/acorn.png" id="25_sc17n"]
+[ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Textures/Acorn Collectable.png" id="25_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://b5mmkloiikro2" path="res://Textures/GingerRoot.png" id="26_7ndod"]
 [ext_resource type="Script" uid="uid://0bn1itn1vduw" path="res://Potion Brewing/stir_trigger.gd" id="26_m5i5b"]
-[ext_resource type="Texture2D" uid="uid://6rrdal8spl5j" path="res://Textures/Dragon Egg.png" id="27_5pr62"]
 [ext_resource type="Theme" uid="uid://bguvjymyr647x" path="res://Potion Brewing/Infinite Text.tres" id="27_yffeo"]
+[ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Textures/Dragon Egg Collectable.png" id="28_1og6f"]
 [ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Textures/MandrakeGame/MandrakeItem.png" id="28_y8v3d"]
 [ext_resource type="Texture2D" uid="uid://dwlrqfnpn6ctx" path="res://Textures/Lavender.png" id="30_ako6u"]
+[ext_resource type="Texture2D" uid="uid://b24swqxa27uce" path="res://Textures/Tree Sap Collectable.png" id="31_amh61"]
 [ext_resource type="Texture2D" uid="uid://d2id1s064vj60" path="res://Textures/Milk.png" id="31_fim6t"]
 [ext_resource type="Texture2D" uid="uid://ceh0a6mexdf3j" path="res://Textures/Fire Salts.png" id="32_a67xv"]
 [ext_resource type="Texture2D" uid="uid://ccevdp500tae4" path="res://Textures/Garlic.png" id="33_y54vx"]
@@ -103,9 +103,8 @@ resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ndod"]
-radius = 39.83
-height = 182.85713
+[sub_resource type="CircleShape2D" id="CircleShape2D_0mxup"]
+radius = 69.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pr62"]
 size = Vector2(151.18, 117.365)
@@ -117,8 +116,8 @@ height = 134.2857
 [sub_resource type="CircleShape2D" id="CircleShape2D_ako6u"]
 radius = 82.85714
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fim6t"]
-radius = 31.28
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isq66"]
+size = Vector2(120, 167.715)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fim6t"]
 size = Vector2(100.57, 143.215)
@@ -405,18 +404,18 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_1nhwd")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
-position = Vector2(-624, 2)
+position = Vector2(-624, 16)
 mass = 0.212
-Sprite = ExtResource("25_sc17n")
-Shape = SubResource("CapsuleShape2D_7ndod")
+Sprite = ExtResource("25_hb5qm")
+Shape = SubResource("CircleShape2D_0mxup")
 Type = "acorns"
 
 [node name="Sprite2D" parent="Acorn" index="0" unique_id=806268029]
-scale = Vector2(0.275, 0.275)
-texture = ExtResource("25_sc17n")
+scale = Vector2(0.5599997, 0.5599997)
+texture = ExtResource("25_hb5qm")
 
 [node name="CollisionShape2D" parent="Acorn" index="1" unique_id=1255018325]
-shape = SubResource("CapsuleShape2D_7ndod")
+shape = SubResource("CircleShape2D_0mxup")
 
 [node name="Ginger" parent="." unique_id=1018620730 instance=ExtResource("21_m6y6x")]
 position = Vector2(-723, -182)
@@ -426,13 +425,13 @@ Type = "ginger"
 
 [node name="Dragon Egg" parent="." unique_id=740306055 instance=ExtResource("21_m6y6x")]
 position = Vector2(-473, 18)
-Sprite = ExtResource("27_5pr62")
+Sprite = ExtResource("28_1og6f")
 Shape = SubResource("CapsuleShape2D_ako6u")
 Type = "eggs"
 
 [node name="Sprite2D" parent="Dragon Egg" index="0" unique_id=806268029]
-scale = Vector2(1.6266667, 1.6266665)
-texture = ExtResource("27_5pr62")
+scale = Vector2(0.4900001, 0.49000007)
+texture = ExtResource("28_1og6f")
 
 [node name="CollisionShape2D" parent="Dragon Egg" index="1" unique_id=1255018325]
 shape = SubResource("CapsuleShape2D_ako6u")
@@ -451,18 +450,19 @@ texture = ExtResource("28_y8v3d")
 shape = SubResource("CircleShape2D_ako6u")
 
 [node name="Sap" parent="." unique_id=1075928097 instance=ExtResource("21_m6y6x")]
-position = Vector2(-788, 249)
-Sprite = ExtResource("4_xbtdn")
-Shape = SubResource("CircleShape2D_fim6t")
+position = Vector2(-788, 212)
+Sprite = ExtResource("31_amh61")
+Shape = SubResource("RectangleShape2D_isq66")
 Type = "sap"
 
 [node name="Sprite2D" parent="Sap" index="0" unique_id=806268029]
-scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("4_xbtdn")
+position = Vector2(5, 0)
+scale = Vector2(0.5899999, 0.5899999)
+texture = ExtResource("31_amh61")
 
 [node name="CollisionShape2D" parent="Sap" index="1" unique_id=1255018325]
 position = Vector2(0, -1.9999999)
-shape = SubResource("CircleShape2D_fim6t")
+shape = SubResource("RectangleShape2D_isq66")
 
 [node name="Lavender" parent="." unique_id=1111828340 instance=ExtResource("21_m6y6x")]
 position = Vector2(-626, -190)
