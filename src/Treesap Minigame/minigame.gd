@@ -1,6 +1,6 @@
 extends Node2D
 
-signal ReturnToOverworld(id: int);
+signal ReturnToOverworld(id: int, staminaDrain: float);
 signal ChangeIngredients(ingr: String, amt: int);
 signal DrainTaps;
 signal ShowIngredient;

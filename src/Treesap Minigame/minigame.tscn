@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://uigebe08r0x1" path="res://Treesap Minigame/Indicator_Material.tres" id="5_6wqjb"]
 [ext_resource type="Texture2D" uid="uid://r6813p1r7xeh" path="res://Textures/tap.png" id="5_oboel"]
 [ext_resource type="SpriteFrames" uid="uid://bwb6rx1wipaeh" path="res://Treesap Minigame/Indicator_Frames.tres" id="5_pscpq"]
-[ext_resource type="Texture2D" uid="uid://dxlqhh1hukk6s" path="res://Textures/Sap.png" id="8_88io5"]
+[ext_resource type="Texture2D" uid="uid://b24swqxa27uce" path="res://Textures/Tree Sap Collectable.png" id="8_78kki"]
 [ext_resource type="Script" uid="uid://dtj76gdumhd7k" path="res://Treesap Minigame/sap_ingredient.gd" id="9_78kki"]
 [ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="10_78kki"]
 
@@ -56,8 +56,8 @@ texture = ExtResource("5_oboel")
 z_index = 1
 texture_filter = 5
 position = Vector2(0, 451)
-scale = Vector2(2.266667, 2.2666667)
-texture = ExtResource("8_88io5")
+scale = Vector2(0.9510129, 0.95101285)
+texture = ExtResource("8_78kki")
 script = ExtResource("9_78kki")
 
 [node name="Tutorial" type="Popup" parent="." unique_id=1918330580]

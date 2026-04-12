@@ -5,7 +5,7 @@ extends Node2D
 @export var insideHouse: PackedScene = preload("res://Overworld/inside_house.tscn")
 @export var dewdrops: PackedScene = preload("res://Dewdrop Minigame/minigame.tscn")
 @export var mainMenu: PackedScene = preload("res://Main Menu/Main Menu.tscn")
-@export var acorns: PackedScene = preload("res://Acorn Mini Game/acorn.tscn")
+@export var acorns: PackedScene = preload("res://Acorn Mini Game/minigame.tscn")
 @export var treesap: PackedScene = preload("res://Treesap Minigame/minigame.tscn")
 @export var dragonEggs: PackedScene = preload("res://Dragon Egg Minigame/minigame.tscn")
 @export var mandrakes: PackedScene = preload("res://Mandrake Minigame/MandrakeMinigame.tscn")
