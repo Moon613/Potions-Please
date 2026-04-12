@@ -23,7 +23,7 @@ func _process(delta):
 		queue_free();
 
 func _input(event):
-	if event is InputEvent and event.is_action_pressed("ui_accept"):
+	if event is InputEventKey and event.is_pressed() and !event.is_echo():
 		appearing = false;
 		timer = 1;
 

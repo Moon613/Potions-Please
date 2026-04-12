@@ -13,7 +13,7 @@ func _process(delta):
 	pass
 
 func _input(event):
-	if event is InputEvent and event.is_action_pressed("ui_accept") and inDialogue:
+	if event is InputEvent and event is InputEventKey and event.is_pressed() and !event.is_echo() and inDialogue:
 		PlayNextDialogue();
 
 func AddDialogue(dialogue: Dialogue):
