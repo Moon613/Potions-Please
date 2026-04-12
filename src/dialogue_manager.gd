@@ -2,6 +2,9 @@ extends CanvasLayer
 
 var inDialogue: bool = false;
 var dialogueQueue: Array[Dialogue] = [];
+var dialogueChoices: Dictionary[String, Callable] = {
+	"EnergyQuestGive": Dialogue.EnergyQuestGive
+};
 var dialogueBox: PackedScene = preload("res://Dialogue Box.tscn");
 
 # Called when the node enters the scene tree for the first time.
@@ -34,12 +37,20 @@ func PlayNextDialogue():
 		box.position = Vector2(0, 430);
 		add_child(box);
 
+func TriggerDialogue(dialogueChoice: String):
+	dialogueChoices[dialogueChoice].call();
+
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Textures/YasmeenPortrait.png";
 	static func IntroDialogue():
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Ugh, I am not feeling well.\nMaybe I can brew myself an energy potion.", DialogueManager.Dialogue.YASMEEN));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I'd better go outside to gather ingredients.", DialogueManager.Dialogue.YASMEEN));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("(Use the WASD keys to move around!)", DialogueManager.Dialogue.YASMEEN));
+	static func EnergyQuestGive():
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Hiiiii there, I really need an energy potion."));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work."));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("So I need something to help keep me awake during the daytimes."));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thank yoouuuuu!"));
 
 class DialogueText:
 	extends Dialogue
@@ -47,7 +58,7 @@ class DialogueText:
 	var text: String;
 	var portrait: Texture2D;
 	
-	func _init(text: String, portrait: String):
+	func _init(text: String, portrait: String = DialogueManager.Dialogue.YASMEEN):
 		self.text = text;
 		self.portrait = load(portrait);
 

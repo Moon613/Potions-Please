@@ -20,7 +20,7 @@ position = Vector2(0, -9)
 scale = Vector2(0.125, 0.125)
 sprite_frames = ExtResource("2_in81f")
 autoplay = "default"
-frame_progress = 0.899253
+frame_progress = 0.23244148
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1537529115]
 z_index = 316
