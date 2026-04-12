@@ -14,13 +14,13 @@ var mandrakeTutorial: bool = true
 
 # Ingredients
 	# Minigame
-const MOSS: String = "moss";
 const ACORNS: String = "acorns";
 const DEWDROPS: String = "dewdrops";
 const MANDRAKE: String = "mandrake";
 const EGGS: String = "eggs";
 const SAP: String = "sap";
 	# Infinite
+const MOSS: String = "moss";
 const HONEY: String = "honey";
 const GINGER: String = "ginger";
 const LAVENDER: String = "lavender";
@@ -52,10 +52,10 @@ var energy: float = 5.0;
 var resources: Dictionary[String, int] = {
 	DEWDROPS: 2,
 	ACORNS: 2,
-	MOSS: 0,
 	MANDRAKE: 1,
 	EGGS: 1,
 	SAP: 1,
+	MOSS: -1,
 	HONEY: -1,
 	GINGER: -1,
 	LAVENDER: -1,
