@@ -8,6 +8,3 @@ script = ExtResource("1_s115b")
 item_name = "Mandrake"
 icon = ExtResource("2_hlddi")
 is_stackable = true
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2052946944]
-texture = ExtResource("2_hlddi")

@@ -23,11 +23,13 @@ func AddDialogue(dialogue: Dialogue):
 	dialogueQueue.append(dialogue);
 	if !inDialogue:
 		inDialogue = true;
+		GameInfo.busy = true;
 		PlayNextDialogue();
 
 func PlayNextDialogue():
 	if dialogueQueue.is_empty():
 		inDialogue = false;
+		GameInfo.busy = false;
 		return;
 	var nextDialogue: Dialogue = dialogueQueue.pop_front();
 	if nextDialogue is DialogueText:

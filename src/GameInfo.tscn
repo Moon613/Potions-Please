@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://cuihnj4k45gj3" path="res://game_info.gd" id="1_fcjhs"]
 [ext_resource type="PackedScene" uid="uid://dh3sgkg60ryli" path="res://Items/Inventory.tscn" id="2_uk7sp"]
+[ext_resource type="PackedScene" uid="uid://1whcgwa3vise" path="res://PauseMenu.tscn" id="3_saxbk"]
 
-[node name="GameInfo" type="Node2D" unique_id=571529810 node_paths=PackedStringArray("inventory")]
+[node name="GameInfo" type="Node2D" unique_id=571529810 node_paths=PackedStringArray("inventory") groups=["Persist"]]
 script = ExtResource("1_fcjhs")
 inventory = NodePath("CanvasLayer/Inventory")
 
@@ -15,3 +16,5 @@ offset_top = 22.0
 offset_right = 141.0
 offset_bottom = 22.0
 metadata/_edit_use_anchors_ = true
+
+[node name="Pause Menu" parent="." unique_id=670370226 instance=ExtResource("3_saxbk")]

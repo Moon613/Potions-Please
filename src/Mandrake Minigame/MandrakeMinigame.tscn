@@ -69,7 +69,6 @@ icon = SubResource("GradientTexture2D_nmbyf")
 icon_alignment = 1
 
 [node name="MandrakeIngredient" type="Sprite2D" parent="." unique_id=205717249]
-top_level = true
 position = Vector2(0, 902)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("5_5p73w")

@@ -8,6 +8,3 @@ script = ExtResource("1_y87s1")
 item_name = "PlsReplace"
 icon = ExtResource("2_y87s1")
 is_stackable = true
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1505330823]
-texture = ExtResource("2_y87s1")

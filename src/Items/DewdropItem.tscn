@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://btyjcv8jeer3c"]
 
 [ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_p3rej"]
-[ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="2_q2v3t"]
+[ext_resource type="Texture2D" uid="uid://dnykbu520ws0f" path="res://Textures/Morning Dew Collectable.png" id="2_6g7er"]
 
 [node name="DewdropItem" type="Node2D" unique_id=659737758]
 script = ExtResource("1_p3rej")
 item_name = "dewdrops"
-icon = ExtResource("2_q2v3t")
+icon = ExtResource("2_6g7er")
 is_stackable = true
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1505330823]
-texture = ExtResource("2_q2v3t")

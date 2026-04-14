@@ -31,4 +31,5 @@ func _process(delta: float) -> void:
 func _on_mandrake_minigame_show_ingredient() -> void:
 	print("start movie")
 	show = true;
+	self.top_level = true
 	pass # Replace with function body.
