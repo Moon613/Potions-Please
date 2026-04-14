@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://clu462tcy4crn" path="res://Textures/ButtonAPressed.png" id="11_3hocg"]
 [ext_resource type="Texture2D" uid="uid://x1ulb5c6cnog" path="res://Textures/ButtonD.png" id="12_7ld80"]
 [ext_resource type="Texture2D" uid="uid://bkhnyp22bscp3" path="res://Textures/ButtonDPressed.png" id="13_r2842"]
+[ext_resource type="Texture2D" uid="uid://bb4q7ll1kwt8c" path="res://Textures/Tutorial Ground Arrow.png" id="15_7ld80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyb65"]
 size = Vector2(6, 5)
@@ -146,3 +147,9 @@ texture_filter = 3
 position = Vector2(5, 2)
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_ij5j1")
+
+[node name="DirectionArrow" type="Sprite2D" parent="." unique_id=1865432365]
+texture_filter = 3
+position = Vector2(0, 8)
+scale = Vector2(0.37499997, 0.37499997)
+texture = ExtResource("15_7ld80")

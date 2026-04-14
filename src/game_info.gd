@@ -21,6 +21,7 @@ var directionTutorial: Dictionary[String, bool] = {
 }
 var doneMovementTutorial: bool = false;
 var leftHouseForFirstTime: bool = false;
+var finishedGatheringTutorial: bool = false;
 
 # Ingredients
 	# Minigame
