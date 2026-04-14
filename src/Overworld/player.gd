@@ -24,8 +24,8 @@ func _process(delta: float) -> void:
 	
 	$MovementTutorialUI.modulate.a = timer;
 	
-	var leftRight = Input.get_axis("ui_left", "ui_right");
-	var upDown = Input.get_axis("ui_up", "ui_down");
+	var leftRight = Input.get_axis("ui_left", "ui_right") * float(movementTutorialAppear);
+	var upDown = Input.get_axis("ui_up", "ui_down") * float(movementTutorialAppear);
 	if leftRight < 0:
 		GameInfo.directionTutorial["a"] = true;
 		$MovementTutorialUI/A.frame = 1;
@@ -67,9 +67,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.frame = 1;
 	if collidedWithTransition:
 		if canTriggerSceneTransitions:
-			print($"Transition Buffer".get_overlapping_areas())
 			var transitionIndex = $"Transition Buffer".get_overlapping_areas().find_custom(func(obj: Node2D): return obj is Area2D and obj.name == "Loading Zone");
-			print(transitionIndex)
 			if transitionIndex == -1:
 				collidedWithTransition = false;
 				canTriggerSceneTransitions = false;
@@ -80,3 +78,6 @@ func _physics_process(delta):
 
 func _on_movement_tutorial_start():
 	movementTutorialAppear = true;
+
+func _on_loading_zone_reject():
+	$MovementTutorialUI._on_loadingzone_reject();

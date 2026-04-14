@@ -44,6 +44,7 @@ Mandrakes=""
 Hammer=""
 Player="The overworld player character"
 Persist="Everything that persists when a file is saved"
+"Loading Zone"="All overworld loading zones"
 
 [input]
 

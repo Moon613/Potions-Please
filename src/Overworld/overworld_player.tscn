@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c34k6xmou8p3p" path="res://Textures/YasmeenFront.png" id="3_x51wo"]
 [ext_resource type="Texture2D" uid="uid://b4vij74rambem" path="res://Textures/YasmeenLeftSide.png" id="4_e7n8m"]
 [ext_resource type="Texture2D" uid="uid://3yyns5sbey2w" path="res://Textures/YasmeenRightSide.png" id="5_ecbct"]
+[ext_resource type="Script" uid="uid://ikvfob3bhgww" path="res://Overworld/movement_tutorial_ui.gd" id="6_3hocg"]
 [ext_resource type="Texture2D" uid="uid://lqjhhd3fpohe" path="res://Textures/ButtonW.png" id="6_3uaej"]
 [ext_resource type="Texture2D" uid="uid://b4531eg83f1xt" path="res://Textures/ButtonWPressed.png" id="7_ij5j1"]
 [ext_resource type="Texture2D" uid="uid://b07v1qvncbuxo" path="res://Textures/ButtonS.png" id="8_y8ge3"]
@@ -110,6 +111,7 @@ shape = SubResource("RectangleShape2D_nyb65")
 position = Vector2(0, 2)
 scale = Vector2(0.048076924, 0.048076943)
 sprite_frames = SubResource("SpriteFrames_buwj1")
+frame = 1
 
 [node name="Transition Buffer" type="Area2D" parent="." unique_id=2127013718]
 
@@ -119,6 +121,7 @@ shape = SubResource("RectangleShape2D_a5myp")
 
 [node name="MovementTutorialUI" type="Node2D" parent="." unique_id=1817763898]
 position = Vector2(0, -12)
+script = ExtResource("6_3hocg")
 
 [node name="W" type="AnimatedSprite2D" parent="MovementTutorialUI" unique_id=1050845930]
 texture_filter = 3
