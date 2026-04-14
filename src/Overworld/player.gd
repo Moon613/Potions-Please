@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	if timer < 0:
 		timer = 0;
 	
-	$MovementTutorialUI.self_modulate.a = timer;
+	$MovementTutorialUI.modulate.a = timer;
 	
 	var leftRight = Input.get_axis("ui_left", "ui_right");
 	var upDown = Input.get_axis("ui_up", "ui_down");
