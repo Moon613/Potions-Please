@@ -6,6 +6,7 @@ var dialogueChoices: Dictionary[String, Callable] = {
 	"EnergyQuestGive": Dialogue.EnergyQuestGive
 };
 var dialogueBox: PackedScene = preload("res://Dialogue Box.tscn");
+signal startMovementTutorial;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,6 +39,10 @@ func PlayNextDialogue():
 		box.SetPortrait(nextDialogue.portrait);
 		box.position = Vector2(0, 430);
 		add_child(box);
+	elif nextDialogue is DialogueAction:
+		nextDialogue.function.call();
+		if nextDialogue.skip:
+			PlayNextDialogue();
 
 func TriggerDialogue(dialogueChoice: String):
 	dialogueChoices[dialogueChoice].call();
@@ -48,6 +53,7 @@ func TriggerDialogue(dialogueChoice: String):
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Ugh, I am not feeling well.\nMaybe I can brew myself an energy potion.", DialogueManager.Dialogue.YASMEEN));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I'd better go outside to gather ingredients.", DialogueManager.Dialogue.YASMEEN));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("(Use the WASD keys to move around!)", DialogueManager.Dialogue.YASMEEN));
+		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(func(): DialogueManager.startMovementTutorial.emit()))
 	static func EnergyQuestGive():
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Hiiiii there, I really need an energy potion."));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work."));
@@ -69,7 +75,9 @@ class DialogueAction:
 	
 	var function: Callable;
 	var useSeparateThread: bool;
+	var skip: bool;
 	
-	func _init(function: Callable, useSeparateThread: bool = false):
+	func _init(function: Callable, skip: bool = true, useSeparateThread: bool = false):
 		self.function = function;
 		self.useSeparateThread = useSeparateThread;
+		self.skip = skip;
