@@ -19,7 +19,7 @@ tile_map_data = PackedByteArray("AAD6//v/AQAAAAQAAAABAP//AAADAAkAAAACAP//AAAEAAk
 tile_set = ExtResource("2_gkw0i")
 
 [node name="Player" parent="." unique_id=2042437237 instance=ExtResource("2_10rr3")]
-position = Vector2(-41, -41)
+position = Vector2(-24, -9)
 collidedWithTransition = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1584677186]
@@ -40,3 +40,5 @@ Size = Vector2(59.815, 2)
 position = Vector2(16, -8)
 SceneID = 1
 Size = Vector2(19.065, 19.065)
+
+[connection signal="reject" from="Loading Zone" to="Player" method="_on_loading_zone_reject"]

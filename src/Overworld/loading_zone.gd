@@ -5,7 +5,9 @@ extends Area2D
 	set(value):
 		Size = value;
 		$CollisionShape2D.shape.size = value;
+var rejectedPlayer: bool = false;
 signal switch_scene(id: int);
+signal reject();
 
 var previouslyOverlapped = [];
 
@@ -18,12 +20,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if !GameInfo.doneMovementTutorial:
+	if Engine.is_editor_hint():
 		return;
 	# Lambda function here for checking if the area has collided with a player.
 	var playerIndex = get_overlapping_bodies().find_custom(func(obj: Node2D): return obj.is_in_group("Player"));
 	if playerIndex != -1:
+		# This is an early exit that prevents changing scenes if the player has not done the movement tutorial
+		# It also locks itself untill the player moves out of the hitbox again, to prevent abrupt scene changing
+		if !GameInfo.doneMovementTutorial or rejectedPlayer:
+			if !rejectedPlayer:
+				reject.emit();
+				rejectedPlayer = true;
+			return;
 		var player = get_overlapping_bodies()[playerIndex];
 		if !player.collidedWithTransition:
 			player.collidedWithTransition = true;
+			# This is only here temporarily until I need to actually move it where it makes sense
+			GameInfo.leftHouseForFirstTime = true;
 			switch_scene.emit(SceneID);
+	else:
+		rejectedPlayer = false;

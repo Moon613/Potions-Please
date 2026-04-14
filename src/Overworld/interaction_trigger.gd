@@ -18,13 +18,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Running this code while in the editor causes 1 morbillion bugs, so don't :)
 	if !Engine.is_editor_hint():
 		if interactionCooldown > 0:
 			interactionCooldown -= 1;
 		var player: Node2D = get_parent().get_children().filter(func(obj: Node2D): return obj.is_in_group("Player"))[0];
 		var distance = (self.position - player.position).length();
-		$AnimatedSprite2D.modulate.a = lerp(1, 0, (distance-15)/30);
-		$Sprite2D.modulate.a = lerp(1, 0, (distance-15)/30);
+		if GameInfo.leftHouseForFirstTime:
+			$AnimatedSprite2D.self_modulate.a = lerp(1, 0, (distance-15)/30);
+			$Sprite2D.self_modulate.a = lerp(1, 0, (distance-15)/30);
 	
 
 func _input(event):

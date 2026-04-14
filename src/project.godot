@@ -43,6 +43,7 @@ Tap=""
 Mandrakes=""
 Hammer=""
 Player="The overworld player character"
+"Loading Zone"="All overworld loading zones"
 
 [input]
 

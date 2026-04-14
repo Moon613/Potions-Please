@@ -17,7 +17,7 @@ func _process(delta):
 	pass
 
 func _input(event):
-	if event is InputEvent and event is InputEventKey and event.is_pressed() and !event.is_echo() and inDialogue:
+	if event is InputEvent and event is InputEventKey and event.is_pressed() and !event.is_echo() and inDialogue and ![KEY_A, KEY_S, KEY_D, KEY_W].has(event.keycode):
 		PlayNextDialogue();
 
 func AddDialogue(dialogue: Dialogue):
@@ -50,8 +50,8 @@ func TriggerDialogue(dialogueChoice: String):
 	static func IntroDialogue():
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Ugh, I am not feeling well.\nMaybe I can brew myself an energy potion.", DialogueManager.Dialogue.YASMEEN));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I'd better go outside to gather ingredients.", DialogueManager.Dialogue.YASMEEN));
+		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(func(): DialogueManager.startMovementTutorial.emit()));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("(Use the WASD keys to move around!)", DialogueManager.Dialogue.YASMEEN));
-		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(func(): DialogueManager.startMovementTutorial.emit()))
 	static func EnergyQuestGive():
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Hiiiii there, I really need an energy potion."));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work."));

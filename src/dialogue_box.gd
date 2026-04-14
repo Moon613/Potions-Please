@@ -23,7 +23,7 @@ func _process(delta):
 		queue_free();
 
 func _input(event):
-	if event is InputEventKey and event.is_pressed() and !event.is_echo():
+	if event is InputEventKey and event.is_pressed() and !event.is_echo() and ![KEY_A, KEY_S, KEY_D, KEY_W].has(event.keycode):
 		appearing = false;
 		timer = 1;
 
