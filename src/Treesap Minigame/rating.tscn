@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://df0u7p2umi0gk"]
+
+[ext_resource type="SpriteFrames" uid="uid://bw5ajgal0odxe" path="res://Treesap Minigame/Rating.tres" id="1_7dbyj"]
+[ext_resource type="Script" uid="uid://cftk8kw01bvhc" path="res://Treesap Minigame/rating.gd" id="1_hq860"]
+
+[node name="Rating" type="AnimatedSprite2D" unique_id=640092025]
+scale = Vector2(0.06374499, 0.063745014)
+sprite_frames = ExtResource("1_7dbyj")
+script = ExtResource("1_hq860")

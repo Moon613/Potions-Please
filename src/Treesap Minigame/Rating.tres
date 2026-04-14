@@ -1,0 +1,15 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bw5ajgal0odxe"]
+
+[ext_resource type="Texture2D" uid="uid://rxo8flanv4gj" path="res://Textures/SapGame/RatingOK.png" id="1_gdrpr"]
+
+[resource]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gdrpr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

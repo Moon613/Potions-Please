@@ -18,3 +18,4 @@ offset_bottom = 22.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Pause Menu" parent="." unique_id=670370226 instance=ExtResource("3_saxbk")]
+visible = false

@@ -62,7 +62,7 @@ script = ExtResource("9_78kki")
 
 [node name="Tutorial" type="Popup" parent="." unique_id=1918330580]
 oversampling_override = 1.0
-position = Vector2i(250, 150)
+position = Vector2i(250, 105)
 size = Vector2i(669, 300)
 visible = true
 script = ExtResource("10_78kki")
