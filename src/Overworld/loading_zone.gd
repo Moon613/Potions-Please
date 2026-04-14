@@ -18,6 +18,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if !GameInfo.doneMovementTutorial:
+		return;
 	# Lambda function here for checking if the area has collided with a player.
 	var playerIndex = get_overlapping_bodies().find_custom(func(obj: Node2D): return obj.is_in_group("Player"));
 	if playerIndex != -1:
@@ -25,4 +27,3 @@ func _process(delta: float) -> void:
 		if !player.collidedWithTransition:
 			player.collidedWithTransition = true;
 			switch_scene.emit(SceneID);
-	pass

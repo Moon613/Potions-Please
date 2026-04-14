@@ -12,6 +12,15 @@ var dragoneggTutorial: bool = true
 var treesapTutorial: bool = true
 var mandrakeTutorial: bool = true
 
+# Flags for movement "tutorial"
+var directionTutorial: Dictionary[String, bool] = {
+	"w": false,
+	"s": false,
+	"a": false,
+	"d": false
+}
+var doneMovementTutorial: bool = false;
+
 # Ingredients
 	# Minigame
 const ACORNS: String = "acorns";
