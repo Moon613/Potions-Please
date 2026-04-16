@@ -90,6 +90,7 @@ func _on_hammer_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Mandrakes") and not hammer_hitbox.disabled:
 		if not area.mandrake_hurtbox.disabled:
 			print("gotcha")
+			$CollectionNoise.play()
 			mandrakesCollected += 1
 			area.mandrake_hurtbox.disabled = true
 		pass

@@ -18,5 +18,7 @@ texture = ExtResource("2_5pgsm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=135366479]
 shape = SubResource("CapsuleShape2D_5pgsm")
 
+[node name="CollectionSound" type="AudioStreamPlayer2D" parent="." unique_id=292323298]
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
