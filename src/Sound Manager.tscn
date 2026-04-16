@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://du86mgjbuyr0b"]
+
+[ext_resource type="Script" uid="uid://cqaq7wqsvcpa5" path="res://sound_manager.gd" id="1_2tacs"]
+
+[sub_resource type="AudioStream" id="AudioStream_epbrv"]
+
+[node name="SoundManager" type="Node2D" unique_id=1599567166]
+script = ExtResource("1_2tacs")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1790302261]
+stream = SubResource("AudioStream_epbrv")

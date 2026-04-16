@@ -20,6 +20,7 @@ config/icon="uid://cm2ufk7sg4qsf"
 GameInfo="*uid://dsxoopnx1kodm"
 SignalLens="*uid://85rkx60vm7a7"
 DialogueManager="*uid://dkgruj3r4tsmj"
+SoundManager="*uid://du86mgjbuyr0b"
 
 [display]
 
