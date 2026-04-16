@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var inventory: Inventory
-var busy = false
+var busy: bool = false
 
 var ruinedPotionSprite: Texture2D = preload("res://Textures/BurntPotion.png");
 
@@ -98,9 +98,11 @@ func _change_ingredient_amount(ingredient: String, amount: int):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	pass
+
+func _input(event):
 	if Input.is_action_just_pressed("inventory") and !busy:
 		inventory.visible = !inventory.visible
-	pass
 
 class Recipe:
 	# A list of ingredients needed for this recipe
