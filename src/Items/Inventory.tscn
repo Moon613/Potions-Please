@@ -147,6 +147,7 @@ theme_override_constants/v_separation = 6
 columns = 6
 
 [node name="Tooltip" parent="InvPanel" unique_id=1933263128 instance=ExtResource("4_0qjnm")]
+z_index = 65
 layout_mode = 0
 offset_left = 160.0
 offset_top = 256.0

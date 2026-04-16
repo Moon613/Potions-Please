@@ -67,13 +67,14 @@ material = SubResource("ShaderMaterial_vuaru")
 sprite_frames = ExtResource("6_6y45g")
 
 [node name="Collection Jar" type="AnimatedSprite2D" parent="." unique_id=1729812968]
+z_index = 1
 position = Vector2(0, 928)
 sprite_frames = SubResource("SpriteFrames_2l8w5")
 script = ExtResource("8_osxt6")
 
 [node name="Tutorial" type="Popup" parent="." unique_id=1524810777]
 oversampling_override = 1.0
-position = Vector2i(250, 150)
+position = Vector2i(250, 105)
 size = Vector2i(665, 300)
 visible = true
 script = ExtResource("13_2l8w5")
