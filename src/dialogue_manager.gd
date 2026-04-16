@@ -49,16 +49,17 @@ func TriggerDialogue(dialogueChoice: String):
 
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Textures/YasmeenPortrait.png";
+	const PLACEHOLDER: String = "res://Textures/PlaceholderPortrait.png";
 	static func IntroDialogue():
-		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Ugh, I am not feeling well.\nMaybe I can brew myself an energy potion.", DialogueManager.Dialogue.YASMEEN));
-		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I'd better go outside to gather ingredients.", DialogueManager.Dialogue.YASMEEN));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Ugh, I am not feeling well.\nMaybe I can brew myself an energy potion.", YASMEEN));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I'd better go outside to gather ingredients.", YASMEEN));
 		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(func(): DialogueManager.startMovementTutorial.emit()));
-		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("(Use the WASD keys to move around!)", DialogueManager.Dialogue.YASMEEN));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("(Use the WASD keys to move around!)", YASMEEN));
 	static func EnergyQuestGive():
-		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Hiiiii there, I really need an energy potion."));
-		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work."));
-		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("So I need something to help keep me awake during the daytimes."));
-		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thank yoouuuuu!"));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Hiiiii there, I really need an energy potion.", PLACEHOLDER));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work.", PLACEHOLDER));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("So I need something to help keep me awake during the daytimes.", PLACEHOLDER));
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thank yoouuuuu!", PLACEHOLDER));
 
 class DialogueText:
 	extends Dialogue
