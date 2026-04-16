@@ -33,5 +33,6 @@ func _input(event):
 	if event is InputEvent and event.is_action_pressed("ui_accept"):
 		var playerIndex = get_overlapping_bodies().find_custom(func(obj: Node2D): return obj.is_in_group("Player"));
 		if playerIndex != -1:
+			GameInfo.finishedGatheringTutorial = true;
 			interactionCooldown = 240
 			InteractedWith.emit(SceneID);

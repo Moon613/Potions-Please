@@ -12,6 +12,17 @@ func _ready() -> void:
 	DialogueManager.startMovementTutorial.connect(_on_movement_tutorial_start);
 
 func _process(delta: float) -> void:
+	if GameInfo.leftHouseForFirstTime and !GameInfo.finishedGatheringTutorial:
+		var closestTrigger: Node2D = null;
+		for trigger in get_parent().get_children().filter(func(child): return child.is_in_group("Interactable trigger")):
+			if closestTrigger == null or (self.position-trigger.position).length() < (self.position-closestTrigger.position).length():
+				closestTrigger = trigger;
+		if closestTrigger != null:
+			$DirectionArrow.modulate.a = lerp(0, 1, ((self.position-closestTrigger.position).length()-10)/10);
+			$DirectionArrow.look_at(closestTrigger.position)
+	else:
+		$DirectionArrow.self_modulate.a = 0;
+	
 	if timer < 1 and movementTutorialAppear:
 		timer += delta;
 	if timer > 0 and !movementTutorialAppear:

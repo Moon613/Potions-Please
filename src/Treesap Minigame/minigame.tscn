@@ -9,7 +9,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bwb6rx1wipaeh" path="res://Treesap Minigame/Indicator_Frames.tres" id="5_pscpq"]
 [ext_resource type="Texture2D" uid="uid://b24swqxa27uce" path="res://Textures/Tree Sap Collectable.png" id="8_78kki"]
 [ext_resource type="Script" uid="uid://dtj76gdumhd7k" path="res://Treesap Minigame/sap_ingredient.gd" id="9_78kki"]
-[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="10_78kki"]
+[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="10_78kki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nejc8"]
 size = Vector2(384, 672)
@@ -62,7 +62,7 @@ script = ExtResource("9_78kki")
 
 [node name="Tutorial" type="Popup" parent="." unique_id=1918330580]
 oversampling_override = 1.0
-position = Vector2i(250, 150)
+position = Vector2i(250, 105)
 size = Vector2i(669, 300)
 visible = true
 script = ExtResource("10_78kki")
