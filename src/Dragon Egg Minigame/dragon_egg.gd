@@ -56,7 +56,7 @@ class HidingSpot:
 	var pos: Vector2;
 	var occupied: bool;
 	var z_index: int;
-	func _init(pos: Vector2, occupied: bool, x_index: int = 1):
+	func _init(pos: Vector2, occupied: bool, z_index: int = 1):
 		self.pos = pos;
 		self.occupied = occupied;
 		self.z_index = z_index;
