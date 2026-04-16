@@ -6,4 +6,5 @@
 [node name="Rating" type="AnimatedSprite2D" unique_id=640092025]
 scale = Vector2(0.06374499, 0.063745014)
 sprite_frames = ExtResource("1_7dbyj")
+frame = 2
 script = ExtResource("1_hq860")

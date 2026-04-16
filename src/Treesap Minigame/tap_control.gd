@@ -42,6 +42,12 @@ func _input(event: InputEvent) -> void:
 		var ratingInstance = rating.instantiate();
 		if currentCloseness < 0.25:
 			ratingInstance.SetSprite(0);
+		elif currentCloseness < 0.5:
+			ratingInstance.SetSprite(1);
+		elif currentCloseness < 0.75:
+			ratingInstance.SetSprite(2);
+		else:
+			ratingInstance.SetSprite(3);
 		ratingInstance.position = self.position + Vector2(0,-40);
 		get_parent().add_child(ratingInstance);
 

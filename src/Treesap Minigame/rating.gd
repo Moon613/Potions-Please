@@ -8,14 +8,14 @@ var timer: float = 0.0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	startingPos = self.position;
-	TweenRotate(0.1, 0.05);
+	#TweenRotate(0.1, 0.05);
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if appearing:
 		timer += delta;
-		self.scale *= 1.1;
+		self.scale *= 1.05;
 		if timer >= 0.2:
 			appearing = false;
 			waiting = true;
