@@ -53,6 +53,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.keycode == KEY_Q:
+		get_tree().quit();
+
 func _switch_scene(id: int):
 	print("Switching to scene " + str(id))
 	if self.get_children()[0].has_method("Reset"):

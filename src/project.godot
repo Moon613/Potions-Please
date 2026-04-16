@@ -24,6 +24,8 @@ SoundManager="*uid://du86mgjbuyr0b"
 
 [display]
 
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 mouse_cursor/custom_image="uid://cmcidn00vfcs3"
 
 [editor_plugins]
