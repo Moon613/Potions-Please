@@ -1,16 +1,19 @@
 extends CanvasLayer
 
 var mapSize: Vector2;
-var playerAllowedArea: Vector2 = Vector2(225, 325);
+var playerAllowedArea: Vector2 = Vector2(450, 325);
+var magicOffset: Vector2 = Vector2(60,60);
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	mapSize = Vector2(114, 106)*0.65 * $Map.scale;
+	mapSize = Vector2(114, 106) * $Map.scale;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	var playerPosition = get_parent().get_children().filter(func(child: Node): return child.is_in_group("Player"))[0].position + magicOffset;
+	$Player.position = playerPosition*(mapSize/playerAllowedArea) + Vector2(get_viewport().get_visible_rect().size)/2;
+	print($Player.position);
 
 
 func _on_button_pressed():
@@ -23,6 +26,4 @@ func _on_button_pressed():
 		$Sap.visible = !$Sap.visible;
 		$Acorn.visible = !$Acorn.visible;
 		$Player.visible = !$Player.visible;
-		var playerPosition = get_parent().get_children().filter(func(child: Node): return child.is_in_group("Player"))[0].position;
-		$Player.position = (playerPosition+Vector2(50,115))*(mapSize/playerAllowedArea) + Vector2(get_viewport().size)/2;
 		GameInfo.busy = !GameInfo.busy;

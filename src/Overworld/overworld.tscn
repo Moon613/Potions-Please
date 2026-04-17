@@ -80,7 +80,7 @@ tile_set = ExtResource("1_824ie")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2082594869]
 zoom = Vector2(7.395, 7.395)
-limit_left = -116
+limit_left = -271
 limit_top = -257
 limit_right = 116
 limit_bottom = 70
@@ -136,67 +136,136 @@ DialogueChoice = "EnergyQuestGive"
 [node name="Map" type="CanvasLayer" parent="." unique_id=211225531]
 script = ExtResource("8_2kprj")
 
-[node name="Map" type="Sprite2D" parent="Map" unique_id=1919579141]
+[node name="Map" type="TextureRect" parent="Map" unique_id=885858070]
 visible = false
 texture_filter = 3
-position = Vector2(576, 324)
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.8
+offset_top = -286.2
+offset_right = -193.79999
+offset_bottom = -180.19998
 scale = Vector2(5.4, 5.4)
 texture = ExtResource("8_yv805")
 
-[node name="Cave" type="Sprite2D" parent="Map" unique_id=1914758901]
+[node name="Cave" type="TextureRect" parent="Map" unique_id=198789083]
 visible = false
 texture_filter = 3
-position = Vector2(405.99997, 391.99997)
+anchors_preset = -1
+anchor_left = 0.34
+anchor_top = 0.583
+anchor_right = 0.34
+anchor_bottom = 0.583
+offset_left = -26.680023
+offset_top = -26.784027
+offset_right = -16.680023
+offset_bottom = -16.784027
 scale = Vector2(5.4, 5.4)
 texture = ExtResource("9_0wios")
 
-[node name="Bush" type="Sprite2D" parent="Map" unique_id=1175040470]
+[node name="Bush" type="TextureRect" parent="Map" unique_id=926665479]
 visible = false
 texture_filter = 3
-position = Vector2(759, 530)
+anchors_preset = -1
+anchor_left = 0.64100003
+anchor_top = 0.799
+anchor_right = 0.64100003
+anchor_bottom = 0.799
+offset_left = -27.432007
+offset_top = -26.752014
+offset_right = -17.432007
+offset_bottom = -16.752014
 scale = Vector2(5.4, 5.4)
 texture = ExtResource("10_05cw3")
 
-[node name="House" type="Sprite2D" parent="Map" unique_id=1072772071]
+[node name="House" type="TextureRect" parent="Map" unique_id=1980645962]
 visible = false
 texture_filter = 3
-position = Vector2(610, 415.99997)
+anchors_preset = -1
+anchor_left = 0.54300004
+anchor_top = 0.65400004
+anchor_right = 0.54300004
+anchor_bottom = 0.65400004
+offset_left = -40.53607
+offset_top = -40.792023
+offset_right = -25.536072
+offset_bottom = -25.792023
 scale = Vector2(5.4, 5.4)
 texture = ExtResource("11_05cw3")
 
-[node name="Dew" type="Sprite2D" parent="Map" unique_id=744748947]
+[node name="Dew" type="TextureRect" parent="Map" unique_id=1354812855]
 visible = false
 texture_filter = 3
-position = Vector2(566, 461.00006)
+anchors_preset = -1
+anchor_left = 0.514
+anchor_top = 0.69900006
+anchor_right = 0.514
+anchor_bottom = 0.69900006
+offset_left = -27.12799
+offset_top = -26.952057
+offset_right = -17.12799
+offset_bottom = -16.952057
 scale = Vector2(5.4, 5.4)
 texture = ExtResource("11_2kprj")
 
-[node name="Sap" type="Sprite2D" parent="Map" unique_id=1399349815]
+[node name="Sap" type="TextureRect" parent="Map" unique_id=379303162]
 visible = false
 texture_filter = 3
-position = Vector2(675, 389)
+anchors_preset = -1
+anchor_left = 0.52400005
+anchor_top = 0.58500004
+anchor_right = 0.52400005
+anchor_bottom = 0.58500004
+offset_left = 44.35193
+offset_top = -29.080048
+offset_right = 54.35193
+offset_bottom = -19.080048
 scale = Vector2(5.4, 5.4)
 texture = ExtResource("12_0ispa")
 
-[node name="Acorn" type="Sprite2D" parent="Map" unique_id=214358174]
+[node name="Acorn" type="TextureRect" parent="Map" unique_id=77820492]
 visible = false
 texture_filter = 3
-position = Vector2(656.99994, 200.99998)
+anchors_preset = -1
+anchor_left = 0.60700005
+anchor_top = 0.25500003
+anchor_right = 0.60700005
+anchor_bottom = 0.25500003
+offset_left = -27.264038
+offset_top = -27.24002
+offset_right = -17.264038
+offset_bottom = -17.24002
 scale = Vector2(5.4, 5.4)
 texture = ExtResource("13_y8kkq")
 
-[node name="Player" type="Sprite2D" parent="Map" unique_id=1187203488]
+[node name="Player" type="TextureRect" parent="Map" unique_id=286375524]
 visible = false
 texture_filter = 3
-position = Vector2(123, 228)
+anchors_preset = -1
+anchor_left = 0.509
+anchor_top = 0.49400002
+anchor_right = 0.509
+anchor_bottom = 0.49400002
+offset_left = -27.367981
+offset_top = -27.112
+offset_right = -17.367981
+offset_bottom = -17.112
 scale = Vector2(5.4, 5.4)
 texture = ExtResource("16_0ispa")
 
 [node name="Button" type="Button" parent="Map" unique_id=224173516]
-offset_left = 1051.5264
-offset_top = 18.0
-offset_right = 1133.9298
-offset_bottom = 95.0
+anchors_preset = -1
+anchor_left = 0.94900006
+anchor_top = 0.087000005
+anchor_right = 0.94900006
+anchor_bottom = 0.087000005
+offset_left = -41.72168
+offset_top = -38.376003
+offset_right = 40.681763
+offset_bottom = 38.623997
 icon = ExtResource("8_yv805")
 flat = true
 expand_icon = true
