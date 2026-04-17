@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://ccevdp500tae4" path="res://Textures/Garlic.png" id="33_y54vx"]
 [ext_resource type="Texture2D" uid="uid://d2k3ne2c7bw25" path="res://Textures/Fairy Wings.png" id="34_isq66"]
 [ext_resource type="Texture2D" uid="uid://cmwi3r522hfvt" path="res://Textures/Moss.png" id="35_isq66"]
+[ext_resource type="AudioStream" uid="uid://c3culn7rdod1w" path="res://Sound Effects/idle potion.wav" id="38_1nhwd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc17n"]
 size = Vector2(493.45544, 23.248623)
@@ -93,12 +94,12 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("21_xbtdn")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_isq66"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mxup"]
 resource_local_to_scene = true
 radius = 49.76
 height = 198.94
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nhwd"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb5qm"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -386,14 +387,14 @@ texture_progress = SubResource("AtlasTexture_m6y6x")
 position = Vector2(-804, -212)
 mass = 0.61
 Sprite = ExtResource("22_cgc07")
-Shape = SubResource("CapsuleShape2D_isq66")
+Shape = SubResource("CapsuleShape2D_0mxup")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-763, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_1nhwd")
+Shape = SubResource("CapsuleShape2D_hb5qm")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -401,7 +402,7 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_1nhwd")
+shape = SubResource("CapsuleShape2D_hb5qm")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
 position = Vector2(-595, 16)
@@ -649,6 +650,10 @@ number = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 4" unique_id=955978559]
 position = Vector2(33, 0)
 shape = SubResource("CircleShape2D_yffeo")
+
+[node name="Idle Potion Noises" type="AudioStreamPlayer2D" parent="." unique_id=774005826]
+stream = ExtResource("38_1nhwd")
+autoplay = true
 
 [connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]
 [connection signal="ConsumeIngredient" from="InsideCauldronHitbox" to="." method="_on_ingredient_consumed"]

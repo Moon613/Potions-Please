@@ -25,9 +25,9 @@ func _on_tree_minigame_end() -> void:
 	ChangeIngredients.emit("acorns", acornsCollected)
 	ReturnToOverworld.emit(0);
 	self.queue_free()
-	pass # Replace with function body.
+	pass
 
 
 func _on_tutorial_popup_hide() -> void:
 	GameInfo.acornsTutorial = false
-	pass # Replace with function body.
+	pass

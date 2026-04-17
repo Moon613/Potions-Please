@@ -42,6 +42,8 @@ func SelectRandomHidingSpot():
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed and mouseOver:
 		eggObtained.emit();
+		$CollectionSound.play()
+		await $CollectionSound.finished
 		queue_free();
 
 func _on_mouse_entered() -> void:

@@ -41,6 +41,7 @@ func _process(delta):
 
 func _on_rag_collected_drop():
 	numberOfDropsCollected += 1;
+	$CollectionNoise.play()
 	if numberOfDropsCollected >= number_of_dewdrops:
 		TransitionToDrying.emit();
 

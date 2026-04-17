@@ -1,5 +1,4 @@
 extends Area2D
-
 var speed = 300.0
 
 func _process(delta):
@@ -13,5 +12,12 @@ func collect():
 
 func _on_body_entered(body):
 	if body.name == "Basket":
-		body.collect()
+		$Sprite2D.visible = false 
+		
+		if body.has_method("collect"):
+			body.collect()
+
+		$AcornCollectedNoise.play()
+		await $AcornCollectedNoise.finished
+		
 		queue_free()
