@@ -55,5 +55,5 @@ func _on_timer_timeout():
 
 func drop_acorns():
 	var acorns = acorns_scene.instantiate()
-	acorns.position = Vector2(get_viewport_rect().get_center().x, 0) + Vector2(randf_range(-250, 250), -100)
+	acorns.position = self.position + Vector2(randf_range(-300, 250), -340)
 	get_parent().add_child(acorns)

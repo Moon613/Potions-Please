@@ -10,9 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bwmwancl640ld" path="res://Textures/basket.png" id="4_w4kgs"]
 [ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1tt5"]
-size = Vector2(500, 500)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dtyt"]
 shader = ExtResource("3_xvegq")
 shader_parameter/shake_intensity = 0.0
@@ -53,18 +50,16 @@ texture = ExtResource("2_7ub14")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1106144152]
 
 [node name="Tree" type="Area2D" parent="." unique_id=1458463570]
-position = Vector2(-473, -274)
+position = Vector2(37, 25)
 script = ExtResource("2_h1tt5")
 acorns_scene = ExtResource("3_6dtyt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree" unique_id=398835468]
-position = Vector2(550, 300)
-scale = Vector2(0.5, 0.8)
-shape = SubResource("RectangleShape2D_h1tt5")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tree" unique_id=56581669]
+z_index = 1
+polygon = PackedVector2Array(-75, -339, 90, -172, 253, -34, 299, 147, 405, 300, -4, 253, -9, 294, -76, 295, -80, 256, -488, 261, -424, 68, -246, -195)
 
 [node name="Sprite2D" type="Sprite2D" parent="Tree" unique_id=514344871]
 material = SubResource("ShaderMaterial_6dtyt")
-position = Vector2(550, 300)
 scale = Vector2(0.5, 0.2)
 texture = ExtResource("2_0rldd")
 
@@ -92,7 +87,6 @@ texture = ExtResource("4_w4kgs")
 oversampling_override = 1.0
 position = Vector2i(250, 150)
 size = Vector2i(500, 300)
-visible = true
 script = ExtResource("8_oqhy2")
 
 [node name="Message" type="Label" parent="Tutorial" unique_id=1972057386]
