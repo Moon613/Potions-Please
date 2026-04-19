@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cgg45nlib2axv"]
 
-[ext_resource type="Texture2D" uid="uid://diyh4o05itml3" path="res://Textures/forest.jpg" id="1_cc5ov"]
 [ext_resource type="Script" uid="uid://ccgll20cqvqhs" path="res://Treesap Minigame/minigame.gd" id="1_nejc8"]
-[ext_resource type="Texture2D" uid="uid://kallvnua4qjc" path="res://Textures/saptree.png" id="2_73w66"]
+[ext_resource type="Texture2D" uid="uid://c3gxe8q6tamyn" path="res://Textures/SapBGFence.png" id="2_78kki"]
+[ext_resource type="Texture2D" uid="uid://cfv5bsm6v37n7" path="res://Textures/SapTreeBETTER.png" id="3_78kki"]
 [ext_resource type="Script" uid="uid://drs1yxu7cbumm" path="res://Treesap Minigame/tap_control.gd" id="4_54yem"]
 [ext_resource type="Material" uid="uid://uigebe08r0x1" path="res://Treesap Minigame/Indicator_Material.tres" id="5_6wqjb"]
 [ext_resource type="Texture2D" uid="uid://r6813p1r7xeh" path="res://Textures/tap.png" id="5_oboel"]
@@ -21,16 +21,16 @@ radius = 8.0
 script = ExtResource("1_nejc8")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1459313766]
-scale = Vector2(1.125, 0.95626825)
-texture = ExtResource("1_cc5ov")
+scale = Vector2(1.0000001, 0.9969137)
+texture = ExtResource("2_78kki")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=225997859]
 
 [node name="Tree" type="StaticBody2D" parent="." unique_id=1373070526]
 
 [node name="Sprite2D" type="Sprite2D" parent="Tree" unique_id=879880997]
-scale = Vector2(1.2159998, 0.60740745)
-texture = ExtResource("2_73w66")
+scale = Vector2(1.2159998, 1.021605)
+texture = ExtResource("3_78kki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tree" unique_id=459549325]
 shape = SubResource("RectangleShape2D_nejc8")

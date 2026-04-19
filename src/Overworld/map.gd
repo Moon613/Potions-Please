@@ -13,7 +13,6 @@ func _ready():
 func _process(delta):
 	var playerPosition = get_parent().get_children().filter(func(child: Node): return child.is_in_group("Player"))[0].position + magicOffset;
 	$Player.position = playerPosition*(mapSize/playerAllowedArea) + Vector2(get_viewport().get_visible_rect().size)/2;
-	print($Player.position);
 
 
 func _on_button_pressed():
