@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cgbjcqo8akr5d" path="res://Dragon Egg Minigame/dragon_egg.gd" id="1_5pgsm"]
 [ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Textures/Dragon Egg Collectable.png" id="2_5pgsm"]
-[ext_resource type="AudioStream" uid="uid://870rriqmql7e" path="res://Sound Effects/good noise.wav" id="3_3agim"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pgsm"]
 resource_local_to_scene = true
@@ -18,9 +17,6 @@ texture = ExtResource("2_5pgsm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=135366479]
 shape = SubResource("CapsuleShape2D_5pgsm")
-
-[node name="CollectionSound" type="AudioStreamPlayer2D" parent="." unique_id=292323298]
-stream = ExtResource("3_3agim")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

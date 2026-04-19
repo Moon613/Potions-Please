@@ -40,12 +40,11 @@ func _process(delta):
 		$Tutorial.move_to_center();
 	if !GameInfo.dragoneggTutorial:
 		$Tutorial.hide()
-		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN;
 		$ColorRect.material.set_shader_parameter("mousePos", get_global_mouse_position() / -(get_viewport_rect().size / $Camera2D.zoom));
 		timer += delta;
 	if timer >= _maxTimeSeconds or eggsObtained == _eggAmount:
 		ChangeIngredients.emit(GameInfo.EGGS, eggsObtained);
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
+		Input.set_custom_mouse_cursor(load("res://Textures/SuperiorCursor.png"), 0, Vector2.ZERO);
 		ReturnToOverworld.emit(0);
 		self.queue_free()
 	
@@ -60,12 +59,14 @@ func _process(delta):
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE;
+		Input.set_custom_mouse_cursor(load("res://Textures/SuperiorCursor.png"), 0, Vector2.ZERO);
 		ReturnToOverworld.emit(0);
 		self.queue_free()
 
 func _on_egg_obtained():
 	eggsObtained += 1;
+	$CollectionSound.play();
 
 func _on_tutorial_popup_hide() -> void:
 	GameInfo.dragoneggTutorial = false
+	Input.set_custom_mouse_cursor(load("res://Textures/TargetCursor.png"), 0, Vector2(26,33));
