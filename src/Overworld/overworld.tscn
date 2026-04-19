@@ -85,7 +85,6 @@ limit_top = -257
 limit_right = 116
 limit_bottom = 70
 limit_smoothed = true
-position_smoothing_enabled = true
 script = ExtResource("4_824ie")
 
 [node name="Loading Zone" parent="." unique_id=1889046867 instance=ExtResource("4_omswd")]

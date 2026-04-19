@@ -59,6 +59,8 @@ func _physics_process(delta):
 	var sprinting = 2 if Input.is_key_pressed(KEY_CTRL) else 1;
 	var vertDir = Input.get_axis("ui_left", "ui_right") * float(!DialogueManager.inDialogue) * float(!GameInfo.busy);
 	var horDir = Input.get_axis("ui_up", "ui_down") * float(!DialogueManager.inDialogue) * float(!GameInfo.busy);
+	
+	# Set the velocity of the player
 	if vertDir:
 		velocity.x = vertDir * SPEED * sprinting;
 	else:
@@ -68,14 +70,27 @@ func _physics_process(delta):
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED);
 	
-	if velocity.x < 0:
-		$AnimatedSprite2D.frame = 2;
-	elif velocity.x > 0:
-		$AnimatedSprite2D.frame = 3;
-	elif velocity.y < 0:
-		$AnimatedSprite2D.frame = 0;
-	elif velocity.y > 0:
-		$AnimatedSprite2D.frame = 1;
+	# Speeds up the animation if player is running. This defaults to 1, not the FPS set in the
+	# animation editor.
+	$AnimatedSprite2D.speed_scale = sprinting;
+	
+	# If the velocity is 0 (player isn't moving), set the animation the idle in whatever direction
+	# they were most recently moving in.
+	if velocity.length() == 0 and !$AnimatedSprite2D.animation.begins_with("Idle"):
+		$AnimatedSprite2D.animation = StringName("Idle " + $AnimatedSprite2D.animation.split(" ", false)[1])
+	
+	# Set walking animation in direction of movement.
+	if velocity.x < 0 and $AnimatedSprite2D.animation != "Walking Left":
+		$AnimatedSprite2D.animation = "Walking Left";
+	elif velocity.x > 0 and $AnimatedSprite2D.animation != "Walking Right":
+		$AnimatedSprite2D.animation = "Walking Right";
+	# Horizontal animations take precedence over vertical ones, given how much more of the gameplay
+	# area is horizontal than vertical.
+	elif velocity.x == 0 and velocity.y < 0 and $AnimatedSprite2D.animation != "Walking Up":
+		$AnimatedSprite2D.animation = "Walking Up";
+	elif velocity.x == 0 and velocity.y > 0 and $AnimatedSprite2D.animation != "Walking Down":
+		$AnimatedSprite2D.animation = "Walking Down";
+	
 	if collidedWithTransition:
 		if canTriggerSceneTransitions:
 			var transitionIndex = $"Transition Buffer".get_overlapping_areas().find_custom(func(obj: Node2D): return obj is Area2D and obj.name == "Loading Zone");
