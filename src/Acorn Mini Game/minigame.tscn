@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://70wfms86ut61" path="res://Acorn Mini Game/acorn.gd" id="1_xc6ns"]
 [ext_resource type="Texture2D" uid="uid://b1sww4qkiynfe" path="res://Textures/tree.png" id="2_0rldd"]
+[ext_resource type="Texture2D" uid="uid://b1j45v4i0ok7c" path="res://Textures/acornbgNOFENCE.png" id="2_7ub14"]
 [ext_resource type="Script" uid="uid://m4m03d2irf6f" path="res://Acorn Mini Game/tree.gd" id="2_h1tt5"]
 [ext_resource type="PackedScene" uid="uid://dsfse7d2c0klu" path="res://Acorn Mini Game/acorns.tscn" id="3_6dtyt"]
 [ext_resource type="Shader" uid="uid://d245ild5vhgje" path="res://Acorn Mini Game/treeshake.gdshader" id="3_xvegq"]
 [ext_resource type="Script" uid="uid://cdae412rdiih5" path="res://Acorn Mini Game/basket.gd" id="4_bi5ov"]
 [ext_resource type="Texture2D" uid="uid://bwmwancl640ld" path="res://Textures/basket.png" id="4_w4kgs"]
-[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
+[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1tt5"]
 size = Vector2(500, 500)
@@ -46,7 +47,13 @@ cache/0/34/0/scale = 1.0
 [node name="minigame" type="Node2D" unique_id=686096718]
 script = ExtResource("1_xc6ns")
 
+[node name="Background" type="Sprite2D" parent="." unique_id=984541922]
+texture = ExtResource("2_7ub14")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1106144152]
+
 [node name="Tree" type="Area2D" parent="." unique_id=1458463570]
+position = Vector2(-473, -274)
 script = ExtResource("2_h1tt5")
 acorns_scene = ExtResource("3_6dtyt")
 
@@ -66,6 +73,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Basket" type="CharacterBody2D" parent="." unique_id=690234474]
+position = Vector2(-576, -259)
 collision_layer = 2
 script = ExtResource("4_bi5ov")
 
@@ -101,10 +109,10 @@ offset_bottom = 8.0
 text = "Close"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=960170268]
-offset_left = 542.0
-offset_top = 16.0
-offset_right = 611.0
-offset_bottom = 56.0
+offset_left = -37.0
+offset_top = -324.0
+offset_right = 32.0
+offset_bottom = -284.0
 theme_override_fonts/normal_font = SubResource("FontFile_oqhy2")
 theme_override_font_sizes/normal_font_size = 34
 text = "8:00"

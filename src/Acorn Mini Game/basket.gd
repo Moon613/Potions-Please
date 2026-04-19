@@ -13,7 +13,7 @@ func _physics_process(_delta):
 	move_and_slide()
 	
 	var screen_size = get_viewport_rect().size
-	position.x = clamp(position.x, 0, screen_size.x)
+	position.x = clamp(position.x, -screen_size.x/2, screen_size.x/2)
 
 func collect():
 	$"..".acornsCollected += 1
