@@ -25,10 +25,12 @@ func _process(delta):
 		if GameInfo.leftHouseForFirstTime:
 			$AnimatedSprite2D.self_modulate.a = lerp(1, 0, (distance-15)/30);
 			$Sprite2D.self_modulate.a = lerp(1, 0, (distance-15)/30);
+			$EnergyGain.self_modulate.a = lerp(1, 0, (distance-15)/30);
+			$EnergySprite.self_modulate.a = lerp(1, 0, (distance-15)/30);
 	
 
 func _input(event):
-	if event is InputEvent and event.is_action_pressed("ui_accept"):
+	if event is InputEvent and event.is_action_pressed("ui_accept") and GameInfo.finishedGatheringTutorial:
 		var playerIndex = get_overlapping_bodies().find_custom(func(obj: Node2D): return obj.is_in_group("Player"));
 		if playerIndex != -1:
 			interactionCooldown = 240

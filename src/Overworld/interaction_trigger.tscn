@@ -16,6 +16,7 @@ script = ExtResource("1_521b6")
 shape = SubResource("RectangleShape2D_yjyl4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2045245545]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 364
 texture_filter = 3
 position = Vector2(0, -9)
@@ -25,6 +26,7 @@ autoplay = "default"
 frame_progress = 0.23244148
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1537529115]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 364
 texture_filter = 3
 position = Vector2(0, -4)
@@ -32,6 +34,7 @@ scale = Vector2(0.125, 0.125)
 texture = ExtResource("4_iq355")
 
 [node name="EnergyCost" type="RichTextLabel" parent="." unique_id=535409339]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 364
 texture_filter = 2
 clip_contents = false
@@ -49,6 +52,7 @@ shortcut_keys_enabled = false
 horizontal_alignment = 2
 
 [node name="EnergySprite" type="Sprite2D" parent="." unique_id=1778396258]
+self_modulate = Color(1, 1, 1, 0)
 z_index = 364
 position = Vector2(3, -14.5)
 scale = Vector2(0.05555559, 0.055555537)
