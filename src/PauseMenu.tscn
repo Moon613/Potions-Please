@@ -1,59 +1,77 @@
 [gd_scene format=3 uid="uid://1whcgwa3vise"]
 
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="1_etnfi"]
+[ext_resource type="Script" uid="uid://b76r4uhnpthkx" path="res://pause_menu.gd" id="1_r2gvh"]
 [ext_resource type="StyleBox" uid="uid://bq2b4hswpggoq" path="res://Main Menu/Main Menu Selection.tres" id="2_q775a"]
+[ext_resource type="FontFile" uid="uid://dx7ancxvml4m5" path="res://fonts/KiwiMaru-Medium.ttf" id="2_sev4g"]
+[ext_resource type="Texture2D" uid="uid://b0aa6my05ex0e" path="res://Textures/OvergrownUI.png" id="3_04dm0"]
+[ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Textures/Nyx.png" id="6_idhon"]
+[ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="6_sev4g"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ntcl7"]
+content_margin_left = 0.0
+content_margin_top = 40.0
+content_margin_right = 0.0
+content_margin_bottom = 40.0
+texture = ExtResource("3_04dm0")
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(-100, 125, 2168.2388, 1271.336)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_04dm0"]
+texture = ExtResource("6_sev4g")
+region_rect = Rect2(38.315582, 337.92987, 1850.3243, 393.25006)
 
 [node name="Pause Menu" type="CanvasLayer" unique_id=670370226]
+process_mode = 3
+script = ExtResource("1_r2gvh")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1281569454]
 top_level = true
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0.1764706, 0.1764706, 0.1764706, 0.78431374)
+color = Color(0.1764706, 0.1764706, 0.1764706, 0.47058824)
 
 [node name="CenterContainer2" type="CenterContainer" parent="." unique_id=187459214]
-offset_right = 1152.0
-offset_bottom = 648.0
-
-[node name="CenterContainer" type="VBoxContainer" parent="CenterContainer2" unique_id=1596047633]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/CenterContainer" unique_id=838237564]
-layout_mode = 2
-text = "paused"
-fit_content = true
-autowrap_mode = 0
-
-[node name="SaveManip" type="HBoxContainer" parent="CenterContainer2/CenterContainer" unique_id=1551056763]
-layout_mode = 2
-
-[node name="Save Button" type="Button" parent="CenterContainer2/CenterContainer/SaveManip" unique_id=864154941]
-layout_mode = 2
-
-[node name="Load Button" type="Button" parent="CenterContainer2/CenterContainer/SaveManip" unique_id=193198742]
-layout_mode = 2
-
-[node name="GameStates" type="HBoxContainer" parent="CenterContainer2/CenterContainer" unique_id=1196580933]
-layout_mode = 2
-
-[node name="Continue Button" type="Button" parent="CenterContainer2/CenterContainer/GameStates" unique_id=905612094]
-layout_mode = 2
-
-[node name="Quit Button" type="Button" parent="CenterContainer2/CenterContainer/GameStates" unique_id=1553716154]
-layout_mode = 2
-
-[node name="Load Game" type="Button" parent="." unique_id=1165654026]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -237.0
-offset_top = 50.0
-offset_right = -106.0
-offset_bottom = 98.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CenterContainer" type="VBoxContainer" parent="CenterContainer2" unique_id=1596047633]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer2/CenterContainer" unique_id=838237564]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_sev4g")
+theme_override_font_sizes/normal_font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxTexture_ntcl7")
+bbcode_enabled = true
+text = "Paused"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+
+[node name="Row1" type="HBoxContainer" parent="CenterContainer2/CenterContainer" unique_id=1551056763]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Save" type="Button" parent="CenterContainer2/CenterContainer/Row1" unique_id=1165654026]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
 theme_override_colors/font_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
@@ -65,3 +83,49 @@ theme_override_styles/normal = ExtResource("2_q775a")
 theme_override_styles/pressed = ExtResource("2_q775a")
 theme_override_styles/hover = ExtResource("2_q775a")
 text = "Save"
+autowrap_trim_flags = 0
+
+[node name="Quit" type="Button" parent="CenterContainer2/CenterContainer/Row1" unique_id=849246335]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_hover_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.8509804, 0.4117647, 0.7176471, 1)
+theme_override_fonts/font = ExtResource("1_etnfi")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("2_q775a")
+theme_override_styles/pressed = ExtResource("2_q775a")
+theme_override_styles/hover = ExtResource("2_q775a")
+text = "Quit"
+
+[node name="SaveConfirm" type="RichTextLabel" parent="." unique_id=1860463080]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.75
+offset_top = -39.75
+offset_right = 112.75
+offset_bottom = 39.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_sev4g")
+theme_override_font_sizes/normal_font_size = 29
+theme_override_styles/normal = SubResource("StyleBoxTexture_04dm0")
+bbcode_enabled = true
+text = "Game Saved!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=109128243]
+position = Vector2(1086, 629)
+scale = Vector2(0.31543627, 0.31543624)
+texture = ExtResource("6_idhon")
+
+[connection signal="button_up" from="CenterContainer2/CenterContainer/Row1/Save" to="." method="_on_save_button_up"]
+[connection signal="button_up" from="CenterContainer2/CenterContainer/Row1/Quit" to="." method="_on_quit_button_up"]

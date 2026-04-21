@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b7ktmwkhwdj4f"]
+
+[ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_r4oie"]
+[ext_resource type="Texture2D" uid="uid://cli2v3j5ihjvx" path="res://Textures/Healing Potion.png" id="2_r4oie"]
+
+[node name="HealingPotion" type="Node2D" unique_id=255005035]
+script = ExtResource("1_r4oie")
+item_name = "Healing Potion"
+icon = ExtResource("2_r4oie")

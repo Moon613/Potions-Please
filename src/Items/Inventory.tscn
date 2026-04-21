@@ -19,6 +19,18 @@
 [ext_resource type="PackedScene" uid="uid://bdui1edksqcc1" path="res://Items/MandrakeItem.tscn" id="16_v4wl6"]
 [ext_resource type="PackedScene" uid="uid://bjs32axxwibeo" path="res://Items/EggItem.tscn" id="17_hwedm"]
 [ext_resource type="PackedScene" uid="uid://b14ab1uycb1e5" path="res://Items/SapItem.tscn" id="18_rhxlg"]
+[ext_resource type="PackedScene" uid="uid://c18xf5lil3lv6" path="res://Items/BurntPotion.tscn" id="20_7iveq"]
+[ext_resource type="PackedScene" uid="uid://c0siaethatsax" path="res://Items/EnergyPotion.tscn" id="21_q1xy2"]
+[ext_resource type="Texture2D" uid="uid://bfmoj3doj5t31" path="res://Textures/Burnt Potion (NEW).png" id="21_q5kyp"]
+[ext_resource type="PackedScene" uid="uid://b7ktmwkhwdj4f" path="res://Items/HealingPotion.tscn" id="22_70d6n"]
+[ext_resource type="PackedScene" uid="uid://bbnm4ars7n2iu" path="res://Items/ShrinkPotion.tscn" id="23_7e8mg"]
+[ext_resource type="Texture2D" uid="uid://b3m16segjo1pr" path="res://Textures/Energy Elixir(NEW).png" id="23_7s685"]
+[ext_resource type="PackedScene" uid="uid://cvtt4msrqbf5h" path="res://Items/SleepPotion.tscn" id="24_m7yhu"]
+[ext_resource type="Texture2D" uid="uid://cli2v3j5ihjvx" path="res://Textures/Healing Potion.png" id="25_7atr6"]
+[ext_resource type="PackedScene" uid="uid://bmf3xmajonwl6" path="res://Items/StrengthPotion.tscn" id="25_quxbc"]
+[ext_resource type="Texture2D" uid="uid://cykdhfoxlmqwn" path="res://Textures/ShrinkElixir.png" id="27_afj8o"]
+[ext_resource type="Texture2D" uid="uid://dp5nmo3fl51ga" path="res://Textures/Sleepy Solution.png" id="29_nt10b"]
+[ext_resource type="Texture2D" uid="uid://tiw4qvuy7alj" path="res://Textures/Strength Potion.png" id="31_kra4b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u23ir"]
 atlas = ExtResource("5_v4wl6")
@@ -35,6 +47,30 @@ region = Rect2(0, 0, 400, 72)
 [sub_resource type="AtlasTexture" id="AtlasTexture_30vpt"]
 atlas = ExtResource("8_mdst7")
 region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phofv"]
+atlas = ExtResource("21_q5kyp")
+region = Rect2(-25, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_govji"]
+atlas = ExtResource("23_7s685")
+region = Rect2(-25, 0, 150, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l6aq"]
+atlas = ExtResource("25_7atr6")
+region = Rect2(-25, 0, 150, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cn3d"]
+atlas = ExtResource("27_afj8o")
+region = Rect2(-25, 0, 150, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n0xt"]
+atlas = ExtResource("29_nt10b")
+region = Rect2(-25, 0, 150, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g14mx"]
+atlas = ExtResource("31_kra4b")
+region = Rect2(-25, 0, 150, 0)
 
 [node name="Inventory" type="Control" unique_id=1453173247 node_paths=PackedStringArray("inventory_grid", "tooltip")]
 layout_mode = 3
@@ -115,12 +151,11 @@ size_flags_vertical = 4
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="Journal" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=798060606]
+[node name="Journal" type="Button" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=795107116]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture = ExtResource("10_hwedm")
-expand_mode = 1
-stretch_mode = 5
+icon = ExtResource("10_hwedm")
+flat = true
 
 [node name="Orders" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=2142444398]
 custom_minimum_size = Vector2(100, 0)
@@ -176,3 +211,23 @@ visible = false
 
 [node name="SapItem" parent="." unique_id=1881400684 instance=ExtResource("18_rhxlg")]
 visible = false
+
+[node name="BurntPotion" parent="." unique_id=255005035 instance=ExtResource("20_7iveq")]
+icon = SubResource("AtlasTexture_phofv")
+
+[node name="EnergyPotion" parent="." unique_id=1279758123 instance=ExtResource("21_q1xy2")]
+icon = SubResource("AtlasTexture_govji")
+
+[node name="HealingPotion" parent="." unique_id=1839789398 instance=ExtResource("22_70d6n")]
+icon = SubResource("AtlasTexture_7l6aq")
+
+[node name="ShrinkPotion" parent="." unique_id=1470516613 instance=ExtResource("23_7e8mg")]
+icon = SubResource("AtlasTexture_0cn3d")
+
+[node name="SleepPotion" parent="." unique_id=1605218360 instance=ExtResource("24_m7yhu")]
+icon = SubResource("AtlasTexture_8n0xt")
+
+[node name="StrengthPotion" parent="." unique_id=1235120166 instance=ExtResource("25_quxbc")]
+icon = SubResource("AtlasTexture_g14mx")
+
+[connection signal="button_up" from="PlayerPanel/VBoxContainer/HBoxContainer/Journal" to="." method="_on_journal_button_up"]

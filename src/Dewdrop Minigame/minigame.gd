@@ -46,7 +46,8 @@ func _on_rag_collected_drop():
 		TransitionToDrying.emit();
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and GameInfo.busy:
+		get_viewport().set_input_as_handled()
 		ReturnToOverworld.emit(0);
 		self.queue_free()
 

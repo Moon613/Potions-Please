@@ -36,6 +36,14 @@ func _on_inventory_slot_mouse_entered() -> void:
 func _on_inventory_slot_mouse_exited() -> void:
 	slot_hovered.emit(self, false)
 
+# Removes item from slot
+func remove_item():
+	if item:
+		self.remove_child(item)
+		item.free()
+		item = null
+		update_slot()
+
 # removes item from slot, puts it on mouse
 func select_item() -> InventoryItem:
 	# get inventory

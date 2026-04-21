@@ -1,6 +1,7 @@
 extends Control
 class_name Inventory
 
+signal JournalOpen
 # create a String : Item dictionary
 # add add_item to any increase to item
 @onready var invConvert: Dictionary[String, Item] = {
@@ -11,12 +12,12 @@ class_name Inventory
 	"eggs": $EggItem,
 	"sap": $SapItem,
 	
-	"energy": $WIPItem,
-	"sleep": $WIPItem,
-	"strength": $WIPItem,
-	"healing": $WIPItem,
-	"shrink": $WIPItem,
-	"burnt": $WIPItem
+	"energy": $EnergyPotion,
+	"sleep": $SleepPotion,
+	"strength": $StrengthPotion,
+	"healing": $HealingPotion,
+	"shrink": $ShrinkPotion,
+	"burnt": $BurntPotion
 };
 
 var inventory_item_scene = preload("res://Items/InventoryItem.tscn")
@@ -46,23 +47,16 @@ func _ready():
 	tooltip.visible = false
 	
 	
-	#add items from game reasources
-	var res = GameInfo.resources
-	for item in res:
-		var amount = res[item]
-		if amount > 0:
-			add_item(item,amount);
-			pass
-		pass
+
 
 # moves selected item with mouse
 func _process(_delta):
-	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
-	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
 	tooltip.global_position = get_global_mouse_position() - Vector2(0, tooltip.size.y/2)
 	if selected_item:
 		tooltip.visible = false
 		selected_item.global_position = get_global_mouse_position()
+	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
+	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
 
 # selects or deselects item
 func _on_slot_input(which: InventorySlot, action: InventorySlot.InventorySlotAction):
@@ -96,6 +90,8 @@ func add_item(item_name: String, amount: int) -> void:
 		for slot in slots:
 			if slot.item and slot.item.item_name == _item.item_name: # if item and is of same type
 				slot.item.amount += _item.amount
+				if slot.item.amount <= 0:
+					slot.remove_item()
 				return
 	for slot in slots:
 		if slot.item == null and slot.is_respecting_hint(_item):
@@ -145,3 +141,20 @@ func remove_all(_name: String) -> void:
 func clear_inventory() -> void:
 	for slot in slots:
 		slot.remove_item()
+
+func load_inv():
+	#add items from game reasources
+	var res = GameInfo.resources
+	for item in res:
+		var amount = res[item]
+		if amount > 0:
+			add_item(item,amount);
+	var pot = GameInfo.potions
+	for item in pot:
+		var amount = pot[item]
+		if amount > 0:
+			add_item(item,amount);
+
+
+func _on_journal_button_up() -> void:
+	JournalOpen.emit()

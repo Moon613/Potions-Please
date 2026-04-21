@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://p8gv2c0m4ekw"]
+
+[ext_resource type="Script" uid="uid://t4jnjeoqslbf" path="res://Items/potion_book.gd" id="1_2sflh"]
+[ext_resource type="Texture2D" uid="uid://djm2hspw3kfcd" path="res://Textures/potionsbookenergyelixir.png" id="1_daj70"]
+[ext_resource type="Texture2D" uid="uid://bcqvnscuejdge" path="res://Textures/potionbookguidelines.png" id="2_2sflh"]
+
+[node name="BookLayer" type="CanvasLayer" unique_id=703100872]
+script = ExtResource("1_2sflh")
+
+[node name="Control" type="Control" parent="." unique_id=1641301929]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Page2" type="TextureRect" parent="Control" unique_id=681441878]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -324.0
+offset_right = 963.771
+offset_bottom = 631.16675
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6784156, 0.6784156)
+texture = ExtResource("1_daj70")
+
+[node name="PreviousPage" type="Button" parent="Control/Page2" unique_id=979498610]
+layout_mode = 0
+offset_left = 6.1035156e-05
+offset_top = 11.792181
+offset_right = 720.7971
+offset_bottom = 955.1667
+flat = true
+
+[node name="Page1" type="TextureRect" parent="Control" unique_id=974458540]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -324.0
+offset_right = 963.771
+offset_bottom = 631.16675
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6784156, 0.6784156)
+texture = ExtResource("2_2sflh")
+
+[node name="NextPage" type="Button" parent="Control/Page1" unique_id=1076775726]
+layout_mode = 0
+offset_left = 731.1153
+offset_right = 1451.9124
+offset_bottom = 943.3745
+flat = true
+
+[connection signal="button_up" from="Control/Page2/PreviousPage" to="." method="_on_previous_page_button_up"]
+[connection signal="button_up" from="Control/Page1/NextPage" to="." method="_on_next_page_button_up"]

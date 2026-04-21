@@ -59,7 +59,8 @@ func _process(delta):
 		#child.queue_free();
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and GameInfo.busy:
+		get_viewport().set_input_as_handled()
 		Input.set_custom_mouse_cursor(load("res://Textures/SuperiorCursor.png"), 0, Vector2.ZERO);
 		ReturnToOverworld.emit(0);
 		self.queue_free()
