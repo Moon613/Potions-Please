@@ -6,6 +6,8 @@ extends RigidBody2D
 # This should match something in main_scene.gd's resource Dictionary.
 @export var Type: String
 
+signal NotEnoughEnergyForBrewing;
+
 var movable: bool = false;
 var mouseOffset: Vector2;
 var beingMoved: bool = false;
@@ -40,21 +42,24 @@ func _process(delta):
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.button_index == 1 and event.pressed:
-		var root = get_tree().current_scene;
 		if movable:
 			mouseOffset = self.position - get_global_mouse_position();
 			beingMoved = true;
 			self.gravity_scale = 0.0;
 		elif Type in GameInfo.resources and ((GameInfo.resources[self.Type] > 0 and get_parent().spawnedIngredients[self.Type] < GameInfo.resources[self.Type]) or GameInfo.resources[self.Type] < 0):
-			var copy = self.duplicate();
-			copy.movable = true;
-			copy.mouseOffset = Vector2.ZERO;
-			copy.freeze = false;
-			copy.collision_mask = 1;
-			copy.collision_layer = 1;
-			copy.beingMoved = true;
-			get_parent().add_child(copy);
-			get_parent().spawnedIngredients[self.Type] += 1;
+			# Make sure we have enough energy to brew a potion, so that ingredients aren't wasted.
+			if GameInfo.energy > GameInfo.minigameEnergy[1]:
+				var copy = self.duplicate();
+				copy.movable = true;
+				copy.mouseOffset = Vector2.ZERO;
+				copy.freeze = false;
+				copy.collision_mask = 1;
+				copy.collision_layer = 1;
+				copy.beingMoved = true;
+				get_parent().add_child(copy);
+				get_parent().spawnedIngredients[self.Type] += 1;
+			else:
+				NotEnoughEnergyForBrewing.emit();
 
 func released():
 	if beingMoved:

@@ -151,6 +151,55 @@ radius = 60.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_yffeo"]
 radius = 85.0
 
+[sub_resource type="Animation" id="Animation_1nhwd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Stamina:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(280, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_0mxup"]
+resource_name = "Stamina Shaking"
+length = 0.7337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Stamina:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.36666667, 0.4, 0.46666667, 0.53333336, 0.6, 0.6666667, 0.73333335),
+"transitions": PackedFloat32Array(3.999995, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.36602113),
+"update": 0,
+"values": [Vector2(280, 16), Vector2(270, 16), Vector2(290, 16), Vector2(270, 16), Vector2(290, 16), Vector2(260, 16), Vector2(300, 16), Vector2(260, 16), Vector2(290, 16), Vector2(270, 16), Vector2(290, 16), Vector2(270, 16), Vector2(280, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Stamina Bar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333336, 0.20000002, 0.26666668, 0.33333334, 0.36666667, 0.4, 0.4666667, 0.53333336, 0.6, 0.6666667, 0.73333335),
+"transitions": PackedFloat32Array(3.999995, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.36602113),
+"update": 0,
+"values": [Vector2(480, -16), Vector2(470, -16), Vector2(490, -16), Vector2(470, -16), Vector2(490, -16), Vector2(460, -16), Vector2(500, -16), Vector2(460, -16), Vector2(490, -16), Vector2(470, -16), Vector2(490, -16), Vector2(470, -16), Vector2(480, -16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hb5qm"]
+_data = {
+&"RESET": SubResource("Animation_1nhwd"),
+&"Stamina Shaking": SubResource("Animation_0mxup")
+}
+
 [node name="Potion Brewing" type="Node2D" unique_id=965922724]
 script = ExtResource("1_g2f47")
 
@@ -366,7 +415,7 @@ texture_under = SubResource("AtlasTexture_xc2nr")
 texture_progress = SubResource("AtlasTexture_patwh")
 tint_progress = Color(1, 0.13999999, 0.13999999, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="UI" unique_id=2063012279]
+[node name="Stamina" type="Sprite2D" parent="UI" unique_id=2063012279]
 position = Vector2(280, 16)
 scale = Vector2(1.2741935, 1.2741935)
 texture = ExtResource("18_g121f")
@@ -375,7 +424,7 @@ texture = ExtResource("18_g121f")
 texture_repeat = 2
 offset_left = 480.0
 offset_top = -16.0
-offset_right = 880.0
+offset_right = 880.00037
 offset_bottom = 56.0
 max_value = 5.0
 step = 0.1
@@ -655,11 +704,27 @@ shape = SubResource("CircleShape2D_yffeo")
 stream = ExtResource("38_1nhwd")
 autoplay = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=367976392]
+libraries/ = SubResource("AnimationLibrary_hb5qm")
+
 [connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]
 [connection signal="ConsumeIngredient" from="InsideCauldronHitbox" to="." method="_on_ingredient_consumed"]
 [connection signal="WaterlogSpoonToggle" from="InsideCauldronHitbox" to="Spoon" method="_on_waterlog_toggle"]
 [connection signal="body_entered" from="InsideCauldronHitbox" to="InsideCauldronHitbox" method="_on_body_entered"]
 [connection signal="body_exited" from="InsideCauldronHitbox" to="InsideCauldronHitbox" method="_on_body_exited"]
+[connection signal="NotEnoughEnergyForBrewing" from="Honey" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Dewdrops" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Acorn" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Ginger" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Dragon Egg" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Mandrake" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Sap" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Lavender" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Milk" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Salt" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Garlic" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Fairy Wings" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Moss" to="." method="_on_not_enough_energy"]
 [connection signal="SpoonEnteredArea" from="Stir Trigger 1" to="." method="_on_stir_checkpoint_reached"]
 [connection signal="SpoonEnteredArea" from="Stir Trigger 2" to="." method="_on_stir_checkpoint_reached"]
 [connection signal="SpoonEnteredArea" from="Stir Trigger 3" to="." method="_on_stir_checkpoint_reached"]

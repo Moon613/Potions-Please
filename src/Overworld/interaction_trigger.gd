@@ -13,7 +13,8 @@ var interactionCooldown = 240;
 func _ready():
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		InteractedWith.connect(get_tree().current_scene._switch_scene)
-	pass # Replace with function body.
+	if !Engine.is_editor_hint():
+		$EnergyCost.text = str(GameInfo.minigameEnergy[SceneID]);
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +28,8 @@ func _process(delta):
 		if GameInfo.leftHouseForFirstTime:
 			$AnimatedSprite2D.self_modulate.a = lerp(1, 0, (distance-15)/30);
 			$Sprite2D.self_modulate.a = lerp(1, 0, (distance-15)/30);
+			$EnergyCost.self_modulate.a = lerp(1, 0, (distance-15)/30);
+			$EnergySprite.self_modulate.a = lerp(1, 0, (distance-15)/30);
 	
 
 func _input(event):

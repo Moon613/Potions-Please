@@ -56,6 +56,7 @@ func _process(delta):
 		Reset();
 
 func SpawnPotion(type: String, image: Texture2D):
+	GameInfo.energy -= GameInfo.minigameEnergy[1];
 	GameInfo.potions[type] += 1;
 	var potion = Sprite2D.new();
 	potion.texture = image;
@@ -103,3 +104,6 @@ func _on_stir_checkpoint_reached(num: int):
 		stirCyclesCompleted += 1;
 	elif mostRecentCheckpoint == num-1:
 		mostRecentCheckpoint = num;
+
+func _on_not_enough_energy():
+	$AnimationPlayer.play("Stamina Shaking");
