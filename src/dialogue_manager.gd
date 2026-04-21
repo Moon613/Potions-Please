@@ -3,7 +3,8 @@ extends CanvasLayer
 var inDialogue: bool = false;
 var dialogueQueue: Array[Dialogue] = [];
 var dialogueChoices: Dictionary[String, Callable] = {
-	"EnergyQuestGive": Dialogue.EnergyQuestGive
+	"EnergyQuestGive": Dialogue.EnergyQuestGive,
+	"EnergyQuestAccept": Dialogue.EnergyQuestAccept
 };
 var dialogueBox: PackedScene = preload("res://Dialogue Box.tscn");
 signal startMovementTutorial;
@@ -44,8 +45,11 @@ func PlayNextDialogue():
 		if nextDialogue.skip:
 			PlayNextDialogue();
 
-func TriggerDialogue(dialogueChoice: String):
-	dialogueChoices[dialogueChoice].call();
+func TriggerDialogue(dialogueChoice: String, originNode: DialogueTrigger):
+	dialogueChoices[dialogueChoice].call(originNode);
+
+func SpawnPotionSelection():
+	$ItemList.visible = true;
 
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Textures/YasmeenPortrait.png";
@@ -55,12 +59,19 @@ func TriggerDialogue(dialogueChoice: String):
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I'd better go outside to gather ingredients.", YASMEEN));
 		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(func(): DialogueManager.startMovementTutorial.emit()));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("(Use the WASD keys to move around!)", YASMEEN));
-	static func EnergyQuestGive():
-		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(func(): GameInfo.currentQuest = GameInfo.PotionQuests.ENERGY));
+	static func EnergyQuestGive(originNode: DialogueTrigger):
+		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(
+			func(): 
+				GameInfo.currentQuest = GameInfo.PotionQuests.ENERGY;
+				originNode.DialogueChoice = "EnergyQuestAccept";
+		));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Hiiiii there, I really need an energy potion.", PLACEHOLDER));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work.", PLACEHOLDER));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("So I need something to help keep me awake during the daytimes.", PLACEHOLDER));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thank yoouuuuu!", PLACEHOLDER));
+	static func EnergyQuestAccept(originNode: DialogueTrigger):
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Oh, did you make me my potion?", PLACEHOLDER));
+		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(DialogueManager.SpawnPotionSelection));
 
 class DialogueText:
 	extends Dialogue

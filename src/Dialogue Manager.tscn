@@ -1,8 +1,41 @@
 [gd_scene format=3 uid="uid://dkgruj3r4tsmj"]
 
 [ext_resource type="Script" uid="uid://0a70vdwmi20t" path="res://dialogue_manager.gd" id="1_muyy6"]
+[ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="2_e5g5b"]
 
 [node name="DialogueManager" type="CanvasLayer" unique_id=1399622759]
 offset = Vector2(576, 324)
 transform = Transform2D(1, 0, 0, 1, 576, 324)
 script = ExtResource("1_muyy6")
+
+[node name="Control" type="Control" parent="." unique_id=1696398188]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -356.0
+offset_top = -280.0
+offset_right = 356.0
+offset_bottom = 283.0
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=343724311]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e5g5b")
+expand_mode = 1
+
+[node name="ItemList" type="ItemList" parent="Control" unique_id=1695480350]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.001
+anchor_top = 0.002
+anchor_right = -0.001
+anchor_bottom = 0.002
+offset_left = 0.712
+offset_top = -1.12
+offset_right = 712.712
+offset_bottom = 472.88
+allow_rmb_select = true

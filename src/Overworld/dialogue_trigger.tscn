@@ -9,7 +9,6 @@ resource_local_to_scene = true
 
 [node name="Dialogue Trigger" type="Area2D" unique_id=557724366]
 script = ExtResource("1_vngoj")
-DialogueChoice = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1677971649]
 shape = SubResource("RectangleShape2D_yjyl4")

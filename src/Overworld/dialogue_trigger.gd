@@ -1,5 +1,6 @@
 @tool
 extends Area2D
+class_name DialogueTrigger
 @export var SceneID: int;
 @export var Size: Vector2 = Vector2(20,20):
 	set(value):
@@ -32,5 +33,5 @@ func _input(event):
 	if event is InputEvent and event.is_action_pressed("ui_accept") and !DialogueManager.inDialogue:
 		var playerIndex = get_overlapping_bodies().find_custom(func(obj: Node2D): return obj.is_in_group("Player"));
 		if playerIndex != -1:
-			DialogueManager.TriggerDialogue(DialogueChoice);
+			DialogueManager.TriggerDialogue(DialogueChoice, self);
 			get_viewport().set_input_as_handled();
