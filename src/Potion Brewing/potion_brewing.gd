@@ -13,8 +13,6 @@ var stirCyclesCompleted: int = 0;
 func _ready():
 	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
 	ReloadIngredientCount();
-	$"UI/Reputation Bar".value = GameInfo.reputation;
-	$"UI/Stamina Bar".value = GameInfo.energy;
 	for resource in GameInfo.resources:
 		spawnedIngredients[resource] = 0;
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
@@ -44,6 +42,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$"UI/Reputation Bar".value = GameInfo.reputation;
+	$"UI/Stamina Bar".value = GameInfo.energy;
 	if stirCyclesCompleted == 1 and mostRecentCheckpoint == 1:
 		for recipe: GameInfo.Recipe in GameInfo.validRecipies:
 			# Checks if every ingredient in the cauldron is in the recipe.
