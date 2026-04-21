@@ -220,15 +220,18 @@ icon = SubResource("AtlasTexture_phofv")
 icon = SubResource("AtlasTexture_govji")
 
 [node name="HealingPotion" parent="." unique_id=1839789398 instance=ExtResource("22_70d6n")]
+item_name = "Healing Brew"
 icon = SubResource("AtlasTexture_7l6aq")
 
 [node name="ShrinkPotion" parent="." unique_id=1470516613 instance=ExtResource("23_7e8mg")]
+item_name = "Shrink Spirit"
 icon = SubResource("AtlasTexture_0cn3d")
 
 [node name="SleepPotion" parent="." unique_id=1605218360 instance=ExtResource("24_m7yhu")]
 icon = SubResource("AtlasTexture_8n0xt")
 
 [node name="StrengthPotion" parent="." unique_id=1235120166 instance=ExtResource("25_quxbc")]
+item_name = "Strength Tonic"
 icon = SubResource("AtlasTexture_g14mx")
 
 [connection signal="button_up" from="PlayerPanel/VBoxContainer/HBoxContainer/Journal" to="." method="_on_journal_button_up"]

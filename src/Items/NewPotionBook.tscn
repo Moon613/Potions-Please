@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://nvwjkwj2y5nn"]
+
+[ext_resource type="Script" uid="uid://t4jnjeoqslbf" path="res://Items/potion_book.gd" id="1_emwov"]
+[ext_resource type="Texture2D" uid="uid://d114ca6m20r5d" path="res://Textures/PageEnr.png" id="2_8rjkc"]
+[ext_resource type="Texture2D" uid="uid://chg7xvpyvmbbl" path="res://Textures/PageHln.png" id="3_8a8ua"]
+[ext_resource type="Texture2D" uid="uid://deea28svfye8h" path="res://Textures/PageShr.png" id="4_a1l1p"]
+[ext_resource type="Texture2D" uid="uid://prrmbc8mv70d" path="res://Textures/PageSlp.png" id="5_86sk5"]
+[ext_resource type="Texture2D" uid="uid://drru3dyxnrsch" path="res://Textures/PageStr.png" id="6_4liar"]
+[ext_resource type="FontFile" uid="uid://dx7ancxvml4m5" path="res://fonts/KiwiMaru-Medium.ttf" id="7_8a8ua"]
+
+[node name="BookLayer" type="CanvasLayer" unique_id=703100872]
+script = ExtResource("1_emwov")
+
+[node name="Control" type="Control" parent="." unique_id=1641301929]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Energy" type="TextureRect" parent="Control" unique_id=974458540]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -509.0
+offset_top = -286.0
+offset_right = 509.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8rjkc")
+
+[node name="Healing" type="TextureRect" parent="Control" unique_id=1421505564]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -509.0
+offset_top = -286.0
+offset_right = 509.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8a8ua")
+
+[node name="Shrink" type="TextureRect" parent="Control" unique_id=858324036]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -509.0
+offset_top = -286.0
+offset_right = 509.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_a1l1p")
+
+[node name="Sleep" type="TextureRect" parent="Control" unique_id=1733600119]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -509.0
+offset_top = -286.0
+offset_right = 509.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_86sk5")
+
+[node name="Strength" type="TextureRect" parent="Control" unique_id=546191900]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -509.0
+offset_top = -286.0
+offset_right = 509.0
+offset_bottom = 286.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_4liar")
+
+[node name="TabEnergy" type="Button" parent="Control" unique_id=1329694011]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 109.0
+offset_right = 1083.0
+offset_bottom = 146.0
+flat = true
+
+[node name="TabHealing" type="Button" parent="Control" unique_id=1762454747]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 176.0
+offset_right = 1083.0
+offset_bottom = 213.0
+flat = true
+
+[node name="TabShrink" type="Button" parent="Control" unique_id=1861747103]
+layout_mode = 0
+offset_left = 1033.0
+offset_top = 246.0
+offset_right = 1083.0
+offset_bottom = 285.0
+flat = true
+
+[node name="TabSleep" type="Button" parent="Control" unique_id=1321250219]
+layout_mode = 0
+offset_left = 1031.0
+offset_top = 316.0
+offset_right = 1082.0
+offset_bottom = 359.0
+flat = true
+
+[node name="TabStrength" type="Button" parent="Control" unique_id=416317771]
+layout_mode = 0
+offset_left = 1033.0
+offset_top = 390.0
+offset_right = 1083.0
+offset_bottom = 433.0
+flat = true
+
+[node name="Exit" type="Button" parent="Control" unique_id=276410333]
+clip_contents = true
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 8.0
+offset_right = 1144.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_8a8ua")
+theme_override_font_sizes/font_size = 32
+text = "X"
+flat = true
+autowrap_mode = 1
+clip_text = true
+
+[connection signal="button_up" from="Control/TabEnergy" to="." method="_on_tab_energy_button_up"]
+[connection signal="button_up" from="Control/TabHealing" to="." method="_on_tab_healing_button_up"]
+[connection signal="button_up" from="Control/TabShrink" to="." method="_on_tab_shrink_button_up"]
+[connection signal="button_up" from="Control/TabSleep" to="." method="_on_tab_sleep_button_up"]
+[connection signal="button_up" from="Control/TabStrength" to="." method="_on_tab_strength_button_up"]
+[connection signal="button_up" from="Control/Exit" to="." method="_on_exit_button_up"]

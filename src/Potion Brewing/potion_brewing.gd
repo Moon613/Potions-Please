@@ -4,7 +4,6 @@ signal clickReleased;
 signal ReturnToOverworld(id: int);
 signal ChangeIngredients(ingr: String, amt: int);
 signal JournalOpen
-var journal_is_open = false
 
 var activeIngredients: Array[String] = [];
 var spawnedIngredients: Dictionary[String, int] = {};
@@ -78,9 +77,9 @@ func ReloadIngredientCount():
 	$SapText.text = str(GameInfo.resources[GameInfo.SAP]);
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel") and (GameInfo.busy or !journal_is_open):
-		if journal_is_open:
-			journal_is_open = false
+	if event.is_action_pressed("ui_cancel") and (GameInfo.busy or !GameInfo.journal_is_open):
+		if GameInfo.journal_is_open:
+			GameInfo.journal_is_open = false
 		else:
 			get_viewport().set_input_as_handled()
 			ReturnToOverworld.emit(2);
@@ -119,4 +118,4 @@ func _on_not_enough_energy():
 
 func _on_journal_button_button_up() -> void:
 	JournalOpen.emit()
-	journal_is_open = true
+	GameInfo.journal_is_open

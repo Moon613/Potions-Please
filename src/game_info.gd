@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var inventory: Inventory = $CanvasLayer/Inventory
 @onready var pause_menu: CanvasLayer = $"Pause Menu"
-@onready var book_layer: CanvasLayer = $BookLayer
+@export var book_layer: CanvasLayer
 var busy: bool = true
 var paused: bool = false
 
@@ -32,6 +32,9 @@ enum PotionQuests {
 	NONE = 0,
 	ENERGY = 1
 }
+
+# used by brewing scene
+var journal_is_open = false
 
 # Energy amounts for minigames, by scne ID
 var minigameEnergy: Dictionary[int, float] = {
