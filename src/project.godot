@@ -26,7 +26,7 @@ SaveManager="*uid://bj6054yd5rypy"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
 mouse_cursor/custom_image="uid://cmcidn00vfcs3"
 
 [editor_plugins]

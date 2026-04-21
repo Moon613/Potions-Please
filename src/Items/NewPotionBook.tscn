@@ -13,9 +13,14 @@ script = ExtResource("1_emwov")
 
 [node name="Control" type="Control" parent="." unique_id=1641301929]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchor_left = 0.5
+anchor_top = 0.48800004
+anchor_right = 0.5
+anchor_bottom = 0.48800004
+offset_left = -576.0
+offset_top = -316.22403
+offset_right = 576.0
+offset_bottom = 331.77597
 
 [node name="Energy" type="TextureRect" parent="Control" unique_id=974458540]
 layout_mode = 1
