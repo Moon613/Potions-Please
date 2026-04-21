@@ -58,44 +58,46 @@ func _input(event: InputEvent) -> void:
 		get_tree().quit();
 
 func _switch_scene(id: int):
+	if id in GameInfo.minigameEnergy and GameInfo.minigameEnergy[id] > GameInfo.energy:
+		return;
 	print("Switching to scene " + str(id))
 	if self.get_children()[0].has_method("Reset"):
 		self.get_children()[0].Reset();
 	self.remove_child(self.get_children()[0]);
 	inv_panel_control(id)
 	match id:
-		0:
+		GameInfo.SceneID.OVERWORLD:
 			self.add_child(overworldScene);
 			if !finishedTutorial:
 				DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I should move to the areas with arrows above them and interact with them by pressing 'Enter' to gather ingredients", DialogueManager.Dialogue.YASMEEN));
 				finishedTutorial = true;
-		1:
+		GameInfo.SceneID.POTIONBREWING:
 			self.add_child(potionScene);
-		2:
+		GameInfo.SceneID.INSIDEHOUSE:
 			self.add_child(insideScene);
-		3:
+		GameInfo.SceneID.DEWDROPS:
 			var dewdropInstance = dewdrops.instantiate();
 			dewdropInstance.name = "Dewdrop Collecting";
 			dewdropScene = dewdropInstance;
 			self.add_child(dewdropScene);
-		4:
+		GameInfo.SceneID.MAINMENU:
 			self.add_child(mainMenuScene);
-		5:
+		GameInfo.SceneID.ACORNS:
 			var acornInstance = acorns.instantiate();
 			acornInstance.name = "Acorn Minigame"
 			acornScene = acornInstance;
 			self.add_child(acornScene);
-		6:
+		GameInfo.SceneID.TREESAP:
 			var sapInstance = treesap.instantiate();
 			sapInstance.name = "Treesap Minigame"
 			sapScene = sapInstance;
 			self.add_child(sapScene);
-		7:
+		GameInfo.SceneID.DRAGONEGGS:
 			var eggInstance = dragonEggs.instantiate();
 			eggInstance.name = "Dragon Eggs Minigame"
 			eggScene = eggInstance;
 			self.add_child(eggScene);
-		8:
+		GameInfo.SceneID.MANDRAKES:
 			var mandrakeInstance = mandrakes.instantiate()
 			mandrakeInstance.name = "Mandrakes Minigame"
 			mandrakeScene = mandrakeInstance

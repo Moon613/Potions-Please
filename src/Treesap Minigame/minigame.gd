@@ -87,6 +87,7 @@ func _on_tap_sap_collection(resourceAmount: int):
 func _on_ingredient_done_showing():
 	ChangeIngredients.emit("sap", resourceAmountCollected);
 	ReturnToOverworld.emit(0);
+	GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.TREESAP];
 	self.queue_free()
 
 

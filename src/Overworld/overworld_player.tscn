@@ -293,7 +293,6 @@ slide_on_ceiling = false
 script = ExtResource("1_a5myp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1078663694]
-visible = false
 position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_nyb65")
 
@@ -305,14 +304,12 @@ animation = &"Walking Up"
 autoplay = "Walking Down"
 
 [node name="Transition Buffer" type="Area2D" parent="." unique_id=2127013718]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transition Buffer" unique_id=447121408]
 position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_a5myp")
 
 [node name="MovementTutorialUI" type="Node2D" parent="." unique_id=1817763898]
-visible = false
 position = Vector2(0, -12)
 script = ExtResource("6_3hocg")
 
@@ -341,7 +338,6 @@ scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_ij5j1")
 
 [node name="DirectionArrow" type="Sprite2D" parent="." unique_id=1865432365]
-visible = false
 texture_filter = 3
 position = Vector2(0, 8)
 scale = Vector2(0.37499997, 0.37499997)

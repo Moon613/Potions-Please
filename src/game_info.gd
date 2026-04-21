@@ -23,6 +23,42 @@ var doneMovementTutorial: bool = false;
 var leftHouseForFirstTime: bool = false;
 var finishedGatheringTutorial: bool = false;
 
+# Flag for keeping track of which quest is currently active
+var currentQuest;
+enum PotionQuests {
+	NONE = 0,
+	ENERGY = 1
+}
+
+# Energy amounts for minigames, by scne ID
+var minigameEnergy: Dictionary[int, float] = {
+	# Technically not a minigame, potion brewing. Per potion.
+	1: 0.5,
+	# Dewdrop collection
+	3: 0.5,
+	# Acorns
+	5: 1.0,
+	# Sap tapping
+	6: 0.75,
+	# Dragon Egg hunt
+	7: 1.5,
+	# Mandrake wack-a-mole
+	8: 1.0
+};
+
+# Scene IDs
+enum SceneID {
+	OVERWORLD = 0,
+	POTIONBREWING = 1,
+	INSIDEHOUSE = 2,
+	DEWDROPS = 3,
+	MAINMENU = 4,
+	ACORNS = 5,
+	TREESAP = 6,
+	DRAGONEGGS = 7,
+	MANDRAKES = 8
+}
+
 # Ingredients
 	# Minigame
 const ACORNS: String = "acorns";
@@ -50,7 +86,7 @@ const RUINED: String = "burnt";
 
 # Apparently GDScript has a nested collection type restriction so the inner array cannot be Array[String], but for reference for anyone else, that is what it is.
 var validRecipies: Array[Recipe] = [
-	Recipe.new([HONEY, DEWDROPS, GINGER], ENERGY, 0.5, "res://Textures/EnergyElixir.png"),
+	Recipe.new([HONEY, DEWDROPS, GINGER], ENERGY, 0.5, "res://Textures/Energy Elixir(NEW).png"),
 	Recipe.new([MANDRAKE, LAVENDER, MILK], SLEEP, 2, "res://Textures/Sleepy Solution.png"),
 	Recipe.new([SALTS, GARLIC, EGGS], STRENGTH, 1.5, "res://Textures/Strength Potion.png"),
 	Recipe.new([WINGS, MOSS, SAP], HEALING, 0.75, "res://Textures/Healing Potion.png"),
@@ -58,7 +94,7 @@ var validRecipies: Array[Recipe] = [
 ];
 # Both of these are on a scale of 0.0 - 5.0
 var reputation: float = 2.5;
-var energy: float = 5.0;
+var energy: float = 1;
 # -1 means that it is infinite
 var resources: Dictionary[String, int] = {
 	DEWDROPS: 2,

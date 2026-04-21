@@ -56,6 +56,7 @@ func TriggerDialogue(dialogueChoice: String):
 		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(func(): DialogueManager.startMovementTutorial.emit()));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("(Use the WASD keys to move around!)", YASMEEN));
 	static func EnergyQuestGive():
+		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(func(): GameInfo.currentQuest = GameInfo.PotionQuests.ENERGY));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Hiiiii there, I really need an energy potion.", PLACEHOLDER));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work.", PLACEHOLDER));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("So I need something to help keep me awake during the daytimes.", PLACEHOLDER));

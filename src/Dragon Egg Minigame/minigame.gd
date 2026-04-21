@@ -46,6 +46,7 @@ func _process(delta):
 		ChangeIngredients.emit(GameInfo.EGGS, eggsObtained);
 		Input.set_custom_mouse_cursor(load("res://Textures/SuperiorCursor.png"), 0, Vector2.ZERO);
 		ReturnToOverworld.emit(0);
+		GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.DRAGONEGGS];
 		self.queue_free()
 	
 	$ColorRect/RichTextLabel.text = "%01d:%02d" % [max(_maxTimeSeconds/60-1, 0) - int(timer)/60, (maxMinutes-floori(maxMinutes))*60-int(timer)%60];

@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Textures/Stamina Text.png" id="7_q72hy"]
 [ext_resource type="PackedScene" uid="uid://dosak45c72mij" path="res://Items/WIPItem.tscn" id="8_j1wyx"]
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="8_mdst7"]
+[ext_resource type="Texture2D" uid="uid://bfoveypfrtn02" path="res://Textures/BadStaminaReputation.png" id="8_rhxlg"]
 [ext_resource type="Texture2D" uid="uid://bwlkhcfqbgk2p" path="res://Textures/Journal Potion Ingredient List Icon.png" id="10_hwedm"]
 [ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="11_rhxlg"]
 [ext_resource type="PackedScene" uid="uid://btyjcv8jeer3c" path="res://Items/DewdropItem.tscn" id="15_mdst7"]
@@ -27,7 +28,11 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("6_q72hy")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hwedm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hhu0"]
+atlas = ExtResource("8_rhxlg")
+region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30vpt"]
 atlas = ExtResource("8_mdst7")
 region = Rect2(0, 0, 400, 72)
 
@@ -93,15 +98,14 @@ texture = ExtResource("7_q72hy")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Stamina Bar" type="TextureProgressBar" parent="PlayerPanel/VBoxContainer" unique_id=1753917181]
+[node name="Stamina Bar" type="TextureProgressBar" parent="PlayerPanel/VBoxContainer" unique_id=552958916]
 texture_repeat = 2
 layout_mode = 2
 max_value = 5.0
 step = 0.1
 value = 5.0
-texture_under = SubResource("AtlasTexture_hwedm")
-texture_progress = ExtResource("8_mdst7")
-tint_under = Color(0.32024416, 0.32024416, 0.32024413, 1)
+texture_under = SubResource("AtlasTexture_8hhu0")
+texture_progress = SubResource("AtlasTexture_30vpt")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerPanel/VBoxContainer" unique_id=2081991958]
 custom_minimum_size = Vector2(300, 100)

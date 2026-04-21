@@ -13,8 +13,6 @@ var stirCyclesCompleted: int = 0;
 func _ready():
 	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
 	ReloadIngredientCount();
-	$"UI/Reputation Bar".value = GameInfo.reputation;
-	$"UI/Stamina Bar".value = GameInfo.energy;
 	for resource in GameInfo.resources:
 		spawnedIngredients[resource] = 0;
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
@@ -44,6 +42,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$"UI/Reputation Bar".value = GameInfo.reputation;
+	$"UI/Stamina Bar".value = GameInfo.energy;
 	if stirCyclesCompleted == 1 and mostRecentCheckpoint == 1:
 		for recipe: GameInfo.Recipe in GameInfo.validRecipies:
 			# Checks if every ingredient in the cauldron is in the recipe.
@@ -56,6 +56,7 @@ func _process(delta):
 		Reset();
 
 func SpawnPotion(type: String, image: Texture2D):
+	GameInfo.energy -= GameInfo.minigameEnergy[1];
 	GameInfo.potions[type] += 1;
 	var potion = Sprite2D.new();
 	potion.texture = image;
@@ -103,3 +104,6 @@ func _on_stir_checkpoint_reached(num: int):
 		stirCyclesCompleted += 1;
 	elif mostRecentCheckpoint == num-1:
 		mostRecentCheckpoint = num;
+
+func _on_not_enough_energy():
+	$AnimationPlayer.play("Stamina Shaking");

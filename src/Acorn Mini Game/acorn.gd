@@ -24,6 +24,7 @@ func _input(event):
 func _on_tree_minigame_end() -> void:
 	ChangeIngredients.emit("acorns", acornsCollected)
 	ReturnToOverworld.emit(0);
+	GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.ACORNS];
 	self.queue_free()
 	pass
 

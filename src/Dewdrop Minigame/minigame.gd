@@ -53,6 +53,7 @@ func _input(event):
 func _on_collection_jar_done_move_down():
 	ChangeIngredients.emit("dewdrops", 1);
 	ReturnToOverworld.emit(0);
+	GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.DEWDROPS];
 	self.queue_free()
 
 

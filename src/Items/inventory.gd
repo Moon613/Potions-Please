@@ -46,8 +46,6 @@ func _ready():
 	tooltip.visible = false
 	
 	
-	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
-	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
 	#add items from game reasources
 	var res = GameInfo.resources
 	for item in res:
@@ -59,6 +57,8 @@ func _ready():
 
 # moves selected item with mouse
 func _process(_delta):
+	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
+	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
 	tooltip.global_position = get_global_mouse_position() - Vector2(0, tooltip.size.y/2)
 	if selected_item:
 		tooltip.visible = false
