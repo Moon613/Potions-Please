@@ -23,9 +23,9 @@
 [ext_resource type="PackedScene" uid="uid://ch2s5cbjit2nu" path="res://Potion Brewing/Ingredient.tscn" id="21_m6y6x"]
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="22_a3cj8"]
-[ext_resource type="Texture2D" uid="uid://buaxvlcxodha5" path="res://Textures/Honey.png" id="22_cgc07"]
+[ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Textures/Honey(New).png" id="23_1nhwd"]
 [ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Textures/Acorn Collectable.png" id="25_hb5qm"]
-[ext_resource type="Texture2D" uid="uid://b5mmkloiikro2" path="res://Textures/GingerRoot.png" id="26_7ndod"]
+[ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Textures/Ginger Root (New).png" id="26_0mxup"]
 [ext_resource type="Script" uid="uid://0bn1itn1vduw" path="res://Potion Brewing/stir_trigger.gd" id="26_m5i5b"]
 [ext_resource type="Theme" uid="uid://bguvjymyr647x" path="res://Potion Brewing/Infinite Text.tres" id="27_yffeo"]
 [ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Textures/Dragon Egg Collectable.png" id="28_1og6f"]
@@ -96,8 +96,8 @@ region = Rect2(0, 0, 400, 72)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nhwd"]
 resource_local_to_scene = true
-radius = 49.76
-height = 198.94
+radius = 49.77
+height = 149.23
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mxup"]
 resource_local_to_scene = true
@@ -108,7 +108,7 @@ height = 177.14282
 radius = 69.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pr62"]
-size = Vector2(151.18, 117.365)
+size = Vector2(98.055, 150.315)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ako6u"]
 radius = 47.142822
@@ -433,9 +433,9 @@ texture_under = SubResource("AtlasTexture_a3cj8")
 texture_progress = SubResource("AtlasTexture_m6y6x")
 
 [node name="Honey" parent="." unique_id=56422247 instance=ExtResource("21_m6y6x")]
-position = Vector2(-804, -212)
+position = Vector2(-804, -191)
 mass = 0.61
-Sprite = ExtResource("22_cgc07")
+Sprite = ExtResource("23_1nhwd")
 Shape = SubResource("CapsuleShape2D_1nhwd")
 Type = "honey"
 
@@ -468,8 +468,8 @@ texture = ExtResource("25_hb5qm")
 shape = SubResource("CircleShape2D_0mxup")
 
 [node name="Ginger" parent="." unique_id=1018620730 instance=ExtResource("21_m6y6x")]
-position = Vector2(-694, -182)
-Sprite = ExtResource("26_7ndod")
+position = Vector2(-694, -187)
+Sprite = ExtResource("26_0mxup")
 Shape = SubResource("RectangleShape2D_5pr62")
 Type = "ginger"
 
