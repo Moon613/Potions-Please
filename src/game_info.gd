@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var inventory: Inventory = $CanvasLayer/Inventory
 @onready var pause_menu: CanvasLayer = $"Pause Menu"
+@onready var book_layer: CanvasLayer = $BookLayer
 var busy: bool = true
 var paused: bool = false
 
@@ -147,10 +148,14 @@ func _process(delta: float) -> void:
 func _input(event):
 	if Input.is_action_just_pressed("inventory") and !busy and !paused:
 		inventory.visible = !inventory.visible
-	if Input.is_action_just_pressed("ui_cancel") and !busy:
-		pause_menu.visible = !pause_menu.visible
-		get_tree().paused = !get_tree().paused
-		paused = !paused
+	if Input.is_action_just_pressed("ui_cancel"):
+		if !busy:
+			if inventory.visible:
+				inventory.visible = false
+			else:
+				pause_menu.visible = !pause_menu.visible
+				get_tree().paused = !get_tree().paused
+				paused = !paused
 
 func reset_info():
 	for pot in potions.keys():
@@ -250,3 +255,8 @@ func set_dict(dict_name, dict_data):
 		pass
 	for i in dict_data:
 		target_dict[i] = dict_data[i]
+
+
+func _on_inventory_journal_open() -> void:
+	book_layer.visible = true
+	busy = true

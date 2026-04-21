@@ -367,7 +367,7 @@ offset_right = 960.0
 offset_bottom = 72.0
 color = Color(0.19, 0.1159, 0.18258996, 1)
 
-[node name="Button" type="Button" parent="UI" unique_id=15710205]
+[node name="JournalButton" type="Button" parent="UI" unique_id=15710205]
 offset_left = 480.0
 offset_top = 72.0
 offset_right = 616.0
@@ -712,6 +712,7 @@ libraries/ = SubResource("AnimationLibrary_hb5qm")
 [connection signal="WaterlogSpoonToggle" from="InsideCauldronHitbox" to="Spoon" method="_on_waterlog_toggle"]
 [connection signal="body_entered" from="InsideCauldronHitbox" to="InsideCauldronHitbox" method="_on_body_entered"]
 [connection signal="body_exited" from="InsideCauldronHitbox" to="InsideCauldronHitbox" method="_on_body_exited"]
+[connection signal="button_up" from="UI/JournalButton" to="." method="_on_journal_button_button_up"]
 [connection signal="NotEnoughEnergyForBrewing" from="Honey" to="." method="_on_not_enough_energy"]
 [connection signal="NotEnoughEnergyForBrewing" from="Dewdrops" to="." method="_on_not_enough_energy"]
 [connection signal="NotEnoughEnergyForBrewing" from="Acorn" to="." method="_on_not_enough_energy"]

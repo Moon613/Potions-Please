@@ -70,7 +70,8 @@ func _process(delta):
 
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and GameInfo.busy:
+		get_viewport().set_input_as_handled()
 		minigame_end()
 	if event is InputEventMouseButton and event.is_pressed():
 		hammer_anim.play("whack")

@@ -15,7 +15,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and GameInfo.busy:
+		get_viewport().set_input_as_handled()
 		ChangeIngredients.emit("acorns", acornsCollected)
 		ReturnToOverworld.emit(0);
 		self.queue_free()

@@ -1,6 +1,7 @@
 extends Control
 class_name Inventory
 
+signal JournalOpen
 # create a String : Item dictionary
 # add add_item to any increase to item
 @onready var invConvert: Dictionary[String, Item] = {
@@ -153,3 +154,7 @@ func load_inv():
 		var amount = pot[item]
 		if amount > 0:
 			add_item(item,amount);
+
+
+func _on_journal_button_up() -> void:
+	JournalOpen.emit()

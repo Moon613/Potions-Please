@@ -3,6 +3,8 @@ extends Node2D
 signal clickReleased;
 signal ReturnToOverworld(id: int);
 signal ChangeIngredients(ingr: String, amt: int);
+signal JournalOpen
+var journal_is_open = false
 
 var activeIngredients: Array[String] = [];
 var spawnedIngredients: Dictionary[String, int] = {};
@@ -17,6 +19,8 @@ func _ready():
 		spawnedIngredients[resource] = 0;
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
+		
+	JournalOpen.connect(GameInfo._on_inventory_journal_open)
 	
 	if GameInfo.resources[GameInfo.DEWDROPS] == 0:
 		$DewdropText.visible = false;
@@ -74,8 +78,12 @@ func ReloadIngredientCount():
 	$SapText.text = str(GameInfo.resources[GameInfo.SAP]);
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		ReturnToOverworld.emit(2);
+	if event.is_action_pressed("ui_cancel") and (GameInfo.busy or !journal_is_open):
+		if journal_is_open:
+			journal_is_open = false
+		else:
+			get_viewport().set_input_as_handled()
+			ReturnToOverworld.emit(2);
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
 			if !event.pressed:
@@ -107,3 +115,8 @@ func _on_stir_checkpoint_reached(num: int):
 
 func _on_not_enough_energy():
 	$AnimationPlayer.play("Stamina Shaking");
+
+
+func _on_journal_button_button_up() -> void:
+	JournalOpen.emit()
+	journal_is_open = true

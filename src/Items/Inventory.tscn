@@ -151,12 +151,11 @@ size_flags_vertical = 4
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="Journal" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=798060606]
+[node name="Journal" type="Button" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=795107116]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture = ExtResource("10_hwedm")
-expand_mode = 1
-stretch_mode = 5
+icon = ExtResource("10_hwedm")
+flat = true
 
 [node name="Orders" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=2142444398]
 custom_minimum_size = Vector2(100, 0)
@@ -230,3 +229,5 @@ icon = SubResource("AtlasTexture_8n0xt")
 
 [node name="StrengthPotion" parent="." unique_id=1235120166 instance=ExtResource("25_quxbc")]
 icon = SubResource("AtlasTexture_g14mx")
+
+[connection signal="button_up" from="PlayerPanel/VBoxContainer/HBoxContainer/Journal" to="." method="_on_journal_button_up"]
