@@ -36,7 +36,6 @@ func _process(delta: float) -> void:
 		if !player.collidedWithTransition:
 			player.collidedWithTransition = true;
 			# This is only here temporarily until I need to actually move it where it makes sense
-			GameInfo.leftHouseForFirstTime = true;
 			switch_scene.emit(SceneID);
 	else:
 		rejectedPlayer = false;

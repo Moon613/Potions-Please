@@ -1,8 +1,21 @@
 [gd_scene format=3 uid="uid://dsxoopnx1kodm"]
 
-[ext_resource type="Script" uid="uid://1om6rfhcw5ty" path="res://main_scene.gd" id="1_fcjhs"]
+[ext_resource type="Script" uid="uid://cuihnj4k45gj3" path="res://game_info.gd" id="1_fcjhs"]
+[ext_resource type="PackedScene" uid="uid://dh3sgkg60ryli" path="res://Items/Inventory.tscn" id="2_uk7sp"]
+[ext_resource type="PackedScene" uid="uid://1whcgwa3vise" path="res://PauseMenu.tscn" id="3_saxbk"]
 
-[node name="MainScene" type="Node2D" unique_id=1114061648]
-y_sort_enabled = true
+[node name="GameInfo" type="Node2D" unique_id=571529810 groups=["Saved Info"]]
+process_mode = 3
 script = ExtResource("1_fcjhs")
-startingScene = -1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1222121063]
+
+[node name="Inventory" parent="CanvasLayer" unique_id=1453173247 instance=ExtResource("2_uk7sp")]
+offset_left = 141.0
+offset_top = 22.0
+offset_right = 141.0
+offset_bottom = 22.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause Menu" parent="." unique_id=670370226 instance=ExtResource("3_saxbk")]
+visible = false

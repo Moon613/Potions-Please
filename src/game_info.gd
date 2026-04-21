@@ -147,7 +147,7 @@ func _process(delta: float) -> void:
 func _input(event):
 	if Input.is_action_just_pressed("inventory") and !busy and !paused:
 		inventory.visible = !inventory.visible
-	if Input.is_action_pressed("ui_cancel") and !busy:
+	if Input.is_action_just_pressed("ui_cancel") and !busy:
 		pause_menu.visible = !pause_menu.visible
 		get_tree().paused = !get_tree().paused
 		paused = !paused
@@ -161,7 +161,7 @@ func reset_info():
 	busy = true
 	paused = false
 	reputation = 2.5
-	energy = 2.5
+	energy = 1
 	
 	dewdropTutorial = true
 	acornsTutorial = true
@@ -199,7 +199,7 @@ func save():
 	var save_dict = {
 		#stats
 		"reputation": reputation,
-		"stamina": energy,
+		"energy": energy,
 		#"pos_x": position.x,
 		#"pos_y": position.y,
 		
@@ -233,6 +233,7 @@ func save():
 		"finishedGatheringTutorial": finishedGatheringTutorial,
 		
 		# story flags
+		"currentQuest": currentQuest
 	}
 	return save_dict
 

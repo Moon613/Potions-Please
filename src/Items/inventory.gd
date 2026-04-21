@@ -11,12 +11,12 @@ class_name Inventory
 	"eggs": $EggItem,
 	"sap": $SapItem,
 	
-	"energy": $WIPItem,
-	"sleep": $WIPItem,
-	"strength": $WIPItem,
-	"healing": $WIPItem,
-	"shrink": $WIPItem,
-	"burnt": $WIPItem
+	"energy": $EnergyPotion,
+	"sleep": $SleepPotion,
+	"strength": $StrengthPotion,
+	"healing": $HealingPotion,
+	"shrink": $ShrinkPotion,
+	"burnt": $BurntPotion
 };
 
 var inventory_item_scene = preload("res://Items/InventoryItem.tscn")
@@ -46,8 +46,7 @@ func _ready():
 	tooltip.visible = false
 	
 	
-	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
-	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
+
 
 # moves selected item with mouse
 func _process(_delta):
@@ -55,6 +54,8 @@ func _process(_delta):
 	if selected_item:
 		tooltip.visible = false
 		selected_item.global_position = get_global_mouse_position()
+	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
+	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
 
 # selects or deselects item
 func _on_slot_input(which: InventorySlot, action: InventorySlot.InventorySlotAction):
@@ -88,6 +89,8 @@ func add_item(item_name: String, amount: int) -> void:
 		for slot in slots:
 			if slot.item and slot.item.item_name == _item.item_name: # if item and is of same type
 				slot.item.amount += _item.amount
+				if slot.item.amount <= 0:
+					slot.remove_item()
 				return
 	for slot in slots:
 		if slot.item == null and slot.is_respecting_hint(_item):
