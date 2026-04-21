@@ -99,8 +99,8 @@ var validRecipies: Array[Recipe] = [
 	Recipe.new([ACORNS, MILK, WINGS], SHRINK, 1.25, "res://Textures/ShrinkElixir.png"),
 ];
 # Both of these are on a scale of 0.0 - 5.0
-var reputation: float = 2.5;
-var energy: float = 1;
+@export var reputation: float = 2.5;
+@export var energy: float = 1;
 # -1 means that it is infinite
 var resources: Dictionary[String, int] = {
 	DEWDROPS: 0,

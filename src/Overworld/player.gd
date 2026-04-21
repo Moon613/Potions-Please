@@ -10,6 +10,8 @@ var movementTutorialAppear: bool = false;
 
 func _ready() -> void:
 	DialogueManager.startMovementTutorial.connect(_on_movement_tutorial_start);
+	# For some reason this was not applying to instantiated players when set in the editor.
+	$"Thought Bubble".modulate.a = 0;
 
 func _process(delta: float) -> void:
 	if GameInfo.leftHouseForFirstTime and !GameInfo.finishedGatheringTutorial:
@@ -107,3 +109,7 @@ func _on_movement_tutorial_start():
 
 func _on_loading_zone_reject():
 	$MovementTutorialUI._on_loadingzone_reject();
+
+func _on_thought_bubble(message: String):
+	$"Thought Bubble/RichTextLabel".text = message;
+	$AnimationPlayer.play("Thought Bubble");
