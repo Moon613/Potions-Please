@@ -10,8 +10,7 @@ extends Node2D
 @export var dragonEggs: PackedScene = preload("res://Dragon Egg Minigame/minigame.tscn")
 @export var mandrakes: PackedScene = preload("res://Mandrake Minigame/MandrakeMinigame.tscn")
 
-@export var startingScene: int = -1;
-var finishedTutorial: bool = false;
+@export var startingScene: int;
 
 @export var busy_scenes = [1, 3, 4, 5, 6, 7, 8]
 var overworldScene;
@@ -37,7 +36,6 @@ func _ready() -> void:
 	
 	var mainMenuInstance = mainMenu.instantiate();
 	mainMenuInstance.name = "Main Menu";
-	add_child(mainMenuInstance);
 	
 	overworldScene = overworldInstance;
 	potionScene = brewingInstance;
@@ -46,6 +44,8 @@ func _ready() -> void:
 	
 	if startingScene != -1:
 		_switch_scene(startingScene);
+	else:
+		_switch_scene(4)
 	pass # Replace with function body.
 
 
@@ -61,16 +61,18 @@ func _switch_scene(id: int):
 	if id in GameInfo.minigameEnergy and GameInfo.minigameEnergy[id] > GameInfo.energy:
 		return;
 	print("Switching to scene " + str(id))
-	if self.get_children()[0].has_method("Reset"):
+	if self.get_children() and self.get_children()[0].has_method("Reset"):
 		self.get_children()[0].Reset();
-	self.remove_child(self.get_children()[0]);
-	inv_panel_control(id)
+	if self.get_children():
+		self.remove_child(self.get_children()[0]);
+	
 	match id:
 		GameInfo.SceneID.OVERWORLD:
 			self.add_child(overworldScene);
-			if !finishedTutorial:
+			if !GameInfo.leftHouseForFirstTime:
 				DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I should move to the areas with arrows above them and interact with them by pressing 'Enter' to gather ingredients", DialogueManager.Dialogue.YASMEEN));
-				finishedTutorial = true;
+				GameInfo.leftHouseForFirstTime = true;
+
 		GameInfo.SceneID.POTIONBREWING:
 			self.add_child(potionScene);
 		GameInfo.SceneID.INSIDEHOUSE:
@@ -104,6 +106,9 @@ func _switch_scene(id: int):
 			self.add_child(mandrakeScene);
 		_:
 			print("Unknown SceneID!")
+		
+		
+	inv_panel_control(id)
 
 func inv_panel_control(id: int):
 	if id in busy_scenes:

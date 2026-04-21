@@ -46,19 +46,11 @@ func _ready():
 	tooltip.visible = false
 	
 	
-	#add items from game reasources
-	var res = GameInfo.resources
-	for item in res:
-		var amount = res[item]
-		if amount > 0:
-			add_item(item,amount);
-			pass
-		pass
+	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
+	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
 
 # moves selected item with mouse
 func _process(_delta):
-	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
-	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
 	tooltip.global_position = get_global_mouse_position() - Vector2(0, tooltip.size.y/2)
 	if selected_item:
 		tooltip.visible = false
@@ -145,3 +137,16 @@ func remove_all(_name: String) -> void:
 func clear_inventory() -> void:
 	for slot in slots:
 		slot.remove_item()
+
+func load_inv():
+	#add items from game reasources
+	var res = GameInfo.resources
+	for item in res:
+		var amount = res[item]
+		if amount > 0:
+			add_item(item,amount);
+	var pot = GameInfo.potions
+	for item in pot:
+		var amount = pot[item]
+		if amount > 0:
+			add_item(item,amount);

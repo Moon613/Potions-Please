@@ -20,3 +20,8 @@ func _on_new_game_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_load_game_pressed() -> void:
+	SaveManager.load_game(0)
+	tempSignal.emit(2)

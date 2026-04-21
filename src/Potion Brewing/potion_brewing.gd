@@ -57,7 +57,7 @@ func _process(delta):
 
 func SpawnPotion(type: String, image: Texture2D):
 	GameInfo.energy -= GameInfo.minigameEnergy[1];
-	GameInfo.potions[type] += 1;
+	GameInfo.add_potion(type)
 	var potion = Sprite2D.new();
 	potion.texture = image;
 	potion.position = Vector2(416, 296);

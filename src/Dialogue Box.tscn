@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="3_kdsf3"]
 
 [node name="DialogueBox" type="Sprite2D" unique_id=1215306681]
+process_mode = 3
 z_index = 512
 scale = Vector2(0.6, 0.532)
 texture = ExtResource("1_kdsf3")

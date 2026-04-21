@@ -131,4 +131,5 @@ theme_override_styles/hover = ExtResource("4_wlfof")
 text = "Quit Game"
 
 [connection signal="pressed" from="Main Menu/New Game" to="Main Menu" method="_on_new_game_pressed"]
+[connection signal="pressed" from="Main Menu/Load Game" to="Main Menu" method="_on_load_game_pressed"]
 [connection signal="pressed" from="Main Menu/Quit" to="Main Menu" method="_on_quit_pressed"]

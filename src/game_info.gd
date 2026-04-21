@@ -1,7 +1,9 @@
 extends Node2D
 
-@export var inventory: Inventory
-var busy: bool = false
+@onready var inventory: Inventory = $CanvasLayer/Inventory
+@onready var pause_menu: CanvasLayer = $"Pause Menu"
+var busy: bool = true
+var paused: bool = false
 
 var ruinedPotionSprite: Texture2D = preload("res://Textures/BurntPotion.png");
 
@@ -97,11 +99,11 @@ var reputation: float = 2.5;
 var energy: float = 1;
 # -1 means that it is infinite
 var resources: Dictionary[String, int] = {
-	DEWDROPS: 2,
-	ACORNS: 2,
-	MANDRAKE: 1,
-	EGGS: 1,
-	SAP: 1,
+	DEWDROPS: 0,
+	ACORNS: 0,
+	MANDRAKE: 0,
+	EGGS: 0,
+	SAP: 0,
 	MOSS: -1,
 	HONEY: -1,
 	GINGER: -1,
@@ -124,6 +126,7 @@ var potions: Dictionary[String, int] = {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	inventory.visible = false
+	pause_menu.visible = false
 	pass # Replace with function body.
 
 func _change_ingredient_amount(ingredient: String, amount: int):
@@ -132,13 +135,49 @@ func _change_ingredient_amount(ingredient: String, amount: int):
 		#update inventory panel
 		inventory.add_item(ingredient, amount)
 
+func add_potion(potion: String):
+	potions[potion] += 1
+	inventory.add_item(potion, 1)
+	pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _input(event):
-	if Input.is_action_just_pressed("inventory") and !busy:
+	if Input.is_action_just_pressed("inventory") and !busy and !paused:
 		inventory.visible = !inventory.visible
+	if Input.is_action_pressed("ui_cancel") and !busy:
+		pause_menu.visible = !pause_menu.visible
+		get_tree().paused = !get_tree().paused
+		paused = !paused
+
+func reset_info():
+	for pot in potions.keys():
+		potions[pot] = 0
+	for res in resources.keys():
+		if resources[res] != -1:
+			resources[res] = 0
+	busy = true
+	paused = false
+	reputation = 2.5
+	energy = 2.5
+	
+	dewdropTutorial = true
+	acornsTutorial = true
+	dragoneggTutorial = true
+	treesapTutorial = true
+	mandrakeTutorial = true
+
+	for key in directionTutorial.keys():
+		directionTutorial[key] = false
+		
+	doneMovementTutorial = false;
+	leftHouseForFirstTime = false;
+	finishedGatheringTutorial = false;
+	
+	inventory.clear_inventory()
+	pass
 
 class Recipe:
 	# A list of ingredients needed for this recipe
@@ -154,3 +193,59 @@ class Recipe:
 		self.output = output;
 		self.image = load(pathToImage);
 		self.energyDrain = energyDrain;
+
+# a collection of variables to save
+func save():
+	var save_dict = {
+		#stats
+		"reputation": reputation,
+		"stamina": energy,
+		#"pos_x": position.x,
+		#"pos_y": position.y,
+		
+		# resources
+		"resources": resources,
+		#"dewdrops": resources[DEWDROPS],
+		#"acorns": resources[ACORNS],
+		#"mandrake": resources[MANDRAKE],
+		#"eggs": resources[EGGS],
+		#"sap": resources[SAP],
+		
+		# potions
+		"potions": potions,
+		#"energy": potions[ENERGY],
+		#"sleep": potions[SLEEP],
+		#"strength": potions[STRENGTH],
+		#"healing": potions[HEALING],
+		#"shrink": potions[SHRINK],
+		#"ruined": potions[RUINED],
+		
+		# tutorial flags
+		"dewdropTutorial": dewdropTutorial,
+		"acornsTutorial": acornsTutorial,
+		"dragoneggTutorial": dragoneggTutorial,
+		"treesapTutorial": treesapTutorial,
+		"mandrakeTutorial": mandrakeTutorial,
+		
+		"directionTutorial": directionTutorial,
+		"doneMovementTutorial": doneMovementTutorial,
+		"leftHouseForFirstTime": leftHouseForFirstTime,
+		"finishedGatheringTutorial": finishedGatheringTutorial,
+		
+		# story flags
+	}
+	return save_dict
+
+func set_dict(dict_name, dict_data):
+	var target_dict
+	if dict_name == "directionTutorial":
+		target_dict = directionTutorial
+		pass
+	if dict_name == "resources":
+		target_dict = resources
+		pass
+	if dict_name == "potions":
+		target_dict = potions
+		pass
+	for i in dict_data:
+		target_dict[i] = dict_data[i]
