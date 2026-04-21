@@ -23,6 +23,13 @@ var doneMovementTutorial: bool = false;
 var leftHouseForFirstTime: bool = false;
 var finishedGatheringTutorial: bool = false;
 
+# Flag for keeping track of which quest is currently active
+var currentQuest;
+enum PotionQuests {
+	NONE = 0,
+	ENERGY = 1
+}
+
 # Energy amounts for minigames, by scne ID
 var minigameEnergy: Dictionary[int, float] = {
 	# Technically not a minigame, potion brewing. Per potion.
@@ -79,7 +86,7 @@ const RUINED: String = "burnt";
 
 # Apparently GDScript has a nested collection type restriction so the inner array cannot be Array[String], but for reference for anyone else, that is what it is.
 var validRecipies: Array[Recipe] = [
-	Recipe.new([HONEY, DEWDROPS, GINGER], ENERGY, 0.5, "res://Textures/EnergyElixir.png"),
+	Recipe.new([HONEY, DEWDROPS, GINGER], ENERGY, 0.5, "res://Textures/Energy Elixir(NEW).png"),
 	Recipe.new([MANDRAKE, LAVENDER, MILK], SLEEP, 2, "res://Textures/Sleepy Solution.png"),
 	Recipe.new([SALTS, GARLIC, EGGS], STRENGTH, 1.5, "res://Textures/Strength Potion.png"),
 	Recipe.new([WINGS, MOSS, SAP], HEALING, 0.75, "res://Textures/Healing Potion.png"),
