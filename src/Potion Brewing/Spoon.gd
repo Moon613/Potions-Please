@@ -53,6 +53,7 @@ func _input_event(viewport, event, shape_idx):
 				self.gravity_scale = 5;
 				self.linear_damp = 10;
 				FOLLOW_MOUSE = true;
+				get_viewport().warp_mouse(self.get_global_transform_with_canvas().origin);
 				RELATIVE_MOUSE_POSITION = self.position - get_global_mouse_position();
 				self.center_of_mass = RELATIVE_MOUSE_POSITION;
 			else:

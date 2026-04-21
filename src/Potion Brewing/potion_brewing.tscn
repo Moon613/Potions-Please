@@ -241,14 +241,14 @@ scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_yffeo")
 
 [node name="Nyx" type="Sprite2D" parent="." unique_id=103944378]
-position = Vector2(-96, -272)
+z_index = 1
+position = Vector2(-96, -336)
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("4_dr7va")
 
 [node name="Spoon" type="RigidBody2D" parent="." unique_id=1458366467 groups=["Spoon"]]
 z_index = 1
-position = Vector2(-195, 54)
-rotation = 0.20249069
+position = Vector2(-195, 153)
 disable_mode = 2
 input_pickable = true
 mass = 3.0
@@ -316,7 +316,10 @@ position = Vector2(-317, -212.29248)
 polygon = PackedVector2Array(32, 39, 45, 176, 77, 280, 187.76921, 341.52325, 317, 359.9848, 433.9231, 341.52325, 549, 280, 581, 176, 605, 28.29248, 613, -19.70752, 669, -19.70752, 677, 20.29248, 669, 64, 653, 144, 645, 224, 597, 336, 469, 424, 317, 464, 157, 416, 29, 328, -11, 224, -19, 112, -35, 60.29248, -43, -8, 21, -8)
 
 [node name="Spoon Holder" type="StaticBody2D" parent="." unique_id=100427475]
+visible = false
 position = Vector2(-168, 328)
+collision_layer = 0
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="Spoon Holder" unique_id=983839674]
 position = Vector2(-8.000008, -72)
@@ -357,7 +360,6 @@ shape = SubResource("RectangleShape2D_cgc07")
 
 [node name="UI" type="Node2D" parent="." unique_id=2122860457]
 top_level = true
-z_index = 126
 position = Vector2(0, -504)
 
 [node name="ColorRect" type="ColorRect" parent="UI" unique_id=700355254]
