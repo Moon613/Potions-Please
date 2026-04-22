@@ -57,6 +57,7 @@ func SpawnPotionSelection():
 	GameInfo.busy = true;
 
 func _on_potion_submit():
+	inDialogue = false;
 	$Control.visible = false;
 	GameInfo.busy = false;
 	if $Control/ItemList.item_count <= 0:
@@ -72,6 +73,7 @@ func _on_potion_submit():
 	GameInfo.potions[submittedItem] -= 1;
 
 func _on_cancel_pressed() -> void:
+	inDialogue = false;
 	$Control.visible = false;
 	GameInfo.busy = false;
 
@@ -95,7 +97,7 @@ func _on_cancel_pressed() -> void:
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thank yoouuuuu!", PLACEHOLDER));
 	static func EnergyQuestAccept(originNode: DialogueTrigger):
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Oh, did you make me my potion?", PLACEHOLDER));
-		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(DialogueManager.SpawnPotionSelection));
+		DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(DialogueManager.SpawnPotionSelection, false));
 
 class DialogueText:
 	extends Dialogue
