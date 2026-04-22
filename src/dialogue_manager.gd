@@ -63,6 +63,7 @@ func _on_potion_submit():
 	if GameInfo.questToRequiredPotion[GameInfo.currentQuest] == submittedItem:
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thanks!", DialogueManager.Dialogue.PLACEHOLDER));
 		GameInfo.currentQuest = GameInfo.PotionQuests.NONE;
+		GameInfo.reputation = clamp(GameInfo.reputation+1, 0, 5);
 	else:
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("That's not right!", DialogueManager.Dialogue.PLACEHOLDER));
 		GameInfo.reputation -= 0.5;
