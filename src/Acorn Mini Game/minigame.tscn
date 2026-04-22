@@ -39,6 +39,13 @@ cache/0/34/0/underline_position = 0.0
 cache/0/34/0/underline_thickness = 0.0
 cache/0/34/0/scale = 1.0
 
+[sub_resource type="Gradient" id="Gradient_omdso"]
+offsets = PackedFloat32Array(0.48317307)
+colors = PackedColorArray(0.872223, 0.7005363, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g33fa"]
+gradient = SubResource("Gradient_omdso")
+
 [node name="minigame" type="Node2D" unique_id=686096718]
 script = ExtResource("1_xc6ns")
 
@@ -84,6 +91,7 @@ z_index = 2
 polygon = PackedVector2Array(0, 12, 56, 4, 94, -14, 71, 94, 37, 107, 0, 110, -42, 106, -72, 94, -94, -14, -57, 6)
 
 [node name="Tutorial" type="Popup" parent="." unique_id=995485000]
+process_mode = 3
 oversampling_override = 1.0
 position = Vector2i(250, 150)
 size = Vector2i(500, 300)
@@ -112,7 +120,19 @@ theme_override_font_sizes/normal_font_size = 34
 text = "8:00"
 scroll_active = false
 
+[node name="InfoButton" type="Button" parent="." unique_id=1126856174]
+z_index = 100
+offset_left = 488.0
+offset_top = 232.0
+offset_right = 560.0
+offset_bottom = 304.0
+theme_override_font_sizes/font_size = 32
+text = "!"
+icon = SubResource("GradientTexture2D_g33fa")
+icon_alignment = 1
+
 [connection signal="MinigameEnd" from="Tree" to="." method="_on_tree_minigame_end"]
 [connection signal="timeout" from="Tree/Timer" to="Tree" method="_on_timer_timeout"]
 [connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
 [connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]

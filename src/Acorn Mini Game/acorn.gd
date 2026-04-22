@@ -32,4 +32,11 @@ func _on_tree_minigame_end() -> void:
 
 func _on_tutorial_popup_hide() -> void:
 	GameInfo.acornsTutorial = false
-	pass
+	get_tree().paused = false
+
+func _on_info_button_pressed() -> void:
+	GameInfo.dragoneggTutorial = true
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$Tutorial.popup();
+	$Tutorial.move_to_center();

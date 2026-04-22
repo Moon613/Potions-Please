@@ -9,6 +9,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if not FileAccess.file_exists("user://SaveFile0.save"):
+		$"Load Game".disabled = true
+	else:
+		$"Load Game".disabled = false
 	pass
 
 

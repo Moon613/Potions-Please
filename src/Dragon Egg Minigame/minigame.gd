@@ -72,3 +72,11 @@ func _on_egg_obtained():
 func _on_tutorial_popup_hide() -> void:
 	GameInfo.dragoneggTutorial = false
 	Input.set_custom_mouse_cursor(load("res://Textures/TargetCursor.png"), 0, Vector2(26,33));
+	get_tree().paused = false
+
+func _on_info_button_pressed() -> void:
+	GameInfo.dragoneggTutorial = true
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$Tutorial.popup();
+	$Tutorial.move_to_center();

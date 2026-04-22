@@ -40,6 +40,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_6cmm1"]
+offsets = PackedFloat32Array(0.48317307)
+colors = PackedColorArray(0.872223, 0.7005363, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_di2qq"]
+gradient = SubResource("Gradient_6cmm1")
+
 [node name="Minigame" type="Node2D" unique_id=2048969862]
 script = ExtResource("1_oemwr")
 number_of_dewdrops = 20
@@ -74,6 +81,7 @@ sprite_frames = SubResource("SpriteFrames_2l8w5")
 script = ExtResource("8_osxt6")
 
 [node name="Tutorial" type="Popup" parent="." unique_id=1524810777]
+process_mode = 3
 oversampling_override = 1.0
 position = Vector2i(250, 105)
 size = Vector2i(665, 300)
@@ -95,6 +103,17 @@ text = "Close"
 [node name="CollectionNoise" type="AudioStreamPlayer2D" parent="." unique_id=1413924930]
 stream = ExtResource("14_6cmm1")
 
+[node name="InfoButton" type="Button" parent="." unique_id=239937128]
+z_index = 100
+offset_left = 880.0
+offset_top = 460.0
+offset_right = 952.0
+offset_bottom = 532.0
+theme_override_font_sizes/font_size = 32
+text = "!"
+icon = SubResource("GradientTexture2D_di2qq")
+icon_alignment = 1
+
 [connection signal="RemoveJar" from="." to="Collection Jar" method="_on_minigame_remove_jar"]
 [connection signal="TransitionToDrying" from="." to="Background" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Rag" method="_on_minigame_transition_to_drying"]
@@ -103,3 +122,4 @@ stream = ExtResource("14_6cmm1")
 [connection signal="DoneMoveDown" from="Collection Jar" to="." method="_on_collection_jar_done_move_down"]
 [connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
 [connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
