@@ -22,6 +22,9 @@ func _process(delta: float) -> void:
 		if closestTrigger != null:
 			$DirectionArrow.modulate.a = lerp(0, 1, ((self.position-closestTrigger.position).length()-10)/10);
 			$DirectionArrow.look_at(closestTrigger.position)
+	elif !GameInfo.leftHouseForFirstTime:
+		$DirectionArrow.modulate.a = 1;
+		$DirectionArrow.look_at(Vector2(3, 39));
 	else:
 		$DirectionArrow.self_modulate.a = 0;
 	
