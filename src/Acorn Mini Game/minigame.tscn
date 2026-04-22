@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cdae412rdiih5" path="res://Acorn Mini Game/basket.gd" id="4_bi5ov"]
 [ext_resource type="Texture2D" uid="uid://dy1hctcy72j7g" path="res://Textures/Tree Acorn Minigame.png" id="6_7ub14"]
 [ext_resource type="Texture2D" uid="uid://buef2hfncfker" path="res://Textures/Basket Back Acorn Minigame.png" id="8_omdso"]
-[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
+[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
 [ext_resource type="Texture2D" uid="uid://c1g452omww4sy" path="res://Textures/Basket Front Acorn Minigame.png" id="9_g33fa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dtyt"]

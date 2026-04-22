@@ -61,6 +61,7 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel") and GameInfo.busy:
 		get_viewport().set_input_as_handled()
 		ReturnToOverworld.emit(0);
+		GameInfo.finishedGatheringTutorial = true;
 		self.queue_free()
 
 func _on_tap_control_place_tap(placedTapSpot: Vector2) -> void:
@@ -88,6 +89,7 @@ func _on_tap_sap_collection(resourceAmount: int):
 func _on_ingredient_done_showing():
 	ChangeIngredients.emit("sap", resourceAmountCollected);
 	ReturnToOverworld.emit(0);
+	GameInfo.finishedGatheringTutorial = true;
 	GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.TREESAP];
 	self.queue_free()
 

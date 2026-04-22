@@ -38,7 +38,6 @@ func _input(event):
 		var playerIndex = get_overlapping_bodies().find_custom(func(obj: Node2D): return obj.is_in_group("Player"));
 		if playerIndex != -1:
 			if SceneID in GameInfo.minigameEnergy and GameInfo.minigameEnergy[SceneID] < GameInfo.energy:
-				GameInfo.finishedGatheringTutorial = true;
 				interactionCooldown = 240
 				InteractedWith.emit(SceneID);
 			else:

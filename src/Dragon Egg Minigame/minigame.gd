@@ -46,6 +46,7 @@ func _process(delta):
 		ChangeIngredients.emit(GameInfo.EGGS, eggsObtained);
 		Input.set_custom_mouse_cursor(load("res://Textures/SuperiorCursor.png"), 0, Vector2.ZERO);
 		ReturnToOverworld.emit(0);
+		GameInfo.finishedGatheringTutorial = true;
 		GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.DRAGONEGGS];
 		self.queue_free()
 	
@@ -63,6 +64,7 @@ func _input(event):
 		get_viewport().set_input_as_handled()
 		Input.set_custom_mouse_cursor(load("res://Textures/SuperiorCursor.png"), 0, Vector2.ZERO);
 		ReturnToOverworld.emit(0);
+		GameInfo.finishedGatheringTutorial = true;
 		self.queue_free()
 
 func _on_egg_obtained():

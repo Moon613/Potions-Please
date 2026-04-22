@@ -19,12 +19,14 @@ func _input(event):
 		get_viewport().set_input_as_handled()
 		ChangeIngredients.emit("acorns", acornsCollected)
 		ReturnToOverworld.emit(0);
+		GameInfo.finishedGatheringTutorial = true;
 		self.queue_free()
 
 
 func _on_tree_minigame_end() -> void:
 	ChangeIngredients.emit("acorns", acornsCollected)
 	ReturnToOverworld.emit(0);
+	GameInfo.finishedGatheringTutorial = true;
 	GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.ACORNS];
 	self.queue_free()
 	pass

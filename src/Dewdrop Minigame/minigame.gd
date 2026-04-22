@@ -49,11 +49,13 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel") and GameInfo.busy:
 		get_viewport().set_input_as_handled()
 		ReturnToOverworld.emit(0);
+		GameInfo.finishedGatheringTutorial = true;
 		self.queue_free()
 
 func _on_collection_jar_done_move_down():
 	ChangeIngredients.emit("dewdrops", 1);
 	ReturnToOverworld.emit(0);
+	GameInfo.finishedGatheringTutorial = true;
 	GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.DEWDROPS];
 	self.queue_free()
 
