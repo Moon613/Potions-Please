@@ -131,12 +131,12 @@ var resources: Dictionary[String, int] = {
 };
 # Completed potions
 var potions: Dictionary[String, int] = {
-	ENERGY: 1,
-	SLEEP: 1,
-	STRENGTH: 1,
-	HEALING: 1,
-	SHRINK: 1,
-	RUINED: 1
+	ENERGY: 0,
+	SLEEP: 0,
+	STRENGTH: 0,
+	HEALING: 0,
+	SHRINK: 0,
+	RUINED: 0
 }
 
 # Called when the node enters the scene tree for the first time.

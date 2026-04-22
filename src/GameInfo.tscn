@@ -21,12 +21,14 @@ offset_bottom = 22.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Pause Menu" parent="." unique_id=670370226 instance=ExtResource("3_saxbk")]
+layer = 100
 visible = false
 
 [node name="OldBookLayer" parent="." unique_id=703100872 instance=ExtResource("4_1iqmt")]
 visible = false
 
 [node name="NewBookLayer" parent="." unique_id=76265581 instance=ExtResource("5_igr6x")]
+layer = 10
 visible = false
 
 [connection signal="JournalOpen" from="CanvasLayer/Inventory" to="." method="_on_inventory_journal_open"]
