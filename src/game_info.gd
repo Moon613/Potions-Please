@@ -3,7 +3,7 @@ extends Node2D
 @onready var inventory: Inventory = $CanvasLayer/Inventory
 @onready var pause_menu: CanvasLayer = $"Pause Menu"
 @export var book_layer: CanvasLayer
-var busy: bool = true
+var busy: bool = false
 var paused: bool = false
 
 var ruinedPotionSprite: Texture2D = preload("res://Textures/BurntPotion.png");
@@ -27,11 +27,14 @@ var leftHouseForFirstTime: bool = false;
 var finishedGatheringTutorial: bool = false;
 
 # Flag for keeping track of which quest is currently active
-var currentQuest;
+var currentQuest: PotionQuests;
 enum PotionQuests {
 	NONE = 0,
 	ENERGY = 1
 }
+var questToRequiredPotion: Dictionary[PotionQuests, String] = {
+	PotionQuests.ENERGY: ENERGY
+};
 
 # used by brewing scene
 var journal_is_open = false
@@ -90,6 +93,15 @@ const HEALING: String = "healing";
 const SHRINK: String = "shrink";
 const RUINED: String = "burnt";
 
+var potionToImage: Dictionary[String, String] = {
+	ENERGY: "res://Textures/Energy Elixir(NEW).png",
+	SLEEP: "res://Textures/Sleepy Solution.png",
+	STRENGTH: "res://Textures/Strength Potion.png",
+	HEALING: "res://Textures/Healing Potion.png",
+	SHRINK: "res://Textures/ShrinkElixir.png",
+	RUINED: "res://Textures/BurntPotion.png"
+};
+
 # Apparently GDScript has a nested collection type restriction so the inner array cannot be Array[String], but for reference for anyone else, that is what it is.
 var validRecipies: Array[Recipe] = [
 	Recipe.new([HONEY, DEWDROPS, GINGER], ENERGY, 0.5, "res://Textures/Energy Elixir(NEW).png"),
@@ -119,12 +131,12 @@ var resources: Dictionary[String, int] = {
 };
 # Completed potions
 var potions: Dictionary[String, int] = {
-	ENERGY: 0,
-	SLEEP: 0,
-	STRENGTH: 0,
-	HEALING: 0,
-	SHRINK: 0,
-	RUINED: 0
+	ENERGY: 1,
+	SLEEP: 1,
+	STRENGTH: 1,
+	HEALING: 1,
+	SHRINK: 1,
+	RUINED: 1
 }
 
 # Called when the node enters the scene tree for the first time.

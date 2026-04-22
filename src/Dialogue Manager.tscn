@@ -34,8 +34,23 @@ anchor_left = -0.001
 anchor_top = 0.002
 anchor_right = -0.001
 anchor_bottom = 0.002
-offset_left = 0.712
-offset_top = -1.12
-offset_right = 712.712
-offset_bottom = 472.88
+offset_left = 44.712
+offset_top = 130.87398
+offset_right = 680.712
+offset_bottom = 442.874
+theme_override_font_sizes/font_size = 30
 allow_rmb_select = true
+allow_search = false
+scroll_hint_mode = 1
+
+[node name="Button" type="Button" parent="Control" unique_id=1908705111]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 460.0
+offset_right = 284.0
+offset_bottom = 532.0
+theme_override_font_sizes/font_size = 46
+text = "Submit
+"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_potion_submit"]

@@ -24,7 +24,7 @@ var eggScene;
 var mandrakeScene;
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:	
+func _ready() -> void:
 	var overworldInstance = overworld.instantiate();
 	overworldInstance.name = "Overworld";
 	

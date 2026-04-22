@@ -49,7 +49,24 @@ func TriggerDialogue(dialogueChoice: String, originNode: DialogueTrigger):
 	dialogueChoices[dialogueChoice].call(originNode);
 
 func SpawnPotionSelection():
-	$ItemList.visible = true;
+	$Control/ItemList.clear();
+	for potion: String in GameInfo.potions:
+		if potion != GameInfo.RUINED and GameInfo.potions[potion] > 0:
+			$Control/ItemList.add_item(potion, load(GameInfo.potionToImage[potion]));
+	$Control.visible = true;
+	GameInfo.busy = true;
+
+func _on_potion_submit():
+	$Control.visible = false;
+	GameInfo.busy = false;
+	var submittedItem = $Control/ItemList.get_item_text($Control/ItemList.get_selected_items()[0]);
+	if GameInfo.questToRequiredPotion[GameInfo.currentQuest] == submittedItem:
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thanks!", DialogueManager.Dialogue.PLACEHOLDER));
+		GameInfo.currentQuest = GameInfo.PotionQuests.NONE;
+	else:
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("That's not right!", DialogueManager.Dialogue.PLACEHOLDER));
+		GameInfo.reputation -= 0.5;
+	GameInfo.potions[submittedItem] -= 1;
 
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Textures/YasmeenPortrait.png";
