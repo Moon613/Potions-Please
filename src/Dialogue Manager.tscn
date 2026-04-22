@@ -30,27 +30,48 @@ expand_mode = 1
 [node name="ItemList" type="ItemList" parent="Control" unique_id=1695480350]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.001
-anchor_top = 0.002
-anchor_right = -0.001
-anchor_bottom = 0.002
-offset_left = 44.712
-offset_top = 130.87398
-offset_right = 680.712
-offset_bottom = 442.874
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -149.50002
+offset_right = 324.0
+offset_bottom = 162.5
 theme_override_font_sizes/font_size = 30
 allow_rmb_select = true
 allow_search = false
 scroll_hint_mode = 1
 
-[node name="Button" type="Button" parent="Control" unique_id=1908705111]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 460.0
-offset_right = 284.0
-offset_bottom = 532.0
+[node name="Submit" type="Button" parent="Control" unique_id=1908705111]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25300002
+anchor_top = 0.88100004
+anchor_right = 0.25300002
+anchor_bottom = 0.88100004
+offset_left = -104.13602
+offset_top = -36.00302
+offset_right = 103.86398
+offset_bottom = 35.99698
 theme_override_font_sizes/font_size = 46
 text = "Submit
 "
 
-[connection signal="pressed" from="Control/Button" to="." method="_on_potion_submit"]
+[node name="Cancel" type="Button" parent="Control" unique_id=548795395]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.74700004
+anchor_top = 0.88100004
+anchor_right = 0.74700004
+anchor_bottom = 0.88100004
+offset_left = -103.86401
+offset_top = -36.00302
+offset_right = 104.13599
+offset_bottom = 35.99698
+theme_override_font_sizes/font_size = 46
+text = "Cancel
+"
+
+[connection signal="pressed" from="Control/Submit" to="." method="_on_potion_submit"]
+[connection signal="pressed" from="Control/Cancel" to="." method="_on_cancel_pressed"]

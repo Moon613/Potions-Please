@@ -59,6 +59,8 @@ func SpawnPotionSelection():
 func _on_potion_submit():
 	$Control.visible = false;
 	GameInfo.busy = false;
+	if $Control/ItemList.item_count <= 0:
+		return;
 	var submittedItem = $Control/ItemList.get_item_text($Control/ItemList.get_selected_items()[0]);
 	if GameInfo.questToRequiredPotion[GameInfo.currentQuest] == submittedItem:
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thanks!", DialogueManager.Dialogue.PLACEHOLDER));
@@ -68,6 +70,10 @@ func _on_potion_submit():
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("That's not right!", DialogueManager.Dialogue.PLACEHOLDER));
 		GameInfo.reputation -= 0.5;
 	GameInfo.potions[submittedItem] -= 1;
+
+func _on_cancel_pressed() -> void:
+	$Control.visible = false;
+	GameInfo.busy = false;
 
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Textures/YasmeenPortrait.png";

@@ -268,6 +268,7 @@ offset_left = -41.72168
 offset_top = -38.376003
 offset_right = 40.681763
 offset_bottom = 38.623997
+focus_mode = 0
 icon = ExtResource("8_yv805")
 flat = true
 expand_icon = true
