@@ -112,7 +112,7 @@ var validRecipies: Array[Recipe] = [
 ];
 # Both of these are on a scale of 0.0 - 5.0
 @export var reputation: float = 2.5;
-@export var energy: float = 1;
+@export var energy: float = 2.5;
 # -1 means that it is infinite
 var resources: Dictionary[String, int] = {
 	DEWDROPS: 0,
