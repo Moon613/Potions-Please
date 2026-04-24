@@ -30,97 +30,7 @@ shader_parameter/overlay_closed = ExtResource("7_augy1")
 shader_parameter/wetness = 0.60000002384186
 shader_parameter/open = true
 
-[sub_resource type="Animation" id="Animation_8xp7k"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Rag/AnimatedSprite2D:skew")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Rag/AnimatedSprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_84du3"]
-resource_name = "Rag Squeeze"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Rag/AnimatedSprite2D:skew")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.6108652381980153]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Rag/AnimatedSprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.5, 0.6)]
-}
-
-[sub_resource type="Animation" id="Animation_skdtp"]
-resource_name = "Rag Unsqueeze"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Rag/AnimatedSprite2D:skew")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.100000024),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.6108652381980153, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../Rag/AnimatedSprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.100000024),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1.5, 0.6), Vector2(1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_skdtp"]
-_data = {
-&"RESET": SubResource("Animation_8xp7k"),
-&"Rag Squeeze": SubResource("Animation_84du3"),
-&"Rag Unsqueeze": SubResource("Animation_skdtp")
-}
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8xp7k"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2l8w5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -334,20 +244,11 @@ z_index = 1
 material = SubResource("ShaderMaterial_vuaru")
 sprite_frames = ExtResource("6_6y45g")
 
-[node name="RagSqueezePlayer" type="AnimationPlayer" parent="Rag" unique_id=743761367]
-root_node = NodePath("../../Collection Jar/AnimatedSprite2D")
-libraries/ = SubResource("AnimationLibrary_skdtp")
-
-[node name="Collection Jar" type="Area2D" parent="." unique_id=2042724865]
+[node name="Collection Jar" type="AnimatedSprite2D" parent="." unique_id=1729812968]
 z_index = 1
 position = Vector2(0, 928)
+sprite_frames = SubResource("SpriteFrames_2l8w5")
 script = ExtResource("8_osxt6")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Collection Jar" unique_id=422433236]
-sprite_frames = SubResource("SpriteFrames_8xp7k")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collection Jar" unique_id=1329110500]
-polygon = PackedVector2Array(0, 128, -208, 104, -280, 16, -256, -48, -248, -112, 0, -64, 248, -104, 264, -48, 296, 16, 216, 104)
 
 [node name="CollectionNoise" type="AudioStreamPlayer2D" parent="." unique_id=1413924930]
 stream = ExtResource("14_6cmm1")
@@ -462,7 +363,7 @@ position = Vector2(6.1035156e-05, 63.99999)
 scale = Vector2(5.000001, 5)
 texture = ExtResource("16_i1f0g")
 
-[node name="Arrow" type="Area2D" parent="." unique_id=13765735]
+[node name="Arrow" type="StaticBody2D" parent="." unique_id=1756391219]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(-832, -456)
@@ -474,32 +375,29 @@ scale = Vector2(4, 5)
 texture = ExtResource("16_0ktjd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Arrow" unique_id=1696982752]
-polygon = PackedVector2Array(-64, -56, 64, -56, 0, 80)
+polygon = PackedVector2Array(0, 0, 8, -8, 8, 8)
 
-[node name="Green Bar Detection" type="StaticBody2D" parent="." unique_id=1229612206 groups=["Green Bar"]]
-position = Vector2(0, -380)
+[node name="Green Bar Detection" type="RigidBody2D" parent="." unique_id=729205873]
+position = Vector2(0, -384)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Green Bar Detection" unique_id=855634468]
 z_index = 2
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_0ktjd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1208890440]
 root_node = NodePath("../Control/Slider Background")
 libraries/ = SubResource("AnimationLibrary_i1f0g")
 
+[connection signal="MouseReleased" from="." to="Rag" method="_on_minigame_mouse_released"]
 [connection signal="RemoveJar" from="." to="Collection Jar" method="_on_minigame_remove_jar"]
+[connection signal="TransitionToDrying" from="." to="Background" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Rag" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Collection Jar" method="_on_minigame_transition_to_drying"]
-[connection signal="RagReappearing" from="Rag" to="." method="_on_rag_reappearing"]
 [connection signal="collectedDrop" from="Rag" to="." method="_on_rag_collected_drop"]
-[connection signal="animation_finished" from="Rag/RagSqueezePlayer" to="Rag" method="_on_rag_squeeze_player_animation_finished"]
-[connection signal="CollectedDrop" from="Collection Jar" to="." method="_on_collection_jar_collected_drop"]
+[connection signal="startSecondPart" from="Rag" to="." method="_on_rag_start_second_part"]
 [connection signal="DoneMoveDown" from="Collection Jar" to="." method="_on_collection_jar_done_move_down"]
 [connection signal="pressed" from="Control/InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="popup_hide" from="Control/Tutorial" to="." method="_on_tutorial_popup_hide"]
 [connection signal="pressed" from="Control/Tutorial/Button" to="Control/Tutorial" method="_on_button_pressed"]
-[connection signal="Faliure" from="Arrow" to="." method="_on_arrow_faliure"]
-[connection signal="Faliure" from="Arrow" to="Rag" method="_on_arrow_faliure"]
-[connection signal="Success" from="Arrow" to="." method="_on_arrow_success"]
-[connection signal="Success" from="Arrow" to="Rag" method="_on_arrow_success"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

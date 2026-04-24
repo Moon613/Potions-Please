@@ -50,6 +50,7 @@ Player="The overworld player character"
 "Loading Zone"="All overworld loading zones"
 "Interactable trigger"="Interactable triggers used to send the player to a new scene where they do not control a player character, such as a minigame"
 "Saved Info"="Everything that persists when a file is saved"
+Dewdrop="The dewdrops that are collected by the rag in the dewdrop collection minigame"
 
 [input]
 
