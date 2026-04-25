@@ -54,8 +54,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.keycode == KEY_Q:
-		get_tree().quit();
+	pass
 
 func _switch_scene(id: int):
 	if id in GameInfo.minigameEnergy and GameInfo.minigameEnergy[id] > GameInfo.energy:

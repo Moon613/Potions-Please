@@ -11,9 +11,11 @@ resource_local_to_scene = true
 script = ExtResource("1_vngoj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1677971649]
+z_index = 10
 shape = SubResource("RectangleShape2D_yjyl4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2045245545]
+modulate = Color(1, 1, 1, 0)
 z_index = 364
 texture_filter = 3
 position = Vector2(0, -9)
@@ -23,6 +25,7 @@ autoplay = "default"
 frame_progress = 0.899253
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1537529115]
+modulate = Color(1, 1, 1, 0)
 z_index = 316
 texture_filter = 3
 position = Vector2(0, -4)
