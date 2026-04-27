@@ -75,6 +75,8 @@ func _switch_scene(id: int):
 		GameInfo.SceneID.POTIONBREWING:
 			self.add_child(potionScene);
 		GameInfo.SceneID.INSIDEHOUSE:
+			if GameInfo.leftHouseForFirstTime:
+				GameInfo.reenteredHouse = true;
 			self.add_child(insideScene);
 		GameInfo.SceneID.DEWDROPS:
 			var dewdropInstance = dewdrops.instantiate();

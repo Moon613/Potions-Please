@@ -25,6 +25,9 @@ func _process(delta: float) -> void:
 	elif !GameInfo.leftHouseForFirstTime:
 		$DirectionArrow.modulate.a = 1;
 		$DirectionArrow.look_at(Vector2(3, 39));
+	elif !GameInfo.reenteredHouse:
+		$DirectionArrow.modulate.a = 1;
+		$DirectionArrow.look_at(Vector2(-43, 0));
 	else:
 		$DirectionArrow.self_modulate.a = 0;
 	

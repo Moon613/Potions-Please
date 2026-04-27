@@ -25,6 +25,7 @@ var directionTutorial: Dictionary[String, bool] = {
 var doneMovementTutorial: bool = false;
 var leftHouseForFirstTime: bool = false;
 var finishedGatheringTutorial: bool = false;
+var reenteredHouse: bool = false;
 
 # Flag for keeping track of which quest is currently active
 var currentQuest: PotionQuests;
