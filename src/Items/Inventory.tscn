@@ -155,6 +155,7 @@ alignment = 1
 [node name="Journal" type="Button" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=795107116]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.45882353, 0.45882353, 0.45882353, 1)
 icon = ExtResource("10_hwedm")
 flat = true
 

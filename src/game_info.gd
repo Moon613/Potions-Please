@@ -287,3 +287,6 @@ func set_dict(dict_name, dict_data):
 func _on_inventory_journal_open() -> void:
 	book_layer.visible = true
 	busy = true
+
+func _on_inventory_button_pressed():
+	inventory.visible = !inventory.visible;

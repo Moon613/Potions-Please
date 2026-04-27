@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://bfoveypfrtn02" path="res://Textures/BadStaminaReputation.png" id="20_y8v3d"]
 [ext_resource type="PackedScene" uid="uid://ch2s5cbjit2nu" path="res://Potion Brewing/Ingredient.tscn" id="21_m6y6x"]
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
+[ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="22_0mxup"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="22_a3cj8"]
 [ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Textures/Honey(New).png" id="23_1nhwd"]
 [ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Textures/Acorn Collectable.png" id="25_hb5qm"]
@@ -94,12 +95,12 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("21_xbtdn")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nhwd"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb5qm"]
 resource_local_to_scene = true
 radius = 49.77
 height = 149.23
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mxup"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1og6f"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -436,18 +437,29 @@ value = 5.0
 texture_under = SubResource("AtlasTexture_a3cj8")
 texture_progress = SubResource("AtlasTexture_m6y6x")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="UI" unique_id=1377781915]
+offset_left = -944.0
+offset_top = 80.0
+offset_right = -672.0
+offset_bottom = 144.0
+theme_override_colors/default_color = Color(0.68235296, 0, 1, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/normal_font = ExtResource("22_0mxup")
+theme_override_font_sizes/normal_font_size = 42
+text = "ESC to leave"
+
 [node name="Honey" parent="." unique_id=56422247 instance=ExtResource("21_m6y6x")]
 position = Vector2(-804, -191)
 mass = 0.61
 Sprite = ExtResource("23_1nhwd")
-Shape = SubResource("CapsuleShape2D_1nhwd")
+Shape = SubResource("CapsuleShape2D_hb5qm")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-763, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_0mxup")
+Shape = SubResource("CapsuleShape2D_1og6f")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -455,7 +467,7 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_0mxup")
+shape = SubResource("CapsuleShape2D_1og6f")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
 position = Vector2(-595, 16)
@@ -676,32 +688,30 @@ shape = SubResource("CircleShape2D_sc17n")
 
 [node name="Stir Trigger 2" type="Area2D" parent="." unique_id=629833310]
 z_index = 5
-position = Vector2(694, 160)
+position = Vector2(624, 160)
 script = ExtResource("26_m5i5b")
 number = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 2" unique_id=1058995198]
-position = Vector2(-29, 0)
+position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_m5i5b")
 
 [node name="Stir Trigger 3" type="Area2D" parent="." unique_id=947052509]
 z_index = 5
-position = Vector2(416, 368)
+position = Vector2(416, 256)
 script = ExtResource("26_m5i5b")
 number = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 3" unique_id=484242611]
-position = Vector2(0, -114)
 shape = SubResource("CircleShape2D_7ndod")
 
 [node name="Stir Trigger 4" type="Area2D" parent="." unique_id=2079091926]
 z_index = 5
-position = Vector2(120, 163)
+position = Vector2(184, 163)
 script = ExtResource("26_m5i5b")
 number = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 4" unique_id=955978559]
-position = Vector2(33, 0)
 shape = SubResource("CircleShape2D_yffeo")
 
 [node name="Idle Potion Noises" type="AudioStreamPlayer2D" parent="." unique_id=774005826]
