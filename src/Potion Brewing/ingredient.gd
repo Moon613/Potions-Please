@@ -17,15 +17,19 @@ var locked: bool = false;
 func _ready():
 	$Sprite2D.texture = Sprite;
 	$CollisionShape2D.shape = Shape;
-	# Prevents from running in editor to stop errors, and only works if the parent has the correct signal.
-	if !Engine.is_editor_hint() and get_parent().has_signal("clickReleased"):
-		get_parent().clickReleased.connect(released);
-	# Have to do the connection here because duplicate() does not copy incoming signals
 	for child in get_parent().get_children().filter(func(child: Node2D): return child.is_in_group("Cauldron Inside Hitbox")):
 		child.StartStirring.connect(_on_start_stirring);
-	if !Engine.is_editor_hint() and GameInfo.resources[self.Type] == 0:
-		self.freeze = true;
-		self.visible = false;
+	if !Engine.is_editor_hint():
+		if GameInfo.resources[self.Type] == 0:
+			self.freeze = true;
+			self.visible = false;
+		# Prevents from running in editor to stop errors, and only works if the parent has the correct signal.
+		if get_parent().has_signal("clickReleased"):
+			# Have to do the connection here because duplicate() does not copy incoming signals
+			get_parent().clickReleased.connect(released);
+		$Text.tooltip_text = Type.capitalize();
+		$Text.size = $CollisionShape2D.shape.get_rect().size;
+		$Text.position = $CollisionShape2D.shape.get_rect().size*-0.5;
 
 func _physics_process(delta: float) -> void:
 	if beingMoved:

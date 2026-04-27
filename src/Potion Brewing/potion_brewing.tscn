@@ -671,7 +671,7 @@ script = ExtResource("26_m5i5b")
 number = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 1" unique_id=50584870]
-position = Vector2(0, -23)
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_sc17n")
 
 [node name="Stir Trigger 2" type="Area2D" parent="." unique_id=629833310]
@@ -691,7 +691,7 @@ script = ExtResource("26_m5i5b")
 number = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 3" unique_id=484242611]
-position = Vector2(0, -4)
+position = Vector2(0, -114)
 shape = SubResource("CircleShape2D_7ndod")
 
 [node name="Stir Trigger 4" type="Area2D" parent="." unique_id=2079091926]

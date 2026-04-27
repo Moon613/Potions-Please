@@ -84,7 +84,7 @@ func _on_arrow_faliure():
 	SpawnDroplet(Vector2(X, -500), 1)
 
 func SpawnDroplet(initialDirection: Vector2, z_index: int = 0):
-	$AnimatedSprite2D.material.set_shader_parameter("wetness", lerp(1.0, 0.6, (float(get_parent().timingSuccesses) / float(get_parent().maximumSliderAttempts))));
+	$AnimatedSprite2D.material.set_shader_parameter("wetness", lerp(1.0, 0.4, (float(get_parent().timingSuccesses) / float(get_parent().maximumSliderAttempts+1))));
 	var drop = dewdrop.instantiate();
 	drop.name = "Dewdrop";
 	drop.gravity_scale = 1;
