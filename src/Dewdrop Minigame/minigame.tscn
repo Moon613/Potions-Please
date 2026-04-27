@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d32ktq4hitttn" path="res://Textures/OpenRagOverlay.png" id="7_vuaru"]
 [ext_resource type="Script" uid="uid://bin3g35q8wcy3" path="res://Dewdrop Minigame/collection_jar.gd" id="8_osxt6"]
 [ext_resource type="Texture2D" uid="uid://bpwb1xatmcl8v" path="res://Textures/DewJarFull.png" id="11_vuaru"]
-[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="13_2l8w5"]
+[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="13_2l8w5"]
 [ext_resource type="AudioStream" uid="uid://870rriqmql7e" path="res://Sound Effects/good noise.wav" id="14_6cmm1"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="15_di2qq"]
 [ext_resource type="Texture2D" uid="uid://cd7jmwbd6ejko" path="res://Textures/Minigame Indicator Arrow1.png" id="16_0ktjd"]

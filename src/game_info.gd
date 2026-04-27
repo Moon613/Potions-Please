@@ -28,13 +28,21 @@ var finishedGatheringTutorial: bool = false;
 var reenteredHouse: bool = false;
 
 # Flag for keeping track of which quest is currently active
-var currentQuest: PotionQuests;
+@export var currentQuest: PotionQuests;
 enum PotionQuests {
 	NONE = 0,
-	ENERGY = 1
+	ENERGY = 1,
+	SLEEP = 2,
+	STRENGTH = 3,
+	HEALING = 4,
+	SHRINK = 5
 }
 var questToRequiredPotion: Dictionary[PotionQuests, String] = {
-	PotionQuests.ENERGY: ENERGY
+	PotionQuests.ENERGY: ENERGY,
+	PotionQuests.SLEEP: SLEEP,
+	PotionQuests.STRENGTH: STRENGTH,
+	PotionQuests.HEALING: HEALING,
+	PotionQuests.SHRINK: SHRINK
 };
 
 # used by brewing scene
@@ -139,6 +147,9 @@ var potions: Dictionary[String, int] = {
 	SHRINK: 0,
 	RUINED: 0
 }
+
+func ProgressToNextPotionQuest():
+	return randi_range(1, PotionQuests.size()-1);
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
