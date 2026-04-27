@@ -142,6 +142,7 @@ colors = PackedColorArray(0.872223, 0.7005363, 0, 1)
 gradient = SubResource("Gradient_6cmm1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ktjd"]
+resource_local_to_scene = true
 size = Vector2(1152, 72)
 
 [sub_resource type="Animation" id="Animation_i1f0g"]
@@ -365,14 +366,15 @@ mouse_filter = 2
 z_index = 100
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.97700006
+anchor_left = 0.97300005
 anchor_top = 0.94500005
-anchor_right = 0.97700006
+anchor_right = 0.97300005
 anchor_bottom = 0.94500005
-offset_left = -43.840088
+offset_left = -36.160156
 offset_top = -36.160034
-offset_right = 28.159912
+offset_right = 35.839844
 offset_bottom = 35.839966
+focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "!"
 icon = SubResource("GradientTexture2D_di2qq")
@@ -381,7 +383,7 @@ icon_alignment = 1
 [node name="Tutorial" type="Popup" parent="Control" unique_id=1524810777]
 process_mode = 3
 oversampling_override = 1.0
-position = Vector2i(250, 0)
+position = Vector2i(250, 150)
 size = Vector2i(698, 300)
 visible = true
 script = ExtResource("13_2l8w5")

@@ -8,7 +8,7 @@ signal MouseReleased;
 
 @export var dewdrop: PackedScene = preload("res://Dewdrop Minigame/dewdrop.tscn")
 @export var number_of_dewdrops: int
-@onready var tutorial: Popup = $Tutorial
+@onready var tutorial: Popup = $Control/Tutorial
 var numberOfDropsCollected = 0;
 var removedJar: bool = false;
 var dropsCollected = 0;
@@ -109,7 +109,7 @@ func ShrinkSliderArea():
 	$"Control/Slider Good Area".position.x += SLIDER_SHRINK_AMOUNT*0.5;
 	$"Green Bar Detection/CollisionShape2D".shape.size.x -= SLIDER_SHRINK_AMOUNT;
 	$AnimationPlayer.speed_scale *= 1.25;
-	if timingSuccesses + timingFailures >= maximumSliderAttempts:
+	if timingSuccesses + timingFailures >= maximumSliderAttempts+1:
 		$"Collection Jar/AnimatedSprite2D".frame = 1;
 		$AnimationPlayer.stop(true);
 		canEndMinigame = true;
