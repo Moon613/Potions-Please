@@ -72,7 +72,7 @@ func _on_potion_submit():
 	inDialogue = false;
 	$Control.visible = false;
 	GameInfo.busy = false;
-	if $Control/ItemList.item_count <= 0:
+	if $Control/ItemList.item_count <= 0 or $Control/ItemList.get_selected_items().size() < 1:
 		return;
 	var submittedItem = $Control/ItemList.get_item_text($Control/ItemList.get_selected_items()[0]);
 	if GameInfo.questToRequiredPotion[GameInfo.currentQuest] == submittedItem:
