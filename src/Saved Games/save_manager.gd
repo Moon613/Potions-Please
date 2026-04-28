@@ -1,5 +1,6 @@
 extends Node
 
+signal LoadInventory;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -70,4 +71,4 @@ func load_game(id: int):
 			else:
 				GameInfo.set(i, node_data[i])
 	# load inventory
-	GameInfo.inventory.load_inv()
+	LoadInventory.emit();

@@ -12,20 +12,21 @@ process_mode = 3
 script = ExtResource("1_fcjhs")
 book_layer = NodePath("NewBookLayer")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1222121063]
+[node name="Inventory" type="CanvasLayer" parent="." unique_id=1222121063]
 
-[node name="Inventory" parent="CanvasLayer" unique_id=1453173247 instance=ExtResource("2_uk7sp")]
+[node name="Inventory" parent="Inventory" unique_id=1453173247 instance=ExtResource("2_uk7sp")]
 offset_left = 141.0
 offset_top = 22.0
 offset_right = 141.0
 offset_bottom = 22.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="CanvasLayer" unique_id=1680375092]
+[node name="Inventory Button" type="Button" parent="Inventory" unique_id=1680375092]
 offset_left = 1048.0
 offset_top = 96.0
 offset_right = 1136.0
 offset_bottom = 184.0
+focus_mode = 0
 theme_override_colors/icon_hover_color = Color(0.45882353, 0.45882353, 0.45882353, 1)
 icon = ExtResource("3_vhnwb")
 expand_icon = true
@@ -41,5 +42,5 @@ visible = false
 layer = 10
 visible = false
 
-[connection signal="JournalOpen" from="CanvasLayer/Inventory" to="." method="_on_inventory_journal_open"]
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_inventory_button_pressed"]
+[connection signal="JournalOpen" from="Inventory/Inventory" to="." method="_on_inventory_journal_open"]
+[connection signal="pressed" from="Inventory/Inventory Button" to="." method="_on_inventory_button_pressed"]

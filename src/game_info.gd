@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var inventory: Inventory = $CanvasLayer/Inventory
+@onready var inventory: Inventory = $Inventory/Inventory
+@onready var inventoryButton = $"Inventory/Inventory Button"
 @onready var pause_menu: CanvasLayer = $"Pause Menu"
 @export var book_layer: CanvasLayer
 var busy: bool = false
@@ -282,7 +283,6 @@ func set_dict(dict_name, dict_data):
 		pass
 	for i in dict_data:
 		target_dict[i] = dict_data[i]
-
 
 func _on_inventory_journal_open() -> void:
 	book_layer.visible = true

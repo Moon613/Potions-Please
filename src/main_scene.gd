@@ -65,6 +65,11 @@ func _switch_scene(id: int):
 	if self.get_children():
 		self.remove_child(self.get_children()[0]);
 	
+	if id in busy_scenes:
+		GameInfo.inventoryButton.visible = false;
+	else:
+		GameInfo.inventoryButton.visible = true;
+	
 	match id:
 		GameInfo.SceneID.OVERWORLD:
 			self.add_child(overworldScene);

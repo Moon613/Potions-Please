@@ -45,7 +45,7 @@ func _ready():
 		slot.slot_input.connect(self._on_slot_input)
 		slot.slot_hovered.connect(self._on_slot_hovered)
 	tooltip.visible = false
-	
+	SaveManager.LoadInventory.connect(_on_load_inv);
 	
 
 
@@ -142,7 +142,7 @@ func clear_inventory() -> void:
 	for slot in slots:
 		slot.remove_item()
 
-func load_inv():
+func _on_load_inv():
 	#add items from game reasources
 	var res = GameInfo.resources
 	for item in res:
