@@ -1,9 +1,10 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bw5ajgal0odxe"]
 
-[ext_resource type="Texture2D" uid="uid://rxo8flanv4gj" path="res://Textures/SapGame/RatingOK.png" id="1_gdrpr"]
-[ext_resource type="Texture2D" uid="uid://d5weidvfi2sr" path="res://Textures/SapGame/RatingGood.png" id="2_d6rg6"]
-[ext_resource type="Texture2D" uid="uid://dqxeoaabugqhv" path="res://Textures/SapGame/RatingGreat.png" id="2_xajcf"]
-[ext_resource type="Texture2D" uid="uid://th2tbpor7qpu" path="res://Textures/SapGame/RatingExcellent.png" id="4_bv643"]
+[ext_resource type="Texture2D" uid="uid://rxo8flanv4gj" path="res://Treesap Minigame/Textures/RatingOK.png" id="1_gdrpr"]
+[ext_resource type="Texture2D" uid="uid://d5weidvfi2sr" path="res://Treesap Minigame/Textures/RatingGood.png" id="2_d6rg6"]
+[ext_resource type="Texture2D" uid="uid://dqxeoaabugqhv" path="res://Treesap Minigame/Textures/RatingGreat.png" id="2_xajcf"]
+[ext_resource type="Texture2D" uid="uid://th2tbpor7qpu" path="res://Treesap Minigame/Textures/RatingExcellent.png" id="4_bv643"]
+
 
 [resource]
 resource_local_to_scene = true

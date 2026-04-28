@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cnxcvpb8kmku3"]
 
-[ext_resource type="SpriteFrames" uid="uid://wshwtxsb71q7" path="res://Textures/Dewdrops/DewdropFrames.tres" id="1_tx7ck"]
+[ext_resource type="SpriteFrames" uid="uid://wshwtxsb71q7" path="res://Dewdrop Minigame/Textures/Dewdrops/DewdropFrames.tres" id="1_tx7ck"]
 [ext_resource type="Script" uid="uid://den3s4ycbsn7o" path="res://Dewdrop Minigame/dewdrop.gd" id="1_ygnce"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gdft7"]

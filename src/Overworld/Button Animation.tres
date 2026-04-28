@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://5q5swr051qix"]
 
-[ext_resource type="Texture2D" uid="uid://dg8unh04vulox" path="res://Textures/ButtonE.png" id="1_5thbe"]
-[ext_resource type="Texture2D" uid="uid://cc8xl1neubh0u" path="res://Textures/ButtonEPressed.png" id="2_odilb"]
+[ext_resource type="Texture2D" uid="uid://dg8unh04vulox" path="res://Overworld/Textures/ButtonE.png" id="1_5thbe"]
+[ext_resource type="Texture2D" uid="uid://cc8xl1neubh0u" path="res://Overworld/Textures/ButtonEPressed.png" id="2_odilb"]
 
 [resource]
 animations = [{

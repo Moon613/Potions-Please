@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bb3fs823qrhv"]
 
 [ext_resource type="Script" uid="uid://cgbjcqo8akr5d" path="res://Dragon Egg Minigame/dragon_egg.gd" id="1_5pgsm"]
-[ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Textures/Dragon Egg Collectable.png" id="2_5pgsm"]
+[ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Dragon Egg Minigame/Textures/Dragon Egg Collectable.png" id="2_5pgsm"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pgsm"]
 resource_local_to_scene = true

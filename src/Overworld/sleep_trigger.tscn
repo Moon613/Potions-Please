@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://wklojqsuq2q" path="res://Overworld/sleep_trigger.gd" id="1_s8rf8"]
 [ext_resource type="SpriteFrames" uid="uid://5q5swr051qix" path="res://Overworld/Button Animation.tres" id="2_1w2tw"]
-[ext_resource type="Texture2D" uid="uid://dy4gna1ng73u8" path="res://Textures/Minigame Indicator Arrow.png" id="3_wmkj6"]
+[ext_resource type="Texture2D" uid="uid://dy4gna1ng73u8" path="res://Overworld/Textures/Minigame Indicator Arrow.png" id="3_wmkj6"]
 [ext_resource type="FontFile" uid="uid://dh7d3p4dktydb" path="res://fonts/KiwiMaru-Light.ttf" id="4_vo4xb"]
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="5_yotjf"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjyl4"]
 resource_local_to_scene = true

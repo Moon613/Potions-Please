@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://ddpvkv0l2wv0h"]
 
 [ext_resource type="Script" uid="uid://ceehah7li1w3b" path="res://Main Menu/main_menu.gd" id="1_ku1ks"]
-[ext_resource type="Texture2D" uid="uid://bm4khq2owv3ka" path="res://Textures/titlescreenbg.JPG" id="2_bgqmh"]
-[ext_resource type="Texture2D" uid="uid://vho3y7pnkero" path="res://Textures/TitleTypeGlow.PNG" id="2_i0jnm"]
+[ext_resource type="Texture2D" uid="uid://bm4khq2owv3ka" path="res://Main Menu/Textures/titlescreenbg.JPG" id="2_bgqmh"]
+[ext_resource type="Texture2D" uid="uid://vho3y7pnkero" path="res://Main Menu/Textures/TitleTypeGlow.PNG" id="2_i0jnm"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="3_wlfof"]
 [ext_resource type="StyleBox" uid="uid://bq2b4hswpggoq" path="res://Main Menu/Main Menu Selection.tres" id="4_wlfof"]
+
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgqmh"]
 load_path = "res://.godot/imported/Paper+WoodUI.png-f7228e9a19f554de4100a3e4996dc6d0.ctex"

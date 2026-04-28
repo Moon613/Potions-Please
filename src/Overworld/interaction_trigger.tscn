@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dvby1ojni5ccf" path="res://Overworld/interaction_trigger.gd" id="1_521b6"]
 [ext_resource type="SpriteFrames" uid="uid://5q5swr051qix" path="res://Overworld/Button Animation.tres" id="2_in81f"]
 [ext_resource type="FontFile" uid="uid://dh7d3p4dktydb" path="res://fonts/KiwiMaru-Light.ttf" id="4_ewitm"]
-[ext_resource type="Texture2D" uid="uid://dy4gna1ng73u8" path="res://Textures/Minigame Indicator Arrow.png" id="4_iq355"]
+[ext_resource type="Texture2D" uid="uid://dy4gna1ng73u8" path="res://Overworld/Textures/Minigame Indicator Arrow.png" id="4_iq355"]
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="5_n5gqa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjyl4"]

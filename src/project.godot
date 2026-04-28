@@ -26,7 +26,7 @@ SaveManager="*uid://bj6054yd5rypy"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
-mouse_cursor/custom_image="uid://cmcidn00vfcs3"
+mouse_cursor/custom_image="uid://1l1tdbt2jeh5"
 mouse_cursor/tooltip_position_offset=Vector2(0, -25)
 
 [editor_plugins]

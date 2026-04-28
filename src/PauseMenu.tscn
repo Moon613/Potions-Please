@@ -5,8 +5,9 @@
 [ext_resource type="StyleBox" uid="uid://bq2b4hswpggoq" path="res://Main Menu/Main Menu Selection.tres" id="2_q775a"]
 [ext_resource type="FontFile" uid="uid://dx7ancxvml4m5" path="res://fonts/KiwiMaru-Medium.ttf" id="2_sev4g"]
 [ext_resource type="Texture2D" uid="uid://b0aa6my05ex0e" path="res://Textures/OvergrownUI.png" id="3_04dm0"]
-[ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Textures/Nyx.png" id="6_idhon"]
+[ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Potion Brewing/Textures/Nyx.png" id="6_idhon"]
 [ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="6_sev4g"]
+
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ntcl7"]
 content_margin_left = 0.0

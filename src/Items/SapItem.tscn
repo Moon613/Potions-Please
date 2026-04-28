@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://b14ab1uycb1e5"]
 
 [ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_g5uc5"]
-[ext_resource type="Texture2D" uid="uid://b24swqxa27uce" path="res://Textures/Tree Sap Collectable.png" id="2_g5uc5"]
+[ext_resource type="Texture2D" uid="uid://b24swqxa27uce" path="res://Treesap Minigame/Textures/Tree Sap Collectable.png" id="2_g5uc5"]
+
 
 [node name="SapItem" type="Node2D" unique_id=1881400684]
 script = ExtResource("1_g5uc5")

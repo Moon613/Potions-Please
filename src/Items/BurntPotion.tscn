@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://c18xf5lil3lv6"]
 
 [ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_7kslq"]
-[ext_resource type="Texture2D" uid="uid://bfmoj3doj5t31" path="res://Textures/Burnt Potion (NEW).png" id="2_8y81a"]
+[ext_resource type="Texture2D" uid="uid://bfmoj3doj5t31" path="res://Potion Brewing/Textures/Burnt Potion (NEW).png" id="2_8y81a"]
+
 
 [node name="BurntPotion" type="Node2D" unique_id=255005035]
 script = ExtResource("1_7kslq")

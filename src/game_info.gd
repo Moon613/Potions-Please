@@ -7,7 +7,7 @@ extends Node2D
 var busy: bool = false
 var journal_is_open: bool = false;
 
-var ruinedPotionSprite: Texture2D = preload("res://Textures/BurntPotion.png");
+var ruinedPotionSprite: Texture2D = preload("res://Potion Brewing/Textures/Burnt Potion (NEW).png");
 
 # Flags for saving various states
 var dewdropTutorial: bool = true
@@ -101,21 +101,21 @@ const SHRINK: String = "shrink";
 const RUINED: String = "burnt";
 
 var potionToImage: Dictionary[String, String] = {
-	ENERGY: "res://Textures/Energy Elixir(NEW).png",
-	SLEEP: "res://Textures/Sleepy Solution.png",
-	STRENGTH: "res://Textures/Strength Potion.png",
-	HEALING: "res://Textures/Healing Potion.png",
-	SHRINK: "res://Textures/ShrinkElixir.png",
-	RUINED: "res://Textures/BurntPotion.png"
+	ENERGY: "res://Potion Brewing/Textures/Energy Elixir(NEW).png",
+	SLEEP: "res://Potion Brewing/Textures/Sleepy Solution.png",
+	STRENGTH: "res://Potion Brewing/Textures/Strength Potion.png",
+	HEALING: "res://Potion Brewing/Textures/Healing Potion.png",
+	SHRINK: "res://Potion Brewing/Textures/ShrinkElixir.png",
+	RUINED: "res://Potion Brewing/Textures/BurntPotion.png"
 };
 
 # Apparently GDScript has a nested collection type restriction so the inner array cannot be Array[String], but for reference for anyone else, that is what it is.
 var validRecipies: Array[Recipe] = [
-	Recipe.new([HONEY, DEWDROPS, GINGER], ENERGY, 0.5, "res://Textures/Energy Elixir(NEW).png"),
-	Recipe.new([MANDRAKE, LAVENDER, MILK], SLEEP, 2, "res://Textures/Sleepy Solution.png"),
-	Recipe.new([SALTS, GARLIC, EGGS], STRENGTH, 1.5, "res://Textures/Strength Potion.png"),
-	Recipe.new([WINGS, MOSS, SAP], HEALING, 0.75, "res://Textures/Healing Potion.png"),
-	Recipe.new([ACORNS, MILK, WINGS], SHRINK, 1.25, "res://Textures/ShrinkElixir.png"),
+	Recipe.new([HONEY, DEWDROPS, GINGER], ENERGY, 0.5, "res://Potion Brewing/Textures/Energy Elixir(NEW).png"),
+	Recipe.new([MANDRAKE, LAVENDER, MILK], SLEEP, 2, "res://Potion Brewing/Textures/Sleepy Solution.png"),
+	Recipe.new([SALTS, GARLIC, EGGS], STRENGTH, 1.5, "res://Potion Brewing/Textures/Strength Potion.png"),
+	Recipe.new([WINGS, MOSS, SAP], HEALING, 0.75, "res://Potion Brewing/Textures/Healing Potion.png"),
+	Recipe.new([ACORNS, MILK, WINGS], SHRINK, 1.25, "res://Potion Brewing/Textures/ShrinkElixir.png"),
 ];
 # Both of these are on a scale of 0.0 - 5.0
 @export var reputation: float = 2.5;

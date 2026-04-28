@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dy57pd12m8k2k"]
 
-[ext_resource type="Texture2D" uid="uid://besxbdhk426kg" path="res://Textures/MandrakeGame/HammerDefault.png" id="1_g23br"]
-[ext_resource type="Texture2D" uid="uid://ct8al2rubslv2" path="res://Textures/MandrakeGame/HammerDown.png" id="2_atfjs"]
+[ext_resource type="Texture2D" uid="uid://besxbdhk426kg" path="res://Mandrake Minigame/Textures/HammerDefault.png" id="1_g23br"]
+[ext_resource type="Texture2D" uid="uid://ct8al2rubslv2" path="res://Mandrake Minigame/Textures/HammerDown.png" id="2_atfjs"]
+
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2gjrs"]
 radius = 5.0

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bjs32axxwibeo"]
 
 [ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_f86tw"]
-[ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Textures/Dragon Egg Collectable.png" id="2_f86tw"]
+[ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Dragon Egg Minigame/Textures/Dragon Egg Collectable.png" id="2_f86tw"]
+
 
 [node name="EggItem" type="Node2D" unique_id=1629014469]
 script = ExtResource("1_f86tw")

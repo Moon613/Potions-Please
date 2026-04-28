@@ -1,10 +1,10 @@
 [gd_resource type="TileSet" format=3 uid="uid://dbk4ou7hhx3qw"]
 
-[ext_resource type="Texture2D" uid="uid://dap3mabltabsf" path="res://Textures/Tilemap2.png" id="1_2q2vn"]
-[ext_resource type="Texture2D" uid="uid://b5og3x25ktpbh" path="res://Textures/Tilemap3.png" id="2_1s2du"]
-[ext_resource type="Texture2D" uid="uid://dasx88fyd1ae2" path="res://Overworld/tile sheet(new).png" id="3_wkl55"]
-[ext_resource type="Texture2D" uid="uid://qhkugimdht6h" path="res://Overworld/spritesheetindoors.png" id="4_4jyen"]
-[ext_resource type="Texture2D" uid="uid://mtuo60243lbj" path="res://Overworld/tile sheet2.png" id="5_ri5bb"]
+[ext_resource type="Texture2D" uid="uid://dap3mabltabsf" path="res://Overworld/Textures/Tilemap2.png" id="1_2q2vn"]
+[ext_resource type="Texture2D" uid="uid://b5og3x25ktpbh" path="res://Overworld/Textures/Tilemap3.png" id="2_1s2du"]
+[ext_resource type="Texture2D" uid="uid://dasx88fyd1ae2" path="res://Overworld/Textures/tile sheet(new).png" id="3_wkl55"]
+[ext_resource type="Texture2D" uid="uid://qhkugimdht6h" path="res://Overworld/Textures/spritesheetindoors.png" id="4_4jyen"]
+[ext_resource type="Texture2D" uid="uid://mtuo60243lbj" path="res://Overworld/Textures/tile sheet2.png" id="5_ri5bb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omswd"]
 texture = ExtResource("1_2q2vn")

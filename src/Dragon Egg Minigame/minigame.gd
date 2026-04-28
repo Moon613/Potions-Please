@@ -73,7 +73,7 @@ func _on_egg_obtained():
 
 func _on_tutorial_popup_hide() -> void:
 	GameInfo.dragoneggTutorial = false
-	Input.set_custom_mouse_cursor(load("res://Textures/TargetCursor.png"), 0, Vector2(26,33));
+	Input.set_custom_mouse_cursor(load("res://Dragon Egg Minigame/Textures/TargetCursor.png"), 0, Vector2(26,33));
 	get_tree().paused = false
 
 func _on_info_button_pressed() -> void:

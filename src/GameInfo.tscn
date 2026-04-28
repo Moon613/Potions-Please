@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cuihnj4k45gj3" path="res://game_info.gd" id="1_fcjhs"]
 [ext_resource type="PackedScene" uid="uid://dh3sgkg60ryli" path="res://Items/Inventory.tscn" id="2_uk7sp"]
 [ext_resource type="PackedScene" uid="uid://1whcgwa3vise" path="res://PauseMenu.tscn" id="3_saxbk"]
-[ext_resource type="Texture2D" uid="uid://btuyjeyuyakjx" path="res://Textures/inventory indicator.png" id="3_vhnwb"]
+[ext_resource type="Texture2D" uid="uid://btuyjeyuyakjx" path="res://Overworld/Textures/inventory indicator.png" id="3_vhnwb"]
 [ext_resource type="PackedScene" uid="uid://nvwjkwj2y5nn" path="res://Items/NewPotionBook.tscn" id="5_igr6x"]
 
 [node name="GameInfo" type="Node2D" unique_id=571529810 node_paths=PackedStringArray("book_layer") groups=["Saved Info"]]

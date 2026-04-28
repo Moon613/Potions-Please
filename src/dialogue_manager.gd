@@ -93,8 +93,8 @@ func _on_cancel_pressed() -> void:
 	GameInfo.busy = false;
 
 @abstract class Dialogue:
-	const YASMEEN: String = "res://Textures/YasmeenPortrait.png";
-	const PLACEHOLDER: String = "res://Textures/PlaceholderPortrait.png";
+	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";
+	const PLACEHOLDER: String = "res://Overworld/Textures/PlaceholderPortrait.png";
 	static func IntroDialogue():
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Ugh, I am not feeling well.\nMaybe I can brew myself an energy potion.", YASMEEN));
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I'd better go outside to gather ingredients.", YASMEEN));

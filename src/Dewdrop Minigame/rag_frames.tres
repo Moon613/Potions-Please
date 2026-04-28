@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://oologo0y6j6m"]
 
-[ext_resource type="Texture2D" uid="uid://ctxvo0cklv3nv" path="res://Textures/OpenRagClean.png" id="1_jqiae"]
-[ext_resource type="Texture2D" uid="uid://bdovvbm5w81b0" path="res://Textures/TwistRagClean.png" id="2_5py3d"]
+[ext_resource type="Texture2D" uid="uid://ctxvo0cklv3nv" path="res://Dewdrop Minigame/Textures/OpenRagClean.png" id="1_jqiae"]
+[ext_resource type="Texture2D" uid="uid://bdovvbm5w81b0" path="res://Dewdrop Minigame/Textures/TwistRagClean.png" id="2_5py3d"]
 
 [resource]
 animations = [{

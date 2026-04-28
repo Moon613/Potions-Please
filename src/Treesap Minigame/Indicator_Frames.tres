@@ -1,8 +1,9 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://bwb6rx1wipaeh"]
 
-[ext_resource type="Texture2D" uid="uid://cgdheplw2h7ls" path="res://Textures/sapIndicator0.png" id="1_ctxn5"]
-[ext_resource type="Texture2D" uid="uid://cu70if2bkwc3t" path="res://Textures/sapIndicator1.png" id="2_dlue3"]
-[ext_resource type="Texture2D" uid="uid://cpesy1sqthd1s" path="res://Textures/sapIndicator2.png" id="3_ot0tk"]
+[ext_resource type="Texture2D" uid="uid://cgdheplw2h7ls" path="res://Treesap Minigame/Textures/sapIndicator0.png" id="1_ctxn5"]
+[ext_resource type="Texture2D" uid="uid://cu70if2bkwc3t" path="res://Treesap Minigame/Textures/sapIndicator1.png" id="2_dlue3"]
+[ext_resource type="Texture2D" uid="uid://cpesy1sqthd1s" path="res://Treesap Minigame/Textures/sapIndicator2.png" id="3_ot0tk"]
+
 
 [resource]
 animations = [{

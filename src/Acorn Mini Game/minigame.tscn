@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://bc4ommp6o0qax"]
 
 [ext_resource type="Script" uid="uid://70wfms86ut61" path="res://Acorn Mini Game/acorn.gd" id="1_xc6ns"]
-[ext_resource type="Texture2D" uid="uid://b1j45v4i0ok7c" path="res://Textures/acornbgNOFENCE.png" id="2_7ub14"]
+[ext_resource type="Texture2D" uid="uid://b1j45v4i0ok7c" path="res://Acorn Mini Game/Textures/acornbgNOFENCE.png" id="2_7ub14"]
 [ext_resource type="Script" uid="uid://m4m03d2irf6f" path="res://Acorn Mini Game/tree.gd" id="2_h1tt5"]
 [ext_resource type="PackedScene" uid="uid://dsfse7d2c0klu" path="res://Acorn Mini Game/acorns.tscn" id="3_6dtyt"]
 [ext_resource type="Shader" uid="uid://d245ild5vhgje" path="res://Acorn Mini Game/treeshake.gdshader" id="3_xvegq"]
 [ext_resource type="Script" uid="uid://cdae412rdiih5" path="res://Acorn Mini Game/basket.gd" id="4_bi5ov"]
-[ext_resource type="Texture2D" uid="uid://dy1hctcy72j7g" path="res://Textures/Tree Acorn Minigame.png" id="6_7ub14"]
-[ext_resource type="Texture2D" uid="uid://buef2hfncfker" path="res://Textures/Basket Back Acorn Minigame.png" id="8_omdso"]
-[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
-[ext_resource type="Texture2D" uid="uid://c1g452omww4sy" path="res://Textures/Basket Front Acorn Minigame.png" id="9_g33fa"]
+[ext_resource type="Texture2D" uid="uid://dy1hctcy72j7g" path="res://Acorn Mini Game/Textures/Tree Acorn Minigame.png" id="6_7ub14"]
+[ext_resource type="Texture2D" uid="uid://buef2hfncfker" path="res://Acorn Mini Game/Textures/Basket Back Acorn Minigame.png" id="8_omdso"]
+[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
+[ext_resource type="Texture2D" uid="uid://c1g452omww4sy" path="res://Acorn Mini Game/Textures/Basket Front Acorn Minigame.png" id="9_g33fa"]
+
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dtyt"]
 shader = ExtResource("3_xvegq")

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dosak45c72mij"]
 
 [ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_y87s1"]
-[ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Textures/Nyx.png" id="2_y87s1"]
+[ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Potion Brewing/Textures/Nyx.png" id="2_y87s1"]
+
 
 [node name="WIPItem" type="Node2D" unique_id=659737758]
 script = ExtResource("1_y87s1")

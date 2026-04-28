@@ -1,43 +1,42 @@
 [gd_scene format=3 uid="uid://cbbeilop6nngp"]
 
 [ext_resource type="Script" uid="uid://ccaqqx0te1oji" path="res://Potion Brewing/potion_brewing.gd" id="1_g2f47"]
-[ext_resource type="Texture2D" uid="uid://bliwhqis5rdk" path="res://Textures/Background Potion UI.png" id="2_lm47i"]
-[ext_resource type="Texture2D" uid="uid://vxwtbumruws3" path="res://Textures/Bookshelf.png" id="3_lm47i"]
-[ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Textures/Nyx.png" id="4_dr7va"]
-[ext_resource type="Texture2D" uid="uid://cxns4cgtw3ynk" path="res://Textures/Caldron Front.png" id="6_lm47i"]
+[ext_resource type="Texture2D" uid="uid://bliwhqis5rdk" path="res://Potion Brewing/Textures/Background Potion UI.png" id="2_lm47i"]
+[ext_resource type="Texture2D" uid="uid://vxwtbumruws3" path="res://Potion Brewing/Textures/Bookshelf.png" id="3_lm47i"]
+[ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Potion Brewing/Textures/Nyx.png" id="4_dr7va"]
+[ext_resource type="Texture2D" uid="uid://cxns4cgtw3ynk" path="res://Potion Brewing/Textures/Caldron Front.png" id="6_lm47i"]
 [ext_resource type="Script" uid="uid://dsxhue2e16y4i" path="res://Potion Brewing/Spoon.gd" id="6_xks6y"]
-[ext_resource type="Texture2D" uid="uid://dy2m2ayd1ulkh" path="res://Textures/Spoon.png" id="7_3ii5e"]
-[ext_resource type="Texture2D" uid="uid://cryidjmdatyfi" path="res://Textures/Caldron Inside.png" id="7_dr7va"]
-[ext_resource type="Texture2D" uid="uid://st1osgmwcwix" path="res://Textures/BlankLiquid.png" id="8_o18r5"]
-[ext_resource type="Texture2D" uid="uid://d2ibvlk86fmu5" path="res://Textures/Caldron Back.png" id="9_wsuyr"]
-[ext_resource type="Texture2D" uid="uid://d1b8qy0gukt24" path="res://Textures/Spoon Holder.png" id="11_o18r5"]
+[ext_resource type="Texture2D" uid="uid://dy2m2ayd1ulkh" path="res://Potion Brewing/Textures/Spoon.png" id="7_3ii5e"]
+[ext_resource type="Texture2D" uid="uid://cryidjmdatyfi" path="res://Potion Brewing/Textures/Caldron Inside.png" id="7_dr7va"]
+[ext_resource type="Texture2D" uid="uid://st1osgmwcwix" path="res://Potion Brewing/Textures/BlankLiquid.png" id="8_o18r5"]
+[ext_resource type="Texture2D" uid="uid://d2ibvlk86fmu5" path="res://Potion Brewing/Textures/Caldron Back.png" id="9_wsuyr"]
 [ext_resource type="Script" uid="uid://btfoqfcybk40q" path="res://Potion Brewing/inside_cauldron_hitbox.gd" id="11_yupxn"]
 [ext_resource type="Texture2D" uid="uid://bwlkhcfqbgk2p" path="res://Textures/Journal Potion Ingredient List Icon.png" id="12_wsuyr"]
 [ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="13_8mvhn"]
-[ext_resource type="Texture2D" uid="uid://cgy3ndew38fyl" path="res://Textures/Trash Icon.png" id="14_dqwf3"]
-[ext_resource type="Texture2D" uid="uid://bg1utwc3blwav" path="res://Textures/Reputation Text.png" id="15_dqwf3"]
+[ext_resource type="Texture2D" uid="uid://cgy3ndew38fyl" path="res://Potion Brewing/Textures/Trash Icon.png" id="14_dqwf3"]
+[ext_resource type="Texture2D" uid="uid://bg1utwc3blwav" path="res://Potion Brewing/Textures/Reputation Text.png" id="15_dqwf3"]
 [ext_resource type="Texture2D" uid="uid://c3d5s54h65fq6" path="res://Textures/BadReputation.png" id="17_yffeo"]
 [ext_resource type="Texture2D" uid="uid://bawphj6nvrrti" path="res://Textures/GoodReputation.png" id="18_5pr62"]
-[ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Textures/Stamina Text.png" id="18_g121f"]
+[ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Potion Brewing/Textures/Stamina Text.png" id="18_g121f"]
 [ext_resource type="Texture2D" uid="uid://bfoveypfrtn02" path="res://Textures/BadStaminaReputation.png" id="20_y8v3d"]
 [ext_resource type="PackedScene" uid="uid://ch2s5cbjit2nu" path="res://Potion Brewing/Ingredient.tscn" id="21_m6y6x"]
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="22_0mxup"]
-[ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Textures/MorningDewIngredient.png" id="22_a3cj8"]
-[ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Textures/Honey(New).png" id="23_1nhwd"]
-[ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Textures/Acorn Collectable.png" id="25_hb5qm"]
-[ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Textures/Ginger Root (New).png" id="26_0mxup"]
+[ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Potion Brewing/Textures/MorningDewIngredient.png" id="22_a3cj8"]
+[ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Potion Brewing/Textures/Honey(New).png" id="23_1nhwd"]
+[ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="25_hb5qm"]
+[ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Potion Brewing/Textures/Ginger Root (New).png" id="26_0mxup"]
 [ext_resource type="Script" uid="uid://0bn1itn1vduw" path="res://Potion Brewing/stir_trigger.gd" id="26_m5i5b"]
 [ext_resource type="Theme" uid="uid://bguvjymyr647x" path="res://Potion Brewing/Infinite Text.tres" id="27_yffeo"]
-[ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Textures/Dragon Egg Collectable.png" id="28_1og6f"]
-[ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Textures/MandrakeGame/MandrakeItem.png" id="28_y8v3d"]
-[ext_resource type="Texture2D" uid="uid://dwlrqfnpn6ctx" path="res://Textures/Lavender.png" id="30_ako6u"]
-[ext_resource type="Texture2D" uid="uid://b24swqxa27uce" path="res://Textures/Tree Sap Collectable.png" id="31_amh61"]
-[ext_resource type="Texture2D" uid="uid://d2id1s064vj60" path="res://Textures/Milk.png" id="31_fim6t"]
-[ext_resource type="Texture2D" uid="uid://ceh0a6mexdf3j" path="res://Textures/Fire Salts.png" id="32_a67xv"]
-[ext_resource type="Texture2D" uid="uid://ccevdp500tae4" path="res://Textures/Garlic.png" id="33_y54vx"]
-[ext_resource type="Texture2D" uid="uid://d2k3ne2c7bw25" path="res://Textures/Fairy Wings.png" id="34_isq66"]
-[ext_resource type="Texture2D" uid="uid://cmwi3r522hfvt" path="res://Textures/Moss.png" id="35_isq66"]
+[ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Dragon Egg Minigame/Textures/Dragon Egg Collectable.png" id="28_1og6f"]
+[ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Mandrake Minigame/Textures/MandrakeItem.png" id="28_y8v3d"]
+[ext_resource type="Texture2D" uid="uid://dwlrqfnpn6ctx" path="res://Potion Brewing/Textures/Lavender.png" id="30_ako6u"]
+[ext_resource type="Texture2D" uid="uid://b24swqxa27uce" path="res://Treesap Minigame/Textures/Tree Sap Collectable.png" id="31_amh61"]
+[ext_resource type="Texture2D" uid="uid://d2id1s064vj60" path="res://Potion Brewing/Textures/Milk.png" id="31_fim6t"]
+[ext_resource type="Texture2D" uid="uid://ceh0a6mexdf3j" path="res://Potion Brewing/Textures/Fire Salts.png" id="32_a67xv"]
+[ext_resource type="Texture2D" uid="uid://ccevdp500tae4" path="res://Potion Brewing/Textures/Garlic.png" id="33_y54vx"]
+[ext_resource type="Texture2D" uid="uid://d2k3ne2c7bw25" path="res://Potion Brewing/Textures/Fairy Wings.png" id="34_isq66"]
+[ext_resource type="Texture2D" uid="uid://cmwi3r522hfvt" path="res://Potion Brewing/Textures/Moss.png" id="35_isq66"]
 [ext_resource type="AudioStream" uid="uid://c3culn7rdod1w" path="res://Sound Effects/idle potion.wav" id="38_1nhwd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc17n"]
@@ -70,6 +69,9 @@ rough = true
 bounce = 0.95
 absorbent = true
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1nhwd"]
+load_path = "res://.godot/imported/Spoon Holder.png-88214687c98882c28695364a1de9d013.ctex"
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ii5e"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g2f47"]
@@ -95,12 +97,12 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("21_xbtdn")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mxup"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nhwd"]
 resource_local_to_scene = true
 radius = 49.77
 height = 149.23
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb5qm"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mxup"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -326,7 +328,7 @@ collision_mask = 0
 position = Vector2(-8.000008, -72)
 rotation = -0.5881493
 scale = Vector2(2.9686744, 3.767742)
-texture = ExtResource("11_o18r5")
+texture = SubResource("CompressedTexture2D_1nhwd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spoon Holder" unique_id=658356064]
 polygon = PackedVector2Array(32, -376, 56, -392, 80, -384, 96, -360, 56, 152, 40, 176, 16, 184, -144, 152, -168, 136, -168, 112, -152, 104, -8, 128)
@@ -452,14 +454,14 @@ text = "ESC to leave"
 position = Vector2(-804, -191)
 mass = 0.61
 Sprite = ExtResource("23_1nhwd")
-Shape = SubResource("CapsuleShape2D_0mxup")
+Shape = SubResource("CapsuleShape2D_1nhwd")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-763, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_hb5qm")
+Shape = SubResource("CapsuleShape2D_0mxup")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -467,7 +469,7 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_hb5qm")
+shape = SubResource("CapsuleShape2D_0mxup")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
 position = Vector2(-595, 16)
