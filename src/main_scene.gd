@@ -12,7 +12,15 @@ extends Node2D
 
 @export var startingScene: int;
 
-@export var busy_scenes = [1, 3, 4, 5, 6, 7, 8]
+@export var busy_scenes = [
+	GameInfo.SceneID.POTIONBREWING,
+	GameInfo.SceneID.DEWDROPS,
+	GameInfo.SceneID.MAINMENU,
+	GameInfo.SceneID.ACORNS,
+	GameInfo.SceneID.TREESAP,
+	GameInfo.SceneID.DRAGONEGGS,
+	GameInfo.SceneID.MANDRAKES
+];
 var overworldScene;
 var potionScene;
 var insideScene;

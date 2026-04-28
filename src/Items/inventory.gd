@@ -35,7 +35,6 @@ var slots: Array[InventorySlot]
 static var selected_item: Item = null
 
 
-
 func _ready():
 	inventory_grid.columns = cols
 	for i in range(rows * cols):
@@ -47,7 +46,11 @@ func _ready():
 	tooltip.visible = false
 	SaveManager.LoadInventory.connect(_on_load_inv);
 	
-
+func _input(event):
+	# This layer is made visible in GameInfo._input and GameInfo._on_inventory_button_pressed
+	if (Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("inventory")) and visible:
+		visible = false;
+		get_viewport().set_input_as_handled();
 
 # moves selected item with mouse
 func _process(_delta):
@@ -154,7 +157,6 @@ func _on_load_inv():
 		var amount = pot[item]
 		if amount > 0:
 			add_item(item,amount);
-
 
 func _on_journal_button_up() -> void:
 	JournalOpen.emit()

@@ -95,12 +95,12 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("21_xbtdn")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb5qm"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mxup"]
 resource_local_to_scene = true
 radius = 49.77
 height = 149.23
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1og6f"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb5qm"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -452,14 +452,14 @@ text = "ESC to leave"
 position = Vector2(-804, -191)
 mass = 0.61
 Sprite = ExtResource("23_1nhwd")
-Shape = SubResource("CapsuleShape2D_hb5qm")
+Shape = SubResource("CapsuleShape2D_0mxup")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-763, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_1og6f")
+Shape = SubResource("CapsuleShape2D_hb5qm")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -467,7 +467,7 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_1og6f")
+shape = SubResource("CapsuleShape2D_hb5qm")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
 position = Vector2(-595, 16)

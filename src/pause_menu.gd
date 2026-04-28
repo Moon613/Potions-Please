@@ -7,7 +7,16 @@ func _ready() -> void:
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		SwitchScene.connect(get_tree().current_scene._switch_scene);
 
-
+func _input(event):
+	if !GameInfo.busy:
+		if Input.is_action_just_pressed("ui_cancel") and visible:
+			visible = false;
+			get_tree().paused = false;
+			get_viewport().set_input_as_handled();
+		elif Input.is_action_just_pressed("ui_cancel"):
+			visible = true;
+			get_tree().paused = true;
+			get_viewport().set_input_as_handled();
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,7 +31,6 @@ func _on_save_button_up() -> void:
 func _on_quit_button_up() -> void:
 	visible = false
 	GameInfo.get_tree().paused = false
-	GameInfo.paused = false
 	SwitchScene.emit(4)
 	GameInfo.reset_info()
 	get_tree().reload_current_scene()

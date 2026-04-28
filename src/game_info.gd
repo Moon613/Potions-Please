@@ -5,7 +5,7 @@ extends Node2D
 @onready var pause_menu: CanvasLayer = $"Pause Menu"
 @export var book_layer: CanvasLayer
 var busy: bool = false
-var paused: bool = false
+var journal_is_open: bool = false;
 
 var ruinedPotionSprite: Texture2D = preload("res://Textures/BurntPotion.png");
 
@@ -45,9 +45,6 @@ var questToRequiredPotion: Dictionary[PotionQuests, String] = {
 	PotionQuests.HEALING: HEALING,
 	PotionQuests.SHRINK: SHRINK
 };
-
-# used by brewing scene
-var journal_is_open = false
 
 # Energy amounts for minigames, by scne ID
 var minigameEnergy: Dictionary[int, float] = {
@@ -174,16 +171,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event):
-	if Input.is_action_just_pressed("inventory") and !busy and !paused:
-		inventory.visible = !inventory.visible
-	if Input.is_action_just_pressed("ui_cancel"):
-		if !busy:
-			if inventory.visible:
-				inventory.visible = false
-			else:
-				pause_menu.visible = !pause_menu.visible
-				get_tree().paused = !get_tree().paused
-				paused = !paused
+	if Input.is_action_just_pressed("inventory") and !busy and !get_tree().paused:
+		_on_inventory_button_pressed();
 
 func reset_info():
 	for pot in potions.keys():
@@ -192,7 +181,6 @@ func reset_info():
 		if resources[res] != -1:
 			resources[res] = 0
 	busy = true
-	paused = false
 	reputation = 2.5
 	energy = 1
 	
@@ -286,7 +274,9 @@ func set_dict(dict_name, dict_data):
 
 func _on_inventory_journal_open() -> void:
 	book_layer.visible = true
-	busy = true
 
 func _on_inventory_button_pressed():
-	inventory.visible = !inventory.visible;
+	inventory.visible = true;
+
+func IsInventoryOpen():
+	return $Inventory/Inventory.visible;

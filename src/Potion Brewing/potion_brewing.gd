@@ -77,12 +77,9 @@ func ReloadIngredientCount():
 	$SapText.text = str(GameInfo.resources[GameInfo.SAP]);
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel") and (GameInfo.busy or !GameInfo.journal_is_open):
-		if GameInfo.journal_is_open:
-			GameInfo.journal_is_open = false
-		else:
-			get_viewport().set_input_as_handled()
-			ReturnToOverworld.emit(2);
+	if event.is_action_pressed("ui_cancel") and GameInfo.busy and !GameInfo.journal_is_open:
+		get_viewport().set_input_as_handled()
+		ReturnToOverworld.emit(2);
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
 			if !event.pressed:
@@ -115,7 +112,6 @@ func _on_stir_checkpoint_reached(num: int):
 func _on_not_enough_energy():
 	$AnimationPlayer.play("Stamina Shaking");
 
-
 func _on_journal_button_button_up() -> void:
 	JournalOpen.emit()
-	GameInfo.journal_is_open
+	GameInfo.journal_is_open = true;

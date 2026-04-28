@@ -10,7 +10,6 @@ var currentPage
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameInfo.journal_is_open = true
 	currentPage = energy
 
 
@@ -19,11 +18,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_cancel") and GameInfo.busy:
+	if Input.is_action_just_pressed("ui_cancel") and visible:
 		get_viewport().set_input_as_handled()
 		visible = false
-		GameInfo.busy = false
-		
+		GameInfo.journal_is_open = false;
 
 
 func _on_tab_energy_button_up() -> void:
@@ -57,6 +55,5 @@ func _on_tab_strength_button_up() -> void:
 
 
 func _on_exit_button_up() -> void:
-	GameInfo.journal_is_open = false
+	GameInfo.journal_is_open = false;
 	visible = false
-	GameInfo.busy = false
