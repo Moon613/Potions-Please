@@ -1,10 +1,10 @@
 class_name DialogueBox
-extends Sprite2D
+extends NinePatchRect
 
 var timer: float = 0;
 var appearing: bool = true;
-const startPos: Vector2 = Vector2(0, 430);
-const endPos: Vector2 = Vector2(0, 220)
+const startPos: Vector2 = Vector2(-572, 430);
+const endPos: Vector2 = Vector2(-572, 108);
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
