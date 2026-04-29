@@ -172,7 +172,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event):
-	if Input.is_action_just_pressed("inventory") and !busy and !get_tree().paused:
+	if Input.is_action_just_pressed("inventory"):
 		_on_inventory_button_pressed();
 
 func reset_info():
@@ -277,7 +277,8 @@ func _on_inventory_journal_open() -> void:
 	book_layer.visible = true
 
 func _on_inventory_button_pressed():
-	inventory.visible = true;
+	if !busy and !get_tree().paused:
+		inventory.visible = !inventory.visible;
 
 func IsInventoryOpen():
 	return $Inventory/Inventory.visible;

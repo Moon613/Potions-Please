@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dkgruj3r4tsmj"]
 
 [ext_resource type="Script" uid="uid://0a70vdwmi20t" path="res://dialogue_manager.gd" id="1_muyy6"]
+[ext_resource type="Texture2D" uid="uid://dqctxdq4cfp8p" path="res://Textures/letter.png" id="2_cyevn"]
 [ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="2_e5g5b"]
 
 [node name="DialogueManager" type="CanvasLayer" unique_id=1399622759]
@@ -8,7 +9,16 @@ offset = Vector2(576, 324)
 transform = Transform2D(1, 0, 0, 1, 576, 324)
 script = ExtResource("1_muyy6")
 
-[node name="Control" type="Control" parent="." unique_id=1696398188]
+[node name="Morgana Note" type="TextureRect" parent="." unique_id=666848023]
+visible = false
+offset_left = -209.0
+offset_top = -280.0
+offset_right = 222.0
+offset_bottom = 280.81934
+texture = ExtResource("2_cyevn")
+expand_mode = 1
+
+[node name="PotionSubmissionControl" type="Control" parent="." unique_id=1696398188]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -17,7 +27,7 @@ offset_top = -280.0
 offset_right = 356.0
 offset_bottom = 283.0
 
-[node name="TextureRect" type="TextureRect" parent="Control" unique_id=343724311]
+[node name="TextureRect" type="TextureRect" parent="PotionSubmissionControl" unique_id=343724311]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -27,7 +37,7 @@ grow_vertical = 2
 texture = ExtResource("2_e5g5b")
 expand_mode = 1
 
-[node name="ItemList" type="ItemList" parent="Control" unique_id=1695480350]
+[node name="ItemList" type="ItemList" parent="PotionSubmissionControl" unique_id=1695480350]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -43,7 +53,7 @@ allow_rmb_select = true
 allow_search = false
 scroll_hint_mode = 1
 
-[node name="Submit" type="Button" parent="Control" unique_id=1908705111]
+[node name="Submit" type="Button" parent="PotionSubmissionControl" unique_id=1908705111]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25300002
@@ -58,7 +68,7 @@ theme_override_font_sizes/font_size = 46
 text = "Submit
 "
 
-[node name="Cancel" type="Button" parent="Control" unique_id=548795395]
+[node name="Cancel" type="Button" parent="PotionSubmissionControl" unique_id=548795395]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.74700004
@@ -73,5 +83,5 @@ theme_override_font_sizes/font_size = 46
 text = "Cancel
 "
 
-[connection signal="pressed" from="Control/Submit" to="." method="_on_potion_submit"]
-[connection signal="pressed" from="Control/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="PotionSubmissionControl/Submit" to="." method="_on_potion_submit"]
+[connection signal="pressed" from="PotionSubmissionControl/Cancel" to="." method="_on_cancel_pressed"]

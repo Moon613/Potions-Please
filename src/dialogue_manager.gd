@@ -31,6 +31,10 @@ func _process(delta):
 	pass
 
 func _input(event):
+	if event is InputEventKey and event.is_pressed() and !event.is_echo() and $"Morgana Note".visible:
+		$"Morgana Note".visible = false;
+		get_viewport().set_input_as_handled();
+		return;
 	if event is InputEvent and event is InputEventKey and event.is_pressed() and !event.is_echo() and inDialogue and ![KEY_A, KEY_S, KEY_D, KEY_W].has(event.keycode) and !potionSelectionOpen and previousDialogueDone:
 		previousDialogueDone = false;
 		await PlayNextDialogue();
@@ -73,21 +77,21 @@ func TriggerDialogue(dialogueChoice: String, originNode: DialogueTrigger = null)
 
 func SpawnPotionSelection():
 	potionSelectionOpen = true;
-	$Control/ItemList.clear();
+	$PotionSubmissionControl/ItemList.clear();
 	for potion: String in GameInfo.potions:
 		if potion != GameInfo.RUINED and GameInfo.potions[potion] > 0:
-			$Control/ItemList.add_item(potion, load(GameInfo.potionToImage[potion]));
-	$Control.visible = true;
+			$PotionSubmissionControl/ItemList.add_item(potion, load(GameInfo.potionToImage[potion]));
+	$PotionSubmissionControl.visible = true;
 	GameInfo.busy = true;
 
 func _on_potion_submit():
 	potionSelectionOpen = false
 	inDialogue = false;
-	$Control.visible = false;
+	$PotionSubmissionControl.visible = false;
 	GameInfo.busy = false;
-	if $Control/ItemList.item_count <= 0 or $Control/ItemList.get_selected_items().size() < 1:
+	if $PotionSubmissionControl/ItemList.item_count <= 0 or $PotionSubmissionControl/ItemList.get_selected_items().size() < 1:
 		return;
-	var submittedItem = $Control/ItemList.get_item_text($Control/ItemList.get_selected_items()[0]);
+	var submittedItem = $PotionSubmissionControl/ItemList.get_item_text($PotionSubmissionControl/ItemList.get_selected_items()[0]);
 	if GameInfo.questToRequiredPotion[GameInfo.currentQuest] == submittedItem:
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thanks!", DialogueManager.Dialogue.PLACEHOLDER));
 		var nextQuest = GameInfo.ProgressToNextPotionQuest();
@@ -102,7 +106,7 @@ func _on_potion_submit():
 
 func _on_cancel_pressed() -> void:
 	inDialogue = false;
-	$Control.visible = false;
+	$PotionSubmissionControl.visible = false;
 	GameInfo.busy = false;
 
 func IntroDialogue():
@@ -178,6 +182,9 @@ func ShrinkQuestAccept(originNode: DialogueTrigger):
 	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(DialogueManager.SpawnPotionSelection, false));
 func MorganaNote():
 	AddDialogue(DialogueText.new("Huh. What's this? A letter?", Dialogue.YASMEEN));
+	AddDialogue(DialogueAction.new(func():
+		$"Morgana Note".visible = true;
+	, false));
 
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";
