@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://chkduo5t1kjb6" path="res://Overworld/loading_zone.tscn" id="4_gkw0i"]
 [ext_resource type="PackedScene" uid="uid://dtivjjebe4l3q" path="res://Overworld/interaction_trigger.tscn" id="5_xypit"]
 [ext_resource type="PackedScene" uid="uid://bx3vs5nda6ecd" path="res://Overworld/sleep_trigger.tscn" id="6_wgk2m"]
+[ext_resource type="PackedScene" uid="uid://cb2xprgs6tsn4" path="res://Overworld/Entered Trigger.tscn" id="8_g6y85"]
 
 [sub_resource type="Animation" id="Animation_wgk2m"]
 resource_name = "Fade To Black"
@@ -57,7 +58,7 @@ tile_set = ExtResource("2_gkw0i")
 
 [node name="Player" parent="." unique_id=2042437237 instance=ExtResource("2_10rr3")]
 y_sort_enabled = true
-position = Vector2(-23.999998, -23)
+position = Vector2(46.000008, -26)
 scale = Vector2(1.7, 1.7)
 collidedWithTransition = true
 
@@ -82,6 +83,13 @@ Size = Vector2(28, 30)
 
 [node name="Sleep Trigger" parent="." unique_id=62262092 instance=ExtResource("6_wgk2m")]
 position = Vector2(-42, -27)
+Size = Vector2(10, 10)
+
+[node name="EnteredTrigger" parent="." unique_id=1823033677 instance=ExtResource("8_g6y85")]
+position = Vector2(-60.999996, 7.9999986)
+scale = Vector2(1.7, 1.7)
+DialogueChoice = "MorganaNote"
+GameinfoFlag = "seenMorganaNote"
 Size = Vector2(10, 10)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=909491298]

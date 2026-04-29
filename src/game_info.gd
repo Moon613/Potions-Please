@@ -23,6 +23,7 @@ var directionTutorial: Dictionary[String, bool] = {
 	"a": false,
 	"d": false
 }
+var seenMorganaNote: bool = false;
 var doneMovementTutorial: bool = false;
 var leftHouseForFirstTime: bool = false;
 var finishedGatheringTutorial: bool = false;

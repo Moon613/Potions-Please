@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cb2xprgs6tsn4"]
+
+[ext_resource type="Script" uid="uid://dgmki6oa24bbm" path="res://Overworld/Entered Trigger.gd" id="1_atpeg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iq3hy"]
+size = Vector2(10, 10)
+
+[node name="EnteredTrigger" type="Area2D" unique_id=1823033677]
+script = ExtResource("1_atpeg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1491913882]
+shape = SubResource("RectangleShape2D_iq3hy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

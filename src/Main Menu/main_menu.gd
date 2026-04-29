@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 
 func _on_new_game_pressed() -> void:
 	tempSignal.emit(2);
-	DialogueManager.Dialogue.IntroDialogue();
+	DialogueManager.IntroDialogue();
 
 
 
