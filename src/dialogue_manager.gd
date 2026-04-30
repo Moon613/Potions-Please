@@ -205,6 +205,9 @@ func FirstTutorialPotionAttempt():
 	));
 func ListIngredientsForFirstPotion():
 	AddDialogues(["Honey... we got that.", "Ginger root... got that too.", "Morning dew...", "Wait, where's the morning dew?", "Oh right, Morgana used the rest of it the other day.", "She hand-collects some of her ingredients, doesn't she?", "[b]I should go outside to collect some morning dew.[/b]"], [Dialogue.YASMEEN]);
+	AddDialogue(DialogueAction.new(func():
+		inDialogue = false;
+	, false));
 
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";
