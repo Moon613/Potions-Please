@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://2fsjpqf5sdy1" path="res://Overworld/Textures/Map/acorn.png" id="13_y8kkq"]
 [ext_resource type="Texture2D" uid="uid://blblhas7uojhh" path="res://Overworld/Textures/Map/player.png" id="16_0ispa"]
 [ext_resource type="Script" uid="uid://bquxeryo18mac" path="res://Overworld/day_display.gd" id="17_y8kkq"]
+[ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="18_am172"]
 
 [node name="Overworld" type="Node2D" unique_id=340257523]
 y_sort_enabled = true
@@ -281,6 +282,7 @@ script = ExtResource("17_y8kkq")
 [node name="DayCount" type="Label" parent="DayDisplay" unique_id=1447937818]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("18_am172")
 
 [connection signal="PlayerThoughts" from="Dewdrop Trigger" to="Player" method="_on_thought_bubble"]
 [connection signal="PlayerThoughts" from="Sap Trigger" to="Player" method="_on_thought_bubble"]
