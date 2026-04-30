@@ -13,7 +13,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# Running this code while in the editor causes 1 morbillion bugs, so don't :)
 	pass
 	
 func _on_body_entered(body: Node2D) -> void:

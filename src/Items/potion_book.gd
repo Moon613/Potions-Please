@@ -20,8 +20,7 @@ func _process(delta: float) -> void:
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel") and visible:
 		get_viewport().set_input_as_handled()
-		visible = false
-		GameInfo.journal_is_open = false;
+		_on_exit_button_up();
 
 
 func _on_tab_energy_button_up() -> void:
@@ -55,5 +54,8 @@ func _on_tab_strength_button_up() -> void:
 
 
 func _on_exit_button_up() -> void:
+	if !GameInfo.closedPotionBookInBrewing:
+		GameInfo.closedPotionBookInBrewing = true;
+		DialogueManager.ListIngredientsForFirstPotion();
 	GameInfo.journal_is_open = false;
 	visible = false

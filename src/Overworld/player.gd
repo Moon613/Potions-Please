@@ -15,7 +15,10 @@ func _ready() -> void:
 	$"Thought Bubble".modulate.a = 0;
 
 func _process(delta: float) -> void:
-	if GameInfo.leftHouseForFirstTime and !GameInfo.finishedGatheringTutorial:
+	if !GameInfo.seenPotionBrewingScreen and GameInfo.potionBookGet:
+		$DirectionArrow.modulate.a = 1;
+		$DirectionArrow.look_at(Vector2(76, 20));
+	elif GameInfo.leftHouseForFirstTime and !GameInfo.finishedGatheringTutorial:
 		var closestTrigger: Node2D = null;
 		for trigger in get_parent().get_children().filter(func(child): return child.is_in_group("Interactable trigger")):
 			if closestTrigger == null or (self.position-trigger.position).length() < (self.position-closestTrigger.position).length():
@@ -23,14 +26,14 @@ func _process(delta: float) -> void:
 		if closestTrigger != null:
 			$DirectionArrow.modulate.a = lerp(0, 1, ((self.position-closestTrigger.position).length()-10)/10);
 			$DirectionArrow.look_at(closestTrigger.position)
-	elif !GameInfo.leftHouseForFirstTime:
+	elif GameInfo.seenPotionBrewingScreen and !GameInfo.leftHouseForFirstTime:
 		$DirectionArrow.modulate.a = 1;
 		$DirectionArrow.look_at(Vector2(3, 39));
-	elif !GameInfo.reenteredHouse:
+	elif GameInfo.seenPotionBrewingScreen and !GameInfo.reenteredHouse:
 		$DirectionArrow.modulate.a = 1;
 		$DirectionArrow.look_at(Vector2(-43, 0));
 	else:
-		$DirectionArrow.self_modulate.a = 0;
+		$DirectionArrow.modulate.a = 0;
 	
 	if timer < 1 and movementTutorialAppear:
 		timer += delta;

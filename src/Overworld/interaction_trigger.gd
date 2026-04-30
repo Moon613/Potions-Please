@@ -26,11 +26,10 @@ func _process(delta):
 			interactionCooldown -= 1;
 		var player: Node2D = get_parent().get_children().filter(func(obj: Node): return obj.is_in_group("Player"))[0];
 		var distance = (self.position - player.position).length();
-		if GameInfo.leftHouseForFirstTime:
-			$AnimatedSprite2D.self_modulate.a = lerp(1, 0, (distance-15)/30);
-			$Sprite2D.self_modulate.a = lerp(1, 0, (distance-15)/30);
-			$EnergyCost.self_modulate.a = lerp(1, 0, (distance-15)/30);
-			$EnergySprite.self_modulate.a = lerp(1, 0, (distance-15)/30);
+		$AnimatedSprite2D.self_modulate.a = lerp(1, 0, (distance-15)/30);
+		$Sprite2D.self_modulate.a = lerp(1, 0, (distance-15)/30);
+		$EnergyCost.self_modulate.a = lerp(1, 0, (distance-15)/30);
+		$EnergySprite.self_modulate.a = lerp(1, 0, (distance-15)/30);
 	
 
 func _input(event):

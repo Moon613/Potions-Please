@@ -27,9 +27,10 @@ func _process(delta: float) -> void:
 	if playerIndex != -1:
 		# This is an early exit that prevents changing scenes if the player has not done the movement tutorial
 		# It also locks itself untill the player moves out of the hitbox again, to prevent abrupt scene changing
-		if !GameInfo.doneMovementTutorial or (GameInfo.leftHouseForFirstTime and !GameInfo.finishedGatheringTutorial) or rejectedPlayer:
+		if !GameInfo.doneMovementTutorial or !GameInfo.seenPotionBrewingScreen or (GameInfo.leftHouseForFirstTime and !GameInfo.finishedGatheringTutorial) or rejectedPlayer:
 			if !rejectedPlayer:
 				reject.emit();
+				DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I should probably brew a potion before doing anything too strenuous...", DialogueManager.Dialogue.YASMEEN));
 				rejectedPlayer = true;
 			return;
 		var player = get_overlapping_bodies()[playerIndex];

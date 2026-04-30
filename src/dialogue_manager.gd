@@ -8,6 +8,7 @@ var dialogueChoices: Dictionary[String, Callable];
 var dialogueBox: PackedScene = preload("res://Dialogue Box.tscn");
 var previousDialogueDone: bool = true;
 signal startMovementTutorial;
+signal OpenJournalFromDialogue;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,7 @@ func _ready():
 		"MorganaNote": DialogueManager.MorganaNote,
 		"PotionBookGet": DialogueManager.PotionBookGet
 	};
+	OpenJournalFromDialogue.connect(GameInfo._on_inventory_journal_open);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -114,7 +116,7 @@ func IntroDialogue():
 	AddDialogue(DialogueAction.new(func():
 		# Whatever I don't care this is too hard to figure out properly just use an absolute path
 		var animatedSprite: AnimatedSprite2D = get_node("/root/MainScene/Inside House/Player/AnimatedSprite2D");
-		animatedSprite.animation = "Idle Right";
+		animatedSprite.animation = "Idle Left";
 		await get_tree().create_timer(1).timeout;
 	));
 	AddDialogues(["Morning already?!", "Nyx! I can't believe you kept me up all night...", "That's it, you're staying inside today. I don't want you going outside and getting dirty again", "I'm way too tired...", "Maybe I can get Ms. Morgana to make me an energy elixir or something", "Morgana should be downstairs (Use the WASD keys to move around!)"], [Dialogue.YASMEEN])
@@ -195,6 +197,14 @@ func PotionBookGet():
 	, true));
 func GrabPotionBook():
 	AddDialogues(["Ah, great, here's the Energy Elixir recipe. Seems simple enough.", "[b]Let me head to the cauldron and brew it.[/b]"], [Dialogue.YASMEEN]);
+func FirstTutorialPotionAttempt():
+	AddDialogue(DialogueText.new(""));
+	AddDialogue(DialogueText.new("Okay, let me take a look at that recipe one more time.", Dialogue.YASMEEN));
+	AddDialogue(DialogueAction.new(func():
+		OpenJournalFromDialogue.emit();
+	));
+func ListIngredientsForFirstPotion():
+	AddDialogues(["Honey... we got that.", "Ginger root... got that too.", "Morning dew...", "Wait, where's the morning dew?", "Oh right, Morgana used the rest of it the other day.", "She hand-collects some of her ingredients, doesn't she?", "[b]I should go outside to collect some morning dew.[/b]"], [Dialogue.YASMEEN]);
 
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";

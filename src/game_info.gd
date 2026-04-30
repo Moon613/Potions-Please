@@ -24,12 +24,14 @@ var directionTutorial: Dictionary[String, bool] = {
 	"d": false
 }
 
-# Area entered dialogue trigger flags
+# Area entered dialogue trigger flags, searching for them with ctrl+shift+F won't find where they're set
 var seenMorganaNote: bool = false;
 var potionBookGet: bool = false;
 
 # General tutorial action flags
 var doneMovementTutorial: bool = false;
+var seenPotionBrewingScreen: bool = false;
+var closedPotionBookInBrewing: bool = false;
 var leftHouseForFirstTime: bool = false;
 var finishedGatheringTutorial: bool = false;
 var reenteredHouse: bool = false;
