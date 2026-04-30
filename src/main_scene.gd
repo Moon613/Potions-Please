@@ -130,3 +130,4 @@ func inv_panel_control(id: int):
 		GameInfo.busy = true
 	else:
 		GameInfo.busy = false
+ 

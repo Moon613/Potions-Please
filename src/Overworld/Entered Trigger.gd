@@ -2,7 +2,6 @@
 extends Area2D
 @export var DialogueChoice: String;
 @export var GameinfoFlag: String;
-@export var SceneID: int;
 @export var Size: Vector2 = Vector2(20,20):
 	set(value):
 		Size = value;

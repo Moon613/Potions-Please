@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dgmki6oa24bbm" path="res://Overworld/Entered Trigger.gd" id="1_atpeg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iq3hy"]
+resource_local_to_scene = true
 size = Vector2(10, 10)
 
 [node name="EnteredTrigger" type="Area2D" unique_id=1823033677]

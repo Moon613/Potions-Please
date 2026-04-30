@@ -58,18 +58,17 @@ tile_set = ExtResource("2_gkw0i")
 
 [node name="Player" parent="." unique_id=2042437237 instance=ExtResource("2_10rr3")]
 y_sort_enabled = true
-position = Vector2(46.000008, -26)
+position = Vector2(-61, -78)
 scale = Vector2(1.7, 1.7)
 collidedWithTransition = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1584677186]
 zoom = Vector2(8.135, 8.135)
 limit_left = -72
-limit_top = -72
+limit_top = -213
 limit_right = 105
 limit_bottom = 40
 limit_smoothed = true
-position_smoothing_enabled = true
 script = ExtResource("4_giixd")
 
 [node name="Loading Zone" parent="." unique_id=1889046867 instance=ExtResource("4_gkw0i")]
@@ -85,12 +84,19 @@ Size = Vector2(28, 30)
 position = Vector2(-42, -27)
 Size = Vector2(10, 10)
 
-[node name="EnteredTrigger" parent="." unique_id=1823033677 instance=ExtResource("8_g6y85")]
-position = Vector2(-60.999996, 7.9999986)
+[node name="Morgana Note Trigger" parent="." unique_id=1823033677 instance=ExtResource("8_g6y85")]
+position = Vector2(-60.999996, -57)
 scale = Vector2(1.7, 1.7)
 DialogueChoice = "MorganaNote"
 GameinfoFlag = "seenMorganaNote"
-Size = Vector2(10, 10)
+Size = Vector2(12.15, 2.55)
+
+[node name="Potion Book Trigger" parent="." unique_id=612791065 instance=ExtResource("8_g6y85")]
+position = Vector2(-46, 27)
+scale = Vector2(1.7000003, 1.7000003)
+DialogueChoice = "PotionBookGet"
+GameinfoFlag = "potionBookGet"
+Size = Vector2(3.2, 14.065)
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=909491298]
 self_modulate = Color(1, 1, 1, 0)

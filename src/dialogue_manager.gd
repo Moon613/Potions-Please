@@ -23,7 +23,8 @@ func _ready():
 		"HealingQuestAccept": DialogueManager.HealingQuestAccept,
 		"ShrinkQuestGive": DialogueManager.ShrinkQuestGive,
 		"ShrinkQuestAccept": DialogueManager.ShrinkQuestAccept,
-		"MorganaNote": DialogueManager.MorganaNote
+		"MorganaNote": DialogueManager.MorganaNote,
+		"PotionBookGet": DialogueManager.PotionBookGet
 	};
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,7 +35,6 @@ func _input(event):
 	if event is InputEventKey and event.is_pressed() and !event.is_echo() and $"Morgana Note".visible:
 		$"Morgana Note".visible = false;
 		get_viewport().set_input_as_handled();
-		return;
 	if event is InputEvent and event is InputEventKey and event.is_pressed() and !event.is_echo() and inDialogue and ![KEY_A, KEY_S, KEY_D, KEY_W].has(event.keycode) and !potionSelectionOpen and previousDialogueDone:
 		previousDialogueDone = false;
 		await PlayNextDialogue();
@@ -185,6 +185,16 @@ func MorganaNote():
 	AddDialogue(DialogueAction.new(func():
 		$"Morgana Note".visible = true;
 	, false));
+	AddDialogues(["THE ENTIRE SHOP?!", "I haven't even mastered potion brewing yet!", "Well, nother I can do about it...", "[b]I better make my way downstairs and grab that recipe book... and I guess brew myself that energy elixir[/b]"], [Dialogue.YASMEEN]);
+func PotionBookGet():
+	AddDialogue(DialogueText.new("Looks like she left the potion book for me on the front counter. Thank goodness.", Dialogue.YASMEEN));
+	AddDialogue(DialogueAction.new(func():
+		var node: Node = Node.new();
+		node.set_script(load("res://player gather potion book.gd"));
+		add_child(node);
+	, true));
+func GrabPotionBook():
+	AddDialogues(["Ah, great, here's the Energy Elixir recipe. Seems simple enough.", "[b]Let me head to the cauldron and brew it.[/b]"], [Dialogue.YASMEEN]);
 
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";

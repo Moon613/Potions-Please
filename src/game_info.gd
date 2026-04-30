@@ -23,7 +23,12 @@ var directionTutorial: Dictionary[String, bool] = {
 	"a": false,
 	"d": false
 }
+
+# Area entered dialogue trigger flags
 var seenMorganaNote: bool = false;
+var potionBookGet: bool = false;
+
+# General tutorial action flags
 var doneMovementTutorial: bool = false;
 var leftHouseForFirstTime: bool = false;
 var finishedGatheringTutorial: bool = false;
