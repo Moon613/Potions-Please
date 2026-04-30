@@ -1,8 +1,8 @@
 [gd_resource type="StyleBoxTexture" format=3 uid="uid://bq2b4hswpggoq"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgqmh"]
+[ext_resource type="Texture2D" uid="uid://o0v6bni5b4jv" path="res://Main Menu/Textures/Paper+WoodUI.png" id="1_mepy8"]
 
 [resource]
-texture = SubResource("CompressedTexture2D_bgqmh")
+texture = ExtResource("1_mepy8")
 expand_margin_top = 40.0
 expand_margin_bottom = 40.0
