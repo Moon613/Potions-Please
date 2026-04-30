@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bxo7wvqopckk0" path="res://Overworld/Textures/Map/sap.png" id="12_0ispa"]
 [ext_resource type="Texture2D" uid="uid://2fsjpqf5sdy1" path="res://Overworld/Textures/Map/acorn.png" id="13_y8kkq"]
 [ext_resource type="Texture2D" uid="uid://blblhas7uojhh" path="res://Overworld/Textures/Map/player.png" id="16_0ispa"]
+[ext_resource type="Script" uid="uid://bquxeryo18mac" path="res://Overworld/day_display.gd" id="17_y8kkq"]
 
 [node name="Overworld" type="Node2D" unique_id=340257523]
 y_sort_enabled = true
@@ -273,6 +274,13 @@ theme_override_colors/icon_hover_color = Color(0.45882353, 0.45882353, 0.4588235
 icon = ExtResource("8_yv805")
 flat = true
 expand_icon = true
+
+[node name="DayDisplay" type="CanvasLayer" parent="." unique_id=341300913]
+script = ExtResource("17_y8kkq")
+
+[node name="DayCount" type="Label" parent="DayDisplay" unique_id=1447937818]
+offset_right = 40.0
+offset_bottom = 23.0
 
 [connection signal="PlayerThoughts" from="Dewdrop Trigger" to="Player" method="_on_thought_bubble"]
 [connection signal="PlayerThoughts" from="Sap Trigger" to="Player" method="_on_thought_bubble"]

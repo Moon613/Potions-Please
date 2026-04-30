@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_sleep_trigger_interacted_with() -> void:
 	$AnimationPlayer.play("Fade To Black")
+	GameInfo.dayCounter += 1
 	GameInfo.busy = true;
 
 

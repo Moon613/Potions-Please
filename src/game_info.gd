@@ -125,6 +125,8 @@ var validRecipies: Array[Recipe] = [
 	Recipe.new([WINGS, MOSS, SAP], HEALING, 0.75, "res://Potion Brewing/Textures/Healing Potion.png"),
 	Recipe.new([ACORNS, MILK, WINGS], SHRINK, 1.25, "res://Potion Brewing/Textures/ShrinkElixir.png"),
 ];
+var dayCounter: int = 0;
+
 # Both of these are on a scale of 0.0 - 5.0
 @export var reputation: float = 2.5;
 @export var energy: float = 2.5;
