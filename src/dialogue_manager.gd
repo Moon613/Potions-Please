@@ -25,7 +25,8 @@ func _ready():
 		"ShrinkQuestGive": DialogueManager.ShrinkQuestGive,
 		"ShrinkQuestAccept": DialogueManager.ShrinkQuestAccept,
 		"MorganaNote": DialogueManager.MorganaNote,
-		"PotionBookGet": DialogueManager.PotionBookGet
+		"PotionBookGet": DialogueManager.PotionBookGet,
+		"GatherDewdropsFirst": DialogueManager.GatherDewdropsFirst
 	};
 	OpenJournalFromDialogue.connect(GameInfo._on_inventory_journal_open);
 
@@ -196,8 +197,14 @@ func PotionBookGet():
 		add_child(node);
 	, true));
 func GrabPotionBook():
-	AddDialogues(["Ah, great, here's the Energy Elixir recipe. Seems simple enough.", "[b]Let me head to the cauldron and brew it.[/b]"], [Dialogue.YASMEEN]);
+	AddDialogue(DialogueAction.new(func():
+		GameInfo._on_inventory_journal_open();
+	));
+	AddDialogue(DialogueText.new("Ah, great, here's the Energy Elixir recipe. Seems simple enough.", Dialogue.YASMEEN));
+func HeadToCaludron():
+	AddDialogue(DialogueText.new("[b]Let me head to the cauldron and brew it.[/b]", Dialogue.YASMEEN))
 func FirstTutorialPotionAttempt():
+	# This is a workaround for ??? Idk having it here works ¯\_(ツ)_/¯
 	AddDialogue(DialogueText.new(""));
 	AddDialogue(DialogueText.new("Okay, let me take a look at that recipe one more time.", Dialogue.YASMEEN));
 	AddDialogue(DialogueAction.new(func():
@@ -208,6 +215,8 @@ func ListIngredientsForFirstPotion():
 	AddDialogue(DialogueAction.new(func():
 		inDialogue = false;
 	, false));
+func GatherDewdropsFirst():
+	AddDialogue(DialogueText.new("I don't think I'll find morning dew over there!", Dialogue.YASMEEN));
 
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";

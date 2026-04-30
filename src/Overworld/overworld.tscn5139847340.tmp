@@ -26,7 +26,7 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u3adh"]
 resource_local_to_scene = true
-normal = Vector2(-0.91381156, 0.40613845)
+normal = Vector2(-1, 0)
 
 [node name="Overworld" type="Node2D" unique_id=340257523]
 y_sort_enabled = true

@@ -54,7 +54,10 @@ func _on_tab_strength_button_up() -> void:
 
 
 func _on_exit_button_up() -> void:
-	if !GameInfo.closedPotionBookInBrewing:
+	if !GameInfo.seenPotionBookFirstTime:
+		GameInfo.seenPotionBookFirstTime = true;
+		DialogueManager.HeadToCaludron();
+	elif !GameInfo.closedPotionBookInBrewing:
 		GameInfo.closedPotionBookInBrewing = true;
 		DialogueManager.ListIngredientsForFirstPotion();
 	GameInfo.journal_is_open = false;

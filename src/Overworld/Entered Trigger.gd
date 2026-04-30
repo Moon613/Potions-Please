@@ -1,4 +1,5 @@
 @tool
+class_name EnteredTrigger
 extends Area2D
 @export var DialogueChoice: String;
 @export var GameinfoFlag: String;

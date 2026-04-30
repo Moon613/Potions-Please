@@ -82,9 +82,7 @@ func _switch_scene(id: int):
 		GameInfo.SceneID.OVERWORLD:
 			self.add_child(overworldScene);
 			if !GameInfo.leftHouseForFirstTime:
-				DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I should move to the areas with arrows above them and interact with them by pressing 'Enter' to gather ingredients", DialogueManager.Dialogue.YASMEEN));
 				GameInfo.leftHouseForFirstTime = true;
-
 		GameInfo.SceneID.POTIONBREWING:
 			if !GameInfo.seenPotionBrewingScreen:
 				DialogueManager.FirstTutorialPotionAttempt();

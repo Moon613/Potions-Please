@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="2_e5g5b"]
 
 [node name="DialogueManager" type="CanvasLayer" unique_id=1399622759]
+layer = 11
 offset = Vector2(576, 324)
 transform = Transform2D(1, 0, 0, 1, 576, 324)
 script = ExtResource("1_muyy6")
