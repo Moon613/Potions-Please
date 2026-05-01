@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var inDialogue: bool = false;
 var potionSelectionOpen: bool = false;
+# This is used when going from the quest selection UI to the potion selection UI, to keep track of which quest is being submitted for
 var selectedQuest: int = 0;
 var dialogueQueue: Array[Dialogue] = [];
 var dialogueChoices: Dictionary[String, Callable];
@@ -96,6 +97,8 @@ func _on_potion_submit():
 	else:
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("That's not right!", DialogueManager.Dialogue.PLACEHOLDER));
 		GameInfo.reputation -= 0.5;
+	# Remove the quest, completed or failed, and remove the potion that was used for submission.
+	GameInfo.currentQuests.remove_at(selectedQuest);
 	GameInfo.potions[submittedItem] -= 1;
 
 func _on_quest_selection(button: Button):
