@@ -9,6 +9,7 @@ extends Node2D
 @export var treesap: PackedScene = preload("res://Treesap Minigame/minigame.tscn")
 @export var dragonEggs: PackedScene = preload("res://Dragon Egg Minigame/minigame.tscn")
 @export var mandrakes: PackedScene = preload("res://Mandrake Minigame/MandrakeMinigame.tscn")
+@export var upstairs: PackedScene = preload("res://Overworld/Upstairs.tscn")
 
 @export var startingScene: int;
 
@@ -30,6 +31,7 @@ var acornScene;
 var sapScene;
 var eggScene;
 var mandrakeScene;
+var upstairsScene;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,15 +47,19 @@ func _ready() -> void:
 	var mainMenuInstance = mainMenu.instantiate();
 	mainMenuInstance.name = "Main Menu";
 	
+	var upstairsInstance = upstairs.instantiate();
+	upstairsInstance.name = "Upstairs";
+	
 	overworldScene = overworldInstance;
 	potionScene = brewingInstance;
 	insideScene = insideInstance;
 	mainMenuScene = mainMenuInstance;
+	upstairsScene = upstairsInstance;
 	
 	if startingScene != -1:
 		_switch_scene(startingScene);
 	else:
-		_switch_scene(4)
+		_switch_scene(GameInfo.SceneID.MAINMENU)
 	pass # Replace with function body.
 
 
@@ -120,6 +126,8 @@ func _switch_scene(id: int):
 			mandrakeInstance.name = "Mandrakes Minigame"
 			mandrakeScene = mandrakeInstance
 			self.add_child(mandrakeScene);
+		GameInfo.SceneID.UPSTAIRS:
+			self.add_child(upstairsScene);
 		_:
 			print("Unknown SceneID!")
 		

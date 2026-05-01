@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dasx88fyd1ae2" path="res://Overworld/Textures/tile sheet(new).png" id="3_wkl55"]
 [ext_resource type="Texture2D" uid="uid://qhkugimdht6h" path="res://Overworld/Textures/spritesheetindoors.png" id="4_4jyen"]
 [ext_resource type="Texture2D" uid="uid://mtuo60243lbj" path="res://Overworld/Textures/tile sheet2.png" id="5_ri5bb"]
+[ext_resource type="Texture2D" uid="uid://dcxe02c5vdbhi" path="res://Overworld/UpstairsSpriteSheet.png" id="6_eaok5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omswd"]
 texture = ExtResource("1_2q2vn")
@@ -366,6 +367,24 @@ texture_region_size = Vector2i(100, 100)
 0:0/0 = 0
 0:0/0/z_index = 1
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcwu5"]
+texture = ExtResource("6_eaok5")
+texture_region_size = Vector2i(100, 100)
+4:0/size_in_atlas = Vector2i(4, 8)
+4:0/0 = 0
+4:0/0/texture_origin = Vector2i(0, -40)
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(125, -225, 150, -225, 150, 350, 125, 350)
+15:1/size_in_atlas = Vector2i(6, 6)
+15:1/0 = 0
+16:9/size_in_atlas = Vector2i(4, 6)
+16:9/0 = 0
+16:9/0/texture_origin = Vector2i(20, 20)
+16:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-175, -125, 125, -125, 125, 250, -175, 250)
+0:9/size_in_atlas = Vector2i(13, 5)
+0:9/0 = 0
+0:9/0/texture_origin = Vector2i(-2, -8)
+0:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-650, -125, 550, -125, 550, 250, -650, 250)
+
 [resource]
 tile_size = Vector2i(100, 100)
 physics_layer_0/collision_layer = 1
@@ -374,3 +393,4 @@ sources/1 = SubResource("TileSetAtlasSource_5msrb")
 sources/2 = SubResource("TileSetAtlasSource_4jyen")
 sources/3 = SubResource("TileSetAtlasSource_ri5bb")
 sources/4 = SubResource("TileSetAtlasSource_eaok5")
+sources/7 = SubResource("TileSetAtlasSource_vcwu5")

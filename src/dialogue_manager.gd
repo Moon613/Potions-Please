@@ -116,8 +116,8 @@ func IntroDialogue():
 	AddDialogues(["There! Bath done!", "That wasn't so bad—right, Nyx?"], [Dialogue.YASMEEN]);
 	AddDialogue(DialogueAction.new(func():
 		# Whatever I don't care this is too hard to figure out properly just use an absolute path
-		var animatedSprite: AnimatedSprite2D = get_node("/root/MainScene/Inside House/Player/AnimatedSprite2D");
-		animatedSprite.animation = "Idle Left";
+		var animatedSprite: AnimatedSprite2D = get_tree().get_nodes_in_group("Player")[0].get_node("AnimatedSprite2D");
+		animatedSprite.animation = "Idle Up";
 		await get_tree().create_timer(1).timeout;
 	));
 	AddDialogues(["Morning already?!", "Nyx! I can't believe you kept me up all night...", "That's it, you're staying inside today. I don't want you going outside and getting dirty again", "I'm way too tired...", "Maybe I can get Ms. Morgana to make me an energy elixir or something", "Morgana should be downstairs (Use the WASD keys to move around!)"], [Dialogue.YASMEEN])

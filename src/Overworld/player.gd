@@ -105,7 +105,7 @@ func _physics_process(delta):
 	
 	if collidedWithTransition:
 		if canTriggerSceneTransitions:
-			var transitionIndex = $"Transition Buffer".get_overlapping_areas().find_custom(func(obj: Node2D): return obj is Area2D and obj.name == "Loading Zone");
+			var transitionIndex = $"Transition Buffer".get_overlapping_areas().find_custom(func(obj: Node2D): return obj is Area2D and obj.is_in_group("Loading Zone"));
 			if transitionIndex == -1:
 				collidedWithTransition = false;
 				canTriggerSceneTransitions = false;

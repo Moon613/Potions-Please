@@ -81,7 +81,8 @@ enum SceneID {
 	ACORNS = 5,
 	TREESAP = 6,
 	DRAGONEGGS = 7,
-	MANDRAKES = 8
+	MANDRAKES = 8,
+	UPSTAIRS = 9
 }
 
 # Ingredients
