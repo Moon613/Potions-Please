@@ -18,9 +18,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_cancel") and visible:
+	if visible and !DialogueManager.inDialogue:
 		get_viewport().set_input_as_handled()
-		_on_exit_button_up();
+		if Input.is_action_just_pressed("ui_cancel"):
+			_on_exit_button_up();
 
 
 func _on_tab_energy_button_up() -> void:
