@@ -145,7 +145,7 @@ Size = Vector2(18.99, 11.575)
 [node name="Dialogue Trigger" parent="." unique_id=1340203251 instance=ExtResource("7_hob5j")]
 position = Vector2(-12, 5)
 Size = Vector2(10, 10)
-DialogueChoice = "EnergyQuestGive"
+DialogueChoice = "OpenQuestMenu"
 
 [node name="Left boundary" parent="." unique_id=1046035178 instance=ExtResource("8_h8npj")]
 position = Vector2(-91, 24)

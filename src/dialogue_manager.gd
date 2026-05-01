@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-var currentTalkNode: DialogueTrigger = null;
 var inDialogue: bool = false;
 var potionSelectionOpen: bool = false;
+var selectedQuest: int = 0;
 var dialogueQueue: Array[Dialogue] = [];
 var dialogueChoices: Dictionary[String, Callable];
 var dialogueBox: PackedScene = preload("res://Dialogue Box.tscn");
@@ -15,18 +15,14 @@ func _ready():
 	# Unfortunatly this has to be set here at runtime, due to the way that godot initializes stuff
 	dialogueChoices = {
 		"EnergyQuestGive": DialogueManager.EnergyQuestGive,
-		"EnergyQuestAccept": DialogueManager.EnergyQuestAccept,
 		"SleepQuestGive": DialogueManager.SleepQuestGive,
-		"SleepQuestAccept": DialogueManager.SleepQuestAccept,
 		"StrengthQuestGive": DialogueManager.StrengthQuestGive,
-		"StrengthQuestAccept": DialogueManager.StrengthQuestAccept,
 		"HealingQuestGive": DialogueManager.HealingQuestGive,
-		"HealingQuestAccept": DialogueManager.HealingQuestAccept,
 		"ShrinkQuestGive": DialogueManager.ShrinkQuestGive,
-		"ShrinkQuestAccept": DialogueManager.ShrinkQuestAccept,
 		"MorganaNote": DialogueManager.MorganaNote,
 		"PotionBookGet": DialogueManager.PotionBookGet,
-		"GatherDewdropsFirst": DialogueManager.GatherDewdropsFirst
+		"GatherDewdropsFirst": DialogueManager.GatherDewdropsFirst,
+		"OpenQuestMenu": DialogueManager.OpenQuestMenu
 	};
 	OpenJournalFromDialogue.connect(GameInfo._on_inventory_journal_open);
 
@@ -79,7 +75,6 @@ func TriggerDialogue(dialogueChoice: String, originNode: DialogueTrigger = null)
 		dialogueChoices[dialogueChoice].call();
 
 func SpawnPotionSelection():
-	potionSelectionOpen = true;
 	$PotionSubmissionControl/ItemList.clear();
 	for potion: String in GameInfo.potions:
 		if potion != GameInfo.RUINED and GameInfo.potions[potion] > 0:
@@ -95,22 +90,51 @@ func _on_potion_submit():
 	if $PotionSubmissionControl/ItemList.item_count <= 0 or $PotionSubmissionControl/ItemList.get_selected_items().size() < 1:
 		return;
 	var submittedItem = $PotionSubmissionControl/ItemList.get_item_text($PotionSubmissionControl/ItemList.get_selected_items()[0]);
-	if GameInfo.questToRequiredPotion[GameInfo.currentQuest] == submittedItem:
+	if GameInfo.currentQuests[selectedQuest].potion == submittedItem:
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thanks!", DialogueManager.Dialogue.PLACEHOLDER));
-		var nextQuest = GameInfo.ProgressToNextPotionQuest();
-		GameInfo.currentQuest = nextQuest;
-		DialogueManager.currentTalkNode.DialogueChoice = dialogueChoices.keys()[(nextQuest-1)*2]
 		GameInfo.reputation = clamp(GameInfo.reputation+1, 0, 5);
 	else:
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("That's not right!", DialogueManager.Dialogue.PLACEHOLDER));
 		GameInfo.reputation -= 0.5;
-	DialogueManager.currentTalkNode = null;
 	GameInfo.potions[submittedItem] -= 1;
+
+func _on_quest_selection(button: Button):
+	$QuestSelection.visible = false;
+	selectedQuest = $QuestSelection/ScrollContainer/VBoxContainer.get_children().find(button);
+	for child in $QuestSelection/ScrollContainer/VBoxContainer.get_children():
+		child.queue_free();
+	SpawnPotionSelection();
 
 func _on_cancel_pressed() -> void:
 	inDialogue = false;
 	$PotionSubmissionControl.visible = false;
+	potionSelectionOpen = false;
+	selectedQuest = 0;
+	for child in $QuestSelection/ScrollContainer/VBoxContainer.get_children():
+		child.queue_free();
 	GameInfo.busy = false;
+
+func _on_recive_quest_pressed():
+	potionSelectionOpen = false;
+	selectedQuest = 0;
+	$QuestSelection.visible = false;
+	for child in $QuestSelection/ScrollContainer/VBoxContainer.get_children():
+		child.queue_free();
+	GameInfo.busy = false;
+	
+	match randi_range(0, 4):
+		0:
+			EnergyQuestGive();
+		1:
+			SleepQuestGive();
+		2:
+			StrengthQuestGive();
+		3:
+			HealingQuestGive();
+		4:
+			ShrinkQuestGive();
+		_:
+			pass
 
 func IntroDialogue():
 	AddDialogues(["There! Bath done!", "That wasn't so bad—right, Nyx?"], [Dialogue.YASMEEN]);
@@ -122,67 +146,31 @@ func IntroDialogue():
 	));
 	AddDialogues(["Morning already?!", "Nyx! I can't believe you kept me up all night...", "That's it, you're staying inside today. I don't want you going outside and getting dirty again", "I'm way too tired...", "Maybe I can get Ms. Morgana to make me an energy elixir or something", "Morgana should be downstairs (Use the WASD keys to move around!)"], [Dialogue.YASMEEN])
 	AddDialogue(DialogueAction.new(func(): startMovementTutorial.emit()));
-func EnergyQuestGive(originNode: DialogueTrigger):
-	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(
-		func(): 
-			GameInfo.currentQuest = GameInfo.PotionQuests.ENERGY;
-			originNode.DialogueChoice = "EnergyQuestAccept";
-	));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Hiiiii there, I really need an energy potion.", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work.", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("So I need something to help keep me awake during the daytimes.", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thank yoouuuuu!", DialogueManager.Dialogue.PLACEHOLDER));
-func EnergyQuestAccept(originNode: DialogueTrigger):
-	DialogueManager.currentTalkNode = originNode;
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Oh, did you make me my potion?", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(DialogueManager.SpawnPotionSelection, false));
-func SleepQuestGive(originNode: DialogueTrigger):
-	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(
-		func():
-			GameInfo.currentQuest = GameInfo.PotionQuests.SLEEP;
-			originNode.DialogueChoice = "SleepQuestAccept";
-	));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I have a day-long carriage trip ahead of me, and road travel has always made me queasy.", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I need a potion that’ll help me sleep through the whole thing", DialogueManager.Dialogue.PLACEHOLDER));
-func SleepQuestAccept(originNode: DialogueTrigger):
-	DialogueManager.currentTalkNode = originNode;
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Oh, did you make me my potion?", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(DialogueManager.SpawnPotionSelection, false));
-func StrengthQuestGive(originNode: DialogueTrigger):
-	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(
-		func():
-			GameInfo.currentQuest = GameInfo.PotionQuests.STRENGTH;
-			originNode.DialogueChoice = "StrengthQuestAccept";
-	));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I bet my friend that I could definitely beat them in an arm wrestle. Turns out they’ve been working out daily…", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I really don’t wanna lose my favorite blanket that I bet them. I need a potion that’ll make me win this arm wrestle.", DialogueManager.Dialogue.PLACEHOLDER));
-func StrengthQuestAccept(originNode: DialogueTrigger):
-	DialogueManager.currentTalkNode = originNode;
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Oh, did you make me my potion?", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(DialogueManager.SpawnPotionSelection, false));
-func HealingQuestGive(originNode: DialogueTrigger):
-	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(
-		func():
-			GameInfo.currentQuest = GameInfo.PotionQuests.HEALING;
-			originNode.DialogueChoice = "HealingQuestAccept";
-	));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I burned my hand in the oven trying to bake my friend a birthday cake! And I burned the cake too!", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I need a potion that’ll heal my hand quickly so I can make a new cake in time", DialogueManager.Dialogue.PLACEHOLDER));
-func HealingQuestAccept(originNode:DialogueTrigger):
-	DialogueManager.currentTalkNode = originNode;
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Oh, did you make me my potion?", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(DialogueManager.SpawnPotionSelection, false));
-func ShrinkQuestGive(originNode: DialogueTrigger):
-	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(
-		func():
-			GameInfo.currentQuest = GameInfo.PotionQuests.HEALING;
-			originNode.DialogueChoice = "HealingQuestAccept";
-	));
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("My friends are definitely talking about me behind my back! I need a potion that’ll help me hide so I can listen in on what they’re saying about me", DialogueManager.Dialogue.PLACEHOLDER));
-func ShrinkQuestAccept(originNode: DialogueTrigger):
-	DialogueManager.currentTalkNode = originNode;
-	DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Oh, did you make me my potion?", DialogueManager.Dialogue.PLACEHOLDER));
-	DialogueManager.AddDialogue(DialogueManager.DialogueAction.new(DialogueManager.SpawnPotionSelection, false));
+func OpenQuestMenu(originNode: DialogueTrigger):
+	potionSelectionOpen = true;
+	for quest: GameInfo.Quest in GameInfo.currentQuests:
+		var button = Button.new();
+		button.custom_minimum_size = Vector2(480, 90);
+		button.icon = quest.texture;
+		button.pressed.connect(_on_quest_selection.bind(button));
+		button.expand_icon = true;
+		$QuestSelection/ScrollContainer/VBoxContainer.add_child(button);
+	$QuestSelection.visible = true;
+func EnergyQuestGive():
+	var texture = GameInfo.GenerateQuest(GameInfo.ENERGY);
+	AddDialogues(["Hiiiii there, I really need an energy potion.", "See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work.", "So I need something to help keep me awake during the daytimes.", "Thank yoouuuuu!"], [texture])
+func SleepQuestGive():
+	var texture = GameInfo.GenerateQuest(GameInfo.SLEEP);
+	AddDialogues(["I have a day-long carriage trip ahead of me, and road travel has always made me queasy.", "I need a potion that’ll help me sleep through the whole thing"], [texture]);
+func StrengthQuestGive():
+	var texture = GameInfo.GenerateQuest(GameInfo.STRENGTH);
+	AddDialogues(["I bet my friend that I could definitely beat them in an arm wrestle. Turns out they’ve been working out daily…", "I really don’t wanna lose my favorite blanket that I bet them. I need a potion that’ll make me win this arm wrestle."], [texture]);
+func HealingQuestGive():
+	var texture = GameInfo.GenerateQuest(GameInfo.HEALING);
+	AddDialogues(["I burned my hand in the oven trying to bake my friend a birthday cake! And I burned the cake too!", "I need a potion that’ll heal my hand quickly so I can make a new cake in time"], [texture]);
+func ShrinkQuestGive():
+	var texture = GameInfo.GenerateQuest(GameInfo.SHRINK);
+	AddDialogues(["My friends are definitely talking about me behind my back! I need a potion that’ll help me hide so I can listen in on what they’re saying about me"], [texture]);
 func MorganaNote():
 	AddDialogue(DialogueText.new("Huh. What's this? A letter?", Dialogue.YASMEEN));
 	AddDialogue(DialogueAction.new(func():

@@ -37,24 +37,6 @@ var leftHouseForFirstTime: bool = false;
 var finishedGatheringTutorial: bool = false;
 var reenteredHouse: bool = false;
 
-# Flag for keeping track of which quest is currently active
-@export var currentQuest: PotionQuests;
-enum PotionQuests {
-	NONE = 0,
-	ENERGY = 1,
-	SLEEP = 2,
-	STRENGTH = 3,
-	HEALING = 4,
-	SHRINK = 5
-}
-var questToRequiredPotion: Dictionary[PotionQuests, String] = {
-	PotionQuests.ENERGY: ENERGY,
-	PotionQuests.SLEEP: SLEEP,
-	PotionQuests.STRENGTH: STRENGTH,
-	PotionQuests.HEALING: HEALING,
-	PotionQuests.SHRINK: SHRINK
-};
-
 # Energy amounts for minigames, by scne ID
 var minigameEnergy: Dictionary[int, float] = {
 	# Technically not a minigame, potion brewing. Per potion.
@@ -127,6 +109,8 @@ var validRecipies: Array[Recipe] = [
 	Recipe.new([WINGS, MOSS, SAP], HEALING, 0.75, "res://Potion Brewing/Textures/Healing Potion.png"),
 	Recipe.new([ACORNS, MILK, WINGS], SHRINK, 1.25, "res://Potion Brewing/Textures/ShrinkElixir.png"),
 ];
+
+# Variable for keeping track of the currect day
 var dayCounter: int = 0;
 
 # Both of these are on a scale of 0.0 - 5.0
@@ -156,10 +140,8 @@ var potions: Dictionary[String, int] = {
 	HEALING: 0,
 	SHRINK: 0,
 	RUINED: 0
-}
-
-func ProgressToNextPotionQuest():
-	return randi_range(1, PotionQuests.size()-1);
+};
+var currentQuests: Array[Quest] = [];
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -227,6 +209,24 @@ class Recipe:
 		self.image = load(pathToImage);
 		self.energyDrain = energyDrain;
 
+class Quest:
+	# The required potion
+	var potion: String;
+	# The day this was given to the player
+	var startDay: int;
+	# The time until the quest fails. Once the day count gets past this + startDay, it will fail.
+	var timeToComplete: int;
+	# NPC sprite
+	var texture: Texture2D;
+	
+	func _init(potion: String, startDay: int, timeToComplete: int, texture: Texture2D):
+		self.potion = potion;
+		self.startDay = startDay;
+		self.timeToComplete = timeToComplete;
+		self.texture = texture;
+	func DayDue() -> int:
+		return startDay + timeToComplete;
+
 # a collection of variables to save
 func save():
 	var save_dict = {
@@ -264,9 +264,6 @@ func save():
 		"doneMovementTutorial": doneMovementTutorial,
 		"leftHouseForFirstTime": leftHouseForFirstTime,
 		"finishedGatheringTutorial": finishedGatheringTutorial,
-		
-		# story flags
-		"currentQuest": currentQuest
 	}
 	return save_dict
 
@@ -293,3 +290,9 @@ func _on_inventory_button_pressed():
 
 func IsInventoryOpen():
 	return $Inventory/Inventory.visible;
+
+func GenerateQuest(potion: String) -> String:
+	# This will be randomized later
+	var texture = DialogueManager.Dialogue.PLACEHOLDER;
+	currentQuests.append(Quest.new(potion, dayCounter, randi_range(3,6), load(texture)));
+	return texture;

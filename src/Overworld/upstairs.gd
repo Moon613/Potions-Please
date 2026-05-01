@@ -12,8 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_sleep_trigger_interacted_with() -> void:
-	$AnimationPlayer.play("Fade To Black")
-	GameInfo.dayCounter += 1
+	$AnimationPlayer.play("Fade To Black");
+	GameInfo.dayCounter += 1;
 	GameInfo.busy = true;
 
 
@@ -21,3 +21,10 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Fade To Black":
 		GameInfo.busy = false;
 		GameInfo.energy = clamp(GameInfo.energy + 5, 0, 5);
+		
+		var questsToErase: Array[int] = [];
+		for i: int in GameInfo.currentQuests.size():
+			if GameInfo.dayCounter > GameInfo.currentQuests[i].DayDue():
+				questsToErase.append(i);
+		for num: int in questsToErase:
+			GameInfo.currentQuests.remove_at(num);
