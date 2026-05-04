@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="22_0mxup"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Potion Brewing/Textures/MorningDewIngredient.png" id="22_a3cj8"]
+[ext_resource type="Script" uid="uid://b0rxbno1icaki" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Potion Brewing/Textures/Honey(New).png" id="23_1nhwd"]
 [ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="25_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Potion Brewing/Textures/Ginger Root (New).png" id="26_0mxup"]
@@ -97,12 +98,40 @@ region = Rect2(0, 0, 400, 72)
 atlas = ExtResource("21_xbtdn")
 region = Rect2(0, 0, 400, 72)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1nhwd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mxup"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nhwd"]
+bg_color = Color(0.31666672, 1, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mxup"]
 resource_local_to_scene = true
 radius = 49.77
 height = 149.23
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mxup"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb5qm"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -450,18 +479,30 @@ theme_override_fonts/normal_font = ExtResource("22_0mxup")
 theme_override_font_sizes/normal_font_size = 42
 text = "ESC to leave"
 
+[node name="Brewing Progress Bar" type="ProgressBar" parent="UI" unique_id=404604697]
+z_index = 2
+offset_left = 101.0
+offset_top = 852.0
+offset_right = 723.0
+offset_bottom = 911.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0mxup")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1nhwd")
+max_value = 5.0
+show_percentage = false
+script = ExtResource("22_hb5qm")
+
 [node name="Honey" parent="." unique_id=56422247 instance=ExtResource("21_m6y6x")]
 position = Vector2(-804, -191)
 mass = 0.61
 Sprite = ExtResource("23_1nhwd")
-Shape = SubResource("CapsuleShape2D_1nhwd")
+Shape = SubResource("CapsuleShape2D_0mxup")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-763, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_0mxup")
+Shape = SubResource("CapsuleShape2D_hb5qm")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -469,7 +510,7 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_0mxup")
+shape = SubResource("CapsuleShape2D_hb5qm")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
 position = Vector2(-595, 16)

@@ -98,7 +98,7 @@ var potionToImage: Dictionary[String, String] = {
 	STRENGTH: "res://Potion Brewing/Textures/Strength Potion.png",
 	HEALING: "res://Potion Brewing/Textures/Healing Potion.png",
 	SHRINK: "res://Potion Brewing/Textures/ShrinkElixir.png",
-	RUINED: "res://Potion Brewing/Textures/BurntPotion.png"
+	RUINED: "res://Potion Brewing/Textures/Burnt Potion (NEW).png"
 };
 
 # Apparently GDScript has a nested collection type restriction so the inner array cannot be Array[String], but for reference for anyone else, that is what it is.

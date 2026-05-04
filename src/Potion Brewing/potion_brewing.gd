@@ -106,8 +106,10 @@ func _on_stir_checkpoint_reached(num: int):
 	if mostRecentCheckpoint == 4 and num == 1:
 		mostRecentCheckpoint = 1;
 		stirCyclesCompleted += 1;
+		$"UI/Brewing Progress Bar".IncreaseTargetValue();
 	elif mostRecentCheckpoint == num-1:
 		mostRecentCheckpoint = num;
+		$"UI/Brewing Progress Bar".IncreaseTargetValue();
 
 func _on_not_enough_energy():
 	$AnimationPlayer.play("Stamina Shaking");
