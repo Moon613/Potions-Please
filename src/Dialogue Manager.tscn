@@ -69,6 +69,21 @@ offset_bottom = 532.0
 theme_override_font_sizes/font_size = 25
 text = "Recieve Order"
 
+[node name="Cancel" type="Button" parent="QuestSelection" unique_id=760820940]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.74700004
+anchor_top = 0.88100004
+anchor_right = 0.74700004
+anchor_bottom = 0.88100004
+offset_left = -103.86401
+offset_top = -36.00302
+offset_right = 104.13599
+offset_bottom = 35.99698
+theme_override_font_sizes/font_size = 46
+text = "Cancel
+"
+
 [node name="PotionSubmissionControl" type="Control" parent="." unique_id=1696398188]
 visible = false
 layout_mode = 3
@@ -140,5 +155,6 @@ text = "Cancel
 "
 
 [connection signal="pressed" from="QuestSelection/Recive Quest" to="." method="_on_recive_quest_pressed"]
+[connection signal="pressed" from="QuestSelection/Cancel" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="PotionSubmissionControl/Submit" to="." method="_on_potion_submit"]
 [connection signal="pressed" from="PotionSubmissionControl/Cancel" to="." method="_on_cancel_pressed"]

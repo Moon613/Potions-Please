@@ -111,6 +111,7 @@ func _on_quest_selection(button: Button):
 func _on_cancel_pressed() -> void:
 	inDialogue = false;
 	$PotionSubmissionControl.visible = false;
+	$QuestSelection.visible = false;
 	potionSelectionOpen = false;
 	selectedQuest = 0;
 	for child in $QuestSelection/ScrollContainer/VBoxContainer.get_children():
