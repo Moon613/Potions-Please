@@ -18,10 +18,9 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event):
-	if visible and !DialogueManager.inDialogue:
+	if visible and !DialogueManager.inDialogue and Input.is_action_just_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
-		if Input.is_action_just_pressed("ui_cancel"):
-			_on_exit_button_up();
+		_on_exit_pressed();
 
 
 func _on_tab_energy_button_up() -> void:
@@ -54,7 +53,7 @@ func _on_tab_strength_button_up() -> void:
 	currentPage = strength
 
 
-func _on_exit_button_up() -> void:
+func _on_exit_pressed() -> void:
 	if !GameInfo.seenPotionBookFirstTime:
 		GameInfo.seenPotionBookFirstTime = true;
 		DialogueManager.HeadToCaludron();

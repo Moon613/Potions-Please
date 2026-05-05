@@ -161,4 +161,4 @@ clip_text = true
 [connection signal="button_up" from="Control/TabShrink" to="." method="_on_tab_shrink_button_up"]
 [connection signal="button_up" from="Control/TabSleep" to="." method="_on_tab_sleep_button_up"]
 [connection signal="button_up" from="Control/TabStrength" to="." method="_on_tab_strength_button_up"]
-[connection signal="button_up" from="Control/Exit" to="." method="_on_exit_button_up"]
+[connection signal="pressed" from="Control/Exit" to="." method="_on_exit_pressed"]
