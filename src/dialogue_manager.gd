@@ -78,8 +78,8 @@ func TriggerDialogue(dialogueChoice: String, originNode: DialogueTrigger = null)
 func SpawnPotionSelection():
 	$PotionSubmissionControl/ItemList.clear();
 	for potion: String in GameInfo.potions:
-		if potion != GameInfo.RUINED and GameInfo.potions[potion] > 0:
-			$PotionSubmissionControl/ItemList.add_item(potion, load(GameInfo.potionToImage[potion]));
+		if GameInfo.potions[potion] > 0:
+			$PotionSubmissionControl/ItemList.add_item(potion.capitalize() + " Potion", load(GameInfo.potionToImage[potion]));
 	$PotionSubmissionControl.visible = true;
 	GameInfo.busy = true;
 
@@ -90,7 +90,7 @@ func _on_potion_submit():
 	GameInfo.busy = false;
 	if $PotionSubmissionControl/ItemList.item_count <= 0 or $PotionSubmissionControl/ItemList.get_selected_items().size() < 1:
 		return;
-	var submittedItem = $PotionSubmissionControl/ItemList.get_item_text($PotionSubmissionControl/ItemList.get_selected_items()[0]);
+	var submittedItem = $PotionSubmissionControl/ItemList.get_item_text($PotionSubmissionControl/ItemList.get_selected_items()[0]).split(" ")[0].to_lower()
 	if GameInfo.currentQuests[selectedQuest].potion == submittedItem:
 		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thanks!", DialogueManager.Dialogue.PLACEHOLDER));
 		GameInfo.reputation = clamp(GameInfo.reputation+1, 0, 5);
@@ -153,28 +153,74 @@ func IntroDialogue():
 func OpenQuestMenu(originNode: DialogueTrigger):
 	potionSelectionOpen = true;
 	for quest: GameInfo.Quest in GameInfo.currentQuests:
-		var button = Button.new();
+		var button: Button = Button.new();
 		button.custom_minimum_size = Vector2(480, 90);
 		button.icon = quest.texture;
+		button.text = quest.summary;
+		button.text_overrun_behavior = TextServer.OVERRUN_TRIM_WORD_ELLIPSIS_FORCE;
+		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART;
+		button.add_theme_constant_override("icon_max_width", 85);
+		button.alignment = HORIZONTAL_ALIGNMENT_CENTER;
+		button.icon
 		button.pressed.connect(_on_quest_selection.bind(button));
 		button.expand_icon = true;
 		$QuestSelection/ScrollContainer/VBoxContainer.add_child(button);
 	$QuestSelection.visible = true;
 func EnergyQuestGive():
-	var texture = GameInfo.GenerateQuest(GameInfo.ENERGY);
-	AddDialogues(["Hiiiii there, I really need an energy potion.", "See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work.", "So I need something to help keep me awake during the daytimes.", "Thank yoouuuuu!"], [texture])
+	var text: Array[String];
+	match randi_range(0, 2):
+		0, _:
+			text = ["Hiiiii there, I really need an energy potion.", "See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work.", "So I need something to help keep me awake during the daytimes.", "Thank yoouuuuu!"];
+		1:
+			text = ["My little neice is performing in a school play soon and well...", "Not that six year olds acting and singing on stage isn't [i]lovely[/i], but I need a potion that'll give me the energy to sit through the whole thing."];
+		2:
+			text = ["I'm going to a week-long music festival and don't wanna miss out on any of the bands!", "I need a potion that'll help me stay awake for as much of it as possible."];
+	var texture = GameInfo.GenerateQuest(GameInfo.ENERGY, text[0]);
+	AddDialogues(text, [texture])
 func SleepQuestGive():
-	var texture = GameInfo.GenerateQuest(GameInfo.SLEEP);
-	AddDialogues(["I have a day-long carriage trip ahead of me, and road travel has always made me queasy.", "I need a potion that’ll help me sleep through the whole thing"], [texture]);
+	var text: Array[String];
+	match randi_range(0, 2):
+		0, _:
+			text = ["I have a day-long carriage trip ahead of me, and road travel has always made me queasy.", "I need a potion that’ll help me sleep through the whole thing"];
+		1:
+			text = ["I got a new pet bunny that hops around all night keeping me awake!", "I need a potion that'll help me sleep through the night."];
+		2:
+			text = ["hELp!!!!! I ACCideNTALLY dRANk A GALLoN oF ENErgY ElixIR And nOW I cAN’t sTAY StiLL enOUgh TO eVEn WRItE nORMAllY!!", "I nEED A pOTIon THat’LL cAlm ME DOwN."];
+	var texture = GameInfo.GenerateQuest(GameInfo.SLEEP, text[0]);
+	AddDialogues(text, [texture]);
 func StrengthQuestGive():
-	var texture = GameInfo.GenerateQuest(GameInfo.STRENGTH);
-	AddDialogues(["I bet my friend that I could definitely beat them in an arm wrestle. Turns out they’ve been working out daily…", "I really don’t wanna lose my favorite blanket that I bet them. I need a potion that’ll make me win this arm wrestle."], [texture]);
+	var text: Array[String];
+	match randi_range(0, 2):
+		0, _:
+			text = ["I bet my friend that I could definitely beat them in an arm wrestle. Turns out they’ve been working out daily…", "I really don’t wanna lose my favorite blanket that I bet them. I need a potion that’ll make me win this arm wrestle."];
+		1:
+			text = ["[b]SOME JERK LEFT A BIG BOULDER OUTSIDE OF MY FRONT DOOR TO BLOCK THE ENTRANCE AND IT’S TOO HEAVY FOR ME TO MOVE.[/b]", "I need a potion that'll make me strong enough to move the boulder"];
+		2:
+			text = ["One of my jerk neighbors got me in trouble with the HOA for having summer decorations out in the fall, so I need a potion that’ll make me strong enough to put a boulder on their front porch and block their door.", "Watch the HOA fine them for THAT."]
+	var texture = GameInfo.GenerateQuest(GameInfo.STRENGTH, text[0]);
+	AddDialogues(text, [texture]);
 func HealingQuestGive():
-	var texture = GameInfo.GenerateQuest(GameInfo.HEALING);
-	AddDialogues(["I burned my hand in the oven trying to bake my friend a birthday cake! And I burned the cake too!", "I need a potion that’ll heal my hand quickly so I can make a new cake in time"], [texture]);
+	var text: Array[String];
+	match randi_range(0 ,2):
+		0, _:
+			text = ["I burned my hand in the oven trying to bake my friend a birthday cake! And I burned the cake too!", "I need a potion that’ll heal my hand quickly so I can make a new cake in time"];
+		1:
+			text = ["My boyfriend twisted his ankle trying to do a backflip and is too embarrassed to go to the doctor...", "I need a potion that'll heal his ankle."];
+		2:
+			text = ["[i]Someone[/i] (definitely not me) may have ran head first into a boulder on the way out of my house.", "I need something to help cure my cranial cavity.", "(Seriously who leave a boulder on someone's front porch?)"];
+	var texture = GameInfo.GenerateQuest(GameInfo.HEALING, text[0]);
+	AddDialogues(text, [texture]);
 func ShrinkQuestGive():
-	var texture = GameInfo.GenerateQuest(GameInfo.SHRINK);
-	AddDialogues(["My friends are definitely talking about me behind my back! I need a potion that’ll help me hide so I can listen in on what they’re saying about me"], [texture]);
+	var text: Array[String];
+	match randi_range(0 ,2):
+		0, _:
+			text = ["My friends are definitely talking about me behind my back! I need a potion that’ll help me hide so I can listen in on what they’re saying about me"];
+		1:
+			text = ["I dropped my wedding ring down the drain pipe! I've tried everything to get it out!", "I need a potion that'll shrink me down so I can get it myself."];
+		2:
+			text = ["I want to make friends with the bugs in my garden, but I think they're scared of me since I'm so much bigger than them!", "I need a potion that'll shrink me down to their size."]
+	var texture = GameInfo.GenerateQuest(GameInfo.SHRINK, text[0]);
+	AddDialogues(text, [texture]);
 func MorganaNote():
 	AddDialogue(DialogueText.new("Huh. What's this? A letter?", Dialogue.YASMEEN));
 	AddDialogue(DialogueAction.new(func():

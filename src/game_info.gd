@@ -218,12 +218,15 @@ class Quest:
 	var timeToComplete: int;
 	# NPC sprite
 	var texture: Texture2D;
+	# Summary text
+	var summary: String;
 	
-	func _init(potion: String, startDay: int, timeToComplete: int, texture: Texture2D):
+	func _init(potion: String, startDay: int, timeToComplete: int, texture: Texture2D, summary: String):
 		self.potion = potion;
 		self.startDay = startDay;
 		self.timeToComplete = timeToComplete;
 		self.texture = texture;
+		self.summary = summary;
 	func DayDue() -> int:
 		return startDay + timeToComplete;
 
@@ -291,8 +294,8 @@ func _on_inventory_button_pressed():
 func IsInventoryOpen():
 	return $Inventory/Inventory.visible;
 
-func GenerateQuest(potion: String) -> String:
+func GenerateQuest(potion: String, text: String) -> String:
 	# This will be randomized later
 	var texture = DialogueManager.Dialogue.PLACEHOLDER;
-	currentQuests.append(Quest.new(potion, dayCounter, randi_range(3,6), load(texture)));
+	currentQuests.append(Quest.new(potion, dayCounter, randi_range(3,6), load(texture), text));
 	return texture;
