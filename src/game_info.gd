@@ -123,14 +123,14 @@ var resources: Dictionary[String, int] = {
 	MANDRAKE: 0,
 	EGGS: 0,
 	SAP: 0,
-	MOSS: -1,
-	HONEY: -1,
-	GINGER: -1,
-	LAVENDER: -1,
-	MILK: -1,
-	SALTS: -1,
-	GARLIC: -1,
-	WINGS: -1
+	MOSS: 5,
+	HONEY: 5,
+	GINGER: 5,
+	LAVENDER: 5,
+	MILK: 5,
+	SALTS: 5,
+	GARLIC: 5,
+	WINGS: 5
 };
 # Completed potions
 var potions: Dictionary[String, int] = {
