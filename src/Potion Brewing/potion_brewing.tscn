@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="22_0mxup"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Potion Brewing/Textures/MorningDewIngredient.png" id="22_a3cj8"]
-[ext_resource type="Script" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
+[ext_resource type="Script" uid="uid://b0rxbno1icaki" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Potion Brewing/Textures/Honey(New).png" id="23_1nhwd"]
 [ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="25_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Potion Brewing/Textures/Ginger Root (New).png" id="26_0mxup"]
@@ -72,7 +72,6 @@ bounce = 0.95
 absorbent = true
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1nhwd"]
-load_path = "res://.godot/imported/Spoon Holder.png-88214687c98882c28695364a1de9d013.ctex"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ii5e"]
 
@@ -396,6 +395,7 @@ shape = SubResource("WorldBoundaryShape2D_7n1qr")
 
 [node name="InsideCauldronHitbox" type="Area2D" parent="." unique_id=1966607047 groups=["Cauldron Inside Hitbox"]]
 z_index = 2
+collision_mask = 7
 script = ExtResource("11_yupxn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InsideCauldronHitbox" unique_id=2041093753]

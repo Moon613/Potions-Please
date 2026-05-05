@@ -13,7 +13,6 @@ var stirCyclesCompleted: int = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
-	ReloadIngredientCount();
 	for resource in GameInfo.resources:
 		spawnedIngredients[resource] = 0;
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
@@ -47,14 +46,6 @@ func SpawnPotion(type: String, image: Texture2D):
 	potion.set_script(load("res://Potion Brewing/spawned_potion.gd"))
 	add_child(potion);
 
-func ReloadIngredientCount():
-	#$HoneyText.text = get_tree().current_scene.resources[]
-	$DewdropText.text = str(GameInfo.resources[GameInfo.DEWDROPS]);
-	$AcornText.text = str(GameInfo.resources[GameInfo.ACORNS]);
-	$DragonEggText.text = str(GameInfo.resources[GameInfo.EGGS]);
-	$MandrakeText.text = str(GameInfo.resources[GameInfo.MANDRAKE]);
-	$SapText.text = str(GameInfo.resources[GameInfo.SAP]);
-
 func _input(event):
 	if event.is_action_pressed("ui_cancel") and GameInfo.busy and !GameInfo.journal_is_open:
 		get_viewport().set_input_as_handled()
@@ -70,7 +61,6 @@ func _on_ingredient_consumed(type: String):
 	ChangeIngredients.emit(type, -1);
 	spawnedIngredients[type] -= 1;
 	activeIngredients.append(type);
-	ReloadIngredientCount();
 
 func Reset():
 	$Spoon.Reset();
