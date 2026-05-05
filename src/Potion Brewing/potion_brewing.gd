@@ -20,27 +20,6 @@ func _ready():
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
 		
 	JournalOpen.connect(GameInfo._on_inventory_journal_open)
-	
-	if GameInfo.resources[GameInfo.DEWDROPS] == 0:
-		$DewdropText.visible = false;
-	else:
-		$DewdropText.visible = true;
-	if GameInfo.resources[GameInfo.ACORNS] == 0:
-		$AcornText.visible = false;
-	else:
-		$AcornText.visible = true;
-	if GameInfo.resources[GameInfo.EGGS] == 0:
-		$DragonEggText.visible = false;
-	else:
-		$DragonEggText.visible = true;
-	if GameInfo.resources[GameInfo.MANDRAKE] == 0:
-		$MandrakeText.visible = false;
-	else:
-		$MandrakeText.visible = true;
-	if GameInfo.resources[GameInfo.SAP] == 0:
-		$SapText.visible = false;
-	else:
-		$SapText.visible = true;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

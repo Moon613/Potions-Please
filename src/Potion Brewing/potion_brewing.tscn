@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://d2k3ne2c7bw25" path="res://Potion Brewing/Textures/Fairy Wings.png" id="34_isq66"]
 [ext_resource type="Texture2D" uid="uid://cmwi3r522hfvt" path="res://Potion Brewing/Textures/Moss.png" id="35_isq66"]
 [ext_resource type="AudioStream" uid="uid://c3culn7rdod1w" path="res://Sound Effects/idle potion.wav" id="38_1nhwd"]
+[ext_resource type="Script" uid="uid://ce5834ckj1kvp" path="res://Potion Brewing/ingredient_amount.gd" id="38_hb5qm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc17n"]
 size = Vector2(493.45544, 23.248623)
@@ -126,12 +127,12 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 1
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0mxup"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb5qm"]
 resource_local_to_scene = true
 radius = 49.77
 height = 149.23
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb5qm"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1og6f"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -246,6 +247,8 @@ zoom = Vector2(0.6, 0.6)
 [node name="Shelf" type="StaticBody2D" parent="." unique_id=90021651]
 position = Vector2(-624.00006, 82.34799)
 scale = Vector2(0.9605734, 0.9032796)
+collision_layer = 2
+collision_mask = 0
 
 [node name="Shelf" type="Sprite2D" parent="Shelf" unique_id=164151715]
 texture_filter = 1
@@ -282,6 +285,8 @@ texture = ExtResource("4_dr7va")
 z_index = 1
 position = Vector2(-195, 153)
 disable_mode = 2
+collision_layer = 4
+collision_mask = 4
 input_pickable = true
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_3ii5e")
@@ -314,6 +319,7 @@ shape = SubResource("CapsuleShape2D_3ii5e")
 [node name="Cauldron" type="StaticBody2D" parent="." unique_id=1769598805]
 position = Vector2(416.00003, 296.00003)
 scale = Vector2(1.3, 1.3)
+collision_layer = 7
 physics_material_override = SubResource("PhysicsMaterial_g2f47")
 
 [node name="Cauldron Inside" type="Sprite2D" parent="Cauldron" unique_id=1780531648]
@@ -329,14 +335,14 @@ scale = Vector2(0.677249, 0.71100014)
 texture = ExtResource("9_wsuyr")
 
 [node name="Potion" type="Sprite2D" parent="Cauldron" unique_id=1080880378]
-z_index = 1
+z_index = 2
 texture_filter = 1
 position = Vector2(-0.3846426, -185.53084)
 scale = Vector2(0.7330987, 0.8727116)
 texture = ExtResource("8_o18r5")
 
 [node name="Cauldron Front" type="Sprite2D" parent="Cauldron" unique_id=1335512008]
-z_index = 1
+z_index = 2
 texture_filter = 1
 position = Vector2(0, 3.7075043)
 scale = Vector2(0.68200004, 0.68200004)
@@ -364,12 +370,16 @@ polygon = PackedVector2Array(32, -376, 56, -392, 80, -384, 96, -360, 56, 152, 40
 
 [node name="Floor" type="StaticBody2D" parent="." unique_id=41236175]
 position = Vector2(0, 544)
+collision_layer = 255
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=803338476]
 shape = SubResource("WorldBoundaryShape2D_3ii5e")
 
 [node name="Right Wall" type="StaticBody2D" parent="." unique_id=377390823]
 position = Vector2(960, 0)
+collision_layer = 255
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall" unique_id=1628582213]
 rotation = -1.5707964
@@ -377,6 +387,8 @@ shape = SubResource("WorldBoundaryShape2D_g2f47")
 
 [node name="Left Wall" type="StaticBody2D" parent="." unique_id=1331714611]
 position = Vector2(-960, 0)
+collision_layer = 255
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall" unique_id=804179925]
 rotation = 1.5707964
@@ -495,14 +507,14 @@ script = ExtResource("22_hb5qm")
 position = Vector2(-804, -191)
 mass = 0.61
 Sprite = ExtResource("23_1nhwd")
-Shape = SubResource("CapsuleShape2D_0mxup")
+Shape = SubResource("CapsuleShape2D_hb5qm")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-763, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_hb5qm")
+Shape = SubResource("CapsuleShape2D_1og6f")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -510,7 +522,7 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_hb5qm")
+shape = SubResource("CapsuleShape2D_1og6f")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
 position = Vector2(-595, 16)
@@ -618,6 +630,11 @@ theme = ExtResource("27_yffeo")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "dewdrops"
 
 [node name="AcornText" type="RichTextLabel" parent="." unique_id=1311890683]
 offset_left = -562.0
@@ -628,6 +645,11 @@ theme = ExtResource("27_yffeo")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "acorns"
 
 [node name="DragonEggText" type="RichTextLabel" parent="." unique_id=225149306]
 offset_left = -427.0
@@ -636,6 +658,11 @@ offset_right = -410.0
 offset_bottom = 82.0
 theme_override_font_sizes/normal_font_size = 29
 text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "eggs"
 
 [node name="MandrakeText" type="RichTextLabel" parent="." unique_id=1584366672]
 offset_left = -462.0
@@ -644,6 +671,11 @@ offset_right = -445.0
 offset_bottom = 286.0
 theme_override_font_sizes/normal_font_size = 29
 text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "mandrake"
 
 [node name="SapText" type="RichTextLabel" parent="." unique_id=856901927]
 offset_left = -708.0
@@ -652,6 +684,11 @@ offset_right = -691.0
 offset_bottom = 287.0
 theme_override_font_sizes/normal_font_size = 29
 text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "sap"
 
 [node name="HoneyText" type="RichTextLabel" parent="." unique_id=1677473520]
 offset_left = -770.0
@@ -662,6 +699,11 @@ theme = ExtResource("27_yffeo")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "honey"
 
 [node name="GingerText" type="RichTextLabel" parent="." unique_id=1795827248]
 offset_left = -650.0
@@ -670,6 +712,11 @@ offset_right = -629.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "ginger"
 
 [node name="LavenderText" type="RichTextLabel" parent="." unique_id=529834224]
 offset_left = -565.0
@@ -678,6 +725,11 @@ offset_right = -544.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "lavender"
 
 [node name="MilkText" type="RichTextLabel" parent="." unique_id=17329837]
 offset_left = -487.0
@@ -686,6 +738,11 @@ offset_right = -466.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "milk"
 
 [node name="SaltText" type="RichTextLabel" parent="." unique_id=2085918353]
 offset_left = -416.0
@@ -694,6 +751,11 @@ offset_right = -395.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "salts"
 
 [node name="GarlicText" type="RichTextLabel" parent="." unique_id=365051110]
 offset_left = -765.0
@@ -702,6 +764,11 @@ offset_right = -744.0
 offset_bottom = 487.0
 theme = ExtResource("27_yffeo")
 text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "garlic"
 
 [node name="WingsText" type="RichTextLabel" parent="." unique_id=605420957]
 offset_left = -599.0
@@ -710,6 +777,11 @@ offset_right = -578.0
 offset_bottom = 487.0
 theme = ExtResource("27_yffeo")
 text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "wings"
 
 [node name="MossText" type="RichTextLabel" parent="." unique_id=1613657821]
 offset_left = -441.0
@@ -718,10 +790,16 @@ offset_right = -420.0
 offset_bottom = 487.0
 theme = ExtResource("27_yffeo")
 text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "moss"
 
 [node name="Stir Trigger 1" type="Area2D" parent="." unique_id=103883032]
 z_index = 5
 position = Vector2(413, 88)
+collision_mask = 4
 script = ExtResource("26_m5i5b")
 number = 1
 
@@ -732,6 +810,7 @@ shape = SubResource("CircleShape2D_sc17n")
 [node name="Stir Trigger 2" type="Area2D" parent="." unique_id=629833310]
 z_index = 5
 position = Vector2(624, 160)
+collision_mask = 4
 script = ExtResource("26_m5i5b")
 number = 2
 
@@ -742,6 +821,7 @@ shape = SubResource("CircleShape2D_m5i5b")
 [node name="Stir Trigger 3" type="Area2D" parent="." unique_id=947052509]
 z_index = 5
 position = Vector2(416, 256)
+collision_mask = 4
 script = ExtResource("26_m5i5b")
 number = 3
 
@@ -751,6 +831,7 @@ shape = SubResource("CircleShape2D_7ndod")
 [node name="Stir Trigger 4" type="Area2D" parent="." unique_id=2079091926]
 z_index = 5
 position = Vector2(184, 163)
+collision_mask = 4
 script = ExtResource("26_m5i5b")
 number = 4
 
