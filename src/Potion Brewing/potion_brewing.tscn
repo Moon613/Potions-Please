@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="22_0mxup"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Potion Brewing/Textures/MorningDewIngredient.png" id="22_a3cj8"]
-[ext_resource type="Script" uid="uid://b0rxbno1icaki" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
+[ext_resource type="Script" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Potion Brewing/Textures/Honey(New).png" id="23_1nhwd"]
 [ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="25_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Potion Brewing/Textures/Ginger Root (New).png" id="26_0mxup"]
@@ -504,7 +504,7 @@ show_percentage = false
 script = ExtResource("22_hb5qm")
 
 [node name="Honey" parent="." unique_id=56422247 instance=ExtResource("21_m6y6x")]
-position = Vector2(-804, -191)
+position = Vector2(-828, -191)
 mass = 0.61
 Sprite = ExtResource("23_1nhwd")
 Shape = SubResource("CapsuleShape2D_hb5qm")
@@ -539,7 +539,7 @@ texture = ExtResource("25_hb5qm")
 shape = SubResource("CircleShape2D_0mxup")
 
 [node name="Ginger" parent="." unique_id=1018620730 instance=ExtResource("21_m6y6x")]
-position = Vector2(-694, -187)
+position = Vector2(-719, -187)
 Sprite = ExtResource("26_0mxup")
 Shape = SubResource("RectangleShape2D_5pr62")
 Type = "ginger"
@@ -586,19 +586,19 @@ position = Vector2(0, -1.9999999)
 shape = SubResource("RectangleShape2D_isq66")
 
 [node name="Lavender" parent="." unique_id=1111828340 instance=ExtResource("21_m6y6x")]
-position = Vector2(-585, -190)
+position = Vector2(-606, -190)
 Sprite = ExtResource("30_ako6u")
 Shape = SubResource("RectangleShape2D_fim6t")
 Type = "lavender"
 
 [node name="Milk" parent="." unique_id=868895738 instance=ExtResource("21_m6y6x")]
-position = Vector2(-506, -190)
+position = Vector2(-511, -190)
 Sprite = ExtResource("31_fim6t")
 Shape = SubResource("CapsuleShape2D_y54vx")
 Type = "milk"
 
 [node name="Salt" parent="." unique_id=535384879 instance=ExtResource("21_m6y6x")]
-position = Vector2(-436, -190)
+position = Vector2(-421, -190)
 Sprite = ExtResource("32_a67xv")
 Shape = SubResource("RectangleShape2D_3v25o")
 Type = "salts"
@@ -691,9 +691,9 @@ script = ExtResource("38_hb5qm")
 Type = "sap"
 
 [node name="HoneyText" type="RichTextLabel" parent="." unique_id=1677473520]
-offset_left = -770.0
+offset_left = -794.0
 offset_top = -166.0
-offset_right = -749.0
+offset_right = -773.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -706,9 +706,9 @@ script = ExtResource("38_hb5qm")
 Type = "honey"
 
 [node name="GingerText" type="RichTextLabel" parent="." unique_id=1795827248]
-offset_left = -650.0
+offset_left = -675.0
 offset_top = -166.0
-offset_right = -629.0
+offset_right = -654.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
@@ -719,9 +719,9 @@ script = ExtResource("38_hb5qm")
 Type = "ginger"
 
 [node name="LavenderText" type="RichTextLabel" parent="." unique_id=529834224]
-offset_left = -565.0
+offset_left = -586.0
 offset_top = -166.0
-offset_right = -544.0
+offset_right = -565.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
@@ -732,9 +732,9 @@ script = ExtResource("38_hb5qm")
 Type = "lavender"
 
 [node name="MilkText" type="RichTextLabel" parent="." unique_id=17329837]
-offset_left = -487.0
+offset_left = -492.0
 offset_top = -166.0
-offset_right = -466.0
+offset_right = -471.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
@@ -745,9 +745,9 @@ script = ExtResource("38_hb5qm")
 Type = "milk"
 
 [node name="SaltText" type="RichTextLabel" parent="." unique_id=2085918353]
-offset_left = -416.0
+offset_left = -401.0
 offset_top = -166.0
-offset_right = -395.0
+offset_right = -380.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
