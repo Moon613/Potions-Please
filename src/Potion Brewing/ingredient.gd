@@ -57,7 +57,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif !picked and Type in GameInfo.resources and ((GameInfo.resources[self.Type] > 0 and get_parent().spawnedIngredients[self.Type] < GameInfo.resources[self.Type]) or GameInfo.resources[self.Type] < 0):
 			# Make sure we have enough energy to brew a potion, so that ingredients aren't wasted.
 			if GameInfo.energy > GameInfo.minigameEnergy[1]:
-				var copy = self.duplicate();
+				var copy = self.duplicate()
 				copy.movable = true;
 				copy.mouseOffset = Vector2.ZERO;
 				copy.freeze = false;
@@ -68,6 +68,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				copy.set_collision_mask_value(2, true);
 				get_parent().add_child(copy);
 				get_parent().spawnedIngredients[self.Type] += 1;
+				
+				if copy.get_child(2).get_child_count() > 0:
+					copy.get_child(2).get_child(0).queue_free();
 			else:
 				NotEnoughEnergyForBrewing.emit();
 
