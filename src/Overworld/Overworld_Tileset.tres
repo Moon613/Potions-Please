@@ -391,6 +391,9 @@ texture_region_size = Vector2i(100, 100)
 0:0/0 = 0
 0:0/0/z_index = 1
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xi37d"]
+polygon = PackedVector2Array(-168.18182, -240.90909, -177.27274, -259.0909, -168.18182, -277.2727, -159.09091, -277.2727, -140.90909, -268.18182, -140.90909, -250, -150, -240.90909, -150, -231.81818, 113.63637, -231.81818, 113.63637, -240.90909, 131.81818, -240.90909, 131.81818, 240.90909, -168.18182, 240.90909, -168.18182, 113.63637, -169.19293, 106.26335, -174.44121, 102.269226, -178.61797, 96.12693, -180.33781, 86.79064, -178.74081, 81.26257, -175.88419, 76.63069, -168.18182, 68.181816)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcwu5"]
 texture = ExtResource("6_eaok5")
 texture_region_size = Vector2i(100, 100)
@@ -403,6 +406,7 @@ texture_region_size = Vector2i(100, 100)
 16:9/size_in_atlas = Vector2i(4, 6)
 16:9/0 = 0
 16:9/0/texture_origin = Vector2i(20, 20)
+16:9/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_xi37d")
 16:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-175, -125, 125, -125, 125, 250, -175, 250)
 0:9/size_in_atlas = Vector2i(13, 5)
 0:9/0 = 0
@@ -412,6 +416,7 @@ texture_region_size = Vector2i(100, 100)
 [resource]
 tile_size = Vector2i(100, 100)
 occlusion_layer_0/light_mask = 1
+occlusion_layer_0/sdf_collision = true
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_omswd")
 sources/1 = SubResource("TileSetAtlasSource_5msrb")

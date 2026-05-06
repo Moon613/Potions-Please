@@ -44,6 +44,27 @@ _data = {
 &"RESET": SubResource("Animation_1lm5q")
 }
 
+[sub_resource type="Gradient" id="Gradient_eonw0"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.109195404, 0.14367816, 0.7356322)
+colors = PackedColorArray(1, 1, 1, 1, 0.56, 0.56, 0.56, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0vncg"]
+gradient = SubResource("Gradient_eonw0")
+fill = 2
+fill_from = Vector2(0.5, 0.14102565)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_0vncg"]
+offsets = PackedFloat32Array(0.3448276, 0.51724136, 0.6896552)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_meola"]
+gradient = SubResource("Gradient_0vncg")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 0.8034188)
+
 [node name="Upstairs" type="Node2D" unique_id=331077992]
 script = ExtResource("1_pa3na")
 
@@ -65,6 +86,7 @@ position = Vector2(33, 1)
 Size = Vector2(30, 35)
 
 [node name="Player" parent="." unique_id=2042437237 instance=ExtResource("2_dcv8u")]
+light_mask = 0
 position = Vector2(1.9999996, -21.000004)
 scale = Vector2(1.7, 1.7)
 
@@ -84,6 +106,20 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1181942825]
 libraries/ = SubResource("AnimationLibrary_6vh2y")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=767228808]
+position = Vector2(0.36960608, 2.1260796)
+scale = Vector2(2.25, 1.515625)
+energy = 0.5
+shadow_enabled = true
+shadow_item_cull_mask = 0
+texture = SubResource("GradientTexture2D_0vncg")
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1103668512]
+position = Vector2(17.167122, 3.4469547)
+scale = Vector2(0.97212934, 1.3830355)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_meola")
 
 [connection signal="InteractedWith" from="Sleep Trigger" to="." method="_on_sleep_trigger_interacted_with"]
 [connection signal="reject" from="Loading Zone" to="Player" method="_on_loading_zone_reject"]

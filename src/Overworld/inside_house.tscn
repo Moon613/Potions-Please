@@ -14,9 +14,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_g6y85"]
 gradient = SubResource("Gradient_1lm5q")
-fill = 1
 fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.4871795, 0.45299146)
+fill_to = Vector2(0.5, 0.44871795)
 
 [sub_resource type="Gradient" id="Gradient_g6y85"]
 interpolation_color_space = 2
@@ -26,7 +25,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_g6y85")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.525641, 1)
+fill_to = Vector2(0.5, 0.645)
 
 [sub_resource type="Gradient" id="Gradient_p1u7e"]
 interpolation_mode = 2
@@ -40,11 +39,11 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 1)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1lm5q"]
-polygon = PackedVector2Array(-48, -72, -48, -169, -43, -169, -43, -72)
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g6y85"]
 polygon = PackedVector2Array(-80, 15, -80, 42, -73, 42, -73, 15)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1lm5q"]
+polygon = PackedVector2Array(-48, -72, -48, -169, -43, -169, -43, -72)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yukbp"]
 polygon = PackedVector2Array(-80, -36, -74, -36, -74, -9, -80, -9)
@@ -106,15 +105,18 @@ SceneID = 9
 Size = Vector2(20, 3.76)
 
 [node name="OutsideLight" type="PointLight2D" parent="." unique_id=387509870]
-position = Vector2(4.249995, 13.00001)
-scale = Vector2(1.3203125, 0.84375024)
+position = Vector2(3, 27.000006)
+scale = Vector2(0.5, 0.40625012)
 energy = 0.9
 shadow_enabled = true
+shadow_filter = 1
 texture = SubResource("GradientTexture2D_g6y85")
 
 [node name="Crystal Ball Light" type="PointLight2D" parent="." unique_id=2034425302]
 position = Vector2(80.441284, -53.604507)
-scale = Vector2(0.26746, 0.26746)
+scale = Vector2(0.82995987, 0.82995987)
+shadow_enabled = true
+shadow_filter = 1
 texture = SubResource("GradientTexture2D_yukbp")
 
 [node name="Crystal Light" type="PointLight2D" parent="." unique_id=1511573650]
@@ -137,11 +139,10 @@ texture = SubResource("GradientTexture2D_5pphm")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1436301984]
 rotation = -1.436406
-energy = 0.25
+energy = 0.4
 shadow_enabled = true
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1745784430]
-occluder = SubResource("OccluderPolygon2D_1lm5q")
+shadow_filter = 1
+height = 1.0
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1265328946]
 occluder = SubResource("OccluderPolygon2D_g6y85")
@@ -152,6 +153,9 @@ occluder = SubResource("OccluderPolygon2D_1lm5q")
 
 [node name="LightOccluder2D4" type="LightOccluder2D" parent="." unique_id=1996960142]
 occluder = SubResource("OccluderPolygon2D_yukbp")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1995359080]
+color = Color(0.88, 0.88, 0.88, 1)
 
 [connection signal="reject" from="Loading Zone" to="Player" method="_on_loading_zone_reject"]
 [connection signal="InteractedWith" from="Sleep Trigger" to="." method="_on_sleep_trigger_interacted_with"]
