@@ -166,6 +166,12 @@ ReflectDirection = Vector2i(-1, 0)
 position = Vector2(-1, 0)
 shape = SubResource("WorldBoundaryShape2D_u3adh")
 
+[node name="Waterfall Dialogue" parent="." unique_id=1263138631 instance=ExtResource("7_hob5j")]
+position = Vector2(-51, -214)
+Size = Vector2(5, 5)
+DialogueChoice = "Waterfall"
+showIndicator = false
+
 [node name="Map" type="CanvasLayer" parent="." unique_id=211225531]
 script = ExtResource("8_2kprj")
 

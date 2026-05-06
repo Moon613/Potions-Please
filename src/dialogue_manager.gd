@@ -23,7 +23,8 @@ func _ready():
 		"MorganaNote": DialogueManager.MorganaNote,
 		"PotionBookGet": DialogueManager.PotionBookGet,
 		"GatherDewdropsFirst": DialogueManager.GatherDewdropsFirst,
-		"OpenQuestMenu": DialogueManager.OpenQuestMenu
+		"OpenQuestMenu": DialogueManager.OpenQuestMenu,
+		"Waterfall": DialogueManager.Waterfall
 	};
 	OpenJournalFromDialogue.connect(GameInfo._on_inventory_journal_open);
 
@@ -255,6 +256,9 @@ func ListIngredientsForFirstPotion():
 	, false));
 func GatherDewdropsFirst():
 	AddDialogue(DialogueText.new("I don't think I'll find morning dew over there!", Dialogue.YASMEEN));
+
+func Waterfall(originNode):
+	AddDialogue(DialogueText.new("Hmmm, I don't think there's anything behind there.", Dialogue.YASMEEN));
 
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";
