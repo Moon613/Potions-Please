@@ -19,35 +19,18 @@
 [ext_resource type="Texture2D" uid="uid://blblhas7uojhh" path="res://Overworld/Textures/Map/player.png" id="16_0ispa"]
 [ext_resource type="Script" uid="uid://bquxeryo18mac" path="res://Overworld/day_display.gd" id="17_y8kkq"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="18_am172"]
+[ext_resource type="Script" uid="uid://cjls3nxjcds6y" path="res://Overworld/sunspots.gd" id="20_65c6b"]
 [ext_resource type="Shader" uid="uid://dbk12mp5ucudn" path="res://Overworld/sunspots.gdshader" id="20_u3adh"]
+[ext_resource type="Texture2D" uid="uid://clg381a7q1n08" path="res://Overworld/sunspots_noise.tres" id="21_nlwyh"]
+[ext_resource type="Texture2D" uid="uid://cjbu3u8r8m15u" path="res://Overworld/overlay_noise.tres" id="22_88ktw"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h8npj"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_88ktw"]
 resource_local_to_scene = true
 normal = Vector2(1, 0)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u3adh"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pnqpj"]
 resource_local_to_scene = true
 normal = Vector2(-0.91381156, 0.40613845)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_65c6b"]
-shader = ExtResource("20_u3adh")
-
-[sub_resource type="Gradient" id="Gradient_h8npj"]
-interpolation_mode = 2
-interpolation_color_space = 2
-offsets = PackedFloat32Array(0.62068963, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_u3adh"]
-noise_type = 2
-frequency = 0.025
-fractal_octaves = 3
-fractal_gain = 0.635
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_65c6b"]
-noise = SubResource("FastNoiseLite_u3adh")
-color_ramp = SubResource("Gradient_h8npj")
-invert = true
-seamless_blend_skirt = 0.0
 
 [sub_resource type="Gradient" id="Gradient_u3adh"]
 interpolation_color_space = 2
@@ -69,6 +52,11 @@ colors = PackedColorArray(0, 0, 0, 1, 0.43, 0.43, 0.43, 1)
 gradient = SubResource("Gradient_65c6b")
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_88ktw"]
+shader = ExtResource("20_u3adh")
+shader_parameter/noise = ExtResource("21_nlwyh")
+shader_parameter/extraNoise = ExtResource("22_88ktw")
 
 [node name="Overworld" type="Node2D" unique_id=340257523]
 y_sort_enabled = true
@@ -199,7 +187,7 @@ GameinfoFlag = "finishedGatheringTutorial"
 ReflectDirection = Vector2i(1, 0)
 
 [node name="CollisionShape2D" parent="Left boundary" index="0" unique_id=132923071]
-shape = SubResource("WorldBoundaryShape2D_h8npj")
+shape = SubResource("WorldBoundaryShape2D_88ktw")
 
 [node name="Right Boundary" parent="." unique_id=1368123061 instance=ExtResource("8_h8npj")]
 position = Vector2(49, 3)
@@ -209,7 +197,7 @@ ReflectDirection = Vector2i(-1, 0)
 
 [node name="CollisionShape2D" parent="Right Boundary" index="0" unique_id=132923071]
 position = Vector2(-1, 0)
-shape = SubResource("WorldBoundaryShape2D_u3adh")
+shape = SubResource("WorldBoundaryShape2D_pnqpj")
 
 [node name="Waterfall Dialogue" parent="." unique_id=1263138631 instance=ExtResource("7_hob5j")]
 position = Vector2(-51, -214)
@@ -365,11 +353,11 @@ offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("18_am172")
 
 [node name="Sunspots" type="PointLight2D" parent="." unique_id=1733241111]
-material = SubResource("ShaderMaterial_65c6b")
 position = Vector2(5.750002, -176.75002)
 scale = Vector2(0.46777344, 0.26660156)
 range_item_cull_mask = 4
-texture = SubResource("NoiseTexture2D_65c6b")
+script = ExtResource("20_65c6b")
+refreshTime = 0.0
 
 [node name="Godray" type="PointLight2D" parent="." unique_id=654064151]
 position = Vector2(5.9999995, -200.49947)
@@ -384,6 +372,19 @@ energy = 0.75
 blend_mode = 1
 range_item_cull_mask = 9
 texture = SubResource("GradientTexture2D_nlwyh")
+
+[node name="SunspotsViewport" type="SubViewport" parent="." unique_id=111311710]
+unique_name_in_owner = true
+transparent_bg = true
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SunspotsViewport" unique_id=912964996]
+material = SubResource("ShaderMaterial_88ktw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="PlayerThoughts" from="Dewdrop Trigger" to="Player" method="_on_thought_bubble"]
 [connection signal="PlayerThoughts" from="Sap Trigger" to="Player" method="_on_thought_bubble"]
