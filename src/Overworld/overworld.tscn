@@ -57,6 +57,7 @@ fill_to = Vector2(0, 0)
 shader = ExtResource("20_u3adh")
 shader_parameter/noise = ExtResource("21_nlwyh")
 shader_parameter/extraNoise = ExtResource("22_88ktw")
+shader_parameter/rave = 0.1
 
 [node name="Overworld" type="Node2D" unique_id=340257523]
 y_sort_enabled = true
