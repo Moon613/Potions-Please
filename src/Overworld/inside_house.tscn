@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dtivjjebe4l3q" path="res://Overworld/interaction_trigger.tscn" id="5_xypit"]
 [ext_resource type="PackedScene" uid="uid://bx3vs5nda6ecd" path="res://Overworld/sleep_trigger.tscn" id="6_wgk2m"]
 [ext_resource type="PackedScene" uid="uid://cb2xprgs6tsn4" path="res://Overworld/Entered Trigger.tscn" id="8_g6y85"]
+[ext_resource type="Texture2D" uid="uid://c1w1ffh7xdm7d" path="res://Overworld/Textures/Cauldron Bubble.png" id="8_yukbp"]
+[ext_resource type="Material" uid="uid://r8o0r2wl2wmx" path="res://Overworld/Cauldron Bubbles.tres" id="9_yukbp"]
 
 [sub_resource type="Gradient" id="Gradient_1lm5q"]
 interpolation_color_space = 2
@@ -158,7 +160,16 @@ occluder = SubResource("OccluderPolygon2D_yukbp")
 color = Color(0.88, 0.88, 0.88, 1)
 
 [node name="Cauldron Bubbles" type="GPUParticles2D" parent="." unique_id=302001374]
-amount = 4
+texture_filter = 3
+position = Vector2(76, 18.999998)
+amount = 2
+texture = ExtResource("8_yukbp")
+lifetime = 0.6
+preprocess = 1.0
+fixed_fps = 60
+collision_base_size = 0.0
+visibility_rect = Rect2(-200, 0, 200, 99.905)
+process_material = ExtResource("9_yukbp")
 
 [connection signal="reject" from="Loading Zone" to="Player" method="_on_loading_zone_reject"]
 [connection signal="InteractedWith" from="Sleep Trigger" to="." method="_on_sleep_trigger_interacted_with"]
