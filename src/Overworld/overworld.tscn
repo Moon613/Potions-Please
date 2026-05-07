@@ -36,6 +36,7 @@ offsets = PackedFloat32Array(0.62068963, 1)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_u3adh"]
 noise_type = 2
 frequency = 0.025
+fractal_octaves = 3
 fractal_gain = 0.635
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_65c6b"]
@@ -52,8 +53,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_65c6b"]
 gradient = SubResource("Gradient_u3adh")
 fill = 1
-fill_from = Vector2(0.491453, 0.525641)
-fill_to = Vector2(0.517094, 0)
+fill_from = Vector2(0.491, 0.596)
+fill_to = Vector2(0.517, 0.1)
 
 [sub_resource type="Gradient" id="Gradient_65c6b"]
 interpolation_color_space = 1
@@ -189,7 +190,6 @@ DialogueChoice = "OpenQuestMenu"
 
 [node name="Left boundary" parent="." unique_id=1046035178 instance=ExtResource("8_h8npj")]
 position = Vector2(-91, 24)
-monitoring = false
 DialogueChoice = "GatherDewdropsFirst"
 GameinfoFlag = "finishedGatheringTutorial"
 ReflectDirection = Vector2i(1, 0)
@@ -199,7 +199,6 @@ shape = SubResource("WorldBoundaryShape2D_h8npj")
 
 [node name="Right Boundary" parent="." unique_id=1368123061 instance=ExtResource("8_h8npj")]
 position = Vector2(49, 3)
-monitoring = false
 DialogueChoice = "GatherDewdropsFirst"
 GameinfoFlag = "finishedGatheringTutorial"
 ReflectDirection = Vector2i(-1, 0)
@@ -368,14 +367,15 @@ range_item_cull_mask = 4
 texture = SubResource("NoiseTexture2D_65c6b")
 
 [node name="Godray" type="PointLight2D" parent="." unique_id=654064151]
-position = Vector2(5.9999995, -182.49947)
-scale = Vector2(0.71875, 1.1718916)
+position = Vector2(5.9999995, -200.49947)
+scale = Vector2(0.71875, 1.7343917)
 energy = 0.95
 texture = SubResource("GradientTexture2D_65c6b")
 
 [node name="Darken" type="PointLight2D" parent="." unique_id=2036006489]
 position = Vector2(-48, -166)
 scale = Vector2(6.5, 2.8750002)
+energy = 0.75
 blend_mode = 1
 range_item_cull_mask = 9
 texture = SubResource("GradientTexture2D_nlwyh")
