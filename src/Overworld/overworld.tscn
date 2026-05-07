@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://3rpvrs0d3d0l" path="res://Overworld/overworld_playercam.gd" id="4_824ie"]
 [ext_resource type="PackedScene" uid="uid://chkduo5t1kjb6" path="res://Overworld/loading_zone.tscn" id="4_omswd"]
 [ext_resource type="PackedScene" uid="uid://dtivjjebe4l3q" path="res://Overworld/interaction_trigger.tscn" id="5_omswd"]
-[ext_resource type="Texture2D" uid="uid://cp1ptyo7flil0" path="res://Overworld/Textures/DewTile.png" id="6_m4qw5"]
+[ext_resource type="Texture2D" uid="uid://de1qjlt3kkbcs" path="res://Overworld/Textures/DewDropOverworldTile.png" id="6_88ktw"]
 [ext_resource type="PackedScene" uid="uid://ctk1coojvmigi" path="res://Overworld/dialogue_trigger.tscn" id="7_hob5j"]
 [ext_resource type="Script" uid="uid://ckcmd1ucvnicg" path="res://Overworld/map.gd" id="8_2kprj"]
 [ext_resource type="PackedScene" uid="uid://dbmv7afpfwvfs" path="res://Overworld/Boundary.tscn" id="8_h8npj"]
@@ -151,7 +151,7 @@ Size = Vector2(14.135, 9.85)
 [node name="Dewdrop Sprite" type="Sprite2D" parent="." unique_id=1364830688]
 position = Vector2(-61.000004, 7.0000005)
 scale = Vector2(0.049999997, 0.049999997)
-texture = ExtResource("6_m4qw5")
+texture = ExtResource("6_88ktw")
 
 [node name="Sap Trigger" parent="." unique_id=1496835320 instance=ExtResource("5_omswd")]
 z_index = 1

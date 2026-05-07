@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dkgruj3r4tsmj"]
 
 [ext_resource type="Script" uid="uid://0a70vdwmi20t" path="res://dialogue_manager.gd" id="1_muyy6"]
-[ext_resource type="Texture2D" uid="uid://dqctxdq4cfp8p" path="res://Textures/letter.png" id="2_cyevn"]
 [ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="2_e5g5b"]
+[ext_resource type="Texture2D" uid="uid://r3vr0u7gyl4v" path="res://Textures/UpdatedLetter.png" id="2_fpydk"]
 [ext_resource type="StyleBox" uid="uid://bgd7v1a74gfme" path="res://Order Selection Buttons.tres" id="4_2f7bf"]
 [ext_resource type="Theme" uid="uid://16vl7otqqb5w" path="res://Button Theme.tres" id="4_fpydk"]
 
@@ -18,7 +18,7 @@ offset_left = -209.0
 offset_top = -280.0
 offset_right = 222.0
 offset_bottom = 280.81934
-texture = ExtResource("2_cyevn")
+texture = ExtResource("2_fpydk")
 expand_mode = 1
 
 [node name="QuestSelection" type="Control" parent="." unique_id=1594877849]

@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://crvdsd7f8671h"]
 
 [ext_resource type="Script" uid="uid://bomrlhk17a2pu" path="res://Treesap Minigame/tap.gd" id="1_lp3re"]
-[ext_resource type="Texture2D" uid="uid://r6813p1r7xeh" path="res://Treesap Minigame/Textures/tap.png" id="1_oeynv"]
-
+[ext_resource type="Texture2D" uid="uid://pskcw2d83nog" path="res://Treesap Minigame/Spile.png" id="2_lp3re"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jcext"]
 radius = 8.0
@@ -11,7 +10,7 @@ radius = 8.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_oeynv")
+"texture": ExtResource("2_lp3re")
 }],
 "loop": true,
 "name": &"default",
