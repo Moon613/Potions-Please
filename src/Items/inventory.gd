@@ -7,10 +7,17 @@ signal JournalOpen
 @onready var invConvert: Dictionary[String, Item] = {
 	"dewdrops": $DewdropItem,
 	"acorns": $AcornItem,
-	"moss": $WIPItem,
 	"mandrake": $MandrakeItem,
 	"eggs": $EggItem,
 	"sap": $SapItem,
+	"salts": $SaltsItem,
+	"milk": $MilkItem,
+	"lavender": $LavenderItem,
+	"ginger": $GingerItem,
+	"honey": $HoneyItem,
+	"garlic": $GarlicItem,
+	"wings": $WingsItem,
+	"moss": $MossItem,
 	
 	"energy": $EnergyPotion,
 	"sleep": $SleepPotion,

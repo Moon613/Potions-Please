@@ -1,12 +1,12 @@
 @tool
 extends Area2D
 class_name DialogueTrigger
-@export var SceneID: int;
 @export var Size: Vector2 = Vector2(20,20):
 	set(value):
 		Size = value;
 		$CollisionShape2D.shape.size = value;
 @export var DialogueChoice: String;
+@export var showIndicator: bool = true;
 signal InteractedWith(id: int);
 
 var interactionCooldown = 240;
@@ -24,7 +24,7 @@ func _process(delta):
 	if !Engine.is_editor_hint():
 		if interactionCooldown > 0:
 			interactionCooldown -= 1;
-		if GameInfo.finishedGatheringTutorial:
+		if GameInfo.finishedGatheringTutorial and showIndicator:
 			var player: Node2D = get_parent().get_children().filter(func(obj: Node): return obj.is_in_group("Player"))[0];
 			var distance = (self.position - player.position).length();
 			$AnimatedSprite2D.modulate.a = lerp(1, 0, (distance-15)/30);

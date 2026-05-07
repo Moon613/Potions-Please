@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://0a70vdwmi20t" path="res://dialogue_manager.gd" id="1_muyy6"]
 [ext_resource type="Texture2D" uid="uid://dqctxdq4cfp8p" path="res://Textures/letter.png" id="2_cyevn"]
 [ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="2_e5g5b"]
-[ext_resource type="StyleBox" uid="uid://bgd7v1a74gfme" path="res://Order Selection Buttons.tres" id="4_2f7bf"]
-[ext_resource type="Theme" uid="uid://16vl7otqqb5w" path="res://Button Theme.tres" id="4_fpydk"]
 
 [node name="DialogueManager" type="CanvasLayer" unique_id=1399622759]
 layer = 11
@@ -22,7 +20,6 @@ texture = ExtResource("2_cyevn")
 expand_mode = 1
 
 [node name="QuestSelection" type="Control" parent="." unique_id=1594877849]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -356.0
@@ -56,48 +53,30 @@ offset_left = -245.86401
 offset_top = -178.052
 offset_right = 246.13599
 offset_bottom = 177.948
-horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="QuestSelection/ScrollContainer" unique_id=494739075]
+[node name="VScrollBar" type="VScrollBar" parent="QuestSelection/ScrollContainer" unique_id=1410364960]
 layout_mode = 2
-alignment = 1
 
-[node name="Recive Quest" type="Button" parent="QuestSelection" unique_id=2029044952]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25300002
-anchor_top = 0.87900007
-anchor_right = 0.25300002
-anchor_bottom = 0.87900007
-offset_left = -104.13602
-offset_top = -31.756042
-offset_right = 103.86398
-offset_bottom = 32.243958
-theme = ExtResource("4_fpydk")
-theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = ExtResource("4_2f7bf")
-theme_override_styles/pressed = ExtResource("4_2f7bf")
-theme_override_styles/hover = ExtResource("4_2f7bf")
-text = "Recieve Order"
+[node name="Button" type="Button" parent="QuestSelection/ScrollContainer/VScrollBar" unique_id=1061020442]
+layout_mode = 0
+offset_right = 480.0
+offset_bottom = 64.0
+text = "sadsaasad"
 
-[node name="Cancel" type="Button" parent="QuestSelection" unique_id=760820940]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.74700004
-anchor_top = 0.88100004
-anchor_right = 0.74700004
-anchor_bottom = 0.88100004
-offset_left = -110.86401
-offset_top = -32.884033
-offset_right = 97.13599
-offset_bottom = 31.115967
-theme = ExtResource("4_fpydk")
-theme_override_font_sizes/font_size = 46
-theme_override_styles/normal = ExtResource("4_2f7bf")
-theme_override_styles/pressed = ExtResource("4_2f7bf")
-theme_override_styles/hover = ExtResource("4_2f7bf")
-text = "Cancel
-"
+[node name="Button2" type="Button" parent="QuestSelection/ScrollContainer/VScrollBar" unique_id=1553752660]
+layout_mode = 0
+offset_top = 64.0
+offset_right = 480.0
+offset_bottom = 128.0
+text = "sadsaasad"
+
+[node name="Button3" type="Button" parent="QuestSelection/ScrollContainer/VScrollBar" unique_id=1051211969]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 356.0
+offset_right = 488.0
+offset_bottom = 420.0
+text = "sadsaasad"
 
 [node name="PotionSubmissionControl" type="Control" parent="." unique_id=1696398188]
 visible = false
@@ -147,40 +126,27 @@ anchor_top = 0.88100004
 anchor_right = 0.25300002
 anchor_bottom = 0.88100004
 offset_left = -104.13602
-offset_top = -32.00302
+offset_top = -36.00302
 offset_right = 103.86398
-offset_bottom = 31.996979
-theme = ExtResource("4_fpydk")
+offset_bottom = 35.99698
 theme_override_font_sizes/font_size = 46
-theme_override_styles/normal = ExtResource("4_2f7bf")
-theme_override_styles/pressed = ExtResource("4_2f7bf")
-theme_override_styles/hover = ExtResource("4_2f7bf")
 text = "Submit
 "
 
 [node name="Cancel" type="Button" parent="PotionSubmissionControl" unique_id=548795395]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.73700005
+anchor_left = 0.74700004
 anchor_top = 0.88100004
-anchor_right = 0.73700005
+anchor_right = 0.74700004
 anchor_bottom = 0.88100004
-offset_left = -103.74402
-offset_top = -32.00302
-offset_right = 104.25598
-offset_bottom = 31.996979
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("4_fpydk")
+offset_left = -103.86401
+offset_top = -36.00302
+offset_right = 104.13599
+offset_bottom = 35.99698
 theme_override_font_sizes/font_size = 46
-theme_override_styles/normal = ExtResource("4_2f7bf")
-theme_override_styles/pressed = ExtResource("4_2f7bf")
-theme_override_styles/hover = ExtResource("4_2f7bf")
 text = "Cancel
 "
-icon_alignment = 1
 
-[connection signal="pressed" from="QuestSelection/Recive Quest" to="." method="_on_recive_quest_pressed"]
-[connection signal="pressed" from="QuestSelection/Cancel" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="PotionSubmissionControl/Submit" to="." method="_on_potion_submit"]
 [connection signal="pressed" from="PotionSubmissionControl/Cancel" to="." method="_on_cancel_pressed"]

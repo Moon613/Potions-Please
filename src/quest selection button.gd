@@ -1,5 +1,8 @@
-extends Control
+class_name QuestButton
+extends Button
 
+var shortText: String;
+var fullText: String;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,9 +13,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _make_custom_tooltip(for_text: String) -> Object:
-	var style_box: StyleBoxFlat = StyleBoxFlat.new();
-	style_box.set_bg_color(Color(1, 1, 0));
-	style_box.set_border_width_all(2);
-	
-	return style_box;
+
+func _on_mouse_entered():
+	self.text = fullText;
+
+func _on_mouse_exited():
+	self.text = shortText;

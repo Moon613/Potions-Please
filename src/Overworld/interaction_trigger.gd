@@ -39,8 +39,8 @@ func _input(event):
 		if playerIndex != -1 and interactionCooldown <= 0:
 			if SceneID != GameInfo.SceneID.DEWDROPS and GameInfo.leftHouseForFirstTime and !GameInfo.finishedGatheringTutorial:
 				interactionCooldown = COOLDOWN_TIME;
-				DialogueManager.AddDialogue(DialogueManager.DialogueText.new(""));
 				DialogueManager.TriggerDialogue("GatherDewdropsFirst")
+				get_viewport().set_input_as_handled();
 			elif SceneID in GameInfo.minigameEnergy and GameInfo.minigameEnergy[SceneID] < GameInfo.energy:
 				interactionCooldown = COOLDOWN_TIME;
 				InteractedWith.emit(SceneID);

@@ -31,6 +31,15 @@
 [ext_resource type="Texture2D" uid="uid://cykdhfoxlmqwn" path="res://Potion Brewing/Textures/ShrinkElixir.png" id="27_afj8o"]
 [ext_resource type="Texture2D" uid="uid://dp5nmo3fl51ga" path="res://Potion Brewing/Textures/Sleepy Solution.png" id="29_nt10b"]
 [ext_resource type="Texture2D" uid="uid://tiw4qvuy7alj" path="res://Potion Brewing/Textures/Strength Potion.png" id="31_kra4b"]
+[ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="32_7atr6"]
+[ext_resource type="Texture2D" uid="uid://ceh0a6mexdf3j" path="res://Potion Brewing/Textures/Fire Salts.png" id="33_afj8o"]
+[ext_resource type="Texture2D" uid="uid://d2id1s064vj60" path="res://Potion Brewing/Textures/Milk.png" id="34_afj8o"]
+[ext_resource type="Texture2D" uid="uid://dwlrqfnpn6ctx" path="res://Potion Brewing/Textures/Lavender.png" id="35_nt10b"]
+[ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Potion Brewing/Textures/Ginger Root (New).png" id="36_phofv"]
+[ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Potion Brewing/Textures/Honey(New).png" id="37_govji"]
+[ext_resource type="Texture2D" uid="uid://ccevdp500tae4" path="res://Potion Brewing/Textures/Garlic.png" id="38_0cn3d"]
+[ext_resource type="Texture2D" uid="uid://d2k3ne2c7bw25" path="res://Potion Brewing/Textures/Fairy Wings.png" id="39_8n0xt"]
+[ext_resource type="Texture2D" uid="uid://cmwi3r522hfvt" path="res://Potion Brewing/Textures/Moss.png" id="40_g14mx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u23ir"]
 atlas = ExtResource("5_v4wl6")
@@ -88,6 +97,8 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_1unjy")
+rows = null
+cols = null
 inventory_grid = NodePath("InvPanel/GridContainer")
 inventory_slot_scene = ExtResource("2_caf4b")
 tooltip = NodePath("InvPanel/Tooltip")
@@ -234,5 +245,53 @@ icon = SubResource("AtlasTexture_8n0xt")
 [node name="StrengthPotion" parent="." unique_id=1235120166 instance=ExtResource("25_quxbc")]
 item_name = "Strength Tonic"
 icon = SubResource("AtlasTexture_g14mx")
+
+[node name="SaltsItem" type="Node2D" parent="." unique_id=138985568]
+script = ExtResource("32_7atr6")
+item_name = "salts"
+icon = ExtResource("33_afj8o")
+is_stackable = true
+
+[node name="MilkItem" type="Node2D" parent="." unique_id=147742750]
+script = ExtResource("32_7atr6")
+item_name = "milk"
+icon = ExtResource("34_afj8o")
+is_stackable = true
+
+[node name="LavenderItem" type="Node2D" parent="." unique_id=1613448832]
+script = ExtResource("32_7atr6")
+item_name = "lavender"
+icon = ExtResource("35_nt10b")
+is_stackable = true
+
+[node name="GingerItem" type="Node2D" parent="." unique_id=624135939]
+script = ExtResource("32_7atr6")
+item_name = "ginger"
+icon = ExtResource("36_phofv")
+is_stackable = true
+
+[node name="HoneyItem" type="Node2D" parent="." unique_id=143267919]
+script = ExtResource("32_7atr6")
+item_name = "honey"
+icon = ExtResource("37_govji")
+is_stackable = true
+
+[node name="GarlicItem" type="Node2D" parent="." unique_id=1946971342]
+script = ExtResource("32_7atr6")
+item_name = "garlic"
+icon = ExtResource("38_0cn3d")
+is_stackable = true
+
+[node name="WingsItem" type="Node2D" parent="." unique_id=507498782]
+script = ExtResource("32_7atr6")
+item_name = "wings"
+icon = ExtResource("39_8n0xt")
+is_stackable = true
+
+[node name="MossItem" type="Node2D" parent="." unique_id=1921074144]
+script = ExtResource("32_7atr6")
+item_name = "moss"
+icon = ExtResource("40_g14mx")
+is_stackable = true
 
 [connection signal="button_up" from="PlayerPanel/VBoxContainer/HBoxContainer/Journal" to="." method="_on_journal_button_up"]

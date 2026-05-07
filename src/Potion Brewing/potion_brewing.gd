@@ -13,34 +13,12 @@ var stirCyclesCompleted: int = 0;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
-	ReloadIngredientCount();
 	for resource in GameInfo.resources:
 		spawnedIngredients[resource] = 0;
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
 		
 	JournalOpen.connect(GameInfo._on_inventory_journal_open)
-	
-	if GameInfo.resources[GameInfo.DEWDROPS] == 0:
-		$DewdropText.visible = false;
-	else:
-		$DewdropText.visible = true;
-	if GameInfo.resources[GameInfo.ACORNS] == 0:
-		$AcornText.visible = false;
-	else:
-		$AcornText.visible = true;
-	if GameInfo.resources[GameInfo.EGGS] == 0:
-		$DragonEggText.visible = false;
-	else:
-		$DragonEggText.visible = true;
-	if GameInfo.resources[GameInfo.MANDRAKE] == 0:
-		$MandrakeText.visible = false;
-	else:
-		$MandrakeText.visible = true;
-	if GameInfo.resources[GameInfo.SAP] == 0:
-		$SapText.visible = false;
-	else:
-		$SapText.visible = true;
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,14 +46,6 @@ func SpawnPotion(type: String, image: Texture2D):
 	potion.set_script(load("res://Potion Brewing/spawned_potion.gd"))
 	add_child(potion);
 
-func ReloadIngredientCount():
-	#$HoneyText.text = get_tree().current_scene.resources[]
-	$DewdropText.text = str(GameInfo.resources[GameInfo.DEWDROPS]);
-	$AcornText.text = str(GameInfo.resources[GameInfo.ACORNS]);
-	$DragonEggText.text = str(GameInfo.resources[GameInfo.EGGS]);
-	$MandrakeText.text = str(GameInfo.resources[GameInfo.MANDRAKE]);
-	$SapText.text = str(GameInfo.resources[GameInfo.SAP]);
-
 func _input(event):
 	if event.is_action_pressed("ui_cancel") and GameInfo.busy and !GameInfo.journal_is_open:
 		get_viewport().set_input_as_handled()
@@ -91,7 +61,6 @@ func _on_ingredient_consumed(type: String):
 	ChangeIngredients.emit(type, -1);
 	spawnedIngredients[type] -= 1;
 	activeIngredients.append(type);
-	ReloadIngredientCount();
 
 func Reset():
 	$Spoon.Reset();
@@ -106,8 +75,10 @@ func _on_stir_checkpoint_reached(num: int):
 	if mostRecentCheckpoint == 4 and num == 1:
 		mostRecentCheckpoint = 1;
 		stirCyclesCompleted += 1;
+		$"UI/Brewing Progress Bar".IncreaseTargetValue();
 	elif mostRecentCheckpoint == num-1:
 		mostRecentCheckpoint = num;
+		$"UI/Brewing Progress Bar".IncreaseTargetValue();
 
 func _on_not_enough_energy():
 	$AnimationPlayer.play("Stamina Shaking");
