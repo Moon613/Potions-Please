@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://blblhas7uojhh" path="res://Overworld/Textures/Map/player.png" id="16_0ispa"]
 [ext_resource type="Script" uid="uid://bquxeryo18mac" path="res://Overworld/day_display.gd" id="17_y8kkq"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="18_am172"]
+[ext_resource type="Shader" uid="uid://dbk12mp5ucudn" path="res://Overworld/sunspots.gdshader" id="20_u3adh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_h8npj"]
 resource_local_to_scene = true
@@ -27,6 +28,9 @@ normal = Vector2(1, 0)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u3adh"]
 resource_local_to_scene = true
 normal = Vector2(-0.91381156, 0.40613845)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65c6b"]
+shader = ExtResource("20_u3adh")
 
 [sub_resource type="Gradient" id="Gradient_h8npj"]
 interpolation_mode = 2
@@ -361,6 +365,7 @@ offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("18_am172")
 
 [node name="Sunspots" type="PointLight2D" parent="." unique_id=1733241111]
+material = SubResource("ShaderMaterial_65c6b")
 position = Vector2(5.750002, -176.75002)
 scale = Vector2(0.46777344, 0.26660156)
 range_item_cull_mask = 4
