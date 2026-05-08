@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cb2xprgs6tsn4" path="res://Overworld/Entered Trigger.tscn" id="8_g6y85"]
 [ext_resource type="Texture2D" uid="uid://c1w1ffh7xdm7d" path="res://Overworld/Textures/Cauldron Bubble.png" id="8_yukbp"]
 [ext_resource type="Material" uid="uid://r8o0r2wl2wmx" path="res://Overworld/Cauldron Bubbles.tres" id="9_yukbp"]
+[ext_resource type="Script" uid="uid://cn6ioe7xibb4r" path="res://Overworld/candle_light.gd" id="10_p1u7e"]
 
 [sub_resource type="Gradient" id="Gradient_1lm5q"]
 interpolation_color_space = 2
@@ -49,6 +50,33 @@ polygon = PackedVector2Array(-48, -72, -48, -169, -43, -169, -43, -72)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yukbp"]
 polygon = PackedVector2Array(-80, -36, -74, -36, -74, -9, -80, -9)
+
+[sub_resource type="Gradient" id="Gradient_5pphm"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjpvs"]
+gradient = SubResource("Gradient_5pphm")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.86567074, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_nhgpu"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rk730"]
+gradient = SubResource("Gradient_nhgpu")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_bjpvs"]
+offsets = PackedFloat32Array(0.17307693, 0.3125, 0.5192308, 0.7355769)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0.85, 0.85, 0.85, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nhgpu"]
+gradient = SubResource("Gradient_bjpvs")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="inside_house" type="Node2D" unique_id=1222120684]
 y_sort_enabled = true
@@ -161,7 +189,7 @@ color = Color(0.88, 0.88, 0.88, 1)
 
 [node name="Cauldron Bubbles" type="GPUParticles2D" parent="." unique_id=302001374]
 texture_filter = 3
-position = Vector2(76, 18.999998)
+position = Vector2(76, 18)
 amount = 2
 texture = ExtResource("8_yukbp")
 lifetime = 0.6
@@ -170,6 +198,25 @@ fixed_fps = 60
 collision_base_size = 0.0
 visibility_rect = Rect2(-200, 0, 200, 99.905)
 process_material = ExtResource("9_yukbp")
+
+[node name="Candle Light" type="PointLight2D" parent="." unique_id=1185217662]
+position = Vector2(91, -43)
+scale = Vector2(0.15624994, 0.15624994)
+energy = 1.0831043
+texture = SubResource("GradientTexture2D_bjpvs")
+script = ExtResource("10_p1u7e")
+
+[node name="Candle Light 2" type="PointLight2D" parent="." unique_id=1515059794]
+position = Vector2(87.604935, -42.82208)
+scale = Vector2(0.10609579, 0.10609579)
+energy = 1.0926076
+texture = SubResource("GradientTexture2D_rk730")
+script = ExtResource("10_p1u7e")
+
+[node name="Cauldron Light" type="PointLight2D" parent="." unique_id=1983636429]
+position = Vector2(76, 19)
+energy = 0.45
+texture = SubResource("GradientTexture2D_nhgpu")
 
 [connection signal="reject" from="Loading Zone" to="Player" method="_on_loading_zone_reject"]
 [connection signal="InteractedWith" from="Sleep Trigger" to="." method="_on_sleep_trigger_interacted_with"]
