@@ -38,6 +38,14 @@ var leftHouseForFirstTime: bool = false;
 var finishedGatheringTutorial: bool = false;
 var reenteredHouse: bool = false;
 
+var minigameExit: bool = false;
+var openedInventory: bool = false;
+var reenterPotionBrewingScreen: bool = false;
+var madeEnergyPotion: bool = false;
+var leftPotionScene: bool = false
+var openBulletinBoard: bool = false;
+
+
 # Energy amounts for minigames, by scne ID
 var minigameEnergy: Dictionary[int, float] = {
 	# Technically not a minigame, potion brewing. Per potion.
@@ -291,6 +299,9 @@ func _on_inventory_journal_open() -> void:
 func _on_inventory_button_pressed():
 	if !busy and !get_tree().paused:
 		inventory.visible = !inventory.visible;
+		if !openedInventory:
+			DialogueManager.OpenInventory()
+			openedInventory = true;
 
 func IsInventoryOpen():
 	return $Inventory/Inventory.visible;

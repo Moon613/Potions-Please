@@ -10,6 +10,7 @@ var dialogueBox: PackedScene = preload("res://Dialogue Box.tscn");
 var previousDialogueDone: bool = true;
 signal startMovementTutorial;
 signal OpenJournalFromDialogue;
+signal ReturnToOverworld(id: int);
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,6 +29,8 @@ func _ready():
 		"NyxForest": DialogueManager.NyxForest
 	};
 	OpenJournalFromDialogue.connect(GameInfo._on_inventory_journal_open);
+	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
+		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -41,6 +44,7 @@ func _input(event):
 		previousDialogueDone = false;
 		await PlayNextDialogue();
 		previousDialogueDone = true;
+		get_viewport().set_input_as_handled();
 
 func AddDialogues(dialogues: Array, portraits: Array):
 	for i in dialogues.size():
@@ -153,6 +157,9 @@ func IntroDialogue():
 	AddDialogues(["Morning already?!", "Nyx! I can't believe you kept me up all night...", "That's it, you're staying inside today. I don't want you going outside and getting dirty again", "I'm way too tired...", "Maybe I can get Ms. Morgana to make me an energy elixir or something", "Morgana should be downstairs (Use the WASD keys to move around!)"], [Dialogue.YASMEEN])
 	AddDialogue(DialogueAction.new(func(): startMovementTutorial.emit()));
 func OpenQuestMenu(originNode: DialogueTrigger):
+	if !GameInfo.openBulletinBoard:
+		TutBulletinBoard()
+		GameInfo.openBulletinBoard = true
 	potionSelectionOpen = true;
 	for quest: GameInfo.Quest in GameInfo.currentQuests:
 		var button: Button = Button.new();
@@ -168,6 +175,7 @@ func OpenQuestMenu(originNode: DialogueTrigger):
 		button.expand_icon = true;
 		$QuestSelection/ScrollContainer/VBoxContainer.add_child(button);
 	$QuestSelection.visible = true;
+		
 func EnergyQuestGive():
 	var text: Array[String];
 	match randi_range(0, 2):
@@ -263,26 +271,35 @@ func NyxForest():
 func Waterfall(originNode):
 	AddDialogue(DialogueText.new("Hmmm, I don't think there's anything behind there.", Dialogue.YASMEEN));
 
+# TutorialGameFinish
 func TutMinigameComplete():
 	AddDialogues(["Great! Let me check my bag and see how much I got!", "(Press TAB to check your inventory.)"], [Dialogue.YASMEEN])
-
+#TutorialOpenInventory
 func OpenInventory():
-	AddDialogues(["Looks like I got %d morning dew!" % GameInfo.resources["dewdrops"], "[b]The better I do collecting ingredients, the more of the resource I collect.[/b]"], [Dialogue.YASMEEN])
+	AddDialogue(DialogueText.new("Looks like I got %d morning dew!" % GameInfo.resources["dewdrops"], Dialogue.YASMEEN))
+	AddDialogues(["[b]The better I do collecting ingredients, the more of the resource I collect.[/b]"], [Dialogue.YASMEEN])
 	#sfunction to flash energy bar, change intensity back and forth
 	AddDialogues(["Oh… I’m really low on energy, aren’t I?", "[b]I better go inside and brew that energy elixir now.[/b]"], [Dialogue.YASMEEN])
-	
+#TutorialOpenBrewing2
 func SecondTutorialPotionAttempt():
 	# This is a workaround for ??? Idk having it here works ¯\_(ツ)_/¯
 	AddDialogue(DialogueText.new(""));
 	AddDialogues(["I have everything I need now!", "All I need to do is add all of the ingredients from the recipe and stir to mix it into a potion!"], [Dialogue.YASMEEN])
-
-func TutWrongPotion():
+#TutorialWrongPot
+func TutBurntPotion():
 	AddDialogues(["Uh oh, that didn't turn out right.", "I need to pay more attention to what ingredients I put in the cauldron.", "Maybe I should look at the recipe in the potion book again."], [Dialogue.YASMEEN])
-	
+func TutWrongPotion():
+	AddDialogues(["Uh oh, that's not the right potion.", "I must be tired, I really need to make that [b]Energy Elixir[/b]", "Maybe I should look at the recipe in the potion book again."], [Dialogue.YASMEEN])
+#TutorialEnergyPotion
 func TutEnergyPotionMade():
-	#function to fill energy to full
-	AddDialogues(["That’s much better! I probably shouldn’t use shop ingredients to craft potions for myself anymore though…", "[b]Next time I run out of energy, I can just go to bed.[/b]", "Well… guess I should go outside and check the bulletin board for orders now."], [Dialogue.YASMEEN])
-	
+	AddDialogue(DialogueText.new("Yes! A perfect Energy Elixir!", Dialogue.YASMEEN));
+	# maybe add an animation for energy filling
+	GameInfo.energy = 5
+	GameInfo.potions["energy"] -= 1
+	AddDialogues(["That’s much better! I probably shouldn’t use shop ingredients to craft potions for myself anymore though…", "[b]Next time I run out of energy, I can just go to bed.[/b]"], [Dialogue.YASMEEN])
+func PotionTutDone():
+	AddDialogue(DialogueText.new("Well… guess I should go outside and check the bulletin board for orders now.", Dialogue.YASMEEN))
+#TutorialBulletinBoard
 func TutBulletinBoard():
 	AddDialogues(["Customers can ask for any potion. They probably won’t be very happy if I give them the wrong one.", "[b]From here on out I just gotta read the recipes, collect ingredients, craft potions, and submit orders.[/b]", "The shop receives a new shipment of shelf ingredients [b]every 5 days.[/b] I should be careful to not run out of them before then.", "[b]Morgana has said something not so great happens if you mess it up…[/b]"], [Dialogue.YASMEEN])
 

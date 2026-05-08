@@ -17,7 +17,6 @@ func _ready():
 		spawnedIngredients[resource] = 0;
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
-		
 	JournalOpen.connect(GameInfo._on_inventory_journal_open)
 
 
@@ -44,12 +43,26 @@ func SpawnPotion(type: String, image: Texture2D):
 	potion.position = Vector2(416, 296);
 	potion.name = "spawned potion";
 	potion.set_script(load("res://Potion Brewing/spawned_potion.gd"))
+	if !GameInfo.madeEnergyPotion:
+		if type == GameInfo.RUINED:
+			DialogueManager.TutBurntPotion()
+			GameInfo.energy += GameInfo.minigameEnergy[1]
+		elif type != GameInfo.ENERGY:
+			DialogueManager.TutWrongPotion()
+			GameInfo.energy += GameInfo.minigameEnergy[1]
+		elif type == GameInfo.ENERGY:
+			DialogueManager.TutEnergyPotionMade()
+			GameInfo.madeEnergyPotion = true
+			
 	add_child(potion);
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel") and GameInfo.busy and !GameInfo.journal_is_open:
+	if event.is_action_pressed("ui_cancel") and !DialogueManager.inDialogue and !GameInfo.journal_is_open:
 		get_viewport().set_input_as_handled()
 		ReturnToOverworld.emit(2);
+		if GameInfo.madeEnergyPotion and !GameInfo.leftPotionScene:
+			DialogueManager.PotionTutDone()
+			GameInfo.leftPotionScene = true
 	if event is InputEventMouseButton:
 		if event.button_index == 1:
 			if !event.pressed:

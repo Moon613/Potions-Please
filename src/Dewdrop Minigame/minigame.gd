@@ -59,10 +59,9 @@ func _on_rag_collected_drop():
 func _input(event):
 	if event as InputEventMouseButton and event.button_index == 1 and !event.pressed:
 		MouseReleased.emit();
-	if event.is_action_pressed("ui_cancel") and GameInfo.busy:
+	if event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		ReturnToOverworld.emit(0);
-		GameInfo.finishedGatheringTutorial = true;
 		self.queue_free()
 	if !startDrying and doneUIFadeIn and event is InputEventKey and event.keycode == KEY_SPACE:
 		$AnimationPlayer.play("Arrow Move");
@@ -72,9 +71,9 @@ func _input(event):
 		startDrying = true;
 
 func _on_collection_jar_done_move_down():
+	GameInfo.finishedGatheringTutorial = true;
 	ChangeIngredients.emit("dewdrops", timingSuccesses);
 	ReturnToOverworld.emit(0);
-	GameInfo.finishedGatheringTutorial = true;
 	GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.DEWDROPS];
 	self.queue_free()
 
