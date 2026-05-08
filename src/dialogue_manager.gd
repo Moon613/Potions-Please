@@ -263,6 +263,29 @@ func NyxForest():
 func Waterfall(originNode):
 	AddDialogue(DialogueText.new("Hmmm, I don't think there's anything behind there.", Dialogue.YASMEEN));
 
+func TutMinigameComplete():
+	AddDialogues(["Great! Let me check my bag and see how much I got!", "(Press TAB to check your inventory.)"], [Dialogue.YASMEEN])
+
+func OpenInventory():
+	AddDialogues(["Looks like I got %d morning dew!" % GameInfo.resources["dewdrops"], "[b]The better I do collecting ingredients, the more of the resource I collect.[/b]"], [Dialogue.YASMEEN])
+	#sfunction to flash energy bar, change intensity back and forth
+	AddDialogues(["Oh… I’m really low on energy, aren’t I?", "[b]I better go inside and brew that energy elixir now.[/b]"], [Dialogue.YASMEEN])
+	
+func SecondTutorialPotionAttempt():
+	# This is a workaround for ??? Idk having it here works ¯\_(ツ)_/¯
+	AddDialogue(DialogueText.new(""));
+	AddDialogues(["I have everything I need now!", "All I need to do is add all of the ingredients from the recipe and stir to mix it into a potion!"], [Dialogue.YASMEEN])
+
+func TutWrongPotion():
+	AddDialogues(["Uh oh, that didn't turn out right.", "I need to pay more attention to what ingredients I put in the cauldron.", "Maybe I should look at the recipe in the potion book again."], [Dialogue.YASMEEN])
+	
+func TutEnergyPotionMade():
+	#function to fill energy to full
+	AddDialogues(["That’s much better! I probably shouldn’t use shop ingredients to craft potions for myself anymore though…", "[b]Next time I run out of energy, I can just go to bed.[/b]", "Well… guess I should go outside and check the bulletin board for orders now."], [Dialogue.YASMEEN])
+	
+func TutBulletinBoard():
+	AddDialogues(["Customers can ask for any potion. They probably won’t be very happy if I give them the wrong one.", "[b]From here on out I just gotta read the recipes, collect ingredients, craft potions, and submit orders.[/b]", "The shop receives a new shipment of shelf ingredients [b]every 5 days.[/b] I should be careful to not run out of them before then.", "[b]Morgana has said something not so great happens if you mess it up…[/b]"], [Dialogue.YASMEEN])
+
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";
 	const PLACEHOLDER: String = "res://Overworld/Textures/PlaceholderPortrait.png";

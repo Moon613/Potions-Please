@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dosak45c72mij" path="res://Items/WIPItem.tscn" id="8_j1wyx"]
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="8_mdst7"]
 [ext_resource type="Texture2D" uid="uid://bfoveypfrtn02" path="res://Textures/BadStaminaReputation.png" id="8_rhxlg"]
+[ext_resource type="Script" uid="uid://b2taxp6ua3vvy" path="res://Items/stamina_bar.gd" id="10_8n0xt"]
 [ext_resource type="Texture2D" uid="uid://bwlkhcfqbgk2p" path="res://Textures/Journal Potion Ingredient List Icon.png" id="10_hwedm"]
 [ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="11_rhxlg"]
 [ext_resource type="PackedScene" uid="uid://btyjcv8jeer3c" path="res://Items/DewdropItem.tscn" id="15_mdst7"]
@@ -97,8 +98,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_1unjy")
-rows = null
-cols = null
 inventory_grid = NodePath("InvPanel/GridContainer")
 inventory_slot_scene = ExtResource("2_caf4b")
 tooltip = NodePath("InvPanel/Tooltip")
@@ -154,6 +153,10 @@ step = 0.1
 value = 5.0
 texture_under = SubResource("AtlasTexture_8hhu0")
 texture_progress = SubResource("AtlasTexture_30vpt")
+script = ExtResource("10_8n0xt")
+
+[node name="FlashTimer" type="Timer" parent="PlayerPanel/VBoxContainer/Stamina Bar" unique_id=1697997281]
+wait_time = 0.25
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerPanel/VBoxContainer" unique_id=2081991958]
 custom_minimum_size = Vector2(300, 100)
