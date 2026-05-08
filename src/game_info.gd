@@ -27,6 +27,7 @@ var directionTutorial: Dictionary[String, bool] = {
 # Area entered dialogue trigger flags, searching for them with ctrl+shift+F won't find where they're set
 var seenMorganaNote: bool = false;
 var potionBookGet: bool = false;
+var nyxForest: bool = false;
 
 # General tutorial action flags
 var doneMovementTutorial: bool = false;

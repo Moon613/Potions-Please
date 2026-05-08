@@ -24,7 +24,8 @@ func _ready():
 		"PotionBookGet": DialogueManager.PotionBookGet,
 		"GatherDewdropsFirst": DialogueManager.GatherDewdropsFirst,
 		"OpenQuestMenu": DialogueManager.OpenQuestMenu,
-		"Waterfall": DialogueManager.Waterfall
+		"Waterfall": DialogueManager.Waterfall,
+		"NyxForest": DialogueManager.NyxForest
 	};
 	OpenJournalFromDialogue.connect(GameInfo._on_inventory_journal_open);
 
@@ -256,6 +257,8 @@ func ListIngredientsForFirstPotion():
 	, false));
 func GatherDewdropsFirst():
 	AddDialogue(DialogueText.new("I don't think I'll find morning dew over there!", Dialogue.YASMEEN));
+func NyxForest():
+	AddDialogues(["Nyx?!", "What are you doing out here, I thought I left you inside!", "Mrrrp?"], [Dialogue.YASMEEN, Dialogue.YASMEEN, Dialogue.NYX]);
 
 func Waterfall(originNode):
 	AddDialogue(DialogueText.new("Hmmm, I don't think there's anything behind there.", Dialogue.YASMEEN));
@@ -263,6 +266,7 @@ func Waterfall(originNode):
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";
 	const PLACEHOLDER: String = "res://Overworld/Textures/PlaceholderPortrait.png";
+	const NYX: String = "res://Textures/NyxPortrait.png";
 
 class DialogueText:
 	extends Dialogue

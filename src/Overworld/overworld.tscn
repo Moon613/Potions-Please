@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://cjls3nxjcds6y" path="res://Overworld/sunspots.gd" id="20_65c6b"]
 [ext_resource type="Shader" uid="uid://dbk12mp5ucudn" path="res://Overworld/sunspots.gdshader" id="20_u3adh"]
 [ext_resource type="Texture2D" uid="uid://clg381a7q1n08" path="res://Overworld/sunspots_noise.tres" id="21_nlwyh"]
+[ext_resource type="PackedScene" uid="uid://cb2xprgs6tsn4" path="res://Overworld/Entered Trigger.tscn" id="21_pnqpj"]
 [ext_resource type="Texture2D" uid="uid://cjbu3u8r8m15u" path="res://Overworld/overlay_noise.tres" id="22_88ktw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_65c6b"]
@@ -92,7 +93,7 @@ tile_set = ExtResource("1_824ie")
 z_index = 1
 y_sort_enabled = true
 scale = Vector2(0.08, 0.08)
-tile_map_data = PackedByteArray("AAD9////AgAGAAYAAAAAAP//AgAIAAcAAAD/////AgAHAAYAAAD+////AgAHAAYAAAADAP//AgAGAAcAAAAFAPz/AgAIAAUAAAAFAP3/AgAIAAUAAAAFAP7/AgAIAAUAAAAFAP//AgAIAAYAAAAFAPv/AgAIAAUAAAAEAP//AgAHAAYAAAD9//7/AgAGAAUAAAD9//3/AgAGAAUAAAD9//z/AgAGAAUAAAD9//v/AgAGAAUAAAD3/wEAAgAIAAcAAAD2/wEAAgAHAAcAAAD3/wQAAgAIAAcAAAD2/wQAAgAHAAcAAAAFAPn/AgAIAAQAAAAFAPr/AgAIAAUAAAAEAPn/AgAHAAQAAAADAPn/AgAHAAQAAAACAPn/AgAHAAQAAAABAPn/AgAHAAQAAAAAAPn/AgAHAAQAAAD///n/AgAHAAQAAAD9//n/AgAGAAQAAAD+//n/AgAHAAQAAAD9//r/AgAGAAUAAAAIAPv/AgAFAAAAAAAFAO7/AgAJAAYAAAAFAO3/AgAJAAUAAAAFAO//AgAJAAYAAAD0/+j/AgAJAAUAAAD0/+n/AgAJAAYAAAD0/+r/AgAJAAYAAAD0/+v/AgAJAAYAAAD0/+z/AgAJAAcAAAD0/+f/AgAJAAUAAADo//r/AgAGAAcAAADu//r/AgAIAAcAAADp//r/AgAHAAcAAADq//r/AgAHAAcAAADr//r/AgAHAAcAAADs//r/AgAHAAcAAADt//r/AgAHAAcAAADt////AgAGAAcAAADu////AgAHAAcAAADv////AgAHAAcAAADw////AgAIAAcAAADm////AgAGAAcAAADn////AgAHAAcAAADo////AgAHAAcAAADp////AgAIAAcAAADu/wEAAgAFAAAAAAD+/wAABAAAAAwAAAA=")
+tile_map_data = PackedByteArray("AAD9////AgAGAAYAAAAAAP//AgAIAAcAAAD/////AgAHAAYAAAD+////AgAHAAYAAAADAP//AgAGAAcAAAAFAPz/AgAIAAUAAAAFAP3/AgAIAAUAAAAFAP7/AgAIAAUAAAAFAP//AgAIAAYAAAAFAPv/AgAIAAUAAAAEAP//AgAHAAYAAAD9//7/AgAGAAUAAAD9//3/AgAGAAUAAAD9//z/AgAGAAUAAAD9//v/AgAGAAUAAAD3/wEAAgAIAAcAAAD2/wEAAgAHAAcAAAD3/wQAAgAIAAcAAAD2/wQAAgAHAAcAAAAFAPn/AgAIAAQAAAAFAPr/AgAIAAUAAAAEAPn/AgAHAAQAAAADAPn/AgAHAAQAAAACAPn/AgAHAAQAAAABAPn/AgAHAAQAAAAAAPn/AgAHAAQAAAD///n/AgAHAAQAAAD9//n/AgAGAAQAAAD+//n/AgAHAAQAAAD9//r/AgAGAAUAAAAIAPv/AgAFAAAAAAAFAO7/AgAJAAYAAAAFAO3/AgAJAAUAAAAFAO//AgAJAAYAAAD0/+j/AgAJAAYAAAD0/+n/AgAJAAYAAAD0/+r/AgAJAAYAAAD0/+v/AgAJAAYAAAD0/+z/AgAJAAcAAAD0/+f/AgAJAAUAAADo//r/AgAGAAcAAADu//r/AgAIAAcAAADp//r/AgAHAAcAAADq//r/AgAHAAcAAADr//r/AgAHAAcAAADs//r/AgAHAAcAAADt//r/AgAHAAcAAADt////AgAGAAcAAADu////AgAHAAcAAADv////AgAHAAcAAADw////AgAIAAcAAADm////AgAGAAcAAADn////AgAHAAcAAADo////AgAHAAcAAADp////AgAIAAcAAADu/wEAAgAFAAAAAAD+/wAABAAAAAwAAAA=")
 tile_set = ExtResource("1_824ie")
 
 [node name="Trees & Bushes Back" type="TileMapLayer" parent="." unique_id=1212396768]
@@ -373,6 +374,12 @@ energy = 0.75
 blend_mode = 1
 range_item_cull_mask = 9
 texture = SubResource("GradientTexture2D_nlwyh")
+
+[node name="EnteredTrigger" parent="." unique_id=1823033677 instance=ExtResource("21_pnqpj")]
+z_index = 1
+position = Vector2(84, -201)
+DialogueChoice = "NyxForest"
+GameinfoFlag = "nyxForest"
 
 [node name="SunspotsViewport" type="SubViewport" parent="." unique_id=111311710]
 unique_name_in_owner = true
