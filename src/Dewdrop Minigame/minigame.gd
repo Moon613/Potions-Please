@@ -42,6 +42,7 @@ func _ready():
 	$"Space Button".visible = false;
 	$Control/Greyout.visible = false;
 	maximumSliderAttempts = $"Green Bar Detection/CollisionShape2D".shape.size.x / SLIDER_SHRINK_AMOUNT;
+	$CollectionNoise.volume_db = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -51,10 +52,13 @@ func _process(delta):
 		removedJar = true;
 
 func _on_rag_collected_drop():
-	numberOfDropsCollected += 1;
+	numberOfDropsCollected += 1
 	$CollectionNoise.play()
 	if numberOfDropsCollected >= number_of_dewdrops:
-		TransitionToDrying.emit();
+		var tween = create_tween()
+		tween.tween_property($CollectionNoise, "volume_db", -80.0, 0.5)
+		tween.finished.connect($CollectionNoise.stop)
+		TransitionToDrying.emit()
 
 func _input(event):
 	if event as InputEventMouseButton and event.button_index == 1 and !event.pressed:

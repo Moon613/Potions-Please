@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://st1osgmwcwix" path="res://Potion Brewing/Textures/BlankLiquid.png" id="8_o18r5"]
 [ext_resource type="Texture2D" uid="uid://d2ibvlk86fmu5" path="res://Potion Brewing/Textures/Caldron Back.png" id="9_wsuyr"]
 [ext_resource type="Script" uid="uid://btfoqfcybk40q" path="res://Potion Brewing/inside_cauldron_hitbox.gd" id="11_yupxn"]
-[ext_resource type="AudioStream" uid="uid://bbaybtao3kb36" path="res://Sound Effects/Mixing.wav" id="12_1og6f"]
 [ext_resource type="Texture2D" uid="uid://bwlkhcfqbgk2p" path="res://Textures/Journal Potion Ingredient List Icon.png" id="12_wsuyr"]
 [ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="13_8mvhn"]
 [ext_resource type="Texture2D" uid="uid://cgy3ndew38fyl" path="res://Potion Brewing/Textures/Trash Icon.png" id="14_dqwf3"]
@@ -41,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://cmwi3r522hfvt" path="res://Potion Brewing/Textures/Moss.png" id="35_isq66"]
 [ext_resource type="AudioStream" uid="uid://c3culn7rdod1w" path="res://Sound Effects/idle potion.wav" id="38_1nhwd"]
 [ext_resource type="Script" uid="uid://ce5834ckj1kvp" path="res://Potion Brewing/ingredient_amount.gd" id="38_hb5qm"]
+[ext_resource type="AudioStream" uid="uid://bbaybtao3kb36" path="res://Sound Effects/Mixing.wav" id="41_1og6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc17n"]
 size = Vector2(493.45544, 23.248623)
@@ -405,9 +405,6 @@ script = ExtResource("11_yupxn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InsideCauldronHitbox" unique_id=2041093753]
 position = Vector2(416, 212)
 shape = SubResource("RectangleShape2D_cgc07")
-
-[node name="BrewingNoise" type="AudioStreamPlayer2D" parent="InsideCauldronHitbox" unique_id=1417980492]
-stream = ExtResource("12_1og6f")
 
 [node name="UI" type="Node2D" parent="." unique_id=2122860457]
 top_level = true
@@ -859,6 +856,9 @@ autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=367976392]
 libraries/ = SubResource("AnimationLibrary_hb5qm")
+
+[node name="BrewingNoise" type="AudioStreamPlayer2D" parent="." unique_id=1436566422]
+stream = ExtResource("41_1og6f")
 
 [connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]
 [connection signal="ConsumeIngredient" from="InsideCauldronHitbox" to="." method="_on_ingredient_consumed"]

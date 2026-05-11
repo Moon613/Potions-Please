@@ -1,34 +1,44 @@
 extends Area2D
 
-signal StartStirring;
-signal ConsumeIngredient(type: String);
-signal WaterlogSpoonToggle;
-var startedStirring: bool = false;
+signal StartStirring
+signal ConsumeIngredient(type: String)
+signal WaterlogSpoonToggle
 
-# Called when the node enters the scene tree for the first time.
+var startedStirring: bool = false
+@onready var brewing_noise = $BrewingNoise # Reference to your AudioStreamPlayer node
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass 
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var bodies = get_overlapping_bodies();
+func _process(_delta: float) -> void:
+	var bodies = get_overlapping_bodies()
+	var spoon_present = false
+	
 	for body in bodies:
+		# Handle Ingredients
 		if body.is_in_group("Draggable Ingredients"):
-			BrewingIngredient.picked = false;
-			body.queue_free();
-			# This is a little bit lazy, but we know that the signal will always exist so it's harmless
-			ConsumeIngredient.emit(body.Type);
-		if body.is_in_group("Spoon") and !startedStirring:
-			print("Started Stirring")
-			StartStirring.emit();
-			startedStirring = true;
+			BrewingIngredient.picked = false
+			ConsumeIngredient.emit(body.Type)
+			body.queue_free()
+		
+		# Handle Spoon Logic
+		if body.is_in_group("Spoon"):
+			spoon_present = true
+			if !startedStirring:
+				print("Started Stirring")
+				StartStirring.emit()
+				startedStirring = true
 
+	# Play sound only if the spoon is inside; stop it if the spoon leaves
+	if spoon_present and !brewing_noise.playing:
+		brewing_noise.play()
+	elif !spoon_present and brewing_noise.playing:
+		brewing_noise.stop()
 
 func _on_body_entered(body: Node2D):
 	if body.is_in_group("Spoon"):
-		WaterlogSpoonToggle.emit();
+		WaterlogSpoonToggle.emit()
 
 func _on_body_exited(body: Node2D):
 	if body.is_in_group("Spoon"):
-		WaterlogSpoonToggle.emit();
+		WaterlogSpoonToggle.emit()
