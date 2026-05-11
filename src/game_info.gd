@@ -295,6 +295,7 @@ func set_dict(dict_name, dict_data):
 
 func _on_inventory_journal_open() -> void:
 	book_layer.visible = true
+	journal_is_open = true;
 
 func _on_inventory_button_pressed():
 	if !busy and !get_tree().paused:
