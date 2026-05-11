@@ -77,6 +77,13 @@ gradient = SubResource("Gradient_bjpvs")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="Gradient" id="Gradient_yukbp"]
+offsets = PackedFloat32Array(0, 0.12921348, 0.8426966, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.45, 0.45, 0.45, 1, 0.45, 0.45, 0.45, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p1u7e"]
+gradient = SubResource("Gradient_yukbp")
+
 [node name="inside_house" type="Node2D" unique_id=1222120684]
 y_sort_enabled = true
 
@@ -95,7 +102,7 @@ collidedWithTransition = true
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1584677186]
 zoom = Vector2(8.135, 8.135)
 limit_left = -72
-limit_top = -97
+limit_top = -72
 limit_right = 107
 limit_bottom = 40
 limit_smoothed = true
@@ -197,7 +204,7 @@ process_material = ExtResource("9_yukbp")
 [node name="Candle Light" type="PointLight2D" parent="." unique_id=1185217662]
 position = Vector2(91, -43)
 scale = Vector2(0.15624994, 0.15624994)
-energy = 1.1
+energy = 0.92609614
 texture = SubResource("GradientTexture2D_bjpvs")
 script = ExtResource("10_p1u7e")
 
@@ -212,6 +219,13 @@ script = ExtResource("10_p1u7e")
 position = Vector2(76, 19)
 energy = 0.45
 texture = SubResource("GradientTexture2D_nhgpu")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=613705001]
+position = Vector2(60, -16.000002)
+scale = Vector2(1.46875, 1.84375)
+energy = 0.85
+blend_mode = 1
+texture = SubResource("GradientTexture2D_p1u7e")
 
 [connection signal="reject" from="Loading Zone" to="Player" method="_on_loading_zone_reject"]
 [connection signal="reject" from="Upstairs Loading Zone" to="Player" method="_on_loading_zone_reject"]
