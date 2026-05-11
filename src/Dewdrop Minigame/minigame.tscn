@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://bin3g35q8wcy3" path="res://Dewdrop Minigame/collection_jar.gd" id="8_osxt6"]
 [ext_resource type="Texture2D" uid="uid://bpwb1xatmcl8v" path="res://Dewdrop Minigame/Textures/DewJarFull.png" id="11_vuaru"]
 [ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="13_2l8w5"]
-[ext_resource type="AudioStream" uid="uid://870rriqmql7e" path="res://Sound Effects/good noise.wav" id="14_6cmm1"]
+[ext_resource type="AudioStream" uid="uid://dqhx4rq3ljnpn" path="res://Sound Effects/DewdropCollect.wav" id="13_8xp7k"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="15_di2qq"]
 [ext_resource type="Texture2D" uid="uid://cd7jmwbd6ejko" path="res://Dewdrop Minigame/Textures/Minigame Indicator Arrow1.png" id="16_0ktjd"]
 [ext_resource type="Texture2D" uid="uid://ga7mmftjjkl" path="res://Dewdrop Minigame/Textures/Space Bar.png" id="16_i1f0g"]
@@ -351,7 +351,7 @@ sprite_frames = SubResource("SpriteFrames_8xp7k")
 polygon = PackedVector2Array(0, 128, -208, 104, -280, 16, -256, -48, -248, -112, 0, -64, 248, -104, 264, -48, 296, 16, 216, 104)
 
 [node name="CollectionNoise" type="AudioStreamPlayer2D" parent="." unique_id=1413924930]
-stream = ExtResource("14_6cmm1")
+stream = ExtResource("13_8xp7k")
 
 [node name="Control" type="Control" parent="." unique_id=27609992]
 layout_mode = 3
