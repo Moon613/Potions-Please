@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="22_0mxup"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Potion Brewing/Textures/MorningDewIngredient.png" id="22_a3cj8"]
-[ext_resource type="Script" uid="uid://b0rxbno1icaki" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
+[ext_resource type="Script" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Potion Brewing/Textures/Honey(New).png" id="23_1nhwd"]
 [ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="25_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Potion Brewing/Textures/Ginger Root (New).png" id="26_0mxup"]
@@ -183,6 +183,9 @@ radius = 60.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_yffeo"]
 radius = 85.0
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hb5qm"]
+normal = Vector2(1, 0)
+
 [sub_resource type="Animation" id="Animation_1nhwd"]
 length = 0.001
 tracks/0/type = "value"
@@ -285,7 +288,7 @@ z_index = 1
 position = Vector2(-195, 153)
 disable_mode = 2
 collision_layer = 4
-collision_mask = 4
+collision_mask = 12
 input_pickable = true
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_3ii5e")
@@ -837,6 +840,14 @@ number = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 4" unique_id=955978559]
 shape = SubResource("CircleShape2D_yffeo")
+
+[node name="Spoon Barrier" type="StaticBody2D" parent="." unique_id=123843847]
+position = Vector2(-315, 136)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spoon Barrier" unique_id=1799608831]
+shape = SubResource("WorldBoundaryShape2D_hb5qm")
 
 [node name="Idle Potion Noises" type="AudioStreamPlayer2D" parent="." unique_id=774005826]
 stream = ExtResource("38_1nhwd")

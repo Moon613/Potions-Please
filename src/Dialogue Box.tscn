@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsovbokdd3n7k"]
 
-[ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="1_kdsf3"]
+[ext_resource type="Texture2D" uid="uid://b51g3tcpwhy2q" path="res://Textures/New_UI.png" id="1_kdsf3"]
 [ext_resource type="Texture2D" uid="uid://dglpm154k2ck1" path="res://Overworld/Textures/YasmeenPortrait.png" id="2_e3ibl"]
 [ext_resource type="Script" uid="uid://bwn8cygsdybup" path="res://dialogue_box.gd" id="2_ih62h"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="3_kdsf3"]
@@ -19,18 +19,19 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.6, 0.532)
 texture = ExtResource("1_kdsf3")
-patch_margin_left = 614
-patch_margin_top = 128
-patch_margin_right = 614
-patch_margin_bottom = 128
+region_rect = Rect2(0, 0, 1100, 281)
+patch_margin_left = 54
+patch_margin_top = 93
+patch_margin_right = 95
+patch_margin_bottom = 68
 script = ExtResource("2_ih62h")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=129194833]
 layout_mode = 0
-offset_left = 408.1009
-offset_top = 90.56393
-offset_right = 1720.1008
-offset_bottom = 320.56393
+offset_left = 390.0
+offset_top = 92.10526
+offset_right = 1850.0
+offset_bottom = 334.58646
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_fonts/normal_font = ExtResource("3_kdsf3")
@@ -41,6 +42,6 @@ text = "adsetdrfhgx"
 fit_content = true
 
 [node name="Portrait" type="Sprite2D" parent="." unique_id=2031238851]
-position = Vector2(193.10095, 201.16542)
-scale = Vector2(0.7203886, 0.7203887)
+z_index = -1
+position = Vector2(205, 195.48872)
 texture = ExtResource("2_e3ibl")

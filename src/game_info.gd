@@ -27,6 +27,7 @@ var directionTutorial: Dictionary[String, bool] = {
 # Area entered dialogue trigger flags, searching for them with ctrl+shift+F won't find where they're set
 var seenMorganaNote: bool = false;
 var potionBookGet: bool = false;
+var nyxForest: bool = false;
 
 # General tutorial action flags
 var doneMovementTutorial: bool = false;
@@ -36,6 +37,14 @@ var closedPotionBookInBrewing: bool = false;
 var leftHouseForFirstTime: bool = false;
 var finishedGatheringTutorial: bool = false;
 var reenteredHouse: bool = false;
+
+var minigameExit: bool = false;
+var openedInventory: bool = false;
+var reenterPotionBrewingScreen: bool = false;
+var madeEnergyPotion: bool = false;
+var leftPotionScene: bool = false
+var openBulletinBoard: bool = false;
+
 
 # Energy amounts for minigames, by scne ID
 var minigameEnergy: Dictionary[int, float] = {
@@ -286,10 +295,14 @@ func set_dict(dict_name, dict_data):
 
 func _on_inventory_journal_open() -> void:
 	book_layer.visible = true
+	journal_is_open = true;
 
 func _on_inventory_button_pressed():
 	if !busy and !get_tree().paused:
 		inventory.visible = !inventory.visible;
+		if !openedInventory:
+			DialogueManager.OpenInventory()
+			openedInventory = true;
 
 func IsInventoryOpen():
 	return $Inventory/Inventory.visible;

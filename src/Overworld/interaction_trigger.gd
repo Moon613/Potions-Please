@@ -41,6 +41,8 @@ func _input(event):
 				interactionCooldown = COOLDOWN_TIME;
 				DialogueManager.TriggerDialogue("GatherDewdropsFirst")
 				get_viewport().set_input_as_handled();
+			elif SceneID == GameInfo.SceneID.DEWDROPS and (!GameInfo.reenterPotionBrewingScreen and GameInfo.minigameExit):
+				pass
 			elif SceneID in GameInfo.minigameEnergy and GameInfo.minigameEnergy[SceneID] < GameInfo.energy:
 				interactionCooldown = COOLDOWN_TIME;
 				InteractedWith.emit(SceneID);

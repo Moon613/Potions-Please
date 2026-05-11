@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 	var bodies = get_overlapping_bodies();
 	for body in bodies:
 		if body.is_in_group("Draggable Ingredients"):
+			BrewingIngredient.picked = false;
 			body.queue_free();
 			# This is a little bit lazy, but we know that the signal will always exist so it's harmless
 			ConsumeIngredient.emit(body.Type);

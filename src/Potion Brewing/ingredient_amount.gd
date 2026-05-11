@@ -10,6 +10,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var amount = GameInfo.resources[Type];
-	text = str(get_parent().spawnedIngredients[Type]) + "/" + str(amount);
+	text = str(amount - get_parent().spawnedIngredients[Type]) + "/" + str(amount);
 	if amount == -1:
 		text = "∞";
