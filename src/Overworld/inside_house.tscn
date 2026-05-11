@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://3rpvrs0d3d0l" path="res://Overworld/overworld_playercam.gd" id="4_giixd"]
 [ext_resource type="PackedScene" uid="uid://chkduo5t1kjb6" path="res://Overworld/loading_zone.tscn" id="4_gkw0i"]
 [ext_resource type="PackedScene" uid="uid://dtivjjebe4l3q" path="res://Overworld/interaction_trigger.tscn" id="5_xypit"]
-[ext_resource type="PackedScene" uid="uid://bx3vs5nda6ecd" path="res://Overworld/sleep_trigger.tscn" id="6_wgk2m"]
 [ext_resource type="PackedScene" uid="uid://cb2xprgs6tsn4" path="res://Overworld/Entered Trigger.tscn" id="8_g6y85"]
 [ext_resource type="Texture2D" uid="uid://c1w1ffh7xdm7d" path="res://Overworld/Textures/Cauldron Bubble.png" id="8_yukbp"]
 [ext_resource type="Material" uid="uid://r8o0r2wl2wmx" path="res://Overworld/Cauldron Bubbles.tres" id="9_yukbp"]
@@ -67,7 +66,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_nhgpu")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.9186385, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_bjpvs"]
 offsets = PackedFloat32Array(0.17307693, 0.3125, 0.5192308, 0.7355769)
@@ -110,10 +109,6 @@ Size = Vector2(35, 2)
 position = Vector2(76, 20)
 SceneID = 1
 Size = Vector2(28, 30)
-
-[node name="Sleep Trigger" parent="." unique_id=62262092 instance=ExtResource("6_wgk2m")]
-position = Vector2(-42, -27)
-Size = Vector2(10, 10)
 
 [node name="Morgana Note Trigger" parent="." unique_id=1823033677 instance=ExtResource("8_g6y85")]
 position = Vector2(-60.999996, 12.000011)
@@ -202,14 +197,14 @@ process_material = ExtResource("9_yukbp")
 [node name="Candle Light" type="PointLight2D" parent="." unique_id=1185217662]
 position = Vector2(91, -43)
 scale = Vector2(0.15624994, 0.15624994)
-energy = 1.0305665
+energy = 1.1
 texture = SubResource("GradientTexture2D_bjpvs")
 script = ExtResource("10_p1u7e")
 
 [node name="Candle Light 2" type="PointLight2D" parent="." unique_id=1515059794]
 position = Vector2(87.604935, -42.82208)
 scale = Vector2(0.10609579, 0.10609579)
-energy = 1.0489615
+energy = 1.1
 texture = SubResource("GradientTexture2D_rk730")
 script = ExtResource("10_p1u7e")
 
@@ -219,5 +214,4 @@ energy = 0.45
 texture = SubResource("GradientTexture2D_nhgpu")
 
 [connection signal="reject" from="Loading Zone" to="Player" method="_on_loading_zone_reject"]
-[connection signal="InteractedWith" from="Sleep Trigger" to="." method="_on_sleep_trigger_interacted_with"]
 [connection signal="reject" from="Upstairs Loading Zone" to="Player" method="_on_loading_zone_reject"]
