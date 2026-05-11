@@ -15,5 +15,6 @@ func _process(delta):
 	if timer >= refreshTime:
 		var tex: ViewportTexture = %SunspotsViewport.get_texture();
 		image = ImageTexture.create_from_image(tex.get_image());
+		var trash = self.texture;
 		self.texture = image;
 		timer = 0;
