@@ -60,6 +60,11 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel") and !DialogueManager.inDialogue and !GameInfo.journal_is_open:
 		get_viewport().set_input_as_handled()
 		ReturnToOverworld.emit(2);
+		for key in spawnedIngredients:
+			spawnedIngredients[key] = 0;
+		for child in get_children():
+			if child.is_in_group("Draggable Ingredients") and child.movable:
+				child.queue_free();
 		if GameInfo.madeEnergyPotion and !GameInfo.leftPotionScene:
 			DialogueManager.PotionTutDone()
 			GameInfo.leftPotionScene = true
