@@ -37,10 +37,9 @@ func _process(delta):
 	pass
 
 func _input(event):
-	if event is InputEventKey and event.is_pressed() and !event.is_echo() and $"Morgana Note".visible:
-		$"Morgana Note".visible = false;
-		get_viewport().set_input_as_handled();
-	if event is InputEvent and event is InputEventKey and event.is_pressed() and !event.is_echo() and inDialogue and ![KEY_A, KEY_S, KEY_D, KEY_W].has(event.keycode) and !potionSelectionOpen and previousDialogueDone:
+	if (event is InputEventMouseButton or (event is InputEventKey and ![KEY_A, KEY_S, KEY_D, KEY_W].has(event.keycode))) and event.is_pressed() and !event.is_echo() and inDialogue and !potionSelectionOpen and previousDialogueDone:
+		if $"Morgana Note".visible:
+			$"Morgana Note".visible = false;
 		previousDialogueDone = false;
 		await PlayNextDialogue();
 		previousDialogueDone = true;
