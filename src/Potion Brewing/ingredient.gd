@@ -12,7 +12,6 @@ signal NotEnoughEnergyForBrewing;
 var movable: bool = false;
 var mouseOffset: Vector2;
 var beingMoved: bool = false;
-var locked: bool = false;
 var mouseOver: bool = false;
 static var picked: bool = false;
 
