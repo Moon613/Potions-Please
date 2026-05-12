@@ -7,10 +7,10 @@
 [ext_resource type="Shader" uid="uid://d245ild5vhgje" path="res://Acorn Mini Game/treeshake.gdshader" id="3_xvegq"]
 [ext_resource type="Script" uid="uid://cdae412rdiih5" path="res://Acorn Mini Game/basket.gd" id="4_bi5ov"]
 [ext_resource type="Texture2D" uid="uid://dy1hctcy72j7g" path="res://Acorn Mini Game/Textures/Tree Acorn Minigame.png" id="6_7ub14"]
+[ext_resource type="AudioStream" uid="uid://3cmudvuwxkpp" path="res://Sound Effects/TreeShake.wav" id="7_g33fa"]
 [ext_resource type="Texture2D" uid="uid://buef2hfncfker" path="res://Acorn Mini Game/Textures/Basket Back Acorn Minigame.png" id="8_omdso"]
 [ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
 [ext_resource type="Texture2D" uid="uid://c1g452omww4sy" path="res://Acorn Mini Game/Textures/Basket Front Acorn Minigame.png" id="9_g33fa"]
-
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dtyt"]
 shader = ExtResource("3_xvegq")
@@ -71,6 +71,9 @@ texture = ExtResource("6_7ub14")
 [node name="Timer" type="Timer" parent="Tree" unique_id=752807949]
 wait_time = 10.0
 one_shot = true
+
+[node name="ShakingNoise" type="AudioStreamPlayer" parent="Tree" unique_id=440663056]
+stream = ExtResource("7_g33fa")
 
 [node name="Basket" type="CharacterBody2D" parent="." unique_id=690234474]
 position = Vector2(0, 99)

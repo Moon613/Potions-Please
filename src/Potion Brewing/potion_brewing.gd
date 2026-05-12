@@ -30,6 +30,9 @@ func _process(delta):
 			# This check is preformed for each valid recipe until a candidate is found.
 			if recipe.ingredients.all(func(ingredient): return ingredient in activeIngredients) and recipe.ingredients.size() == activeIngredients.size():
 				SpawnPotion(recipe.output, recipe.image);
+				$PotionAppear.play()
+				await get_tree().create_timer(1.9).timeout
+				$PotionAppear.stop()
 				Reset();
 				return;
 		SpawnPotion(GameInfo.RUINED, GameInfo.ruinedPotionSprite);

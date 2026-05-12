@@ -41,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://cmwi3r522hfvt" path="res://Potion Brewing/Textures/Moss.png" id="35_isq66"]
 [ext_resource type="AudioStream" uid="uid://c3culn7rdod1w" path="res://Sound Effects/idle potion.wav" id="38_1nhwd"]
 [ext_resource type="Script" uid="uid://ce5834ckj1kvp" path="res://Potion Brewing/ingredient_amount.gd" id="38_hb5qm"]
+[ext_resource type="AudioStream" uid="uid://bspohi7x4kfgs" path="res://Sound Effects/PotionAppear.wav" id="42_amh61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sc17n"]
 size = Vector2(493.45544, 23.248623)
@@ -127,12 +128,12 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 1
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb5qm"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_klpcu"]
 resource_local_to_scene = true
 radius = 49.77
 height = 149.23
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1og6f"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hjlcq"]
 resource_local_to_scene = true
 radius = 51.42856
 height = 177.14282
@@ -514,14 +515,14 @@ script = ExtResource("22_hb5qm")
 position = Vector2(-828, -191)
 mass = 0.61
 Sprite = ExtResource("23_1nhwd")
-Shape = SubResource("CapsuleShape2D_hb5qm")
+Shape = SubResource("CapsuleShape2D_klpcu")
 Type = "honey"
 
 [node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
 position = Vector2(-763, 28)
 mass = 0.605
 Sprite = ExtResource("22_a3cj8")
-Shape = SubResource("CapsuleShape2D_1og6f")
+Shape = SubResource("CapsuleShape2D_hjlcq")
 Type = "dewdrops"
 
 [node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
@@ -529,7 +530,7 @@ texture = ExtResource("22_a3cj8")
 
 [node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_1og6f")
+shape = SubResource("CapsuleShape2D_hjlcq")
 
 [node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
 position = Vector2(-595, 16)
@@ -859,6 +860,9 @@ autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=367976392]
 libraries/ = SubResource("AnimationLibrary_hb5qm")
+
+[node name="PotionAppear" type="AudioStreamPlayer" parent="." unique_id=592702545]
+stream = ExtResource("42_amh61")
 
 [connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]
 [connection signal="ConsumeIngredient" from="InsideCauldronHitbox" to="." method="_on_ingredient_consumed"]

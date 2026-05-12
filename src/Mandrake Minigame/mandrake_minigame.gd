@@ -94,6 +94,8 @@ func _on_hammer_area_entered(area: Area2D) -> void:
 		if not area.mandrake_hurtbox.disabled:
 			print("gotcha")
 			$CollectionNoise.play()
+			await get_tree().create_timer(0.6).timeout
+			$CollectionNoise.stop()
 			mandrakesCollected += 1
 			area.mandrake_hurtbox.disabled = true
 		pass
