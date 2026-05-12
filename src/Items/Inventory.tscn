@@ -297,4 +297,6 @@ item_name = "moss"
 icon = ExtResource("40_g14mx")
 is_stackable = true
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="PlayerPanel" to="." method="_on_player_panel_visibility_changed"]
 [connection signal="button_up" from="PlayerPanel/VBoxContainer/HBoxContainer/Journal" to="." method="_on_journal_button_up"]

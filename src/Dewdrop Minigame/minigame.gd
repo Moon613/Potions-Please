@@ -19,6 +19,7 @@ var timingFailures: int = 0;
 var maximumSliderAttempts: int = 0;
 var canEndMinigame: bool = false;
 const SLIDER_SHRINK_AMOUNT: int = 250;
+@onready var hitCount = 0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -86,7 +87,7 @@ func _on_tutorial_popup_hide() -> void:
 	get_tree().paused = false
 
 func _on_info_button_pressed() -> void:
-	GameInfo.dragoneggTutorial = true
+	GameInfo.dewdropTutorial = true
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	$Control/Tutorial.popup();
@@ -100,11 +101,15 @@ func _on_animation_player_animation_finished(anim_name):
 		doneUIFadeIn = true;
 
 func _on_arrow_success():
-	timingSuccesses += 1;
+	if hitCount < 5:
+		hitCount += 1
+		timingSuccesses += 1;
 	ShrinkSliderArea();
 
 func _on_arrow_faliure():
-	timingFailures += 1;
+	if hitCount < 5:
+		hitCount += 1
+		timingFailures += 1;
 	ShrinkSliderArea();
 
 func ShrinkSliderArea():

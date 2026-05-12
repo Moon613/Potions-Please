@@ -37,7 +37,7 @@ func _process(delta):
 	pass
 
 func _input(event):
-	if (event is InputEventMouseButton or (event is InputEventKey and ![KEY_A, KEY_S, KEY_D, KEY_W].has(event.keycode))) and event.is_pressed() and !event.is_echo() and inDialogue and !potionSelectionOpen and previousDialogueDone:
+	if (event is InputEventMouseButton or (event is InputEventKey and ![KEY_A, KEY_S, KEY_D, KEY_W].has(event.keycode))) and event.is_pressed() and !event.is_echo() and inDialogue and (!potionSelectionOpen || !GameInfo.openBulletinBoard) and previousDialogueDone:
 		if $"Morgana Note".visible:
 			$"Morgana Note".visible = false;
 		previousDialogueDone = false;
@@ -158,7 +158,6 @@ func IntroDialogue():
 func OpenQuestMenu(originNode: DialogueTrigger):
 	if !GameInfo.openBulletinBoard:
 		TutBulletinBoard()
-		GameInfo.openBulletinBoard = true
 	potionSelectionOpen = true;
 	for quest: GameInfo.Quest in GameInfo.currentQuests:
 		var button: Button = Button.new();
@@ -275,7 +274,9 @@ func TutMinigameComplete():
 	AddDialogues(["Great! Let me check my bag and see how much I got!", "(Press TAB to check your inventory.)"], [Dialogue.YASMEEN])
 #TutorialOpenInventory
 func OpenInventory():
-	AddDialogue(DialogueText.new("Looks like I got %d morning dew!" % GameInfo.resources["dewdrops"], Dialogue.YASMEEN))
+	AddDialogue(DialogueText.new(""));
+	var dewdropAmount: String = "Looks like I got %d morning dew!" % GameInfo.resources["dewdrops"]
+	AddDialogue(DialogueText.new(dewdropAmount, Dialogue.YASMEEN))
 	AddDialogues(["[b]The better I do collecting ingredients, the more of the resource I collect.[/b]"], [Dialogue.YASMEEN])
 	#sfunction to flash energy bar, change intensity back and forth
 	AddDialogues(["Oh… I’m really low on energy, aren’t I?", "[b]I better go inside and brew that energy elixir now.[/b]"], [Dialogue.YASMEEN])
@@ -301,7 +302,11 @@ func PotionTutDone():
 #TutorialBulletinBoard
 func TutBulletinBoard():
 	AddDialogues(["Customers can ask for any potion. They probably won’t be very happy if I give them the wrong one.", "[b]From here on out I just gotta read the recipes, collect ingredients, craft potions, and submit orders.[/b]", "The shop receives a new shipment of shelf ingredients [b]every 5 days.[/b] I should be careful to not run out of them before then.", "[b]Morgana has said something not so great happens if you mess it up…[/b]"], [Dialogue.YASMEEN])
-
+	AddDialogue(DialogueAction.new(func():
+		GameInfo.openBulletinBoard = true;
+	, false));
+	#this seems to eat an extra input after closing the board i think
+	
 @abstract class Dialogue:
 	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";
 	const PLACEHOLDER: String = "res://Overworld/Textures/PlaceholderPortrait.png";

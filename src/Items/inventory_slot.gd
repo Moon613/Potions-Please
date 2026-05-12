@@ -38,6 +38,7 @@ func _on_inventory_slot_mouse_exited() -> void:
 
 # Removes item from slot
 func remove_item():
+	print("removing item")
 	if item:
 		self.remove_child(item)
 		item.free()

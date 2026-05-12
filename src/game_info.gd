@@ -162,11 +162,10 @@ func _change_ingredient_amount(ingredient: String, amount: int):
 	if ingredient in resources and resources[ingredient] >= 0:
 		resources[ingredient] += amount;
 		#update inventory panel
-		inventory.add_item(ingredient, amount)
+		#inventory.add_item(ingredient, amount)
 
 func add_potion(potion: String):
 	potions[potion] += 1
-	inventory.add_item(potion, 1)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -300,7 +299,7 @@ func _on_inventory_journal_open() -> void:
 func _on_inventory_button_pressed():
 	if !busy and !get_tree().paused:
 		inventory.visible = !inventory.visible;
-		if !openedInventory:
+		if !openedInventory and minigameExit:
 			DialogueManager.OpenInventory()
 			openedInventory = true;
 

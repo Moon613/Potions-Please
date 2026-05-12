@@ -23,7 +23,7 @@ func _on_sleep_trigger_interacted_with() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Fade To Black":
 		GameInfo.busy = false;
-		GameInfo.energy = clamp(GameInfo.energy + 5, 0, 5);
+		GameInfo.energy = 5;
 		
 		var questsToErase: Array[int] = [];
 		for i: int in GameInfo.currentQuests.size():

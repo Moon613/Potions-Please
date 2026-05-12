@@ -84,13 +84,14 @@ func _on_arrow_faliure():
 	SpawnDroplet(Vector2(X, -500), 1)
 
 func SpawnDroplet(initialDirection: Vector2, z_index: int = 0):
-	$AnimatedSprite2D.material.set_shader_parameter("wetness", lerp(1.0, 0.4, (float(get_parent().timingSuccesses) / float(get_parent().maximumSliderAttempts+1))));
-	var drop = dewdrop.instantiate();
-	drop.name = "Dewdrop";
-	drop.gravity_scale = 1;
-	drop.linear_velocity = initialDirection;
-	drop.z_index = z_index;
-	get_parent().add_child(drop);
+	if $"..".hitCount < 5:
+		$AnimatedSprite2D.material.set_shader_parameter("wetness", lerp(1.0, 0.4, (float(get_parent().timingSuccesses) / float(get_parent().maximumSliderAttempts+1))));
+		var drop = dewdrop.instantiate();
+		drop.name = "Dewdrop";
+		drop.gravity_scale = 1;
+		drop.linear_velocity = initialDirection;
+		drop.z_index = z_index;
+		get_parent().add_child(drop);
 	$RagSqueezePlayer.play("Rag Squeeze");
 
 func _on_rag_squeeze_player_animation_finished(anim_name):

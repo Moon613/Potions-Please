@@ -91,6 +91,8 @@ func _on_slot_hovered(which: InventorySlot, is_hovering: bool):
 # removes item from world and adds it to inventory
 func add_item(item_name: String, amount: int) -> void:
 	# convert string to Item
+	
+	print("adding " + str(amount) + " of " + item_name)
 	var item: Item = invConvert[item_name]
 	var _item: InventoryItem = inventory_item_scene.instantiate()
 	_item.set_data(
@@ -149,7 +151,9 @@ func remove_all(_name: String) -> void:
 
 # removes all items from inventory
 func clear_inventory() -> void:
+	print("clearing inventory")
 	for slot in slots:
+		print("clearing slot " + str(slot.name))
 		slot.remove_item()
 
 func _on_load_inv():
@@ -167,3 +171,26 @@ func _on_load_inv():
 
 func _on_journal_button_up() -> void:
 	JournalOpen.emit()
+	
+func set_items():
+	print("setting items")
+	var res = GameInfo.resources
+	for item in res:
+		var amount = res[item]
+		if amount > 0:
+			add_item(item,amount);
+	var pot = GameInfo.potions
+	for item in pot:
+		var amount = pot[item]
+		if amount > 0:
+			add_item(item,amount);
+	pass
+
+
+func _on_visibility_changed() -> void:
+	if GameInfo.seenPotionBookFirstTime:
+		print("panel visibility " + str(visible))
+		if visible:
+			set_items()
+		else:
+			clear_inventory()
