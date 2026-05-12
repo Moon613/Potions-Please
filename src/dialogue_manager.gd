@@ -146,14 +146,19 @@ func _on_recive_quest_pressed():
 			pass
 
 func IntroDialogue():
-	AddDialogues(["There! Bath done!", "That wasn't so bad—right, Nyx?"], [Dialogue.YASMEEN]);
+	AddDialogues(["There! Bath done!", "That wasn't so bad—right, Nyx?"], [Dialogue.YASMEEN_HAPPY]);
 	AddDialogue(DialogueAction.new(func():
 		# Whatever I don't care this is too hard to figure out properly just use an absolute path
 		var animatedSprite: AnimatedSprite2D = get_tree().get_nodes_in_group("Player")[0].get_node("AnimatedSprite2D");
 		animatedSprite.animation = "Idle Up";
 		await get_tree().create_timer(1).timeout;
 	));
-	AddDialogues(["Morning already?!", "Nyx! I can't believe you kept me up all night...", "That's it, you're staying inside today. I don't want you going outside and getting dirty again", "I'm way too tired...", "Maybe I can get Ms. Morgana to make me an energy elixir or something", "Morgana should be downstairs (Use the WASD keys to move around!)"], [Dialogue.YASMEEN])
+	AddDialogues(["Morning already?!", 
+				"Nyx! I can't believe you kept me up all night...", 
+				"That's it, you're staying inside today. I don't want you going outside and getting dirty again", 
+				"I'm way too tired...", "Maybe I can get Ms. Morgana to make me an energy elixir or something", 
+				"Morgana should be downstairs (Use the WASD keys to move around!)"], 
+				[Dialogue.YASMEEN_SURPRISED, Dialogue.YASMEEN_ANGRY, Dialogue.YASMEEN_FRUSTRATED, Dialogue.YASMEEN_TIRED, Dialogue.YASMEEN_NEUTRAL])
 	AddDialogue(DialogueAction.new(func(): startMovementTutorial.emit()));
 func OpenQuestMenu(originNode: DialogueTrigger):
 	if !GameInfo.openBulletinBoard:
@@ -230,13 +235,17 @@ func ShrinkQuestGive():
 	var texture = GameInfo.GenerateQuest(GameInfo.SHRINK, text[0]);
 	AddDialogues(text, [texture]);
 func MorganaNote():
-	AddDialogue(DialogueText.new("Huh. What's this? A letter?", Dialogue.YASMEEN));
+	AddDialogue(DialogueText.new("Huh. What's this? A letter?", Dialogue.YASMEEN_CONFUSED));
 	AddDialogue(DialogueAction.new(func():
 		$"Morgana Note".visible = true;
 	, false));
-	AddDialogues(["THE ENTIRE SHOP?!", "I haven't even mastered potion brewing yet!", "Well, nother I can do about it...", "[b]I better make my way downstairs and grab that recipe book... and I guess brew myself that energy elixir[/b]"], [Dialogue.YASMEEN]);
+	AddDialogues(["THE ENTIRE SHOP?!", 
+				"I haven't even mastered potion brewing yet!", 
+				"Well, nothing I can do about it...", 
+				"[b]I better make my way downstairs and grab that recipe book... and I guess brew myself that energy elixir[/b]"], 
+				[Dialogue.YASMEEN_SURPRISED, Dialogue.YASMEEN_BAFFLED, Dialogue.YASMEEN_NEUTRAL]);
 func PotionBookGet():
-	AddDialogue(DialogueText.new("Looks like she left the potion book for me on the front counter. Thank goodness.", Dialogue.YASMEEN));
+	AddDialogue(DialogueText.new("Looks like she left the potion book for me on the front counter. Thank goodness.", Dialogue.YASMEEN_SURPRISED));
 	AddDialogue(DialogueAction.new(func():
 		var node: Node = Node.new();
 		node.set_script(load("res://player gather potion book.gd"));
@@ -246,7 +255,7 @@ func GrabPotionBook():
 	AddDialogue(DialogueAction.new(func():
 		GameInfo._on_inventory_journal_open();
 	));
-	AddDialogue(DialogueText.new("Ah, great, here's the Energy Elixir recipe. Seems simple enough.", Dialogue.YASMEEN));
+	AddDialogue(DialogueText.new("Ah, great, here's the Energy Elixir recipe. Seems simple enough.", Dialogue.YASMEEN_HAPPY));
 func HeadToCaludron():
 	AddDialogue(DialogueText.new("[b]Let me head to the cauldron and brew it.[/b]", Dialogue.YASMEEN))
 func FirstTutorialPotionAttempt():
@@ -257,21 +266,28 @@ func FirstTutorialPotionAttempt():
 		OpenJournalFromDialogue.emit();
 	));
 func ListIngredientsForFirstPotion():
-	AddDialogues(["Honey... we got that.", "Ginger root... got that too.", "Morning dew...", "Wait, where's the morning dew?", "Oh right, Morgana used the rest of it the other day.", "She hand-collects some of her ingredients, doesn't she?", "[b]I should go outside to collect some morning dew.[/b]"], [Dialogue.YASMEEN]);
+	AddDialogues(["Honey... we got that.", 
+			"Ginger root... got that too.", 
+			"Morning dew...", "Wait, where's the morning dew?", 
+			"Oh right, Morgana used the rest of it the other day.", 
+			"She hand-collects some of her ingredients, doesn't she?", 
+			"[b]I should go outside to collect some morning dew.[/b]"], 
+			[Dialogue.YASMEEN, Dialogue.YASMEEN, Dialogue.YASMEEN, Dialogue.YASMEEN_CONFUSED, Dialogue.YASMEEN_SURPRISED, Dialogue.YASMEEN_NEUTRAL]);
 	AddDialogue(DialogueAction.new(func():
 		inDialogue = false;
 	, false));
 func GatherDewdropsFirst():
-	AddDialogue(DialogueText.new("I don't think I'll find morning dew over there!", Dialogue.YASMEEN));
+	AddDialogue(DialogueText.new("I don't think I'll find morning dew over there!", Dialogue.YASMEEN_FRUSTRATED));
 func NyxForest():
-	AddDialogues(["Nyx?!", "What are you doing out here, I thought I left you inside!", "Mrrrp?"], [Dialogue.YASMEEN, Dialogue.YASMEEN, Dialogue.NYX]);
+	AddDialogues(["Nyx?!", "What are you doing out here, I thought I left you inside!", "Mrrrp?"], [Dialogue.YASMEEN_SURPRISED, Dialogue.YASMEEN_ANGRY, Dialogue.NYX]);
 
 func Waterfall(originNode):
-	AddDialogue(DialogueText.new("Hmmm, I don't think there's anything behind there.", Dialogue.YASMEEN));
+	AddDialogue(DialogueText.new("Hmmm, I don't think there's anything behind there.", Dialogue.YASMEEN_FRUSTRATED));
 
 # TutorialGameFinish
 func TutMinigameComplete():
-	AddDialogues(["Great! Let me check my bag and see how much I got!", "(Press TAB to check your inventory.)"], [Dialogue.YASMEEN])
+	AddDialogues(["Great! Let me check my bag and see how much I got!", 
+				"(Press TAB to check your inventory.)"], [Dialogue.YASMEEN_HAPPY, Dialogue.YASMEEN])
 #TutorialOpenInventory
 func OpenInventory():
 	AddDialogue(DialogueText.new(""));
@@ -279,36 +295,56 @@ func OpenInventory():
 	AddDialogue(DialogueText.new(dewdropAmount, Dialogue.YASMEEN))
 	AddDialogues(["[b]The better I do collecting ingredients, the more of the resource I collect.[/b]"], [Dialogue.YASMEEN])
 	#sfunction to flash energy bar, change intensity back and forth
-	AddDialogues(["Oh… I’m really low on energy, aren’t I?", "[b]I better go inside and brew that energy elixir now.[/b]"], [Dialogue.YASMEEN])
+	AddDialogues(["Oh… I’m really low on energy, aren’t I?", "[b]I better go inside and brew that energy elixir now.[/b]"], [Dialogue.YASMEEN_FRUSTRATED, Dialogue.YASMEEN_NEUTRAL])
 #TutorialOpenBrewing2
 func SecondTutorialPotionAttempt():
 	# This is a workaround for ??? Idk having it here works ¯\_(ツ)_/¯
 	AddDialogue(DialogueText.new(""));
-	AddDialogues(["I have everything I need now!", "All I need to do is add all of the ingredients from the recipe and stir to mix it into a potion!"], [Dialogue.YASMEEN])
+	AddDialogues(["I have everything I need now!", 
+				"All I need to do is add all of the ingredients from the recipe and stir to mix it into a potion!"], 
+				[Dialogue.YASMEEN_HAPPY, Dialogue.YASMEEN])
 #TutorialWrongPot
 func TutBurntPotion():
-	AddDialogues(["Uh oh, that didn't turn out right.", "I need to pay more attention to what ingredients I put in the cauldron.", "Maybe I should look at the recipe in the potion book again."], [Dialogue.YASMEEN])
+	AddDialogues(["Uh oh, that didn't turn out right.", 
+				"I need to pay more attention to what ingredients I put in the cauldron.", 
+				"Maybe I should look at the recipe in the potion book again."], 
+				[Dialogue.YASMEEN_SURPRISED, Dialogue.YASMEEN_FRUSTRATED])
 func TutWrongPotion():
-	AddDialogues(["Uh oh, that's not the right potion.", "I must be tired, I really need to make that [b]Energy Elixir[/b]", "Maybe I should look at the recipe in the potion book again."], [Dialogue.YASMEEN])
+	AddDialogues(["Uh oh, that's not the right potion.", "I must be tired, I really need to make that [b]Energy Elixir[/b]", "Maybe I should look at the recipe in the potion book again."], [Dialogue.YASMEEN_SURPRISED, Dialogue.YASMEEN_FRUSTRATED])
 #TutorialEnergyPotion
 func TutEnergyPotionMade():
-	AddDialogue(DialogueText.new("Yes! A perfect Energy Elixir!", Dialogue.YASMEEN));
+	AddDialogue(DialogueText.new("Yes! A perfect Energy Elixir!", Dialogue.YASMEEN_HAPPY));
 	# maybe add an animation for energy filling
 	GameInfo.energy = 5
 	GameInfo.potions["energy"] -= 1
-	AddDialogues(["That’s much better! I probably shouldn’t use shop ingredients to craft potions for myself anymore though…", "[b]Next time I run out of energy, I can just go to bed.[/b]"], [Dialogue.YASMEEN])
+	AddDialogues(["That’s much better! I probably shouldn’t use shop ingredients to craft potions for myself anymore though…", 
+				"[b]Next time I run out of energy, I can just go to bed.[/b]"], 
+				[Dialogue.YASMEEN_HAPPY, Dialogue.YASMEEN])
 func PotionTutDone():
-	AddDialogue(DialogueText.new("Well… guess I should go outside and check the bulletin board for orders now.", Dialogue.YASMEEN))
+	AddDialogue(DialogueText.new("Well… guess I should go outside and check the bulletin board for orders now.", Dialogue.YASMEEN_NEUTRAL))
 #TutorialBulletinBoard
 func TutBulletinBoard():
-	AddDialogues(["Customers can ask for any potion. They probably won’t be very happy if I give them the wrong one.", "[b]From here on out I just gotta read the recipes, collect ingredients, craft potions, and submit orders.[/b]", "The shop receives a new shipment of shelf ingredients [b]every 5 days.[/b] I should be careful to not run out of them before then.", "[b]Morgana has said something not so great happens if you mess it up…[/b]"], [Dialogue.YASMEEN])
+	AddDialogues(["Customers can ask for any potion. They probably won’t be very happy if I give them the wrong one.", 
+				"[b]From here on out I just gotta read the recipes, collect ingredients, craft potions, and submit orders.[/b]", 
+				"The shop receives a new shipment of shelf ingredients [b]every 5 days.[/b] I should be careful to not run out of them before then.", 
+				"[b]Morgana has said something not so great happens if you mess it up…[/b]"], 
+				[Dialogue.YASMEEN_SURPRISED, Dialogue.YASMEEN_SURPRISED, Dialogue.YASMEEN_CONFUSED])
 	AddDialogue(DialogueAction.new(func():
 		GameInfo.openBulletinBoard = true;
 	, false));
 	#this seems to eat an extra input after closing the board i think
 	
 @abstract class Dialogue:
-	const YASMEEN: String = "res://Overworld/Textures/YasmeenPortrait.png";
+	const YASMEEN: String = "res://Yasmeen Sprites/Yasmeen_Sprite_Default.png";
+	const YASMEEN_ANGRY: String = "res://Yasmeen Sprites/Yasmeen_Sprite_Angry.png";
+	const YASMEEN_BAFFLED: String = "res://Yasmeen Sprites/Yasmeen_Sprite_Baffled.png";
+	const YASMEEN_CONFUSED: String = "res://Yasmeen Sprites/Yasmeen_Sprite_Confused.png";
+	const YASMEEN_DISAPPOINTED: String = "res://Yasmeen Sprites/Yasmeen_Sprite_Disappointed.png";
+	const YASMEEN_FRUSTRATED: String = "res://Yasmeen Sprites/Yasmeen_Sprite_Frustrated.png";
+	const YASMEEN_HAPPY: String = "res://Yasmeen Sprites/Yasmeen_Sprite_Happy.png";
+	const YASMEEN_NEUTRAL: String = "res://Yasmeen Sprites/Yasmeen_Sprite_Neutral.png";
+	const YASMEEN_SURPRISED: String = "res://Yasmeen Sprites/Yasmeen_Sprite_Surprised.png";
+	const YASMEEN_TIRED: String = "res://Yasmeen Sprites/Yasmeen_Sprite_Tired.png";
 	const PLACEHOLDER: String = "res://Overworld/Textures/PlaceholderPortrait.png";
 	const NYX: String = "res://Textures/NyxPortrait.png";
 
