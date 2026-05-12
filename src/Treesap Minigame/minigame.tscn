@@ -8,7 +8,9 @@
 [ext_resource type="SpriteFrames" uid="uid://bwb6rx1wipaeh" path="res://Treesap Minigame/Indicator_Frames.tres" id="5_pscpq"]
 [ext_resource type="Texture2D" uid="uid://pskcw2d83nog" path="res://Treesap Minigame/Spile.png" id="7_78kki"]
 [ext_resource type="Texture2D" uid="uid://b24swqxa27uce" path="res://Treesap Minigame/Textures/Tree Sap Collectable.png" id="8_78kki"]
+[ext_resource type="AudioStream" uid="uid://cmu58f3n3yw5d" path="res://Sound Effects/RadarNoise.wav" id="8_xd5l0"]
 [ext_resource type="Script" uid="uid://dtj76gdumhd7k" path="res://Treesap Minigame/sap_ingredient.gd" id="9_78kki"]
+[ext_resource type="AudioStream" uid="uid://cgle7eoxqv4ns" path="res://Sound Effects/TreeTap.wav" id="9_u7w5b"]
 [ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="10_78kki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nejc8"]
@@ -58,6 +60,12 @@ autoplay = "Close"
 [node name="Sprite2D" type="Sprite2D" parent="TapControl" unique_id=1269452882]
 position = Vector2(42, 68)
 texture = ExtResource("7_78kki")
+
+[node name="TreeRadar" type="AudioStreamPlayer2D" parent="TapControl" unique_id=1651711871]
+stream = ExtResource("8_xd5l0")
+
+[node name="TappingNoise" type="AudioStreamPlayer2D" parent="TapControl" unique_id=2003307711]
+stream = ExtResource("9_u7w5b")
 
 [node name="SapIngredient" type="Sprite2D" parent="." unique_id=1796937563]
 z_index = 1

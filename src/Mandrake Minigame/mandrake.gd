@@ -1,5 +1,7 @@
+
 extends Area2D
 
+@onready var mandrake_rustle: AudioStreamPlayer2D = $MandrakeRustle
 @onready var mandrake_hurtbox: CollisionShape2D = $MandrakeHurtbox
 @onready var mandrake_animations: AnimatedSprite2D = $MandrakeAnimations
 @onready var activation_timer: Timer = $ActivationTimer
@@ -24,6 +26,7 @@ func _ready() -> void:
 	activation_timer.wait_time = wakeup_time
 	pass # Replace with function body.
 
+	activation_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,35 +47,36 @@ func _process(delta: float) -> void:
 func _on_activation_timer_timeout() -> void:
 	top_level = true
 	mandrake_animations.play("shake")
+	mandrake_rustle.play()
 	shake_timer.start()
 	pass # Replace with function body.
 
 
 func _on_shake_timer_timeout() -> void:
+	mandrake_rustle.stop()
 	mandrake_animations.play("uproot")
 	uproot_timer.start()
 	pass # Replace with function body.
 
+func _on_uproot_timer_timeout() -> void:
+	mandrake_animations.play("run")
+	mandrake_hurtbox.set_deferred("disabled", false)
+	direction = randi_range(0, 1)
+	if direction == 0:
+		direction = -1
+	mandrake_animations.flip_h = (direction < 0)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Hammer") and despawn_timer.is_stopped():
 		print("ded")
+		mandrake_rustle.stop()
 		mandrake_animations.scale = Vector2(0.25, 0.25)
 		mandrake_animations.play("ded")
+		mandrake_hurtbox.set_deferred("disabled", true)
 		despawn_timer.start()
 	pass # Replace with function body.
 
 
 func _on_despawn_timer_timeout() -> void:
 	self.queue_free()
-	pass # Replace with function body.
-
-
-func _on_uproot_timer_timeout() -> void:
-	mandrake_animations.play("run")
-	mandrake_hurtbox.disabled = false
-	direction = randi_range(0, 1)
-	if direction == 0:
-		direction = -1
-	mandrake_animations.flip_h = (direction < 0)
 	pass # Replace with function body.
