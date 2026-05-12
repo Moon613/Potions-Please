@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dsfse7d2c0klu"]
 
 [ext_resource type="Script" uid="uid://cdlktmh8ctxcg" path="res://Acorn Mini Game/acorns.gd" id="1_02l1p"]
-[ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Textures/Acorn Collectable.png" id="2_02l1p"]
+[ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="2_02l1p"]
 [ext_resource type="AudioStream" uid="uid://870rriqmql7e" path="res://Sound Effects/good noise.wav" id="3_jko7g"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_02l1p"]
 

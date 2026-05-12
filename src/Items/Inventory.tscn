@@ -3,22 +3,44 @@
 [ext_resource type="Script" uid="uid://dghw285w0ykyi" path="res://Items/inventory.gd" id="1_1unjy"]
 [ext_resource type="PackedScene" uid="uid://c83ixwud83q11" path="res://Items/InventorySlot.tscn" id="2_caf4b"]
 [ext_resource type="PackedScene" uid="uid://dn0k0s0uuvla2" path="res://Items/Tooltip.tscn" id="4_0qjnm"]
-[ext_resource type="Texture2D" uid="uid://g071lbrhavh2" path="res://Textures/Inventory UI pt 1.png" id="4_pd3k5"]
-[ext_resource type="Texture2D" uid="uid://bg1utwc3blwav" path="res://Textures/Reputation Text.png" id="4_v4wl6"]
-[ext_resource type="Texture2D" uid="uid://crcgo2ic0657s" path="res://Textures/Inventory UI pt 2.png" id="5_rl46y"]
+[ext_resource type="Texture2D" uid="uid://g071lbrhavh2" path="res://Overworld/Textures/Inventory UI pt 1.png" id="4_pd3k5"]
+[ext_resource type="Texture2D" uid="uid://bg1utwc3blwav" path="res://Potion Brewing/Textures/Reputation Text.png" id="4_v4wl6"]
+[ext_resource type="Texture2D" uid="uid://crcgo2ic0657s" path="res://Overworld/Textures/Inventory UI pt 2.png" id="5_rl46y"]
 [ext_resource type="Texture2D" uid="uid://c3d5s54h65fq6" path="res://Textures/BadReputation.png" id="5_v4wl6"]
 [ext_resource type="Texture2D" uid="uid://bawphj6nvrrti" path="res://Textures/GoodReputation.png" id="6_q72hy"]
 [ext_resource type="PackedScene" uid="uid://cmfjji3mf0u0d" path="res://Items/AcornItem.tscn" id="7_j1wyx"]
-[ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Textures/Stamina Text.png" id="7_q72hy"]
+[ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Potion Brewing/Textures/Stamina Text.png" id="7_q72hy"]
 [ext_resource type="PackedScene" uid="uid://dosak45c72mij" path="res://Items/WIPItem.tscn" id="8_j1wyx"]
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="8_mdst7"]
 [ext_resource type="Texture2D" uid="uid://bfoveypfrtn02" path="res://Textures/BadStaminaReputation.png" id="8_rhxlg"]
+[ext_resource type="Script" uid="uid://b2taxp6ua3vvy" path="res://Items/stamina_bar.gd" id="10_8n0xt"]
 [ext_resource type="Texture2D" uid="uid://bwlkhcfqbgk2p" path="res://Textures/Journal Potion Ingredient List Icon.png" id="10_hwedm"]
 [ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="11_rhxlg"]
 [ext_resource type="PackedScene" uid="uid://btyjcv8jeer3c" path="res://Items/DewdropItem.tscn" id="15_mdst7"]
 [ext_resource type="PackedScene" uid="uid://bdui1edksqcc1" path="res://Items/MandrakeItem.tscn" id="16_v4wl6"]
 [ext_resource type="PackedScene" uid="uid://bjs32axxwibeo" path="res://Items/EggItem.tscn" id="17_hwedm"]
 [ext_resource type="PackedScene" uid="uid://b14ab1uycb1e5" path="res://Items/SapItem.tscn" id="18_rhxlg"]
+[ext_resource type="PackedScene" uid="uid://c18xf5lil3lv6" path="res://Items/BurntPotion.tscn" id="20_7iveq"]
+[ext_resource type="PackedScene" uid="uid://c0siaethatsax" path="res://Items/EnergyPotion.tscn" id="21_q1xy2"]
+[ext_resource type="Texture2D" uid="uid://bfmoj3doj5t31" path="res://Potion Brewing/Textures/Burnt Potion (NEW).png" id="21_q5kyp"]
+[ext_resource type="PackedScene" uid="uid://b7ktmwkhwdj4f" path="res://Items/HealingPotion.tscn" id="22_70d6n"]
+[ext_resource type="PackedScene" uid="uid://bbnm4ars7n2iu" path="res://Items/ShrinkPotion.tscn" id="23_7e8mg"]
+[ext_resource type="Texture2D" uid="uid://b3m16segjo1pr" path="res://Potion Brewing/Textures/Energy Elixir(NEW).png" id="23_7s685"]
+[ext_resource type="PackedScene" uid="uid://cvtt4msrqbf5h" path="res://Items/SleepPotion.tscn" id="24_m7yhu"]
+[ext_resource type="Texture2D" uid="uid://cli2v3j5ihjvx" path="res://Potion Brewing/Textures/Healing Potion.png" id="25_7atr6"]
+[ext_resource type="PackedScene" uid="uid://bmf3xmajonwl6" path="res://Items/StrengthPotion.tscn" id="25_quxbc"]
+[ext_resource type="Texture2D" uid="uid://cykdhfoxlmqwn" path="res://Potion Brewing/Textures/ShrinkElixir.png" id="27_afj8o"]
+[ext_resource type="Texture2D" uid="uid://dp5nmo3fl51ga" path="res://Potion Brewing/Textures/Sleepy Solution.png" id="29_nt10b"]
+[ext_resource type="Texture2D" uid="uid://tiw4qvuy7alj" path="res://Potion Brewing/Textures/Strength Potion.png" id="31_kra4b"]
+[ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="32_7atr6"]
+[ext_resource type="Texture2D" uid="uid://ceh0a6mexdf3j" path="res://Potion Brewing/Textures/Fire Salts.png" id="33_afj8o"]
+[ext_resource type="Texture2D" uid="uid://d2id1s064vj60" path="res://Potion Brewing/Textures/Milk.png" id="34_afj8o"]
+[ext_resource type="Texture2D" uid="uid://dwlrqfnpn6ctx" path="res://Potion Brewing/Textures/Lavender.png" id="35_nt10b"]
+[ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Potion Brewing/Textures/Ginger Root (New).png" id="36_phofv"]
+[ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Potion Brewing/Textures/Honey(New).png" id="37_govji"]
+[ext_resource type="Texture2D" uid="uid://ccevdp500tae4" path="res://Potion Brewing/Textures/Garlic.png" id="38_0cn3d"]
+[ext_resource type="Texture2D" uid="uid://d2k3ne2c7bw25" path="res://Potion Brewing/Textures/Fairy Wings.png" id="39_8n0xt"]
+[ext_resource type="Texture2D" uid="uid://cmwi3r522hfvt" path="res://Potion Brewing/Textures/Moss.png" id="40_g14mx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u23ir"]
 atlas = ExtResource("5_v4wl6")
@@ -35,6 +57,31 @@ region = Rect2(0, 0, 400, 72)
 [sub_resource type="AtlasTexture" id="AtlasTexture_30vpt"]
 atlas = ExtResource("8_mdst7")
 region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phofv"]
+atlas = ExtResource("21_q5kyp")
+region = Rect2(-25, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_govji"]
+atlas = ExtResource("23_7s685")
+region = Rect2(-50, 0, 150, 0)
+margin = Rect2(-25, 0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l6aq"]
+atlas = ExtResource("25_7atr6")
+region = Rect2(-25, 0, 150, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cn3d"]
+atlas = ExtResource("27_afj8o")
+region = Rect2(-25, 0, 150, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n0xt"]
+atlas = ExtResource("29_nt10b")
+region = Rect2(-25, 0, 150, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g14mx"]
+atlas = ExtResource("31_kra4b")
+region = Rect2(-25, 0, 150, 0)
 
 [node name="Inventory" type="Control" unique_id=1453173247 node_paths=PackedStringArray("inventory_grid", "tooltip")]
 layout_mode = 3
@@ -106,6 +153,10 @@ step = 0.1
 value = 5.0
 texture_under = SubResource("AtlasTexture_8hhu0")
 texture_progress = SubResource("AtlasTexture_30vpt")
+script = ExtResource("10_8n0xt")
+
+[node name="FlashTimer" type="Timer" parent="PlayerPanel/VBoxContainer/Stamina Bar" unique_id=1697997281]
+wait_time = 0.25
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerPanel/VBoxContainer" unique_id=2081991958]
 custom_minimum_size = Vector2(300, 100)
@@ -115,12 +166,12 @@ size_flags_vertical = 4
 theme_override_constants/separation = 40
 alignment = 1
 
-[node name="Journal" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=798060606]
+[node name="Journal" type="Button" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=795107116]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture = ExtResource("10_hwedm")
-expand_mode = 1
-stretch_mode = 5
+theme_override_colors/icon_hover_color = Color(0.45882353, 0.45882353, 0.45882353, 1)
+icon = ExtResource("10_hwedm")
+flat = true
 
 [node name="Orders" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=2142444398]
 custom_minimum_size = Vector2(100, 0)
@@ -176,3 +227,74 @@ visible = false
 
 [node name="SapItem" parent="." unique_id=1881400684 instance=ExtResource("18_rhxlg")]
 visible = false
+
+[node name="BurntPotion" parent="." unique_id=255005035 instance=ExtResource("20_7iveq")]
+icon = SubResource("AtlasTexture_phofv")
+
+[node name="EnergyPotion" parent="." unique_id=1279758123 instance=ExtResource("21_q1xy2")]
+icon = SubResource("AtlasTexture_govji")
+
+[node name="HealingPotion" parent="." unique_id=1839789398 instance=ExtResource("22_70d6n")]
+item_name = "Healing Brew"
+icon = SubResource("AtlasTexture_7l6aq")
+
+[node name="ShrinkPotion" parent="." unique_id=1470516613 instance=ExtResource("23_7e8mg")]
+item_name = "Shrink Spirit"
+icon = SubResource("AtlasTexture_0cn3d")
+
+[node name="SleepPotion" parent="." unique_id=1605218360 instance=ExtResource("24_m7yhu")]
+icon = SubResource("AtlasTexture_8n0xt")
+
+[node name="StrengthPotion" parent="." unique_id=1235120166 instance=ExtResource("25_quxbc")]
+item_name = "Strength Tonic"
+icon = SubResource("AtlasTexture_g14mx")
+
+[node name="SaltsItem" type="Node2D" parent="." unique_id=138985568]
+script = ExtResource("32_7atr6")
+item_name = "salts"
+icon = ExtResource("33_afj8o")
+is_stackable = true
+
+[node name="MilkItem" type="Node2D" parent="." unique_id=147742750]
+script = ExtResource("32_7atr6")
+item_name = "milk"
+icon = ExtResource("34_afj8o")
+is_stackable = true
+
+[node name="LavenderItem" type="Node2D" parent="." unique_id=1613448832]
+script = ExtResource("32_7atr6")
+item_name = "lavender"
+icon = ExtResource("35_nt10b")
+is_stackable = true
+
+[node name="GingerItem" type="Node2D" parent="." unique_id=624135939]
+script = ExtResource("32_7atr6")
+item_name = "ginger"
+icon = ExtResource("36_phofv")
+is_stackable = true
+
+[node name="HoneyItem" type="Node2D" parent="." unique_id=143267919]
+script = ExtResource("32_7atr6")
+item_name = "honey"
+icon = ExtResource("37_govji")
+is_stackable = true
+
+[node name="GarlicItem" type="Node2D" parent="." unique_id=1946971342]
+script = ExtResource("32_7atr6")
+item_name = "garlic"
+icon = ExtResource("38_0cn3d")
+is_stackable = true
+
+[node name="WingsItem" type="Node2D" parent="." unique_id=507498782]
+script = ExtResource("32_7atr6")
+item_name = "wings"
+icon = ExtResource("39_8n0xt")
+is_stackable = true
+
+[node name="MossItem" type="Node2D" parent="." unique_id=1921074144]
+script = ExtResource("32_7atr6")
+item_name = "moss"
+icon = ExtResource("40_g14mx")
+is_stackable = true
+
+[connection signal="button_up" from="PlayerPanel/VBoxContainer/HBoxContainer/Journal" to="." method="_on_journal_button_up"]

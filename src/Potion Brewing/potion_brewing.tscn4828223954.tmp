@@ -1,0 +1,889 @@
+[gd_scene format=3 uid="uid://cbbeilop6nngp"]
+
+[ext_resource type="Script" uid="uid://ccaqqx0te1oji" path="res://Potion Brewing/potion_brewing.gd" id="1_g2f47"]
+[ext_resource type="Texture2D" uid="uid://bliwhqis5rdk" path="res://Potion Brewing/Textures/Background Potion UI.png" id="2_lm47i"]
+[ext_resource type="Texture2D" uid="uid://vxwtbumruws3" path="res://Potion Brewing/Textures/Bookshelf.png" id="3_lm47i"]
+[ext_resource type="Texture2D" uid="uid://cm2ufk7sg4qsf" path="res://Potion Brewing/Textures/Nyx.png" id="4_dr7va"]
+[ext_resource type="Texture2D" uid="uid://cxns4cgtw3ynk" path="res://Potion Brewing/Textures/Caldron Front.png" id="6_lm47i"]
+[ext_resource type="Script" uid="uid://dsxhue2e16y4i" path="res://Potion Brewing/Spoon.gd" id="6_xks6y"]
+[ext_resource type="Texture2D" uid="uid://dy2m2ayd1ulkh" path="res://Potion Brewing/Textures/Spoon.png" id="7_3ii5e"]
+[ext_resource type="Texture2D" uid="uid://cryidjmdatyfi" path="res://Potion Brewing/Textures/Caldron Inside.png" id="7_dr7va"]
+[ext_resource type="Texture2D" uid="uid://st1osgmwcwix" path="res://Potion Brewing/Textures/BlankLiquid.png" id="8_o18r5"]
+[ext_resource type="Texture2D" uid="uid://d2ibvlk86fmu5" path="res://Potion Brewing/Textures/Caldron Back.png" id="9_wsuyr"]
+[ext_resource type="Script" uid="uid://btfoqfcybk40q" path="res://Potion Brewing/inside_cauldron_hitbox.gd" id="11_yupxn"]
+[ext_resource type="Texture2D" uid="uid://bwlkhcfqbgk2p" path="res://Textures/Journal Potion Ingredient List Icon.png" id="12_wsuyr"]
+[ext_resource type="Texture2D" uid="uid://22v5r7i41va6" path="res://Textures/Orders Icon.png" id="13_8mvhn"]
+[ext_resource type="Texture2D" uid="uid://cgy3ndew38fyl" path="res://Potion Brewing/Textures/Trash Icon.png" id="14_dqwf3"]
+[ext_resource type="Texture2D" uid="uid://bg1utwc3blwav" path="res://Potion Brewing/Textures/Reputation Text.png" id="15_dqwf3"]
+[ext_resource type="Texture2D" uid="uid://c3d5s54h65fq6" path="res://Textures/BadReputation.png" id="17_yffeo"]
+[ext_resource type="Texture2D" uid="uid://bawphj6nvrrti" path="res://Textures/GoodReputation.png" id="18_5pr62"]
+[ext_resource type="Texture2D" uid="uid://cpmbcxr7yxmq1" path="res://Potion Brewing/Textures/Stamina Text.png" id="18_g121f"]
+[ext_resource type="Texture2D" uid="uid://bfoveypfrtn02" path="res://Textures/BadStaminaReputation.png" id="20_y8v3d"]
+[ext_resource type="PackedScene" uid="uid://ch2s5cbjit2nu" path="res://Potion Brewing/Ingredient.tscn" id="21_m6y6x"]
+[ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
+[ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="22_0mxup"]
+[ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Potion Brewing/Textures/MorningDewIngredient.png" id="22_a3cj8"]
+[ext_resource type="Script" uid="uid://b0rxbno1icaki" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
+[ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Potion Brewing/Textures/Honey(New).png" id="23_1nhwd"]
+[ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="25_hb5qm"]
+[ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Potion Brewing/Textures/Ginger Root (New).png" id="26_0mxup"]
+[ext_resource type="Script" uid="uid://0bn1itn1vduw" path="res://Potion Brewing/stir_trigger.gd" id="26_m5i5b"]
+[ext_resource type="Theme" uid="uid://bguvjymyr647x" path="res://Potion Brewing/Infinite Text.tres" id="27_yffeo"]
+[ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Dragon Egg Minigame/Textures/Dragon Egg Collectable.png" id="28_1og6f"]
+[ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Mandrake Minigame/Textures/MandrakeItem.png" id="28_y8v3d"]
+[ext_resource type="Texture2D" uid="uid://dwlrqfnpn6ctx" path="res://Potion Brewing/Textures/Lavender.png" id="30_ako6u"]
+[ext_resource type="Texture2D" uid="uid://b24swqxa27uce" path="res://Treesap Minigame/Textures/Tree Sap Collectable.png" id="31_amh61"]
+[ext_resource type="Texture2D" uid="uid://d2id1s064vj60" path="res://Potion Brewing/Textures/Milk.png" id="31_fim6t"]
+[ext_resource type="Texture2D" uid="uid://ceh0a6mexdf3j" path="res://Potion Brewing/Textures/Fire Salts.png" id="32_a67xv"]
+[ext_resource type="Texture2D" uid="uid://ccevdp500tae4" path="res://Potion Brewing/Textures/Garlic.png" id="33_y54vx"]
+[ext_resource type="Texture2D" uid="uid://d2k3ne2c7bw25" path="res://Potion Brewing/Textures/Fairy Wings.png" id="34_isq66"]
+[ext_resource type="Texture2D" uid="uid://cmwi3r522hfvt" path="res://Potion Brewing/Textures/Moss.png" id="35_isq66"]
+[ext_resource type="AudioStream" uid="uid://c3culn7rdod1w" path="res://Sound Effects/idle potion.wav" id="38_1nhwd"]
+[ext_resource type="Script" uid="uid://ce5834ckj1kvp" path="res://Potion Brewing/ingredient_amount.gd" id="38_hb5qm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc17n"]
+size = Vector2(493.45544, 23.248623)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5i5b"]
+size = Vector2(493.45532, 23.248604)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ndod"]
+size = Vector2(491.37323, 23.248627)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yffeo"]
+size = Vector2(505.94788, 32.105164)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3ii5e"]
+friction = 0.0
+bounce = 0.1
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2f47"]
+radius = 3.715662
+height = 59.450714
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3ii5e"]
+radius = 71.0
+height = 212.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g2f47"]
+friction = 0.0
+rough = true
+bounce = 0.95
+absorbent = true
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1nhwd"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3ii5e"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g2f47"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7n1qr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cgc07"]
+size = Vector2(768, 392)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc2nr"]
+atlas = ExtResource("17_yffeo")
+region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_patwh"]
+atlas = ExtResource("18_5pr62")
+region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3cj8"]
+atlas = ExtResource("20_y8v3d")
+region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6y6x"]
+atlas = ExtResource("21_xbtdn")
+region = Rect2(0, 0, 400, 72)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mxup"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nhwd"]
+bg_color = Color(0.31666672, 1, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hb5qm"]
+resource_local_to_scene = true
+radius = 49.77
+height = 149.23
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1og6f"]
+resource_local_to_scene = true
+radius = 51.42856
+height = 177.14282
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0mxup"]
+radius = 69.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pr62"]
+size = Vector2(98.055, 150.315)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ako6u"]
+radius = 47.142822
+height = 134.2857
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ako6u"]
+radius = 82.85714
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isq66"]
+size = Vector2(120, 167.715)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fim6t"]
+size = Vector2(100.57, 143.215)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y54vx"]
+radius = 40.58
+height = 141.66
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v25o"]
+size = Vector2(59.785, 142.67)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1nhwd"]
+radius = 59.71
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mxup"]
+size = Vector2(101.18, 151.46)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hb5qm"]
+radius = 69.65
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sc17n"]
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5i5b"]
+radius = 85.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ndod"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yffeo"]
+radius = 85.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hb5qm"]
+normal = Vector2(1, 0)
+
+[sub_resource type="Animation" id="Animation_1nhwd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Stamina:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(280, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_0mxup"]
+resource_name = "Stamina Shaking"
+length = 0.7337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Stamina:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2, 0.26666668, 0.33333334, 0.36666667, 0.4, 0.46666667, 0.53333336, 0.6, 0.6666667, 0.73333335),
+"transitions": PackedFloat32Array(3.999995, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.36602113),
+"update": 0,
+"values": [Vector2(280, 16), Vector2(270, 16), Vector2(290, 16), Vector2(270, 16), Vector2(290, 16), Vector2(260, 16), Vector2(300, 16), Vector2(260, 16), Vector2(290, 16), Vector2(270, 16), Vector2(290, 16), Vector2(270, 16), Vector2(280, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Stamina Bar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333336, 0.20000002, 0.26666668, 0.33333334, 0.36666667, 0.4, 0.4666667, 0.53333336, 0.6, 0.6666667, 0.73333335),
+"transitions": PackedFloat32Array(3.999995, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.36602113),
+"update": 0,
+"values": [Vector2(480, -16), Vector2(470, -16), Vector2(490, -16), Vector2(470, -16), Vector2(490, -16), Vector2(460, -16), Vector2(500, -16), Vector2(460, -16), Vector2(490, -16), Vector2(470, -16), Vector2(490, -16), Vector2(470, -16), Vector2(480, -16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hb5qm"]
+_data = {
+&"RESET": SubResource("Animation_1nhwd"),
+&"Stamina Shaking": SubResource("Animation_0mxup")
+}
+
+[node name="Potion Brewing" type="Node2D" unique_id=965922724]
+script = ExtResource("1_g2f47")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1804067386]
+z_index = -10
+texture_filter = 1
+texture = ExtResource("2_lm47i")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1260672056]
+zoom = Vector2(0.6, 0.6)
+
+[node name="Shelf" type="StaticBody2D" parent="." unique_id=90021651]
+position = Vector2(-624.00006, 82.34799)
+scale = Vector2(0.9605734, 0.9032796)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Shelf" type="Sprite2D" parent="Shelf" unique_id=164151715]
+texture_filter = 1
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_lm47i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelf" unique_id=1740281027]
+position = Vector2(6.1035156e-05, -5.367096)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_sc17n")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Shelf" unique_id=1451657785]
+position = Vector2(6.1035156e-05, -232.31783)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_m5i5b")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Shelf" unique_id=80691552]
+position = Vector2(6.1035156e-05, 221.58365)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_7ndod")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Shelf" unique_id=1214785227]
+position = Vector2(6.1035156e-05, 450.7485)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_yffeo")
+
+[node name="Nyx" type="Sprite2D" parent="." unique_id=103944378]
+z_index = 1
+position = Vector2(-96, -336)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_dr7va")
+
+[node name="Spoon" type="RigidBody2D" parent="." unique_id=1458366467 groups=["Spoon"]]
+z_index = 1
+position = Vector2(-195, 153)
+disable_mode = 2
+collision_layer = 4
+collision_mask = 12
+input_pickable = true
+mass = 3.0
+physics_material_override = SubResource("PhysicsMaterial_3ii5e")
+center_of_mass_mode = 1
+center_of_mass = Vector2(0, 300)
+can_sleep = false
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("6_xks6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spoon" unique_id=736801461]
+texture_filter = 1
+position = Vector2(-17, 103.99999)
+rotation = -0.49218285
+scale = Vector2(0.74103856, 0.57123756)
+texture = ExtResource("7_3ii5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spoon" unique_id=1071572395]
+z_index = 2
+position = Vector2(-0.9999989, -8.000008)
+scale = Vector2(6.19, 6.19)
+shape = SubResource("CapsuleShape2D_g2f47")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Spoon" unique_id=1732083214 groups=["Spoon Stir Hitbox"]]
+z_index = 2
+position = Vector2(0, 281)
+shape = SubResource("CapsuleShape2D_3ii5e")
+
+[node name="Cauldron" type="StaticBody2D" parent="." unique_id=1769598805]
+position = Vector2(416.00003, 296.00003)
+scale = Vector2(1.3, 1.3)
+collision_layer = 7
+physics_material_override = SubResource("PhysicsMaterial_g2f47")
+
+[node name="Cauldron Inside" type="Sprite2D" parent="Cauldron" unique_id=1780531648]
+texture_filter = 1
+position = Vector2(-3.9145012, -83.054474)
+scale = Vector2(0.6788134, 0.7295409)
+texture = ExtResource("7_dr7va")
+
+[node name="Cauldron Top" type="Sprite2D" parent="Cauldron" unique_id=733638436]
+texture_filter = 1
+position = Vector2(-1.5240173, -281.79248)
+scale = Vector2(0.677249, 0.71100014)
+texture = ExtResource("9_wsuyr")
+
+[node name="Potion" type="Sprite2D" parent="Cauldron" unique_id=1080880378]
+z_index = 2
+texture_filter = 1
+position = Vector2(-0.3846426, -185.53084)
+scale = Vector2(0.7330987, 0.8727116)
+texture = ExtResource("8_o18r5")
+
+[node name="Cauldron Front" type="Sprite2D" parent="Cauldron" unique_id=1335512008]
+z_index = 2
+texture_filter = 1
+position = Vector2(0, 3.7075043)
+scale = Vector2(0.68200004, 0.68200004)
+texture = ExtResource("6_lm47i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron" unique_id=828861719]
+z_index = 3
+position = Vector2(-317, -212.29248)
+polygon = PackedVector2Array(32, 39, 45, 176, 77, 280, 187.76921, 341.52325, 317, 359.9848, 433.9231, 341.52325, 549, 280, 581, 176, 605, 28.29248, 613, -19.70752, 669, -19.70752, 677, 20.29248, 669, 64, 653, 144, 645, 224, 597, 336, 469, 424, 317, 464, 157, 416, 29, 328, -11, 224, -19, 112, -35, 60.29248, -43, -8, 21, -8)
+
+[node name="Spoon Holder" type="StaticBody2D" parent="." unique_id=100427475]
+visible = false
+position = Vector2(-168, 328)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Spoon Holder" unique_id=983839674]
+position = Vector2(-8.000008, -72)
+rotation = -0.5881493
+scale = Vector2(2.9686744, 3.767742)
+texture = SubResource("CompressedTexture2D_1nhwd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spoon Holder" unique_id=658356064]
+polygon = PackedVector2Array(32, -376, 56, -392, 80, -384, 96, -360, 56, 152, 40, 176, 16, 184, -144, 152, -168, 136, -168, 112, -152, 104, -8, 128)
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=41236175]
+position = Vector2(0, 544)
+collision_layer = 255
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=803338476]
+shape = SubResource("WorldBoundaryShape2D_3ii5e")
+
+[node name="Right Wall" type="StaticBody2D" parent="." unique_id=377390823]
+position = Vector2(960, 0)
+collision_layer = 255
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Wall" unique_id=1628582213]
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_g2f47")
+
+[node name="Left Wall" type="StaticBody2D" parent="." unique_id=1331714611]
+position = Vector2(-960, 0)
+collision_layer = 255
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall" unique_id=804179925]
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_7n1qr")
+
+[node name="InsideCauldronHitbox" type="Area2D" parent="." unique_id=1966607047 groups=["Cauldron Inside Hitbox"]]
+z_index = 2
+collision_mask = 7
+script = ExtResource("11_yupxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InsideCauldronHitbox" unique_id=2041093753]
+position = Vector2(416, 212)
+shape = SubResource("RectangleShape2D_cgc07")
+
+[node name="brewing_noise" type="AudioStreamPlayer2D" parent="InsideCauldronHitbox" unique_id=1417980492]
+
+[node name="UI" type="Node2D" parent="." unique_id=2122860457]
+top_level = true
+position = Vector2(0, -504)
+
+[node name="ColorRect" type="ColorRect" parent="UI" unique_id=700355254]
+offset_left = -960.0
+offset_top = -36.0
+offset_right = 960.0
+offset_bottom = 72.0
+color = Color(0.19, 0.1159, 0.18258996, 1)
+
+[node name="JournalButton" type="Button" parent="UI" unique_id=15710205]
+offset_left = 480.0
+offset_top = 72.0
+offset_right = 616.0
+offset_bottom = 225.15315
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(0.45748308, 0.45748308, 0.45748308, 1)
+icon = ExtResource("12_wsuyr")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="UI" unique_id=1824063359]
+offset_left = 640.0
+offset_top = 72.0
+offset_right = 776.0
+offset_bottom = 225.0
+icon = ExtResource("13_8mvhn")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button3" type="Button" parent="UI" unique_id=1785011166]
+offset_left = 800.0
+offset_top = 72.0
+offset_right = 936.0
+offset_bottom = 224.0
+icon = ExtResource("14_dqwf3")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Reputation" type="Sprite2D" parent="UI" unique_id=2136125084]
+position = Vector2(-696, 16)
+scale = Vector2(1, 1.1428572)
+texture = ExtResource("15_dqwf3")
+
+[node name="Reputation Bar" type="TextureProgressBar" parent="UI" unique_id=166074016]
+texture_repeat = 2
+offset_left = -464.0
+offset_top = -16.0
+offset_right = -64.0
+offset_bottom = 56.0
+max_value = 5.0
+step = 0.1
+value = 5.0
+texture_under = SubResource("AtlasTexture_xc2nr")
+texture_progress = SubResource("AtlasTexture_patwh")
+tint_progress = Color(1, 0.13999999, 0.13999999, 1)
+
+[node name="Stamina" type="Sprite2D" parent="UI" unique_id=2063012279]
+position = Vector2(280, 16)
+scale = Vector2(1.2741935, 1.2741935)
+texture = ExtResource("18_g121f")
+
+[node name="Stamina Bar" type="TextureProgressBar" parent="UI" unique_id=161621447]
+texture_repeat = 2
+offset_left = 480.0
+offset_top = -16.0
+offset_right = 880.00037
+offset_bottom = 56.0
+max_value = 5.0
+step = 0.1
+value = 5.0
+texture_under = SubResource("AtlasTexture_a3cj8")
+texture_progress = SubResource("AtlasTexture_m6y6x")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI" unique_id=1377781915]
+offset_left = -944.0
+offset_top = 80.0
+offset_right = -672.0
+offset_bottom = 144.0
+theme_override_colors/default_color = Color(0.68235296, 0, 1, 1)
+theme_override_constants/outline_size = 18
+theme_override_fonts/normal_font = ExtResource("22_0mxup")
+theme_override_font_sizes/normal_font_size = 42
+text = "ESC to leave"
+
+[node name="Brewing Progress Bar" type="ProgressBar" parent="UI" unique_id=404604697]
+z_index = 2
+offset_left = 101.0
+offset_top = 852.0
+offset_right = 723.0
+offset_bottom = 911.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0mxup")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1nhwd")
+max_value = 5.0
+show_percentage = false
+script = ExtResource("22_hb5qm")
+
+[node name="Honey" parent="." unique_id=56422247 instance=ExtResource("21_m6y6x")]
+position = Vector2(-828, -191)
+mass = 0.61
+Sprite = ExtResource("23_1nhwd")
+Shape = SubResource("CapsuleShape2D_hb5qm")
+Type = "honey"
+
+[node name="Dewdrops" parent="." unique_id=736699458 instance=ExtResource("21_m6y6x")]
+position = Vector2(-763, 28)
+mass = 0.605
+Sprite = ExtResource("22_a3cj8")
+Shape = SubResource("CapsuleShape2D_1og6f")
+Type = "dewdrops"
+
+[node name="Sprite2D" parent="Dewdrops" index="0" unique_id=806268029]
+texture = ExtResource("22_a3cj8")
+
+[node name="CollisionShape2D" parent="Dewdrops" index="1" unique_id=1255018325]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1og6f")
+
+[node name="Acorn" parent="." unique_id=1999445500 instance=ExtResource("21_m6y6x")]
+position = Vector2(-595, 16)
+mass = 0.212
+Sprite = ExtResource("25_hb5qm")
+Shape = SubResource("CircleShape2D_0mxup")
+Type = "acorns"
+
+[node name="Sprite2D" parent="Acorn" index="0" unique_id=806268029]
+scale = Vector2(0.5599997, 0.5599997)
+texture = ExtResource("25_hb5qm")
+
+[node name="CollisionShape2D" parent="Acorn" index="1" unique_id=1255018325]
+shape = SubResource("CircleShape2D_0mxup")
+
+[node name="Ginger" parent="." unique_id=1018620730 instance=ExtResource("21_m6y6x")]
+position = Vector2(-719, -187)
+Sprite = ExtResource("26_0mxup")
+Shape = SubResource("RectangleShape2D_5pr62")
+Type = "ginger"
+
+[node name="Dragon Egg" parent="." unique_id=740306055 instance=ExtResource("21_m6y6x")]
+position = Vector2(-459, 18)
+Sprite = ExtResource("28_1og6f")
+Shape = SubResource("CapsuleShape2D_ako6u")
+Type = "eggs"
+
+[node name="Sprite2D" parent="Dragon Egg" index="0" unique_id=806268029]
+scale = Vector2(0.4900001, 0.49000007)
+texture = ExtResource("28_1og6f")
+
+[node name="CollisionShape2D" parent="Dragon Egg" index="1" unique_id=1255018325]
+shape = SubResource("CapsuleShape2D_ako6u")
+
+[node name="Mandrake" parent="." unique_id=941661909 instance=ExtResource("21_m6y6x")]
+position = Vector2(-504, 211)
+Sprite = ExtResource("28_y8v3d")
+Shape = SubResource("CircleShape2D_ako6u")
+Type = "mandrake"
+
+[node name="Sprite2D" parent="Mandrake" index="0" unique_id=806268029]
+scale = Vector2(0.27734372, 0.27734372)
+texture = ExtResource("28_y8v3d")
+
+[node name="CollisionShape2D" parent="Mandrake" index="1" unique_id=1255018325]
+shape = SubResource("CircleShape2D_ako6u")
+
+[node name="Sap" parent="." unique_id=1075928097 instance=ExtResource("21_m6y6x")]
+position = Vector2(-748, 212)
+Sprite = ExtResource("31_amh61")
+Shape = SubResource("RectangleShape2D_isq66")
+Type = "sap"
+
+[node name="Sprite2D" parent="Sap" index="0" unique_id=806268029]
+position = Vector2(5, 0)
+scale = Vector2(0.5899999, 0.5899999)
+texture = ExtResource("31_amh61")
+
+[node name="CollisionShape2D" parent="Sap" index="1" unique_id=1255018325]
+position = Vector2(0, -1.9999999)
+shape = SubResource("RectangleShape2D_isq66")
+
+[node name="Lavender" parent="." unique_id=1111828340 instance=ExtResource("21_m6y6x")]
+position = Vector2(-606, -190)
+Sprite = ExtResource("30_ako6u")
+Shape = SubResource("RectangleShape2D_fim6t")
+Type = "lavender"
+
+[node name="Milk" parent="." unique_id=868895738 instance=ExtResource("21_m6y6x")]
+position = Vector2(-511, -190)
+Sprite = ExtResource("31_fim6t")
+Shape = SubResource("CapsuleShape2D_y54vx")
+Type = "milk"
+
+[node name="Salt" parent="." unique_id=535384879 instance=ExtResource("21_m6y6x")]
+position = Vector2(-421, -190)
+Sprite = ExtResource("32_a67xv")
+Shape = SubResource("RectangleShape2D_3v25o")
+Type = "salts"
+
+[node name="Garlic" parent="." unique_id=381945610 instance=ExtResource("21_m6y6x")]
+position = Vector2(-789, 431)
+Sprite = ExtResource("33_y54vx")
+Shape = SubResource("CircleShape2D_1nhwd")
+Type = "garlic"
+
+[node name="Fairy Wings" parent="." unique_id=742879731 instance=ExtResource("21_m6y6x")]
+position = Vector2(-625, 418)
+Sprite = ExtResource("34_isq66")
+Shape = SubResource("RectangleShape2D_0mxup")
+Type = "wings"
+
+[node name="Moss" parent="." unique_id=655631487 instance=ExtResource("21_m6y6x")]
+position = Vector2(-463, 422)
+Sprite = ExtResource("35_isq66")
+Shape = SubResource("CircleShape2D_hb5qm")
+Type = "moss"
+
+[node name="DewdropText" type="RichTextLabel" parent="." unique_id=734500506]
+offset_left = -706.0
+offset_top = 42.0
+offset_right = -689.0
+offset_bottom = 83.0
+theme = ExtResource("27_yffeo")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "dewdrops"
+
+[node name="AcornText" type="RichTextLabel" parent="." unique_id=1311890683]
+offset_left = -562.0
+offset_top = 42.0
+offset_right = -545.0
+offset_bottom = 83.0
+theme = ExtResource("27_yffeo")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "acorns"
+
+[node name="DragonEggText" type="RichTextLabel" parent="." unique_id=225149306]
+offset_left = -427.0
+offset_top = 42.0
+offset_right = -410.0
+offset_bottom = 82.0
+theme_override_font_sizes/normal_font_size = 29
+text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "eggs"
+
+[node name="MandrakeText" type="RichTextLabel" parent="." unique_id=1584366672]
+offset_left = -462.0
+offset_top = 246.0
+offset_right = -445.0
+offset_bottom = 286.0
+theme_override_font_sizes/normal_font_size = 29
+text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "mandrake"
+
+[node name="SapText" type="RichTextLabel" parent="." unique_id=856901927]
+offset_left = -708.0
+offset_top = 247.0
+offset_right = -691.0
+offset_bottom = 287.0
+theme_override_font_sizes/normal_font_size = 29
+text = "1"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "sap"
+
+[node name="HoneyText" type="RichTextLabel" parent="." unique_id=1677473520]
+offset_left = -794.0
+offset_top = -166.0
+offset_right = -773.0
+offset_bottom = -125.0
+theme = ExtResource("27_yffeo")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "honey"
+
+[node name="GingerText" type="RichTextLabel" parent="." unique_id=1795827248]
+offset_left = -675.0
+offset_top = -166.0
+offset_right = -654.0
+offset_bottom = -125.0
+theme = ExtResource("27_yffeo")
+text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "ginger"
+
+[node name="LavenderText" type="RichTextLabel" parent="." unique_id=529834224]
+offset_left = -586.0
+offset_top = -166.0
+offset_right = -565.0
+offset_bottom = -125.0
+theme = ExtResource("27_yffeo")
+text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "lavender"
+
+[node name="MilkText" type="RichTextLabel" parent="." unique_id=17329837]
+offset_left = -492.0
+offset_top = -166.0
+offset_right = -471.0
+offset_bottom = -125.0
+theme = ExtResource("27_yffeo")
+text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "milk"
+
+[node name="SaltText" type="RichTextLabel" parent="." unique_id=2085918353]
+offset_left = -401.0
+offset_top = -166.0
+offset_right = -380.0
+offset_bottom = -125.0
+theme = ExtResource("27_yffeo")
+text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "salts"
+
+[node name="GarlicText" type="RichTextLabel" parent="." unique_id=365051110]
+offset_left = -765.0
+offset_top = 446.0
+offset_right = -744.0
+offset_bottom = 487.0
+theme = ExtResource("27_yffeo")
+text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "garlic"
+
+[node name="WingsText" type="RichTextLabel" parent="." unique_id=605420957]
+offset_left = -599.0
+offset_top = 446.0
+offset_right = -578.0
+offset_bottom = 487.0
+theme = ExtResource("27_yffeo")
+text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "wings"
+
+[node name="MossText" type="RichTextLabel" parent="." unique_id=1613657821]
+offset_left = -441.0
+offset_top = 446.0
+offset_right = -420.0
+offset_bottom = 487.0
+theme = ExtResource("27_yffeo")
+text = "∞"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("38_hb5qm")
+Type = "moss"
+
+[node name="Stir Trigger 1" type="Area2D" parent="." unique_id=103883032]
+z_index = 5
+position = Vector2(413, 88)
+collision_mask = 4
+script = ExtResource("26_m5i5b")
+number = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 1" unique_id=50584870]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_sc17n")
+
+[node name="Stir Trigger 2" type="Area2D" parent="." unique_id=629833310]
+z_index = 5
+position = Vector2(624, 160)
+collision_mask = 4
+script = ExtResource("26_m5i5b")
+number = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 2" unique_id=1058995198]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_m5i5b")
+
+[node name="Stir Trigger 3" type="Area2D" parent="." unique_id=947052509]
+z_index = 5
+position = Vector2(416, 256)
+collision_mask = 4
+script = ExtResource("26_m5i5b")
+number = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 3" unique_id=484242611]
+shape = SubResource("CircleShape2D_7ndod")
+
+[node name="Stir Trigger 4" type="Area2D" parent="." unique_id=2079091926]
+z_index = 5
+position = Vector2(184, 163)
+collision_mask = 4
+script = ExtResource("26_m5i5b")
+number = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stir Trigger 4" unique_id=955978559]
+shape = SubResource("CircleShape2D_yffeo")
+
+[node name="Spoon Barrier" type="StaticBody2D" parent="." unique_id=123843847]
+position = Vector2(-315, 136)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spoon Barrier" unique_id=1799608831]
+shape = SubResource("WorldBoundaryShape2D_hb5qm")
+
+[node name="Idle Potion Noises" type="AudioStreamPlayer2D" parent="." unique_id=774005826]
+stream = ExtResource("38_1nhwd")
+autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=367976392]
+libraries/ = SubResource("AnimationLibrary_hb5qm")
+
+[connection signal="clickReleased" from="." to="Spoon" method="_on_potion_brewing_click_released"]
+[connection signal="ConsumeIngredient" from="InsideCauldronHitbox" to="." method="_on_ingredient_consumed"]
+[connection signal="WaterlogSpoonToggle" from="InsideCauldronHitbox" to="Spoon" method="_on_waterlog_toggle"]
+[connection signal="body_entered" from="InsideCauldronHitbox" to="InsideCauldronHitbox" method="_on_body_entered"]
+[connection signal="body_exited" from="InsideCauldronHitbox" to="InsideCauldronHitbox" method="_on_body_exited"]
+[connection signal="button_up" from="UI/JournalButton" to="." method="_on_journal_button_button_up"]
+[connection signal="NotEnoughEnergyForBrewing" from="Honey" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Dewdrops" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Acorn" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Ginger" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Dragon Egg" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Mandrake" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Sap" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Lavender" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Milk" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Salt" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Garlic" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Fairy Wings" to="." method="_on_not_enough_energy"]
+[connection signal="NotEnoughEnergyForBrewing" from="Moss" to="." method="_on_not_enough_energy"]
+[connection signal="SpoonEnteredArea" from="Stir Trigger 1" to="." method="_on_stir_checkpoint_reached"]
+[connection signal="SpoonEnteredArea" from="Stir Trigger 2" to="." method="_on_stir_checkpoint_reached"]
+[connection signal="SpoonEnteredArea" from="Stir Trigger 3" to="." method="_on_stir_checkpoint_reached"]
+[connection signal="SpoonEnteredArea" from="Stir Trigger 4" to="." method="_on_stir_checkpoint_reached"]
+
+[editable path="Dewdrops"]
+[editable path="Acorn"]
+[editable path="Dragon Egg"]
+[editable path="Mandrake"]
+[editable path="Sap"]

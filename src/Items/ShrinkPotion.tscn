@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bbnm4ars7n2iu"]
+
+[ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_fha4a"]
+[ext_resource type="Texture2D" uid="uid://cykdhfoxlmqwn" path="res://Potion Brewing/Textures/ShrinkElixir.png" id="2_fha4a"]
+
+
+[node name="ShrinkPotion" type="Node2D" unique_id=255005035]
+script = ExtResource("1_fha4a")
+item_name = "Shrink Elixir"
+icon = ExtResource("2_fha4a")

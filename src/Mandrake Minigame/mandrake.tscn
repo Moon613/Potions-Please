@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://cyi18fjjtvjrr"]
 
-[ext_resource type="Script" uid="uid://bpf8w2drkyhb5" path="res://Mandrake Minigame/mandrake.gd" id="1_e2ia1"]
-[ext_resource type="Texture2D" uid="uid://u5p50lashrn4" path="res://Textures/MandrakeGame/MandrakeLeafs.png" id="1_l8srp"]
-[ext_resource type="Texture2D" uid="uid://cdgjg7tql7iqw" path="res://Textures/MandrakeGame/MandrakeRun.png" id="2_4s26e"]
-[ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Textures/MandrakeGame/MandrakeItem.png" id="2_axbfc"]
-[ext_resource type="Texture2D" uid="uid://j34p0setubu0" path="res://Textures/MandrakeGame/MandrakeLeafsShake.png" id="2_utqy3"]
-[ext_resource type="Texture2D" uid="uid://cr6csskwvf5yx" path="res://Textures/MandrakeGame/MandrakeUproot.png" id="4_e2ia1"]
+[ext_resource type="Script" path="res://Mandrake Minigame/mandrake.gd" id="1_e2ia1"]
+[ext_resource type="Texture2D" uid="uid://u5p50lashrn4" path="res://Mandrake Minigame/Textures/MandrakeLeafs.png" id="1_l8srp"]
+[ext_resource type="Texture2D" uid="uid://cdgjg7tql7iqw" path="res://Mandrake Minigame/Textures/MandrakeRun.png" id="2_4s26e"]
+[ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Mandrake Minigame/Textures/MandrakeItem.png" id="2_axbfc"]
+[ext_resource type="Texture2D" uid="uid://j34p0setubu0" path="res://Mandrake Minigame/Textures/MandrakeLeafsShake.png" id="2_utqy3"]
+[ext_resource type="Texture2D" uid="uid://cr6csskwvf5yx" path="res://Mandrake Minigame/Textures/MandrakeUproot.png" id="4_e2ia1"]
+
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_utqy3"]
 animations = [{

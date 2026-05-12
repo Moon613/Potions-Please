@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cvtt4msrqbf5h"]
+
+[ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_v5nk5"]
+[ext_resource type="Texture2D" uid="uid://dp5nmo3fl51ga" path="res://Potion Brewing/Textures/Sleepy Solution.png" id="2_v5nk5"]
+
+
+[node name="SleepPotion" type="Node2D" unique_id=255005035]
+script = ExtResource("1_v5nk5")
+item_name = "Sleepy Solution"
+icon = ExtResource("2_v5nk5")

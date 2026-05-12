@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D;
 
 
@@ -10,9 +11,14 @@ var movementTutorialAppear: bool = false;
 
 func _ready() -> void:
 	DialogueManager.startMovementTutorial.connect(_on_movement_tutorial_start);
+	# For some reason this was not applying to instantiated players when set in the editor.
+	$"Thought Bubble".modulate.a = 0;
 
 func _process(delta: float) -> void:
-	if GameInfo.leftHouseForFirstTime and !GameInfo.finishedGatheringTutorial:
+	if !GameInfo.seenPotionBrewingScreen and GameInfo.potionBookGet:
+		$DirectionArrow.modulate.a = 1;
+		$DirectionArrow.look_at(Vector2(76, 20));
+	elif GameInfo.leftHouseForFirstTime and !GameInfo.finishedGatheringTutorial:
 		var closestTrigger: Node2D = null;
 		for trigger in get_parent().get_children().filter(func(child): return child.is_in_group("Interactable trigger")):
 			if closestTrigger == null or (self.position-trigger.position).length() < (self.position-closestTrigger.position).length():
@@ -20,8 +26,14 @@ func _process(delta: float) -> void:
 		if closestTrigger != null:
 			$DirectionArrow.modulate.a = lerp(0, 1, ((self.position-closestTrigger.position).length()-10)/10);
 			$DirectionArrow.look_at(closestTrigger.position)
+	elif GameInfo.seenPotionBrewingScreen and !GameInfo.leftHouseForFirstTime:
+		$DirectionArrow.modulate.a = 1;
+		$DirectionArrow.look_at(Vector2(3, 39));
+	elif GameInfo.seenPotionBrewingScreen and !GameInfo.reenteredHouse:
+		$DirectionArrow.modulate.a = 1;
+		$DirectionArrow.look_at(Vector2(-43, 0));
 	else:
-		$DirectionArrow.self_modulate.a = 0;
+		$DirectionArrow.modulate.a = 0;
 	
 	if timer < 1 and movementTutorialAppear:
 		timer += delta;
@@ -56,9 +68,9 @@ func _process(delta: float) -> void:
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var sprinting = 2 if Input.is_key_pressed(KEY_CTRL) else 1;
-	var vertDir = Input.get_axis("ui_left", "ui_right") * float(!DialogueManager.inDialogue) * float(!GameInfo.busy);
-	var horDir = Input.get_axis("ui_up", "ui_down") * float(!DialogueManager.inDialogue) * float(!GameInfo.busy);
+	var sprinting = 2 if Input.is_key_pressed(KEY_CTRL) or Input.is_key_pressed(KEY_SHIFT) else 1;
+	var vertDir = Input.get_axis("ui_left", "ui_right") * float(!DialogueManager.inDialogue) * float(!GameInfo.busy) * float(!GameInfo.IsInventoryOpen());
+	var horDir = Input.get_axis("ui_up", "ui_down") * float(!DialogueManager.inDialogue) * float(!GameInfo.busy) * float(!GameInfo.IsInventoryOpen());
 	
 	# Set the velocity of the player
 	if vertDir:
@@ -93,7 +105,7 @@ func _physics_process(delta):
 	
 	if collidedWithTransition:
 		if canTriggerSceneTransitions:
-			var transitionIndex = $"Transition Buffer".get_overlapping_areas().find_custom(func(obj: Node2D): return obj is Area2D and obj.name == "Loading Zone");
+			var transitionIndex = $"Transition Buffer".get_overlapping_areas().find_custom(func(obj: Node2D): return obj is Area2D and obj.is_in_group("Loading Zone"));
 			if transitionIndex == -1:
 				collidedWithTransition = false;
 				canTriggerSceneTransitions = false;
@@ -107,3 +119,7 @@ func _on_movement_tutorial_start():
 
 func _on_loading_zone_reject():
 	$MovementTutorialUI._on_loadingzone_reject();
+
+func _on_thought_bubble(message: String):
+	$"Thought Bubble/RichTextLabel".text = message;
+	$AnimationPlayer.play("Thought Bubble");

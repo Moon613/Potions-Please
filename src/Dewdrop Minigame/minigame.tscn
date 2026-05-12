@@ -1,19 +1,23 @@
 [gd_scene format=3 uid="uid://dkp3t1gaoj6to"]
 
-[ext_resource type="Texture2D" uid="uid://qf740q015e4f" path="res://Textures/GrassDewBG.png" id="1_4bqly"]
+[ext_resource type="Texture2D" uid="uid://qf740q015e4f" path="res://Dewdrop Minigame/Textures/GrassDewBG.png" id="1_4bqly"]
 [ext_resource type="Script" uid="uid://ba2mlrm70cku2" path="res://Dewdrop Minigame/minigame.gd" id="1_oemwr"]
-[ext_resource type="Material" uid="uid://c5qxiaop4coa8" path="res://Textures/Dewdrops/background_material.tres" id="2_6y45g"]
+[ext_resource type="Material" uid="uid://c5qxiaop4coa8" path="res://Dewdrop Minigame/Textures/Dewdrops/background_material.tres" id="2_6y45g"]
 [ext_resource type="Script" uid="uid://dspvuxr20661j" path="res://Dewdrop Minigame/rag.gd" id="3_gdft7"]
 [ext_resource type="Script" uid="uid://7atqylklawoc" path="res://Dewdrop Minigame/background.gd" id="4_6y45g"]
 [ext_resource type="SpriteFrames" uid="uid://oologo0y6j6m" path="res://Dewdrop Minigame/rag_frames.tres" id="6_6y45g"]
 [ext_resource type="Shader" uid="uid://dtogdf1h0de1k" path="res://Dewdrop Minigame/rag_wetness.gdshader" id="6_augy1"]
-[ext_resource type="Texture2D" uid="uid://dj4ckgxuyxxiq" path="res://Textures/TwistRagOverlay.png" id="7_augy1"]
-[ext_resource type="Texture2D" uid="uid://dehwxkhqmi4qo" path="res://Textures/DewJarEmpty.png" id="7_mat7q"]
-[ext_resource type="Texture2D" uid="uid://d32ktq4hitttn" path="res://Textures/OpenRagOverlay.png" id="7_vuaru"]
+[ext_resource type="Texture2D" uid="uid://dj4ckgxuyxxiq" path="res://Dewdrop Minigame/Textures/TwistRagOverlay.png" id="7_augy1"]
+[ext_resource type="Texture2D" uid="uid://dehwxkhqmi4qo" path="res://Dewdrop Minigame/Textures/DewJarEmpty.png" id="7_mat7q"]
+[ext_resource type="Texture2D" uid="uid://d32ktq4hitttn" path="res://Dewdrop Minigame/Textures/OpenRagOverlay.png" id="7_vuaru"]
 [ext_resource type="Script" uid="uid://bin3g35q8wcy3" path="res://Dewdrop Minigame/collection_jar.gd" id="8_osxt6"]
-[ext_resource type="Texture2D" uid="uid://bpwb1xatmcl8v" path="res://Textures/DewJarFull.png" id="11_vuaru"]
+[ext_resource type="Texture2D" uid="uid://bpwb1xatmcl8v" path="res://Dewdrop Minigame/Textures/DewJarFull.png" id="11_vuaru"]
 [ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="13_2l8w5"]
-[ext_resource type="AudioStream" uid="uid://870rriqmql7e" path="res://Sound Effects/good noise.wav" id="14_6cmm1"]
+[ext_resource type="AudioStream" uid="uid://dqhx4rq3ljnpn" path="res://Sound Effects/DewdropCollect.wav" id="13_8xp7k"]
+[ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="15_di2qq"]
+[ext_resource type="Texture2D" uid="uid://cd7jmwbd6ejko" path="res://Dewdrop Minigame/Textures/Minigame Indicator Arrow1.png" id="16_0ktjd"]
+[ext_resource type="Texture2D" uid="uid://ga7mmftjjkl" path="res://Dewdrop Minigame/Textures/Space Bar.png" id="16_i1f0g"]
+[ext_resource type="Script" uid="uid://cmxipy8v3u7xp" path="res://Dewdrop Minigame/arrow.gd" id="17_8xp7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ff77p"]
 size = Vector2(680, 456)
@@ -26,7 +30,97 @@ shader_parameter/overlay_closed = ExtResource("7_augy1")
 shader_parameter/wetness = 0.60000002384186
 shader_parameter/open = true
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2l8w5"]
+[sub_resource type="Animation" id="Animation_8xp7k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Rag/AnimatedSprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Rag/AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_84du3"]
+resource_name = "Rag Squeeze"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Rag/AnimatedSprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.6108652381980153]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Rag/AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_skdtp"]
+resource_name = "Rag Unsqueeze"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Rag/AnimatedSprite2D:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.100000024),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.6108652381980153, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Rag/AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.100000024),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.5, 0.6), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_skdtp"]
+_data = {
+&"RESET": SubResource("Animation_8xp7k"),
+&"Rag Squeeze": SubResource("Animation_84du3"),
+&"Rag Unsqueeze": SubResource("Animation_skdtp")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xp7k"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -39,6 +133,180 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_6cmm1"]
+offsets = PackedFloat32Array(0.48317307)
+colors = PackedColorArray(0.872223, 0.7005363, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_di2qq"]
+gradient = SubResource("Gradient_6cmm1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ktjd"]
+resource_local_to_scene = true
+size = Vector2(1152, 72)
+
+[sub_resource type="Animation" id="Animation_i1f0g"]
+resource_name = "Arrow Move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Arrow:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-832, -456), Vector2(832, -456)]
+}
+
+[sub_resource type="Animation" id="Animation_6cmm1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Space Button:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ReadyText:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Greyout:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Arrow:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-832, -456)]
+}
+
+[sub_resource type="Animation" id="Animation_di2qq"]
+resource_name = "UI Fade In"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.100000024, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Slider Good Area:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.100000024, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Space Button:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ReadyText:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Greyout:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Arrow:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i1f0g"]
+_data = {
+&"Arrow Move": SubResource("Animation_i1f0g"),
+&"RESET": SubResource("Animation_6cmm1"),
+&"UI Fade In": SubResource("Animation_di2qq")
+}
 
 [node name="Minigame" type="Node2D" unique_id=2048969862]
 script = ExtResource("1_oemwr")
@@ -58,7 +326,7 @@ position = Vector2(544, 608)
 script = ExtResource("3_gdft7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rag" unique_id=15627907]
-z_index = 1
+z_index = 2
 position = Vector2(-4, -4)
 shape = SubResource("RectangleShape2D_ff77p")
 
@@ -67,39 +335,173 @@ z_index = 1
 material = SubResource("ShaderMaterial_vuaru")
 sprite_frames = ExtResource("6_6y45g")
 
-[node name="Collection Jar" type="AnimatedSprite2D" parent="." unique_id=1729812968]
+[node name="RagSqueezePlayer" type="AnimationPlayer" parent="Rag" unique_id=743761367]
+root_node = NodePath("../../Collection Jar/AnimatedSprite2D")
+libraries/ = SubResource("AnimationLibrary_skdtp")
+
+[node name="Collection Jar" type="Area2D" parent="." unique_id=2042724865]
 z_index = 1
 position = Vector2(0, 928)
-sprite_frames = SubResource("SpriteFrames_2l8w5")
 script = ExtResource("8_osxt6")
 
-[node name="Tutorial" type="Popup" parent="." unique_id=1524810777]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Collection Jar" unique_id=422433236]
+sprite_frames = SubResource("SpriteFrames_8xp7k")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collection Jar" unique_id=1329110500]
+polygon = PackedVector2Array(0, 128, -208, 104, -280, 16, -256, -48, -248, -112, 0, -64, 248, -104, 264, -48, 296, 16, 216, 104)
+
+[node name="CollectionNoise" type="AudioStreamPlayer2D" parent="." unique_id=1413924930]
+stream = ExtResource("13_8xp7k")
+
+[node name="Control" type="Control" parent="." unique_id=27609992]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -960.0
+offset_top = -544.0
+offset_right = 960.0
+offset_bottom = 544.0
+mouse_filter = 2
+
+[node name="InfoButton" type="Button" parent="Control" unique_id=239937128]
+z_index = 100
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.97300005
+anchor_top = 0.94500005
+anchor_right = 0.97300005
+anchor_bottom = 0.94500005
+offset_left = -36.160156
+offset_top = -36.160034
+offset_right = 35.839844
+offset_bottom = 35.839966
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "!"
+icon = SubResource("GradientTexture2D_di2qq")
+icon_alignment = 1
+
+[node name="Tutorial" type="Popup" parent="Control" unique_id=1524810777]
+process_mode = 3
 oversampling_override = 1.0
-position = Vector2i(250, 105)
-size = Vector2i(665, 300)
+position = Vector2i(250, 150)
+size = Vector2i(698, 300)
 visible = true
 script = ExtResource("13_2l8w5")
 
-[node name="Message" type="Label" parent="Tutorial" unique_id=2140615164]
+[node name="Message" type="Label" parent="Control/Tutorial" unique_id=2140615164]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "
 Press and hold the mouse on the rag to move it over the drops.
 Once all the drops are cleaned up, pull the rag horizontally to stretch it and fill the jug."
 
-[node name="Button" type="Button" parent="Tutorial" unique_id=611323206]
+[node name="Button" type="Button" parent="Control/Tutorial" unique_id=611323206]
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Close"
 
-[node name="CollectionNoise" type="AudioStreamPlayer2D" parent="." unique_id=1413924930]
-stream = ExtResource("14_6cmm1")
+[node name="Slider Background" type="ColorRect" parent="Control" unique_id=1442673737]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.15100001
+anchor_right = 0.5
+anchor_bottom = 0.15100001
+offset_left = -832.0
+offset_top = -36.28801
+offset_right = 832.0
+offset_bottom = 35.71199
+color = Color(1, 0, 0, 1)
+
+[node name="Greyout" type="ColorRect" parent="Control" unique_id=330616743]
+z_index = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -544.0
+offset_right = 960.0
+offset_bottom = 544.0
+color = Color(0, 0, 0, 0.6901961)
+
+[node name="Slider Good Area" type="ColorRect" parent="Control" unique_id=902013129]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.15100001
+anchor_right = 0.5
+anchor_bottom = 0.15100001
+offset_left = -576.0
+offset_top = -36.28801
+offset_right = 576.0
+offset_bottom = 35.71199
+color = Color(0, 1, 0, 1)
+
+[node name="ReadyText" type="RichTextLabel" parent="Control" unique_id=974579438]
+z_index = 2
+layout_mode = 0
+offset_left = 648.00006
+offset_top = 224.0
+offset_right = 1272.0
+offset_bottom = 480.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 96
+theme_override_fonts/normal_font = ExtResource("15_di2qq")
+theme_override_font_sizes/normal_font_size = 164
+text = "Ready?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space Button" type="Sprite2D" parent="." unique_id=1862315009]
+z_index = 2
+texture_filter = 3
+position = Vector2(6.1035156e-05, 63.99999)
+scale = Vector2(5.000001, 5)
+texture = ExtResource("16_i1f0g")
+
+[node name="Arrow" type="Area2D" parent="." unique_id=13765735]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-832, -456)
+script = ExtResource("17_8xp7k")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow" unique_id=1665165019]
+texture_filter = 3
+scale = Vector2(4, 5)
+texture = ExtResource("16_0ktjd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Arrow" unique_id=1696982752]
+polygon = PackedVector2Array(-64, -56, 64, -56, 0, 80)
+
+[node name="Green Bar Detection" type="StaticBody2D" parent="." unique_id=1229612206 groups=["Green Bar"]]
+position = Vector2(0, -380)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Green Bar Detection" unique_id=855634468]
+z_index = 2
+shape = SubResource("RectangleShape2D_0ktjd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1208890440]
+root_node = NodePath("../Control/Slider Background")
+libraries/ = SubResource("AnimationLibrary_i1f0g")
 
 [connection signal="RemoveJar" from="." to="Collection Jar" method="_on_minigame_remove_jar"]
-[connection signal="TransitionToDrying" from="." to="Background" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Rag" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Collection Jar" method="_on_minigame_transition_to_drying"]
+[connection signal="RagReappearing" from="Rag" to="." method="_on_rag_reappearing"]
 [connection signal="collectedDrop" from="Rag" to="." method="_on_rag_collected_drop"]
+[connection signal="animation_finished" from="Rag/RagSqueezePlayer" to="Rag" method="_on_rag_squeeze_player_animation_finished"]
+[connection signal="CollectedDrop" from="Collection Jar" to="." method="_on_collection_jar_collected_drop"]
 [connection signal="DoneMoveDown" from="Collection Jar" to="." method="_on_collection_jar_done_move_down"]
-[connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
-[connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]
+[connection signal="pressed" from="Control/InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="popup_hide" from="Control/Tutorial" to="." method="_on_tutorial_popup_hide"]
+[connection signal="pressed" from="Control/Tutorial/Button" to="Control/Tutorial" method="_on_button_pressed"]
+[connection signal="Faliure" from="Arrow" to="." method="_on_arrow_faliure"]
+[connection signal="Faliure" from="Arrow" to="Rag" method="_on_arrow_faliure"]
+[connection signal="Success" from="Arrow" to="." method="_on_arrow_success"]
+[connection signal="Success" from="Arrow" to="Rag" method="_on_arrow_success"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

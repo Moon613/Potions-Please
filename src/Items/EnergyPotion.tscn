@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c0siaethatsax"]
+
+[ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_v3lj2"]
+[ext_resource type="Texture2D" uid="uid://b3m16segjo1pr" path="res://Potion Brewing/Textures/Energy Elixir(NEW).png" id="2_v3lj2"]
+
+
+[node name="EnergyPotion" type="Node2D" unique_id=255005035]
+script = ExtResource("1_v3lj2")
+item_name = "Energy Elixir"
+icon = ExtResource("2_v3lj2")

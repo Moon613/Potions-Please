@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cau11sp6p4x8o"]
 
-[ext_resource type="Texture2D" uid="uid://twb087p2dbdr" path="res://Textures/MandrakeGame/FakeMandrakes.png" id="1_x2s5g"]
+[ext_resource type="Texture2D" uid="uid://twb087p2dbdr" path="res://Mandrake Minigame/Textures/FakeMandrakes.png" id="1_x2s5g"]
+
 
 [node name="Shrubs" type="Node2D" unique_id=2011702573]
 y_sort_enabled = true

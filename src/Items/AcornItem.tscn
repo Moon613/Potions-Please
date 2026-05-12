@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cmfjji3mf0u0d"]
 
 [ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_kq5hf"]
-[ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Textures/Acorn Collectable.png" id="3_fh5u0"]
+[ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="3_fh5u0"]
+
 
 [node name="AcornItem" type="Node2D" unique_id=1364042111]
 script = ExtResource("1_kq5hf")

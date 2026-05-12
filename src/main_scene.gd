@@ -9,11 +9,19 @@ extends Node2D
 @export var treesap: PackedScene = preload("res://Treesap Minigame/minigame.tscn")
 @export var dragonEggs: PackedScene = preload("res://Dragon Egg Minigame/minigame.tscn")
 @export var mandrakes: PackedScene = preload("res://Mandrake Minigame/MandrakeMinigame.tscn")
+@export var upstairs: PackedScene = preload("res://Overworld/Upstairs.tscn")
 
-@export var startingScene: int = -1;
-var finishedTutorial: bool = false;
+@export var startingScene: int;
 
-@export var busy_scenes = [1, 3, 4, 5, 6, 7, 8]
+@export var busy_scenes = [
+	GameInfo.SceneID.POTIONBREWING,
+	GameInfo.SceneID.DEWDROPS,
+	GameInfo.SceneID.MAINMENU,
+	GameInfo.SceneID.ACORNS,
+	GameInfo.SceneID.TREESAP,
+	GameInfo.SceneID.DRAGONEGGS,
+	GameInfo.SceneID.MANDRAKES
+];
 var overworldScene;
 var potionScene;
 var insideScene;
@@ -23,9 +31,10 @@ var acornScene;
 var sapScene;
 var eggScene;
 var mandrakeScene;
+var upstairsScene;
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:	
+func _ready() -> void:
 	var overworldInstance = overworld.instantiate();
 	overworldInstance.name = "Overworld";
 	
@@ -37,15 +46,20 @@ func _ready() -> void:
 	
 	var mainMenuInstance = mainMenu.instantiate();
 	mainMenuInstance.name = "Main Menu";
-	add_child(mainMenuInstance);
+	
+	var upstairsInstance = upstairs.instantiate();
+	upstairsInstance.name = "Upstairs";
 	
 	overworldScene = overworldInstance;
 	potionScene = brewingInstance;
 	insideScene = insideInstance;
 	mainMenuScene = mainMenuInstance;
+	upstairsScene = upstairsInstance;
 	
 	if startingScene != -1:
 		_switch_scene(startingScene);
+	else:
+		_switch_scene(GameInfo.SceneID.MAINMENU)
 	pass # Replace with function body.
 
 
@@ -54,26 +68,42 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.keycode == KEY_Q:
-		get_tree().quit();
+	pass
 
 func _switch_scene(id: int):
 	if id in GameInfo.minigameEnergy and GameInfo.minigameEnergy[id] > GameInfo.energy:
 		return;
 	print("Switching to scene " + str(id))
-	if self.get_children()[0].has_method("Reset"):
+	if self.get_children() and self.get_children()[0].has_method("Reset"):
 		self.get_children()[0].Reset();
-	self.remove_child(self.get_children()[0]);
-	inv_panel_control(id)
+	if self.get_children():
+		self.remove_child(self.get_children()[0]);
+	
+	if id in busy_scenes:
+		GameInfo.inventoryButton.visible = false;
+	else:
+		GameInfo.inventoryButton.visible = true;
+	
 	match id:
 		GameInfo.SceneID.OVERWORLD:
 			self.add_child(overworldScene);
-			if !finishedTutorial:
-				DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I should move to the areas with arrows above them and interact with them by pressing 'Enter' to gather ingredients", DialogueManager.Dialogue.YASMEEN));
-				finishedTutorial = true;
+			if GameInfo.finishedGatheringTutorial and !GameInfo.minigameExit:
+				DialogueManager.TutMinigameComplete();
+				GameInfo.minigameExit = true;
+			if !GameInfo.leftHouseForFirstTime:
+				GameInfo.leftHouseForFirstTime = true;
 		GameInfo.SceneID.POTIONBREWING:
+			if !GameInfo.seenPotionBrewingScreen:
+				DialogueManager.FirstTutorialPotionAttempt();
+			if GameInfo.openedInventory and !GameInfo.reenterPotionBrewingScreen:
+				DialogueManager.SecondTutorialPotionAttempt();
+				GameInfo.reenterPotionBrewingScreen = true;
 			self.add_child(potionScene);
 		GameInfo.SceneID.INSIDEHOUSE:
+			if GameInfo.potionBookGet and !GameInfo.seenPotionBrewingScreen:
+				GameInfo.seenPotionBrewingScreen = true;
+			if GameInfo.leftHouseForFirstTime:
+				GameInfo.reenteredHouse = true;
 			self.add_child(insideScene);
 		GameInfo.SceneID.DEWDROPS:
 			var dewdropInstance = dewdrops.instantiate();
@@ -102,8 +132,13 @@ func _switch_scene(id: int):
 			mandrakeInstance.name = "Mandrakes Minigame"
 			mandrakeScene = mandrakeInstance
 			self.add_child(mandrakeScene);
+		GameInfo.SceneID.UPSTAIRS:
+			self.add_child(upstairsScene);
 		_:
 			print("Unknown SceneID!")
+		
+		
+	inv_panel_control(id)
 
 func inv_panel_control(id: int):
 	if id in busy_scenes:
@@ -111,3 +146,4 @@ func inv_panel_control(id: int):
 		GameInfo.busy = true
 	else:
 		GameInfo.busy = false
+ 

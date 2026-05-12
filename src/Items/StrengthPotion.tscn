@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bmf3xmajonwl6"]
+
+[ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_l7j5t"]
+[ext_resource type="Texture2D" uid="uid://tiw4qvuy7alj" path="res://Potion Brewing/Textures/Strength Potion.png" id="2_l7j5t"]
+
+
+[node name="StrengthPotion" type="Node2D" unique_id=255005035]
+script = ExtResource("1_l7j5t")
+item_name = "Strength Potion"
+icon = ExtResource("2_l7j5t")

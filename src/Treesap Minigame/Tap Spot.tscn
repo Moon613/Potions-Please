@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://v8gj4y4a7wra"]
 
-[ext_resource type="Texture2D" uid="uid://cp1ptyo7flil0" path="res://Textures/DewTile.png" id="1_o7kpu"]
+[ext_resource type="Texture2D" uid="uid://cp1ptyo7flil0" path="res://Overworld/Textures/DewTile.png" id="1_o7kpu"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6fhdj"]
 radius = 64.0

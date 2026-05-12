@@ -2,15 +2,16 @@ extends Area2D
 @export var dewdrop: PackedScene = preload("res://Dewdrop Minigame/dewdrop.tscn")
 
 signal collectedDrop;
+signal RagReappearing;
 
 var FOLLOW_MOUSE = false;
-var RELATIVE_MOUSE_POSITION = Vector2();
-var fading = false;
+var mouseInitialGarbPos: Vector2 = Vector2.ZERO;
+var movingOffscreen = false;
 var fadeTimer = 0.1;
 var reappearing = false;
 var startPos: Vector2;
-var grabbedForWringing = false;
 var farthestStretch: float = 1.0;
+var inSecondPart: bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,78 +19,80 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if fading: 
+	if movingOffscreen: 
 		if fadeTimer < 1:
 			self.position.y = lerpf(startPos.y, 1000, 0.0 if fadeTimer == 0 else pow(2, 10 * fadeTimer - 10));
 			fadeTimer += 1 * delta;
 		else:
 			$AnimatedSprite2D.frame = 1;
-			fading = false;
+			movingOffscreen = false;
 			reappearing = true;
+			RagReappearing.emit();
+			inSecondPart = true;
 			fadeTimer = 0;
 			startPos = self.position;
-	if reappearing:
-		if fadeTimer < 1:
+	if reappearing and fadeTimer < 1:
 			$AnimatedSprite2D.material.set_shader_parameter("open", false);
-			self.position = lerp(startPos, Vector2(0,-200), 1.0 if fadeTimer == 1 else 1-pow(2, -10*fadeTimer));
+			self.position = lerp(startPos, Vector2(0,-80), 1.0 if fadeTimer == 1 else 1-pow(2, -10*fadeTimer));
 			fadeTimer += 1 * delta;
-	for body in get_overlapping_bodies():
-		if body is RigidBody2D and body.name.contains("Dewdrop"):
-			var collider = body.get_node("CollisionShape2D");
-			if collider.shape is CircleShape2D:
-				# Math... Evil math...
-				var circleCenter: Vector2 = body.position;
-				var radius: int = collider.shape.radius;
-				var ragCenter: Vector2 = self.position;
-				var ragSizeX: int = self.get_node("CollisionShape2D").shape.size.x / 2;
-				var ragSizeY: int = self.get_node("CollisionShape2D").shape.size.y / 2;
-				
-				var circleLeft = circleCenter.x - radius;
-				var circleRight = circleCenter.x + radius;
-				var circleTop = circleCenter.y - radius;
-				var circleBottom = circleCenter.y + radius;
-				var ragLeft = ragCenter.x - ragSizeX;
-				var ragRight = ragCenter.x + ragSizeX;
-				var ragTop = ragCenter.y - ragSizeY;
-				var ragBottom = ragCenter.y + ragSizeY;
-				if circleLeft > ragLeft and circleRight < ragRight and circleTop > ragTop and circleBottom < ragBottom:
-					body.queue_free();
-					collectedDrop.emit();
-					if $AnimatedSprite2D.material is ShaderMaterial:
-						var wetness = $AnimatedSprite2D.material.get_shader_parameter("wetness");
-						$AnimatedSprite2D.material.set_shader_parameter("wetness", wetness + (0.4/self.get_parent().number_of_dewdrops));
 	
-	if grabbedForWringing and ((RELATIVE_MOUSE_POSITION.x < 0 and get_global_mouse_position().x < RELATIVE_MOUSE_POSITION.x) or (RELATIVE_MOUSE_POSITION.x > 0 and get_global_mouse_position().x > RELATIVE_MOUSE_POSITION.x)):
-		var newFarthestStretch = minf(1.8, maxf(1.0, (abs(RELATIVE_MOUSE_POSITION.x - get_global_mouse_position().x)+200)/200.0))
-		$AnimatedSprite2D.scale.x = minf(1.8, maxf(1.0, (abs(RELATIVE_MOUSE_POSITION.x - get_global_mouse_position().x)+200)/200.0))
-		if newFarthestStretch > farthestStretch:
-			$AnimatedSprite2D.material.set_shader_parameter("wetness", lerp(1.0, 0.6, ((newFarthestStretch-1.0)/0.8)));
-			farthestStretch = newFarthestStretch;
-			var drop = dewdrop.instantiate();
-			drop.name = "Dewdrop";
-			drop.gravity_scale = 1;
-			get_parent().add_child(drop);
-	pass
+	if !inSecondPart:
+		for body: Node2D in get_overlapping_bodies():
+			if body.is_in_group("Dewdrop") and ContainsDewdrop(body):
+				body.queue_free();
+				collectedDrop.emit();
+				var wetness = $AnimatedSprite2D.material.get_shader_parameter("wetness");
+				$AnimatedSprite2D.material.set_shader_parameter("wetness", wetness + (0.4/self.get_parent().number_of_dewdrops));
+	
 
 func _physics_process(delta):
 	if FOLLOW_MOUSE:
-		var goal = get_global_mouse_position() + RELATIVE_MOUSE_POSITION;
+		var goal = get_global_mouse_position() + mouseInitialGarbPos;
 		self.position = goal;
 	pass
 
 func _input_event(viewport, event, shape_idx):
-	if !fading and !reappearing and event is InputEventMouseButton:
-		if event.button_index == 1:
-			if event.pressed:
-				FOLLOW_MOUSE = true;
-				RELATIVE_MOUSE_POSITION = self.position - get_global_mouse_position();
-			else:
-				FOLLOW_MOUSE = false;
-	elif reappearing and event is InputEventMouseButton and event.button_index == 1 and event.pressed:
-		grabbedForWringing = true;
-		RELATIVE_MOUSE_POSITION = get_global_mouse_position();
+	if !movingOffscreen and !reappearing and event is InputEventMouseButton and event.button_index == 1:
+		if event.pressed:
+			FOLLOW_MOUSE = true;
+			mouseInitialGarbPos = self.position - get_global_mouse_position();
+		else:
+			FOLLOW_MOUSE = false;
+
+func ContainsDewdrop(dewdrop: Node2D):
+	# All nodes in the Dewdrop group should be RigidBody2D and have a shape.
+	var rect = dewdrop.get_node("CollisionShape2D").shape.get_rect() as Rect2;
+	
+	var dewDropPos = dewdrop.position + rect.position;
+	var ragPos = position + $CollisionShape2D.shape.get_rect().position;
+	var dewDropEnd = dewdrop.position + rect.end;
+	var ragEnd = position + $CollisionShape2D.shape.get_rect().end;
+	
+	return dewDropPos.x > ragPos.x and dewDropPos.y > ragPos.y and dewDropEnd.x < ragEnd.x and dewDropEnd.y < ragEnd.y;
 
 func _on_minigame_transition_to_drying():
 	startPos = self.position;
-	fading = true;
+	movingOffscreen = true;
 	FOLLOW_MOUSE = false;
+
+func _on_arrow_success():
+	SpawnDroplet(Vector2.ZERO);
+
+func _on_arrow_faliure():
+	var X: int = randi_range(300, 1400);
+	X *= -1 if randi_range(0,1) == 0 else 1;
+	SpawnDroplet(Vector2(X, -500), 1)
+
+func SpawnDroplet(initialDirection: Vector2, z_index: int = 0):
+	$AnimatedSprite2D.material.set_shader_parameter("wetness", lerp(1.0, 0.4, (float(get_parent().timingSuccesses) / float(get_parent().maximumSliderAttempts+1))));
+	var drop = dewdrop.instantiate();
+	drop.name = "Dewdrop";
+	drop.gravity_scale = 1;
+	drop.linear_velocity = initialDirection;
+	drop.z_index = z_index;
+	get_parent().add_child(drop);
+	$RagSqueezePlayer.play("Rag Squeeze");
+
+func _on_rag_squeeze_player_animation_finished(anim_name):
+	if anim_name == "Rag Squeeze":
+		$RagSqueezePlayer.play("Rag Unsqueeze");

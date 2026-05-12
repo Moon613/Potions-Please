@@ -17,16 +17,17 @@ config/icon="uid://cm2ufk7sg4qsf"
 
 [autoload]
 
-GameInfo="*uid://dsxoopnx1kodm"
 SignalLens="*uid://85rkx60vm7a7"
 DialogueManager="*uid://dkgruj3r4tsmj"
-SoundManager="*uid://du86mgjbuyr0b"
+GameInfo="*uid://dsxoopnx1kodm"
+SaveManager="*uid://bj6054yd5rypy"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 mouse_cursor/custom_image="uid://1l1tdbt2jeh5"
+mouse_cursor/tooltip_position_offset=Vector2(0, -25)
 
 [editor_plugins]
 
@@ -46,9 +47,14 @@ Tap=""
 Mandrakes=""
 Hammer=""
 Player="The overworld player character"
-Persist="Everything that persists when a file is saved"
 "Loading Zone"="All overworld loading zones"
 "Interactable trigger"="Interactable triggers used to send the player to a new scene where they do not control a player character, such as a minigame"
+"Saved Info"="Everything that persists when a file is saved"
+Dewdrop="The dewdrops that are collected by the rag in the dewdrop collection minigame"
+
+[gui]
+
+timers/tooltip_delay_sec=0.3
 
 [input]
 
@@ -106,3 +112,4 @@ inventory={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+textures/vram_compression/import_etc2_astc=true

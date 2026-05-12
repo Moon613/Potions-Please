@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dbmv7afpfwvfs"]
+
+[ext_resource type="Script" uid="uid://c32iy6j01kdcg" path="res://Overworld/boundary.gd" id="1_613ww"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_613ww"]
+resource_local_to_scene = true
+normal = Vector2(1, 0)
+
+[node name="Boundary" type="Area2D" unique_id=1046035178]
+script = ExtResource("1_613ww")
+metadata/_custom_type_script = "uid://dgmki6oa24bbm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=132923071]
+shape = SubResource("WorldBoundaryShape2D_613ww")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

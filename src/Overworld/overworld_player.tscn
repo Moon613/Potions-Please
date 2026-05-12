@@ -1,17 +1,20 @@
 [gd_scene format=3 uid="uid://c0i865a3jt162"]
 
 [ext_resource type="Script" uid="uid://t7o3hnud8s8b" path="res://Overworld/player.gd" id="1_a5myp"]
-[ext_resource type="Texture2D" uid="uid://dttqs1v0ax4ho" path="res://Overworld/YasmeenOverworldSpriteSheet.png" id="2_h8sdj"]
+[ext_resource type="Texture2D" uid="uid://dttqs1v0ax4ho" path="res://Overworld/Textures/YasmeenOverworldSpriteSheet.png" id="2_h8sdj"]
 [ext_resource type="Script" uid="uid://ikvfob3bhgww" path="res://Overworld/movement_tutorial_ui.gd" id="6_3hocg"]
-[ext_resource type="Texture2D" uid="uid://lqjhhd3fpohe" path="res://Textures/ButtonW.png" id="6_3uaej"]
-[ext_resource type="Texture2D" uid="uid://b4531eg83f1xt" path="res://Textures/ButtonWPressed.png" id="7_ij5j1"]
-[ext_resource type="Texture2D" uid="uid://b07v1qvncbuxo" path="res://Textures/ButtonS.png" id="8_y8ge3"]
-[ext_resource type="Texture2D" uid="uid://dewegur4l764" path="res://Textures/ButtonSPressed.png" id="9_oajxw"]
-[ext_resource type="Texture2D" uid="uid://cm6q0baxm7b54" path="res://Textures/ButtonA.png" id="10_xsxji"]
-[ext_resource type="Texture2D" uid="uid://clu462tcy4crn" path="res://Textures/ButtonAPressed.png" id="11_3hocg"]
-[ext_resource type="Texture2D" uid="uid://x1ulb5c6cnog" path="res://Textures/ButtonD.png" id="12_7ld80"]
-[ext_resource type="Texture2D" uid="uid://bkhnyp22bscp3" path="res://Textures/ButtonDPressed.png" id="13_r2842"]
-[ext_resource type="Texture2D" uid="uid://bb4q7ll1kwt8c" path="res://Textures/Tutorial Ground Arrow.png" id="15_7ld80"]
+[ext_resource type="Texture2D" uid="uid://lqjhhd3fpohe" path="res://Overworld/Textures/ButtonW.png" id="6_3uaej"]
+[ext_resource type="Texture2D" uid="uid://b4531eg83f1xt" path="res://Overworld/Textures/ButtonWPressed.png" id="7_ij5j1"]
+[ext_resource type="Texture2D" uid="uid://b07v1qvncbuxo" path="res://Overworld/Textures/ButtonS.png" id="8_y8ge3"]
+[ext_resource type="Texture2D" uid="uid://dewegur4l764" path="res://Overworld/Textures/ButtonSPressed.png" id="9_oajxw"]
+[ext_resource type="Texture2D" uid="uid://cm6q0baxm7b54" path="res://Overworld/Textures/ButtonA.png" id="10_xsxji"]
+[ext_resource type="Texture2D" uid="uid://clu462tcy4crn" path="res://Overworld/Textures/ButtonAPressed.png" id="11_3hocg"]
+[ext_resource type="Texture2D" uid="uid://x1ulb5c6cnog" path="res://Overworld/Textures/ButtonD.png" id="12_7ld80"]
+[ext_resource type="Texture2D" uid="uid://balxycsrbbylg" path="res://Overworld/Textures/ThoughtBubbleSmall.png" id="13_3hocg"]
+[ext_resource type="Texture2D" uid="uid://bkhnyp22bscp3" path="res://Overworld/Textures/ButtonDPressed.png" id="13_r2842"]
+[ext_resource type="Texture2D" uid="uid://cmf38gr32ij7k" path="res://Overworld/Textures/ThoughtBubble.png" id="14_7ld80"]
+[ext_resource type="Texture2D" uid="uid://bb4q7ll1kwt8c" path="res://Overworld/Textures/Tutorial Ground Arrow.png" id="15_7ld80"]
+[ext_resource type="FontFile" uid="uid://dh7d3p4dktydb" path="res://fonts/KiwiMaru-Light.ttf" id="15_r2842"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyb65"]
 size = Vector2(6, 5)
@@ -287,6 +290,43 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_7ld80"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Thought Bubble:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r2842"]
+resource_name = "Thought Bubble"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Thought Bubble:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mu26v"]
+_data = {
+&"RESET": SubResource("Animation_7ld80"),
+&"Thought Bubble": SubResource("Animation_r2842")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=2042437237 groups=["Player"]]
 disable_mode = 2
 slide_on_ceiling = false
@@ -297,6 +337,7 @@ position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_nyb65")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1104933842]
+light_mask = 0
 position = Vector2(0, 2)
 scale = Vector2(0.048076924, 0.048076943)
 sprite_frames = SubResource("SpriteFrames_buwj1")
@@ -310,35 +351,80 @@ position = Vector2(0, 7.5)
 shape = SubResource("RectangleShape2D_a5myp")
 
 [node name="MovementTutorialUI" type="Node2D" parent="." unique_id=1817763898]
+light_mask = 0
 position = Vector2(0, -12)
 script = ExtResource("6_3hocg")
 
 [node name="W" type="AnimatedSprite2D" parent="MovementTutorialUI" unique_id=1050845930]
+light_mask = 0
 texture_filter = 3
 position = Vector2(0, -2)
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_tma5g")
 
 [node name="S" type="AnimatedSprite2D" parent="MovementTutorialUI" unique_id=309326096]
+light_mask = 0
 texture_filter = 3
 position = Vector2(0, 3)
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_mvqdm")
 
 [node name="A" type="AnimatedSprite2D" parent="MovementTutorialUI" unique_id=938009634]
+light_mask = 0
 texture_filter = 3
 position = Vector2(-5, 2)
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_3uaej")
 
 [node name="D" type="AnimatedSprite2D" parent="MovementTutorialUI" unique_id=147478306]
+light_mask = 0
 texture_filter = 3
 position = Vector2(5, 2)
 scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_ij5j1")
 
 [node name="DirectionArrow" type="Sprite2D" parent="." unique_id=1865432365]
+light_mask = 0
 texture_filter = 3
 position = Vector2(0, 8)
 scale = Vector2(0.37499997, 0.37499997)
 texture = ExtResource("15_7ld80")
+
+[node name="Thought Bubble" type="Node2D" parent="." unique_id=37053451]
+light_mask = 0
+
+[node name="Small" type="Sprite2D" parent="Thought Bubble" unique_id=1442378160]
+texture_filter = 3
+position = Vector2(6, -3)
+scale = Vector2(0.375, 0.375)
+texture = ExtResource("13_3hocg")
+
+[node name="Small2" type="Sprite2D" parent="Thought Bubble" unique_id=2116226689]
+texture_filter = 3
+position = Vector2(9, -6)
+scale = Vector2(0.5625, 0.5625)
+texture = ExtResource("13_3hocg")
+
+[node name="Big" type="Sprite2D" parent="Thought Bubble" unique_id=1749056532]
+texture_filter = 3
+position = Vector2(17, -14)
+scale = Vector2(0.9769022, 0.73125)
+texture = ExtResource("14_7ld80")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Thought Bubble" unique_id=1961482139]
+clip_contents = false
+offset_left = 7.0
+offset_top = -21.0
+offset_right = 27.0
+offset_bottom = -9.0
+theme_override_constants/line_separation = -2
+theme_override_fonts/normal_font = ExtResource("15_r2842")
+theme_override_font_sizes/normal_font_size = 2
+text = "Rainworld"
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=40363032]
+libraries/ = SubResource("AnimationLibrary_mu26v")

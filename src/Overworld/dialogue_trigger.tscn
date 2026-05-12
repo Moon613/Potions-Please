@@ -2,19 +2,20 @@
 
 [ext_resource type="Script" uid="uid://cat7jbol34aq4" path="res://Overworld/dialogue_trigger.gd" id="1_vngoj"]
 [ext_resource type="SpriteFrames" uid="uid://5q5swr051qix" path="res://Overworld/Button Animation.tres" id="2_oykr6"]
-[ext_resource type="Texture2D" uid="uid://dy4gna1ng73u8" path="res://Textures/Minigame Indicator Arrow.png" id="3_tfqv0"]
+[ext_resource type="Texture2D" uid="uid://dy4gna1ng73u8" path="res://Overworld/Textures/Minigame Indicator Arrow.png" id="3_tfqv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjyl4"]
 resource_local_to_scene = true
 
 [node name="Dialogue Trigger" type="Area2D" unique_id=557724366]
 script = ExtResource("1_vngoj")
-DialogueChoice = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1677971649]
+z_index = 10
 shape = SubResource("RectangleShape2D_yjyl4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2045245545]
+modulate = Color(1, 1, 1, 0)
 z_index = 364
 texture_filter = 3
 position = Vector2(0, -9)
@@ -24,6 +25,7 @@ autoplay = "default"
 frame_progress = 0.899253
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1537529115]
+modulate = Color(1, 1, 1, 0)
 z_index = 316
 texture_filter = 3
 position = Vector2(0, -4)

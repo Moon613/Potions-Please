@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bspohi7x4kfgs"
+path="res://.godot/imported/PotionAppear.wav-b2caaefd9f8ee8499a19b1eaa94c364a.sample"
+
+[deps]
+
+source_file="res://Sound Effects/PotionAppear.wav"
+dest_files=["res://.godot/imported/PotionAppear.wav-b2caaefd9f8ee8499a19b1eaa94c364a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=67000
+compress/mode=2

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bdui1edksqcc1"]
 
 [ext_resource type="Script" uid="uid://d285bg56owb4f" path="res://Items/item.gd" id="1_s115b"]
-[ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Textures/MandrakeGame/MandrakeItem.png" id="2_hlddi"]
+[ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Mandrake Minigame/Textures/MandrakeItem.png" id="2_hlddi"]
+
 
 [node name="MandrakeItem" type="Node2D" unique_id=1066113484]
 script = ExtResource("1_s115b")

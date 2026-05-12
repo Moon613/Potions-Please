@@ -37,7 +37,7 @@ func _process(delta):
 	
 
 func _input(event: InputEvent) -> void:
-	if canPlaceMoretaps and event is InputEventMouseButton and event.button_index == 1 and event.pressed:
+	if canPlaceMoretaps and event is InputEventMouseButton and event.button_index == 1 and event.pressed and !$"../InfoButton".is_hovered():
 		PlaceTap.emit(self.position);
 		var ratingInstance = rating.instantiate();
 		if currentCloseness < 0.25:

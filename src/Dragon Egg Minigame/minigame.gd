@@ -46,6 +46,7 @@ func _process(delta):
 		ChangeIngredients.emit(GameInfo.EGGS, eggsObtained);
 		Input.set_custom_mouse_cursor(load("res://Textures/SuperiorCursor.png"), 0, Vector2.ZERO);
 		ReturnToOverworld.emit(0);
+		GameInfo.finishedGatheringTutorial = true;
 		GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.DRAGONEGGS];
 		self.queue_free()
 	
@@ -59,9 +60,11 @@ func _process(delta):
 		#child.queue_free();
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and GameInfo.busy:
+		get_viewport().set_input_as_handled()
 		Input.set_custom_mouse_cursor(load("res://Textures/SuperiorCursor.png"), 0, Vector2.ZERO);
 		ReturnToOverworld.emit(0);
+		GameInfo.finishedGatheringTutorial = true;
 		self.queue_free()
 
 func _on_egg_obtained():
@@ -70,4 +73,12 @@ func _on_egg_obtained():
 
 func _on_tutorial_popup_hide() -> void:
 	GameInfo.dragoneggTutorial = false
-	Input.set_custom_mouse_cursor(load("res://Textures/TargetCursor.png"), 0, Vector2(26,33));
+	Input.set_custom_mouse_cursor(load("res://Dragon Egg Minigame/Textures/TargetCursor.png"), 0, Vector2(26,33));
+	get_tree().paused = false
+
+func _on_info_button_pressed() -> void:
+	GameInfo.dragoneggTutorial = true
+	get_tree().paused = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	$Tutorial.popup();
+	$Tutorial.move_to_center();

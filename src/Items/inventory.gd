@@ -1,22 +1,30 @@
 extends Control
 class_name Inventory
 
+signal JournalOpen
 # create a String : Item dictionary
 # add add_item to any increase to item
 @onready var invConvert: Dictionary[String, Item] = {
 	"dewdrops": $DewdropItem,
 	"acorns": $AcornItem,
-	"moss": $WIPItem,
 	"mandrake": $MandrakeItem,
 	"eggs": $EggItem,
 	"sap": $SapItem,
+	"salts": $SaltsItem,
+	"milk": $MilkItem,
+	"lavender": $LavenderItem,
+	"ginger": $GingerItem,
+	"honey": $HoneyItem,
+	"garlic": $GarlicItem,
+	"wings": $WingsItem,
+	"moss": $MossItem,
 	
-	"energy": $WIPItem,
-	"sleep": $WIPItem,
-	"strength": $WIPItem,
-	"healing": $WIPItem,
-	"shrink": $WIPItem,
-	"burnt": $WIPItem
+	"energy": $EnergyPotion,
+	"sleep": $SleepPotion,
+	"strength": $StrengthPotion,
+	"healing": $HealingPotion,
+	"shrink": $ShrinkPotion,
+	"burnt": $BurntPotion
 };
 
 var inventory_item_scene = preload("res://Items/InventoryItem.tscn")
@@ -34,7 +42,6 @@ var slots: Array[InventorySlot]
 static var selected_item: Item = null
 
 
-
 func _ready():
 	inventory_grid.columns = cols
 	for i in range(rows * cols):
@@ -44,25 +51,22 @@ func _ready():
 		slot.slot_input.connect(self._on_slot_input)
 		slot.slot_hovered.connect(self._on_slot_hovered)
 	tooltip.visible = false
+	SaveManager.LoadInventory.connect(_on_load_inv);
 	
-	
-	#add items from game reasources
-	var res = GameInfo.resources
-	for item in res:
-		var amount = res[item]
-		if amount > 0:
-			add_item(item,amount);
-			pass
-		pass
+func _input(event):
+	# This layer is made visible in GameInfo._input and GameInfo._on_inventory_button_pressed
+	if (Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("inventory")) and visible:
+		visible = false;
+		get_viewport().set_input_as_handled();
 
 # moves selected item with mouse
 func _process(_delta):
-	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
-	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
 	tooltip.global_position = get_global_mouse_position() - Vector2(0, tooltip.size.y/2)
 	if selected_item:
 		tooltip.visible = false
 		selected_item.global_position = get_global_mouse_position()
+	$"PlayerPanel/VBoxContainer/Reputation Bar".value = GameInfo.reputation;
+	$"PlayerPanel/VBoxContainer/Stamina Bar".value = GameInfo.energy;
 
 # selects or deselects item
 func _on_slot_input(which: InventorySlot, action: InventorySlot.InventorySlotAction):
@@ -96,6 +100,8 @@ func add_item(item_name: String, amount: int) -> void:
 		for slot in slots:
 			if slot.item and slot.item.item_name == _item.item_name: # if item and is of same type
 				slot.item.amount += _item.amount
+				if slot.item.amount <= 0:
+					slot.remove_item()
 				return
 	for slot in slots:
 		if slot.item == null and slot.is_respecting_hint(_item):
@@ -145,3 +151,19 @@ func remove_all(_name: String) -> void:
 func clear_inventory() -> void:
 	for slot in slots:
 		slot.remove_item()
+
+func _on_load_inv():
+	#add items from game reasources
+	var res = GameInfo.resources
+	for item in res:
+		var amount = res[item]
+		if amount > 0:
+			add_item(item,amount);
+	var pot = GameInfo.potions
+	for item in pot:
+		var amount = pot[item]
+		if amount > 0:
+			add_item(item,amount);
+
+func _on_journal_button_up() -> void:
+	JournalOpen.emit()

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bj6054yd5rypy"]
+
+[ext_resource type="Script" uid="uid://c45sq18t8v51x" path="res://Saved Games/save_manager.gd" id="1_8w3v6"]
+
+[node name="Node" type="Node" unique_id=1523652928]
+process_mode = 3
+script = ExtResource("1_8w3v6")
+
+[node name="SaveSlots" type="CanvasLayer" parent="." unique_id=864490025]

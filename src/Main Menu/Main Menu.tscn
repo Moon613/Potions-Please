@@ -1,9 +1,19 @@
 [gd_scene format=3 uid="uid://ddpvkv0l2wv0h"]
 
 [ext_resource type="Script" uid="uid://ceehah7li1w3b" path="res://Main Menu/main_menu.gd" id="1_ku1ks"]
-[ext_resource type="Texture2D" uid="uid://vho3y7pnkero" path="res://Textures/TitleTypeGlow.PNG" id="2_i0jnm"]
+[ext_resource type="Texture2D" uid="uid://bm4khq2owv3ka" path="res://Main Menu/Textures/titlescreenbg.JPG" id="2_bgqmh"]
+[ext_resource type="Texture2D" uid="uid://vho3y7pnkero" path="res://Main Menu/Textures/TitleTypeGlow.PNG" id="2_i0jnm"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="3_wlfof"]
 [ext_resource type="StyleBox" uid="uid://bq2b4hswpggoq" path="res://Main Menu/Main Menu Selection.tres" id="4_wlfof"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgqmh"]
+load_path = "res://.godot/imported/Paper+WoodUI.png-f7228e9a19f554de4100a3e4996dc6d0.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4wqtw"]
+texture = SubResource("CompressedTexture2D_bgqmh")
+expand_margin_top = 40.0
+expand_margin_bottom = 40.0
+modulate_color = Color(1, 1, 1, 0.23529412)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=993294158]
 
@@ -15,6 +25,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ku1ks")
+
+[node name="Title Screen" type="TextureRect" parent="Main Menu" unique_id=1706413592]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+texture = ExtResource("2_bgqmh")
 
 [node name="Title" type="TextureRect" parent="Main Menu" unique_id=1011283025]
 layout_mode = 1
@@ -78,6 +101,7 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = ExtResource("4_wlfof")
 theme_override_styles/pressed = ExtResource("4_wlfof")
 theme_override_styles/hover = ExtResource("4_wlfof")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_4wqtw")
 text = "Load Game"
 
 [node name="Options" type="Button" parent="Main Menu" unique_id=586258182]
@@ -131,4 +155,5 @@ theme_override_styles/hover = ExtResource("4_wlfof")
 text = "Quit Game"
 
 [connection signal="pressed" from="Main Menu/New Game" to="Main Menu" method="_on_new_game_pressed"]
+[connection signal="pressed" from="Main Menu/Load Game" to="Main Menu" method="_on_load_game_pressed"]
 [connection signal="pressed" from="Main Menu/Quit" to="Main Menu" method="_on_quit_pressed"]

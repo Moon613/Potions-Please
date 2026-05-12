@@ -70,7 +70,8 @@ func _process(delta):
 
 
 func _input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_cancel") and GameInfo.busy:
+		get_viewport().set_input_as_handled()
 		minigame_end()
 	if event is InputEventMouseButton and event.is_pressed():
 		hammer_anim.play("whack")
@@ -83,6 +84,7 @@ func minigame_end():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	ChangeIngredients.emit("mandrake", mandrakesCollected);
 	ReturnToOverworld.emit(0);
+	GameInfo.finishedGatheringTutorial = true;
 	GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.MANDRAKES];
 	self.queue_free()
 
@@ -121,4 +123,3 @@ func _on_info_button_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	$Tutorial.popup();
 	$Tutorial.move_to_center();
-	pass # Replace with function body.
