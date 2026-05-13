@@ -6,6 +6,7 @@ extends Node2D
 @export var book_layer: CanvasLayer
 var busy: bool = false
 var journal_is_open: bool = false;
+var customerAtlas = preload("res://Textures/customerdialoguesprites.png");
 
 var ruinedPotionSprite: Texture2D = preload("res://Potion Brewing/Textures/Burnt Potion (NEW).png");
 
@@ -224,12 +225,12 @@ class Quest:
 	var startDay: int;
 	# The time until the quest fails. Once the day count gets past this + startDay, it will fail.
 	var timeToComplete: int;
-	# NPC sprite
-	var texture: Texture2D;
+	# NPC Sprite
+	var texture: AtlasTexture;
 	# Summary text
 	var summary: String;
 	
-	func _init(potion: String, startDay: int, timeToComplete: int, texture: Texture2D, summary: String):
+	func _init(potion: String, startDay: int, timeToComplete: int, texture: AtlasTexture, summary: String):
 		self.potion = potion;
 		self.startDay = startDay;
 		self.timeToComplete = timeToComplete;
@@ -306,8 +307,10 @@ func _on_inventory_button_pressed():
 func IsInventoryOpen():
 	return $Inventory/Inventory.visible;
 
-func GenerateQuest(potion: String, text: String) -> String:
-	# This will be randomized later
-	var texture = DialogueManager.Dialogue.PLACEHOLDER;
-	currentQuests.append(Quest.new(potion, dayCounter, randi_range(3,6), load(texture), text));
+func GenerateQuest(potion: String, text: String) -> Texture2D:
+	var NPCNumber = randi_range(0, 5);
+	var texture: AtlasTexture = AtlasTexture.new();
+	texture.atlas = customerAtlas;
+	texture.region = Rect2(0, 300*NPCNumber, 300, 300);
+	currentQuests.append(Quest.new(potion, dayCounter, randi_range(3,6), texture, text));
 	return texture;

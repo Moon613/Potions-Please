@@ -95,12 +95,16 @@ func _on_potion_submit():
 	GameInfo.busy = false;
 	if $PotionSubmissionControl/ItemList.item_count <= 0 or $PotionSubmissionControl/ItemList.get_selected_items().size() < 1:
 		return;
+	
+	var currentQuest: GameInfo.Quest = GameInfo.currentQuests[selectedQuest];
 	var submittedItem = $PotionSubmissionControl/ItemList.get_item_text($PotionSubmissionControl/ItemList.get_selected_items()[0]).split(" ")[0].to_lower()
-	if GameInfo.currentQuests[selectedQuest].potion == submittedItem:
-		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thanks!", DialogueManager.Dialogue.PLACEHOLDER));
+	if currentQuest.potion == submittedItem:
+		currentQuest.texture.region.position.x = 300;
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("Thanks!", currentQuest.texture));
 		GameInfo.reputation = clamp(GameInfo.reputation+1, 0, 5);
 	else:
-		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("That's not right!", DialogueManager.Dialogue.PLACEHOLDER));
+		currentQuest.texture.region.position.x = 600;
+		DialogueManager.AddDialogue(DialogueManager.DialogueText.new("That's not right!", currentQuest.texture));
 		GameInfo.reputation -= 0.5;
 	# Remove the quest, completed or failed, and remove the potion that was used for submission.
 	GameInfo.currentQuests.remove_at(selectedQuest);
@@ -173,7 +177,6 @@ func OpenQuestMenu(originNode: DialogueTrigger):
 		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART;
 		button.add_theme_constant_override("icon_max_width", 85);
 		button.alignment = HORIZONTAL_ALIGNMENT_CENTER;
-		button.icon
 		button.pressed.connect(_on_quest_selection.bind(button));
 		button.expand_icon = true;
 		$QuestSelection/ScrollContainer/VBoxContainer.add_child(button);
@@ -354,9 +357,12 @@ class DialogueText:
 	var text: String;
 	var portrait: Texture2D;
 	
-	func _init(text: String, portrait: String = DialogueManager.Dialogue.YASMEEN):
+	func _init(text: String, portrait = DialogueManager.Dialogue.YASMEEN):
 		self.text = text;
-		self.portrait = load(portrait);
+		if portrait is String:
+			self.portrait = load(portrait);
+		elif portrait is Texture2D:
+			self.portrait = portrait;
 
 class DialogueAction:
 	extends Dialogue
