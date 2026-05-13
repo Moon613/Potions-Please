@@ -45,3 +45,12 @@ fit_content = true
 z_index = -1
 position = Vector2(205, 195.48872)
 texture = ExtResource("2_e3ibl")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=211816868]
+z_index = -2
+layout_mode = 0
+offset_left = 26.666666
+offset_top = 37.593987
+offset_right = 378.33334
+offset_bottom = 364.66168
+color = Color(0.59607846, 0.5058824, 0.5568628, 1)
