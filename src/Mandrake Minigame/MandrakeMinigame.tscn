@@ -44,7 +44,7 @@ one_shot = true
 process_mode = 3
 oversampling_override = 1.0
 title = "Tutorial"
-size = Vector2i(665, 300)
+size = Vector2i(665, 481)
 visible = true
 script = ExtResource("4_2gjrs")
 
@@ -58,10 +58,6 @@ Bop the mandrakes before they get away!"
 offset_right = 8.0
 offset_bottom = 8.0
 text = "Close"
-
-[node name="DialogueBox" parent="Tutorial" unique_id=1870498491 instance=ExtResource("5_yocw5")]
-offset_top = 319.10004
-offset_bottom = 717.5962
 
 [node name="InfoButton" type="Button" parent="." unique_id=875421476]
 offset_left = 880.0
