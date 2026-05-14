@@ -14,4 +14,4 @@ func _input(event):
 	if visible and !DialogueManager.inDialogue:
 		if Input.is_action_pressed("ui_cancel"):
 			visible = false;
-			get_viewport().set_input_as_handled();
+		get_viewport().set_input_as_handled();
