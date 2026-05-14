@@ -243,6 +243,7 @@ showIndicator = false
 script = ExtResource("8_2kprj")
 
 [node name="Map" type="TextureRect" parent="Map" unique_id=885858070]
+visible = false
 texture_filter = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -257,6 +258,7 @@ scale = Vector2(5.4, 5.4)
 texture = ExtResource("8_yv805")
 
 [node name="Cave" type="TextureRect" parent="Map" unique_id=198789083]
+visible = false
 texture_filter = 3
 anchors_preset = -1
 anchor_left = 0.40300003
@@ -271,6 +273,7 @@ scale = Vector2(5.4, 5.4)
 texture = ExtResource("9_0wios")
 
 [node name="Bush" type="TextureRect" parent="Map" unique_id=926665479]
+visible = false
 texture_filter = 3
 anchors_preset = -1
 anchor_left = 0.64100003
@@ -285,6 +288,7 @@ scale = Vector2(5.4, 5.4)
 texture = ExtResource("10_05cw3")
 
 [node name="House" type="TextureRect" parent="Map" unique_id=1980645962]
+visible = false
 texture_filter = 3
 anchors_preset = -1
 anchor_left = 0.54300004
@@ -299,6 +303,7 @@ scale = Vector2(5.4, 5.4)
 texture = ExtResource("11_05cw3")
 
 [node name="Dew" type="TextureRect" parent="Map" unique_id=1354812855]
+visible = false
 texture_filter = 3
 anchors_preset = -1
 anchor_left = 0.514
@@ -313,6 +318,7 @@ scale = Vector2(5.4, 5.4)
 texture = ExtResource("11_2kprj")
 
 [node name="Sap" type="TextureRect" parent="Map" unique_id=379303162]
+visible = false
 texture_filter = 3
 anchors_preset = -1
 anchor_left = 0.52400005
@@ -327,6 +333,7 @@ scale = Vector2(5.4, 5.4)
 texture = ExtResource("12_0ispa")
 
 [node name="Acorn" type="TextureRect" parent="Map" unique_id=77820492]
+visible = false
 texture_filter = 3
 anchors_preset = -1
 anchor_left = 0.60700005
@@ -341,6 +348,7 @@ scale = Vector2(5.4, 5.4)
 texture = ExtResource("13_y8kkq")
 
 [node name="Player" type="TextureRect" parent="Map" unique_id=286375524]
+visible = false
 texture_filter = 3
 anchors_preset = -1
 anchor_left = 0.509
