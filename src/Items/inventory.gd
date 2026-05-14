@@ -182,7 +182,8 @@ func set_items():
 	var res = GameInfo.resources
 	for item in res:
 		var amount = res[item]
-		if amount > 0:
+		if amount > 0 and (item == GameInfo.ACORNS or item == GameInfo.DEWDROPS or 
+						   item == GameInfo.MANDRAKE or item == GameInfo.EGGS or item == GameInfo.SAP):
 			add_item(item,amount);
 	var pot = GameInfo.potions
 	for item in pot:
@@ -190,7 +191,6 @@ func set_items():
 		if amount > 0:
 			add_item(item,amount);
 	pass
-
 
 func _on_visibility_changed() -> void:
 	if GameInfo.seenPotionBookFirstTime:

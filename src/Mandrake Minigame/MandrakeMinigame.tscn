@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dy57pd12m8k2k" path="res://Mandrake Minigame/hammer.tscn" id="3_esnje"]
 [ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="4_2gjrs"]
 [ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Mandrake Minigame/Textures/MandrakeItem.png" id="5_5p73w"]
-[ext_resource type="PackedScene" uid="uid://dsovbokdd3n7k" path="res://Dialogue Box.tscn" id="5_yocw5"]
 [ext_resource type="Script" uid="uid://ekw2mwhxvg6y" path="res://Mandrake Minigame/MandrakeIngredient.gd" id="6_nmbyf"]
 [ext_resource type="AudioStream" uid="uid://c8gjvmjahc8s0" path="res://Sound Effects/MandrakeMurder.wav" id="7_nmbyf"]
 
