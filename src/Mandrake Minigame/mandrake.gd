@@ -10,9 +10,9 @@ extends Area2D
 @onready var despawn_timer: Timer = $DespawnTimer
 
 @export var speed_min: float = 5
-@export var speed_max: float = 10
+@export var speed_max: float = 8
 @export var timer_min: float = 1
-@export var timer_max: float = 10
+@export var timer_max: float = 8
 var wakeup_time = 1
 var speed = 1
 var direction = 1
