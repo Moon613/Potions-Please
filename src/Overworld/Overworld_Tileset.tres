@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://qhkugimdht6h" path="res://Overworld/Textures/spritesheetindoors.png" id="4_4jyen"]
 [ext_resource type="Texture2D" uid="uid://mtuo60243lbj" path="res://Overworld/Textures/tile sheet2.png" id="5_ri5bb"]
 [ext_resource type="Texture2D" uid="uid://dcxe02c5vdbhi" path="res://Overworld/UpstairsSpriteSheet.png" id="6_eaok5"]
+[ext_resource type="Texture2D" uid="uid://bedmwsmnf1hue" path="res://Overworld/Textures/new_house_and_wall.png" id="6_vcwu5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_omswd"]
 texture = ExtResource("1_2q2vn")
@@ -391,6 +392,14 @@ texture_region_size = Vector2i(100, 100)
 0:0/0 = 0
 0:0/0/z_index = 1
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5eob2"]
+texture = ExtResource("6_vcwu5")
+texture_region_size = Vector2i(100, 100)
+0:0/size_in_atlas = Vector2i(10, 10)
+0:0/0 = 0
+10:0/size_in_atlas = Vector2i(3, 4)
+10:0/0 = 0
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xi37d"]
 polygon = PackedVector2Array(-168.18182, -240.90909, -177.27274, -259.0909, -168.18182, -277.2727, -159.09091, -277.2727, -140.90909, -268.18182, -140.90909, -250, -150, -240.90909, -150, -231.81818, 113.63637, -231.81818, 113.63637, -240.90909, 131.81818, -240.90909, 131.81818, 240.90909, -168.18182, 240.90909, -168.18182, 113.63637, -169.19293, 106.26335, -174.44121, 102.269226, -178.61797, 96.12693, -180.33781, 86.79064, -178.74081, 81.26257, -175.88419, 76.63069, -168.18182, 68.181816)
 
@@ -424,3 +433,4 @@ sources/2 = SubResource("TileSetAtlasSource_4jyen")
 sources/3 = SubResource("TileSetAtlasSource_ri5bb")
 sources/4 = SubResource("TileSetAtlasSource_eaok5")
 sources/7 = SubResource("TileSetAtlasSource_vcwu5")
+sources/5 = SubResource("TileSetAtlasSource_5eob2")
