@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d4h3dvp05d5j5"]
+
+[ext_resource type="Script" uid="uid://sqf48skfasi1" path="res://Music/bg_music.gd" id="2_ic7qc"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" unique_id=532382389]
+volume_db = -8.0
+bus = &"Muffled"
+script = ExtResource("2_ic7qc")
