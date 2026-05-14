@@ -2,6 +2,7 @@ extends Control
 class_name Inventory
 
 signal JournalOpen
+signal OrdersOpen
 # create a String : Item dictionary
 # add add_item to any increase to item
 @onready var invConvert: Dictionary[String, Item] = {
@@ -52,6 +53,7 @@ func _ready():
 		slot.slot_hovered.connect(self._on_slot_hovered)
 	tooltip.visible = false
 	SaveManager.LoadInventory.connect(_on_load_inv);
+	OrdersOpen.connect(GameInfo._on_quest_open);
 	
 func _input(event):
 	# This layer is made visible in GameInfo._input and GameInfo._on_inventory_button_pressed
@@ -171,6 +173,9 @@ func _on_load_inv():
 
 func _on_journal_button_up() -> void:
 	JournalOpen.emit()
+
+func _on_orders_button_up() -> void:
+	OrdersOpen.emit();
 	
 func set_items():
 	print("setting items")

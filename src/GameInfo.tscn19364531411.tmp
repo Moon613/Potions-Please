@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://btuyjeyuyakjx" path="res://Overworld/Textures/inventory indicator.png" id="3_vhnwb"]
 [ext_resource type="PackedScene" uid="uid://nvwjkwj2y5nn" path="res://Items/NewPotionBook.tscn" id="5_igr6x"]
 [ext_resource type="Script" uid="uid://bftqqe7h6jc1g" path="res://Items/quests.gd" id="6_vhnwb"]
-[ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="7_fbtuw"]
 
 [node name="GameInfo" type="Node2D" unique_id=571529810 node_paths=PackedStringArray("book_layer") groups=["Saved Info"]]
 process_mode = 3
@@ -24,6 +23,8 @@ offset_left = 141.0
 offset_top = 22.0
 offset_right = 141.0
 offset_bottom = 22.0
+rows = 4
+cols = 6
 metadata/_edit_use_anchors_ = true
 
 [node name="Inventory Button" type="Button" parent="Inventory" unique_id=1680375092]
@@ -41,47 +42,21 @@ layer = 10
 visible = false
 
 [node name="Quests" type="CanvasLayer" parent="." unique_id=631175324]
-visible = false
 script = ExtResource("6_vhnwb")
 
-[node name="Control" type="Control" parent="Quests" unique_id=1323724765]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Quests/Control" unique_id=960728468]
-layout_mode = 0
-offset_left = 91.0
-offset_top = 59.0
-offset_right = 2837.4788
-offset_bottom = 1546.324
-scale = Vector2(0.355, 0.355)
-texture = ExtResource("7_fbtuw")
-patch_margin_left = 241
-patch_margin_top = 106
-patch_margin_right = 240
-patch_margin_bottom = 106
-
-[node name="ItemList" type="ItemList" parent="Quests/Control" unique_id=1107787466]
-layout_mode = 1
+[node name="ItemList" type="ItemList" parent="Quests" unique_id=1107787466]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 115.0
-offset_top = 84.0
-offset_right = 997.0
-offset_bottom = 524.0
+offset_left = -304.0
+offset_top = -241.0
+offset_right = 304.0
+offset_bottom = 241.0
 grow_horizontal = 2
 grow_vertical = 2
-allow_search = false
-max_text_lines = 5
-text_overrun_behavior = 0
-fixed_column_width = 875
-icon_mode = 0
-fixed_icon_size = Vector2i(85, 85)
+mouse_filter = 2
 
 [connection signal="JournalOpen" from="Inventory/Inventory" to="." method="_on_inventory_journal_open"]
 [connection signal="pressed" from="Inventory/Inventory Button" to="." method="_on_inventory_button_pressed"]

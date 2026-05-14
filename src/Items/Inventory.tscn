@@ -173,12 +173,12 @@ theme_override_colors/icon_hover_color = Color(0.45882353, 0.45882353, 0.4588235
 icon = ExtResource("10_hwedm")
 flat = true
 
-[node name="Orders" type="TextureRect" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=2142444398]
+[node name="Orders" type="Button" parent="PlayerPanel/VBoxContainer/HBoxContainer" unique_id=140367917]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-texture = ExtResource("11_rhxlg")
-expand_mode = 1
-stretch_mode = 5
+theme_override_colors/icon_hover_color = Color(0.45882353, 0.45882353, 0.45882353, 1)
+icon = ExtResource("11_rhxlg")
+flat = true
 
 [node name="InvPanel" type="TextureRect" parent="." unique_id=2103535010]
 layout_mode = 0
@@ -300,3 +300,4 @@ is_stackable = true
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="PlayerPanel" to="." method="_on_player_panel_visibility_changed"]
 [connection signal="button_up" from="PlayerPanel/VBoxContainer/HBoxContainer/Journal" to="." method="_on_journal_button_up"]
+[connection signal="button_up" from="PlayerPanel/VBoxContainer/HBoxContainer/Orders" to="." method="_on_orders_button_up"]

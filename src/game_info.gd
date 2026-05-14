@@ -304,6 +304,12 @@ func _on_inventory_button_pressed():
 			DialogueManager.OpenInventory()
 			openedInventory = true;
 
+func _on_quest_open():
+	$Quests/Control/ItemList.clear();
+	for quest: Quest in currentQuests:
+		$Quests/Control/ItemList.add_item(quest.summary, quest.texture, false);
+	$Quests.visible = true;
+
 func IsInventoryOpen():
 	return $Inventory/Inventory.visible;
 

@@ -4,6 +4,7 @@ signal clickReleased;
 signal ReturnToOverworld(id: int);
 signal ChangeIngredients(ingr: String, amt: int);
 signal JournalOpen
+signal QuestMenuOpen;
 
 var activeIngredients: Array[String] = [];
 var spawnedIngredients: Dictionary[String, int] = {};
@@ -18,6 +19,7 @@ func _ready():
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene);
 	JournalOpen.connect(GameInfo._on_inventory_journal_open)
+	QuestMenuOpen.connect(GameInfo._on_quest_open);
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -107,3 +109,6 @@ func _on_not_enough_energy():
 func _on_journal_button_button_up() -> void:
 	JournalOpen.emit()
 	GameInfo.journal_is_open = true;
+
+func _on_quests_pressed() -> void:
+	QuestMenuOpen.emit();

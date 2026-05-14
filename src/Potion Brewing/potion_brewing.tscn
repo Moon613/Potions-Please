@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="22_0mxup"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Potion Brewing/Textures/MorningDewIngredient.png" id="22_a3cj8"]
-[ext_resource type="Script" uid="uid://b0rxbno1icaki" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
+[ext_resource type="Script" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Potion Brewing/Textures/Honey(New).png" id="23_1nhwd"]
 [ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="25_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Potion Brewing/Textures/Ginger Root (New).png" id="26_0mxup"]
@@ -422,9 +422,9 @@ offset_bottom = 72.0
 color = Color(0.19, 0.1159, 0.18258996, 1)
 
 [node name="JournalButton" type="Button" parent="UI" unique_id=15710205]
-offset_left = 480.0
+offset_left = 657.0
 offset_top = 72.0
-offset_right = 616.0
+offset_right = 793.0
 offset_bottom = 225.15315
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_hover_color = Color(0.45748308, 0.45748308, 0.45748308, 1)
@@ -433,17 +433,19 @@ flat = true
 icon_alignment = 1
 expand_icon = true
 
-[node name="Button2" type="Button" parent="UI" unique_id=1824063359]
-offset_left = 640.0
+[node name="Quests" type="Button" parent="UI" unique_id=1824063359]
+offset_left = 817.0
 offset_top = 72.0
-offset_right = 776.0
+offset_right = 953.0
 offset_bottom = 225.0
+theme_override_colors/icon_hover_color = Color(0.45882353, 0.45882353, 0.45882353, 1)
 icon = ExtResource("13_8mvhn")
 flat = true
 icon_alignment = 1
 expand_icon = true
 
 [node name="Button3" type="Button" parent="UI" unique_id=1785011166]
+visible = false
 offset_left = 800.0
 offset_top = 72.0
 offset_right = 936.0
@@ -870,6 +872,7 @@ stream = ExtResource("42_amh61")
 [connection signal="body_entered" from="InsideCauldronHitbox" to="InsideCauldronHitbox" method="_on_body_entered"]
 [connection signal="body_exited" from="InsideCauldronHitbox" to="InsideCauldronHitbox" method="_on_body_exited"]
 [connection signal="button_up" from="UI/JournalButton" to="." method="_on_journal_button_button_up"]
+[connection signal="pressed" from="UI/Quests" to="." method="_on_quests_pressed"]
 [connection signal="NotEnoughEnergyForBrewing" from="Honey" to="." method="_on_not_enough_energy"]
 [connection signal="NotEnoughEnergyForBrewing" from="Dewdrops" to="." method="_on_not_enough_energy"]
 [connection signal="NotEnoughEnergyForBrewing" from="Acorn" to="." method="_on_not_enough_energy"]
