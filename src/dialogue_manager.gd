@@ -186,55 +186,55 @@ func OpenQuestMenu(originNode: DialogueTrigger):
 func EnergyQuestGive():
 	var text: Array[String];
 	match randi_range(0, 2):
-		0, _:
+		0:
 			text = ["Hiiiii there, I really need an energy potion.", "See, I got a new pet bunny but they keep me up all night, and I can't ignore my other work.", "So I need something to help keep me awake during the daytimes.", "Thank yoouuuuu!"];
 		1:
 			text = ["My little neice is performing in a school play soon and well...", "Not that six year olds acting and singing on stage isn't [i]lovely[/i], but I need a potion that'll give me the energy to sit through the whole thing."];
-		2:
+		2, _:
 			text = ["I'm going to a week-long music festival and don't wanna miss out on any of the bands!", "I need a potion that'll help me stay awake for as much of it as possible."];
 	var texture = GameInfo.GenerateQuest(GameInfo.ENERGY, text[0]);
 	AddDialogues(text, [texture])
 func SleepQuestGive():
 	var text: Array[String];
 	match randi_range(0, 2):
-		0, _:
+		0:
 			text = ["I have a day-long carriage trip ahead of me, and road travel has always made me queasy.", "I need a potion that’ll help me sleep through the whole thing"];
 		1:
 			text = ["I got a new pet bunny that hops around all night keeping me awake!", "I need a potion that'll help me sleep through the night."];
-		2:
+		2, _:
 			text = ["hELp!!!!! I ACCideNTALLY dRANk A GALLoN oF ENErgY ElixIR And nOW I cAN’t sTAY StiLL enOUgh TO eVEn WRItE nORMAllY!!", "I nEED A pOTIon THat’LL cAlm ME DOwN."];
 	var texture = GameInfo.GenerateQuest(GameInfo.SLEEP, text[0]);
 	AddDialogues(text, [texture]);
 func StrengthQuestGive():
 	var text: Array[String];
 	match randi_range(0, 2):
-		0, _:
+		0:
 			text = ["I bet my friend that I could definitely beat them in an arm wrestle. Turns out they’ve been working out daily…", "I really don’t wanna lose my favorite blanket that I bet them. I need a potion that’ll make me win this arm wrestle."];
 		1:
 			text = ["[b]SOME JERK LEFT A BIG BOULDER OUTSIDE OF MY FRONT DOOR TO BLOCK THE ENTRANCE AND IT’S TOO HEAVY FOR ME TO MOVE.[/b]", "I need a potion that'll make me strong enough to move the boulder"];
-		2:
+		2, _:
 			text = ["One of my jerk neighbors got me in trouble with the HOA for having summer decorations out in the fall, so I need a potion that’ll make me strong enough to put a boulder on their front porch and block their door.", "Watch the HOA fine them for THAT."]
 	var texture = GameInfo.GenerateQuest(GameInfo.STRENGTH, text[0]);
 	AddDialogues(text, [texture]);
 func HealingQuestGive():
 	var text: Array[String];
 	match randi_range(0 ,2):
-		0, _:
+		0:
 			text = ["I burned my hand in the oven trying to bake my friend a birthday cake! And I burned the cake too!", "I need a potion that’ll heal my hand quickly so I can make a new cake in time"];
 		1:
 			text = ["My boyfriend twisted his ankle trying to do a backflip and is too embarrassed to go to the doctor...", "I need a potion that'll heal his ankle."];
-		2:
+		2, _:
 			text = ["[i]Someone[/i] (definitely not me) may have ran head first into a boulder on the way out of my house.", "I need something to help cure my cranial cavity.", "(Seriously who leave a boulder on someone's front porch?)"];
 	var texture = GameInfo.GenerateQuest(GameInfo.HEALING, text[0]);
 	AddDialogues(text, [texture]);
 func ShrinkQuestGive():
 	var text: Array[String];
 	match randi_range(0 ,2):
-		0, _:
+		0:
 			text = ["My friends are definitely talking about me behind my back! I need a potion that’ll help me hide so I can listen in on what they’re saying about me"];
 		1:
 			text = ["I dropped my wedding ring down the drain pipe! I've tried everything to get it out!", "I need a potion that'll shrink me down so I can get it myself."];
-		2:
+		2, _:
 			text = ["I want to make friends with the bugs in my garden, but I think they're scared of me since I'm so much bigger than them!", "I need a potion that'll shrink me down to their size."]
 	var texture = GameInfo.GenerateQuest(GameInfo.SHRINK, text[0]);
 	AddDialogues(text, [texture]);
