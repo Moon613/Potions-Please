@@ -33,6 +33,12 @@ func _process(delta: float) -> void:
 				DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I should probably brew a potion before doing anything too strenuous...", DialogueManager.Dialogue.YASMEEN));
 				rejectedPlayer = true;
 			return;
+		if SceneID == GameInfo.SceneID.INSIDEHOUSE and ((GameInfo.leftHouseForFirstTime and !GameInfo.finishedGatheringTutorial) or rejectedPlayer):
+			if !rejectedPlayer:
+				reject.emit();
+				DialogueManager.AddDialogue(DialogueManager.DialogueText.new("I need to get some morning dew to make that Energy Elixir...", DialogueManager.Dialogue.YASMEEN));
+				rejectedPlayer = true;
+			return;
 		var player = get_overlapping_bodies()[playerIndex];
 		if !player.collidedWithTransition:
 			player.collidedWithTransition = true;

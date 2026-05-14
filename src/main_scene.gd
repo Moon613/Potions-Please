@@ -95,13 +95,12 @@ func _switch_scene(id: int):
 		GameInfo.SceneID.POTIONBREWING:
 			if !GameInfo.seenPotionBrewingScreen:
 				DialogueManager.FirstTutorialPotionAttempt();
+				GameInfo.seenPotionBrewingScreen = true;
 			if GameInfo.openedInventory and !GameInfo.reenterPotionBrewingScreen:
 				DialogueManager.SecondTutorialPotionAttempt();
 				GameInfo.reenterPotionBrewingScreen = true;
 			self.add_child(potionScene);
 		GameInfo.SceneID.INSIDEHOUSE:
-			if GameInfo.potionBookGet and !GameInfo.seenPotionBrewingScreen:
-				GameInfo.seenPotionBrewingScreen = true;
 			if GameInfo.leftHouseForFirstTime:
 				GameInfo.reenteredHouse = true;
 			self.add_child(insideScene);

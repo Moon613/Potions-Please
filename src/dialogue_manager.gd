@@ -43,7 +43,8 @@ func _input(event):
 		previousDialogueDone = false;
 		await PlayNextDialogue();
 		previousDialogueDone = true;
-		get_viewport().set_input_as_handled();
+		if !GameInfo.journal_is_open:
+			get_viewport().set_input_as_handled();
 
 func AddDialogues(dialogues: Array, portraits: Array):
 	for i in dialogues.size():
@@ -258,6 +259,7 @@ func GrabPotionBook():
 	AddDialogue(DialogueAction.new(func():
 		GameInfo._on_inventory_journal_open();
 	));
+	GameInfo.goToCauldron = true
 	AddDialogue(DialogueText.new("Ah, great, here's the Energy Elixir recipe. Seems simple enough.", Dialogue.YASMEEN_HAPPY));
 func HeadToCaludron():
 	AddDialogue(DialogueText.new("[b]Let me head to the cauldron and brew it.[/b]", Dialogue.YASMEEN))

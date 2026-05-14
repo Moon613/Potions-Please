@@ -102,6 +102,7 @@ offset_left = -104.0
 offset_top = -104.0
 offset_right = 136.0
 offset_bottom = 72.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1181942825]

@@ -33,6 +33,7 @@ var nyxForest: bool = false;
 # General tutorial action flags
 var doneMovementTutorial: bool = false;
 var seenPotionBookFirstTime: bool = false;
+var goToCauldron: bool = false;
 var seenPotionBrewingScreen: bool = false;
 var closedPotionBookInBrewing: bool = false;
 var leftHouseForFirstTime: bool = false;

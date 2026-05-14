@@ -9,9 +9,12 @@
 [ext_resource type="FontFile" uid="uid://dx7ancxvml4m5" path="res://fonts/KiwiMaru-Medium.ttf" id="7_8a8ua"]
 
 [node name="BookLayer" type="CanvasLayer" unique_id=703100872]
+process_priority = 1
+layer = 1000
 script = ExtResource("1_emwov")
 
 [node name="Control" type="Control" parent="." unique_id=1641301929]
+z_index = 1
 layout_mode = 3
 anchor_left = 0.5
 anchor_top = 0.48800004
@@ -107,14 +110,17 @@ offset_left = 1032.0
 offset_top = 109.0
 offset_right = 1083.0
 offset_bottom = 146.0
+action_mode = 0
 flat = true
 
 [node name="TabHealing" type="Button" parent="Control" unique_id=1762454747]
+z_index = 25
 layout_mode = 0
 offset_left = 1032.0
 offset_top = 176.0
 offset_right = 1083.0
 offset_bottom = 213.0
+action_mode = 0
 flat = true
 
 [node name="TabShrink" type="Button" parent="Control" unique_id=1861747103]
@@ -156,8 +162,13 @@ flat = true
 autowrap_mode = 1
 clip_text = true
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="button_down" from="Control/TabEnergy" to="." method="_on_tab_energy_button_down"]
 [connection signal="button_up" from="Control/TabEnergy" to="." method="_on_tab_energy_button_up"]
+[connection signal="pressed" from="Control/TabEnergy" to="." method="_on_tab_energy_pressed"]
+[connection signal="button_down" from="Control/TabHealing" to="." method="_on_tab_healing_button_down"]
 [connection signal="button_up" from="Control/TabHealing" to="." method="_on_tab_healing_button_up"]
+[connection signal="pressed" from="Control/TabHealing" to="." method="_on_tab_healing_pressed"]
 [connection signal="button_up" from="Control/TabShrink" to="." method="_on_tab_shrink_button_up"]
 [connection signal="button_up" from="Control/TabSleep" to="." method="_on_tab_sleep_button_up"]
 [connection signal="button_up" from="Control/TabStrength" to="." method="_on_tab_strength_button_up"]

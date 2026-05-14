@@ -57,7 +57,7 @@ func _ready():
 	
 func _input(event):
 	# This layer is made visible in GameInfo._input and GameInfo._on_inventory_button_pressed
-	if (Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("inventory")) and visible:
+	if ((Input.is_action_just_pressed("ui_cancel") or Input.is_action_just_pressed("inventory"))) and visible:
 		visible = false;
 		get_viewport().set_input_as_handled();
 
