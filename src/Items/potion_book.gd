@@ -21,7 +21,7 @@ func _input(event):
 	if visible and !DialogueManager.inDialogue:
 		if Input.is_action_just_pressed("ui_cancel"):
 			_on_exit_pressed();
-		get_viewport().set_input_as_handled()
+			get_viewport().set_input_as_handled()
 
 
 func _on_tab_energy_button_up() -> void:
