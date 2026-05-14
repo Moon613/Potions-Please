@@ -326,7 +326,7 @@ func TutEnergyPotionMade():
 				"[b]Next time I run out of energy, I can just go to bed.[/b]"], 
 				[Dialogue.YASMEEN_HAPPY, Dialogue.YASMEEN])
 func PotionTutDone():
-	AddDialogue(DialogueText.new("Well… guess I should go outside and check the bulletin board for orders now.", Dialogue.YASMEEN_NEUTRAL))
+	AddDialogue(DialogueText.new("Well... guess I should go outside and check the bulletin board for orders now.", Dialogue.YASMEEN_NEUTRAL))
 #TutorialBulletinBoard
 func TutBulletinBoard():
 	AddDialogues(["Customers can ask for any potion. They probably won’t be very happy if I give them the wrong one.", 
