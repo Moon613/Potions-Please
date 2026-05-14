@@ -1,6 +1,7 @@
 extends Control
 
 signal tempSignal(int)
+signal Credits;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,3 +29,7 @@ func _on_load_game_pressed() -> void:
 	$AudioStreamPlayer.stop()
 	SaveManager.load_game(0)
 	tempSignal.emit(2)
+
+
+func _on_credits_pressed():
+	Credits.emit();
