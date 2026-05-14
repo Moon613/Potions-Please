@@ -29,6 +29,10 @@ window/stretch/aspect="ignore"
 mouse_cursor/custom_image="uid://1l1tdbt2jeh5"
 mouse_cursor/tooltip_position_offset=Vector2(0, -25)
 
+[editor]
+
+movie_writer/movie_file="C:/Users/Alexa/OneDrive - UMBC/Documents/GitHub/Potions-Please/src/Egg_Minigame.avi"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/signal_lens/plugin.cfg")
