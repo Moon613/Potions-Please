@@ -8,7 +8,7 @@ var credits: Array[String] = [
 	"Elijah Manning",
 	"Megan Gregory",
 	"Mino Yevdayev",
-	"Priscilia Herrera",
+	"Priscila Herrera",
 	"Tim Reiss",
 	"William Zendgraft"
 ];
