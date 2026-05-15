@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://bsfrmjtby5q4b" path="res://Main Menu/credits.gd" id="6_62v7d"]
 [ext_resource type="Texture2D" uid="uid://cryidjmdatyfi" path="res://Potion Brewing/Textures/Caldron Inside.png" id="7_hx6c7"]
 [ext_resource type="Texture2D" uid="uid://d2ibvlk86fmu5" path="res://Potion Brewing/Textures/Caldron Back.png" id="8_wpo0r"]
+[ext_resource type="Texture2D" uid="uid://st1osgmwcwix" path="res://Potion Brewing/Textures/BlankLiquid.png" id="9_wpo0r"]
+[ext_resource type="Texture2D" uid="uid://c1w1ffh7xdm7d" path="res://Overworld/Textures/Cauldron Bubble.png" id="11_re3ss"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bgqmh"]
 load_path = "res://.godot/imported/Paper+WoodUI.png-f7228e9a19f554de4100a3e4996dc6d0.ctex"
@@ -18,6 +20,14 @@ texture = SubResource("CompressedTexture2D_bgqmh")
 expand_margin_top = 40.0
 expand_margin_bottom = 40.0
 modulate_color = Color(1, 1, 1, 0.23529412)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4myfj"]
+particle_flag_disable_z = true
+direction = Vector3(0, -3.015, 0)
+spread = 65.0
+initial_velocity_min = 170.01
+initial_velocity_max = 207.75
+gravity = Vector3(0, 98, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=993294158]
 
@@ -152,7 +162,6 @@ theme_override_styles/normal = ExtResource("4_wlfof")
 theme_override_styles/pressed = ExtResource("4_wlfof")
 theme_override_styles/hover = ExtResource("4_wlfof")
 theme_override_styles/disabled = ExtResource("4_wlfof")
-disabled = true
 text = "Credits
 "
 
@@ -185,7 +194,6 @@ text = "Quit Game"
 stream = ExtResource("6_4wqtw")
 
 [node name="Credits" type="Control" parent="." unique_id=10388591]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -198,12 +206,14 @@ offset_right = 576.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("6_62v7d")
 
 [node name="ColorRect" type="ColorRect" parent="Credits" unique_id=1228029995]
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
 color = Color(0, 0, 0, 0.5411765)
 
 [node name="CauldronInside" type="TextureRect" parent="Credits" unique_id=1720882611]
@@ -212,7 +222,18 @@ offset_left = 312.0
 offset_top = 536.0
 offset_right = 840.0
 offset_bottom = 920.0
+mouse_filter = 2
 texture = ExtResource("7_hx6c7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Potion" type="TextureRect" parent="Credits" unique_id=1019446016]
+layout_mode = 0
+offset_left = 318.92618
+offset_top = 581.0
+offset_right = 833.07385
+offset_bottom = 752.0
+texture = ExtResource("9_wpo0r")
 expand_mode = 1
 stretch_mode = 5
 
@@ -222,9 +243,21 @@ offset_left = 288.0
 offset_top = 528.0
 offset_right = 864.0
 offset_bottom = 672.0
+mouse_filter = 2
 texture = ExtResource("8_wpo0r")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Splash" type="GPUParticles2D" parent="Credits" unique_id=2006185957]
+position = Vector2(576, 672)
+emitting = false
+amount = 4
+texture = ExtResource("11_re3ss")
+lifetime = 4.5
+speed_scale = 2.25
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_4myfj")
 
 [connection signal="Credits" from="Main Menu" to="Credits" method="_on_main_menu_credits"]
 [connection signal="pressed" from="Main Menu/New Game" to="Main Menu" method="_on_new_game_pressed"]
