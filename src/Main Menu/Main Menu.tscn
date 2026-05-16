@@ -194,6 +194,7 @@ text = "Quit Game"
 stream = ExtResource("6_4wqtw")
 
 [node name="Credits" type="Control" parent="." unique_id=10388591]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
