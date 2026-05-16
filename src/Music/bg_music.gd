@@ -2,7 +2,7 @@ extends AudioStreamPlayer
 
 const OVERWORLD_MUSIC = preload("uid://da1nxj0mh08f1")
 @onready var ambience: AudioStreamPlayer = $ambience
-const fall_ambience = preload("uid://c3ut0mj7lnff1")
+const fall_ambience = preload("uid://b0jbir7mqqu1s")
 @onready var loop_timer: Timer = $LoopTimer
 var currentScene: int
 

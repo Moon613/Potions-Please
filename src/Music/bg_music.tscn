@@ -8,7 +8,7 @@ bus = &"Muffled"
 script = ExtResource("2_ic7qc")
 
 [node name="ambience" type="AudioStreamPlayer" parent="." unique_id=1559740847]
-volume_db = -4.0
+volume_db = -8.0
 
 [node name="LoopTimer" type="Timer" parent="." unique_id=1314523071]
 wait_time = 45.0

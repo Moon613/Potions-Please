@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b0jbir7mqqu1s"
+path="res://.godot/imported/AMB_Nature Pack Vol 1_Forest Enviroments_Autumn Forest.mp3-bc4707dfc7f07adfcb078d2d1d507874.mp3str"
+
+[deps]
+
+source_file="res://Music/AMB_Nature Pack Vol 1_Forest Enviroments_Autumn Forest.mp3"
+dest_files=["res://.godot/imported/AMB_Nature Pack Vol 1_Forest Enviroments_Autumn Forest.mp3-bc4707dfc7f07adfcb078d2d1d507874.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
