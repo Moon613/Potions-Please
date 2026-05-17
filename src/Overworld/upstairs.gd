@@ -17,8 +17,9 @@ func _on_sleep_trigger_interacted_with() -> void:
 	GameInfo.busy = true;
 	# If the day count is a multiple of 5, then refresh all eligible ingredients up to a max of 5
 	if GameInfo.dayCounter%5 == 0:
-		for i in GameInfo.resources.size()-5:
-			GameInfo.resources[GameInfo.resources.keys()[i+5]] = clamp(GameInfo.resources.values()[i+5], 0, 5);
+		for item in GameInfo.refreshAmounts:
+			print(item)
+			GameInfo.resources[item] = GameInfo.refreshAmounts[item];
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Fade To Black":

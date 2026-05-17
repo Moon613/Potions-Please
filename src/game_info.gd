@@ -121,6 +121,18 @@ var validRecipies: Array[Recipe] = [
 	Recipe.new([ACORNS, MILK, WINGS], SHRINK, 1.25, "res://Potion Brewing/Textures/ShrinkElixir.png"),
 ];
 
+# Amount of each ingredient that refreshes every X days.
+var refreshAmounts: Dictionary[String, int] = {
+	MOSS: 10,
+	HONEY: 10,
+	GINGER: 10,
+	LAVENDER: 10,
+	MILK: 15,
+	SALTS: 10,
+	GARLIC: 10,
+	WINGS: 15
+}
+
 # Variable for keeping track of the currect day
 var dayCounter: int = 0;
 
@@ -134,14 +146,14 @@ var resources: Dictionary[String, int] = {
 	MANDRAKE: 0,
 	EGGS: 0,
 	SAP: 0,
-	MOSS: 5,
-	HONEY: 5,
-	GINGER: 5,
-	LAVENDER: 5,
-	MILK: 5,
-	SALTS: 5,
-	GARLIC: 5,
-	WINGS: 5
+	MOSS: 10,
+	HONEY: 10,
+	GINGER: 10,
+	LAVENDER: 10,
+	MILK: 15,
+	SALTS: 10,
+	GARLIC: 10,
+	WINGS: 15
 };
 # Completed potions
 var potions: Dictionary[String, int] = {

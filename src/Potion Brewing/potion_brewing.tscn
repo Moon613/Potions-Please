@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://ddueulojyrf7c" path="res://Textures/StaminaReputation.png" id="21_xbtdn"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="22_0mxup"]
 [ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Potion Brewing/Textures/MorningDewIngredient.png" id="22_a3cj8"]
-[ext_resource type="Script" uid="uid://b0rxbno1icaki" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
+[ext_resource type="Script" path="res://Potion Brewing/brewing_progress_bar.gd" id="22_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://dl8s0fa0qi2wn" path="res://Potion Brewing/Textures/Honey(New).png" id="23_1nhwd"]
 [ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="25_hb5qm"]
 [ext_resource type="Texture2D" uid="uid://d2id4cdw20w0o" path="res://Potion Brewing/Textures/Ginger Root (New).png" id="26_0mxup"]
@@ -550,7 +550,7 @@ texture = ExtResource("25_hb5qm")
 shape = SubResource("CircleShape2D_0mxup")
 
 [node name="Ginger" parent="." unique_id=1018620730 instance=ExtResource("21_m6y6x")]
-position = Vector2(-719, -187)
+position = Vector2(-711, -187)
 Sprite = ExtResource("26_0mxup")
 Shape = SubResource("RectangleShape2D_5pr62")
 Type = "ginger"
@@ -597,37 +597,37 @@ position = Vector2(0, -1.9999999)
 shape = SubResource("RectangleShape2D_isq66")
 
 [node name="Lavender" parent="." unique_id=1111828340 instance=ExtResource("21_m6y6x")]
-position = Vector2(-606, -190)
+position = Vector2(-582, -190)
 Sprite = ExtResource("30_ako6u")
 Shape = SubResource("RectangleShape2D_fim6t")
 Type = "lavender"
 
 [node name="Milk" parent="." unique_id=868895738 instance=ExtResource("21_m6y6x")]
-position = Vector2(-511, -190)
+position = Vector2(-468, -190)
 Sprite = ExtResource("31_fim6t")
 Shape = SubResource("CapsuleShape2D_y54vx")
 Type = "milk"
 
 [node name="Salt" parent="." unique_id=535384879 instance=ExtResource("21_m6y6x")]
-position = Vector2(-421, -190)
+position = Vector2(-553, 422)
 Sprite = ExtResource("32_a67xv")
 Shape = SubResource("RectangleShape2D_3v25o")
 Type = "salts"
 
 [node name="Garlic" parent="." unique_id=381945610 instance=ExtResource("21_m6y6x")]
-position = Vector2(-789, 431)
+position = Vector2(-825, 431)
 Sprite = ExtResource("33_y54vx")
 Shape = SubResource("CircleShape2D_1nhwd")
 Type = "garlic"
 
 [node name="Fairy Wings" parent="." unique_id=742879731 instance=ExtResource("21_m6y6x")]
-position = Vector2(-625, 418)
+position = Vector2(-687, 418)
 Sprite = ExtResource("34_isq66")
 Shape = SubResource("RectangleShape2D_0mxup")
 Type = "wings"
 
 [node name="Moss" parent="." unique_id=655631487 instance=ExtResource("21_m6y6x")]
-position = Vector2(-463, 422)
+position = Vector2(-418, 422)
 Sprite = ExtResource("35_isq66")
 Shape = SubResource("CircleShape2D_hb5qm")
 Type = "moss"
@@ -702,9 +702,9 @@ script = ExtResource("38_hb5qm")
 Type = "sap"
 
 [node name="HoneyText" type="RichTextLabel" parent="." unique_id=1677473520]
-offset_left = -794.0
+offset_left = -828.0
 offset_top = -166.0
-offset_right = -773.0
+offset_right = -807.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 theme_override_colors/default_color = Color(1, 1, 1, 1)
@@ -717,9 +717,9 @@ script = ExtResource("38_hb5qm")
 Type = "honey"
 
 [node name="GingerText" type="RichTextLabel" parent="." unique_id=1795827248]
-offset_left = -675.0
+offset_left = -691.0
 offset_top = -166.0
-offset_right = -654.0
+offset_right = -670.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
@@ -730,9 +730,9 @@ script = ExtResource("38_hb5qm")
 Type = "ginger"
 
 [node name="LavenderText" type="RichTextLabel" parent="." unique_id=529834224]
-offset_left = -586.0
+offset_left = -583.0
 offset_top = -166.0
-offset_right = -565.0
+offset_right = -562.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
@@ -743,9 +743,9 @@ script = ExtResource("38_hb5qm")
 Type = "lavender"
 
 [node name="MilkText" type="RichTextLabel" parent="." unique_id=17329837]
-offset_left = -492.0
+offset_left = -458.0
 offset_top = -166.0
-offset_right = -471.0
+offset_right = -437.0
 offset_bottom = -125.0
 theme = ExtResource("27_yffeo")
 text = "∞"
@@ -756,10 +756,10 @@ script = ExtResource("38_hb5qm")
 Type = "milk"
 
 [node name="SaltText" type="RichTextLabel" parent="." unique_id=2085918353]
-offset_left = -401.0
-offset_top = -166.0
-offset_right = -380.0
-offset_bottom = -125.0
+offset_left = -533.0
+offset_top = 446.0
+offset_right = -512.0
+offset_bottom = 487.0
 theme = ExtResource("27_yffeo")
 text = "∞"
 fit_content = true
@@ -769,9 +769,9 @@ script = ExtResource("38_hb5qm")
 Type = "salts"
 
 [node name="GarlicText" type="RichTextLabel" parent="." unique_id=365051110]
-offset_left = -765.0
+offset_left = -801.0
 offset_top = 446.0
-offset_right = -744.0
+offset_right = -780.0
 offset_bottom = 487.0
 theme = ExtResource("27_yffeo")
 text = "∞"
@@ -782,9 +782,9 @@ script = ExtResource("38_hb5qm")
 Type = "garlic"
 
 [node name="WingsText" type="RichTextLabel" parent="." unique_id=605420957]
-offset_left = -599.0
+offset_left = -661.0
 offset_top = 446.0
-offset_right = -578.0
+offset_right = -640.0
 offset_bottom = 487.0
 theme = ExtResource("27_yffeo")
 text = "∞"
@@ -795,9 +795,9 @@ script = ExtResource("38_hb5qm")
 Type = "wings"
 
 [node name="MossText" type="RichTextLabel" parent="." unique_id=1613657821]
-offset_left = -441.0
+offset_left = -396.0
 offset_top = 446.0
-offset_right = -420.0
+offset_right = -375.0
 offset_bottom = 487.0
 theme = ExtResource("27_yffeo")
 text = "∞"

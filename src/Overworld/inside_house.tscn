@@ -66,7 +66,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_nhgpu")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
+fill_to = Vector2(0.79724705, 0.5)
 
 [sub_resource type="Gradient" id="Gradient_bjpvs"]
 offsets = PackedFloat32Array(0.17307693, 0.3125, 0.5192308, 0.7355769)
@@ -204,14 +204,14 @@ process_material = ExtResource("9_yukbp")
 [node name="Candle Light" type="PointLight2D" parent="." unique_id=1185217662]
 position = Vector2(91, -43)
 scale = Vector2(0.15624994, 0.15624994)
-energy = 0.92609614
+energy = 1.0697392
 texture = SubResource("GradientTexture2D_bjpvs")
 script = ExtResource("10_p1u7e")
 
 [node name="Candle Light 2" type="PointLight2D" parent="." unique_id=1515059794]
 position = Vector2(87.604935, -42.82208)
 scale = Vector2(0.10609579, 0.10609579)
-energy = 1.1
+energy = 1.008578
 texture = SubResource("GradientTexture2D_rk730")
 script = ExtResource("10_p1u7e")
 
