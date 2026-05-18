@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d32ktq4hitttn" path="res://Dewdrop Minigame/Textures/OpenRagOverlay.png" id="7_vuaru"]
 [ext_resource type="Script" uid="uid://bin3g35q8wcy3" path="res://Dewdrop Minigame/collection_jar.gd" id="8_osxt6"]
 [ext_resource type="Texture2D" uid="uid://bpwb1xatmcl8v" path="res://Dewdrop Minigame/Textures/DewJarFull.png" id="11_vuaru"]
-[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="13_2l8w5"]
+[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="13_2l8w5"]
 [ext_resource type="AudioStream" uid="uid://dqhx4rq3ljnpn" path="res://Sound Effects/DewdropCollect.wav" id="13_8xp7k"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="15_di2qq"]
 [ext_resource type="Texture2D" uid="uid://cd7jmwbd6ejko" path="res://Dewdrop Minigame/Textures/Minigame Indicator Arrow1.png" id="16_0ktjd"]
@@ -315,6 +315,8 @@ number_of_dewdrops = 20
 [node name="Background" type="Sprite2D" parent="." unique_id=1025465349]
 texture_filter = 4
 material = ExtResource("2_6y45g")
+position = Vector2(0, 57)
+scale = Vector2(1.1537038, 1.1537037)
 texture = ExtResource("1_4bqly")
 script = ExtResource("4_6y45g")
 
@@ -490,6 +492,7 @@ root_node = NodePath("../Control/Slider Background")
 libraries/ = SubResource("AnimationLibrary_i1f0g")
 
 [connection signal="RemoveJar" from="." to="Collection Jar" method="_on_minigame_remove_jar"]
+[connection signal="TransitionToDrying" from="." to="Background" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Rag" method="_on_minigame_transition_to_drying"]
 [connection signal="TransitionToDrying" from="." to="Collection Jar" method="_on_minigame_transition_to_drying"]
 [connection signal="RagReappearing" from="Rag" to="." method="_on_rag_reappearing"]
