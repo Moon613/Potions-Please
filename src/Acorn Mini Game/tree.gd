@@ -12,12 +12,14 @@ var is_grabbing = false
 var game_active = true
 var timer_start = false
 var time
+var num_acorns = 0
 
 signal MinigameEnd
 
 func _ready() -> void:
 	var time_initial = timer.wait_time
 	timer_label.text = "%d:%02d" % [floor(time_initial/60), int(time_initial)%60]
+	add_to_group("acornTree")
 
 func _input_event(_viewport, event, _shape_idx):
 	if game_active and event is InputEventMouseButton and event.pressed:
@@ -41,7 +43,7 @@ func _input(event):
 			shaking_noise.play()
 		var move_amount = abs(event.relative.x)
 		shake_accumulator += move_amount
-		if shake_accumulator >= 500.0:
+		if shake_accumulator >= 2000.0:
 			drop_acorns()
 			shake_accumulator = 0.0
 
@@ -55,15 +57,22 @@ func _process(delta):
 		sprite.material.set_shader_parameter("shake_intensity", lerp(current, 0.0, 5.0 * delta))
 		if shaking_noise.playing and sprite.material.get_shader_parameter("shake_intensity") < 0.1:
 			shaking_noise.stop()
+	
+	if !game_active and !is_grabbing:
+		if num_acorns <= 0:
+			print("Minigame Over!")
+			MinigameEnd.emit()
 
 func _on_timer_timeout():
 	game_active = false
 	is_grabbing = false
 	shaking_noise.stop()
-	print("Minigame Over!")
-	MinigameEnd.emit()
 
 func drop_acorns():
 	var acorns = acorns_scene.instantiate()
 	acorns.position = self.position + Vector2(randf_range(-300, 250), -340)
 	get_parent().add_child(acorns)
+	num_acorns += 1
+
+func on_acorn_despawn():
+	num_acorns -= 1

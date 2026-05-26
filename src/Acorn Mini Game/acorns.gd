@@ -1,13 +1,14 @@
 extends Area2D
 var speed = 300.0
+signal AcornDespawned
 
 func _process(delta):
 	position.y += speed * delta
 	if position.y > 800:
-		queue_free()
+		delete_acorn()
 
 func collect():
-	queue_free()
+	delete_acorn()
 
 
 func _on_body_entered(body):
@@ -20,4 +21,10 @@ func _on_body_entered(body):
 		$AcornCollectedNoise.play()
 		await $AcornCollectedNoise.finished
 		
-		queue_free()
+		delete_acorn()
+
+
+func delete_acorn():
+	print("acorn gone")
+	get_tree().call_group("acornTree", "on_acorn_despawn")
+	queue_free()

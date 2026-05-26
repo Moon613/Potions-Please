@@ -61,6 +61,7 @@ Player="The overworld player character"
 "Saved Info"="Everything that persists when a file is saved"
 Dewdrop="The dewdrops that are collected by the rag in the dewdrop collection minigame"
 "Credits Text"="The text shown during the credits roll"
+acornTree=""
 
 [gui]
 

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="2_02l1p"]
 [ext_resource type="AudioStream" uid="uid://870rriqmql7e" path="res://Sound Effects/good noise.wav" id="3_jko7g"]
 
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_02l1p"]
 
 [node name="Acorn" type="Area2D" unique_id=797448071]
+z_index = 2
 collision_mask = 2
 script = ExtResource("1_02l1p")
 
@@ -23,3 +23,4 @@ shape = SubResource("CircleShape2D_02l1p")
 stream = ExtResource("3_jko7g")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

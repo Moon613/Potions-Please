@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://b3eeleqoi23al" path="res://Textures/WoodIndentUIButton.png" id="12_n76ds"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="12_x4yei"]
 [ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="13_x4yei"]
+[ext_resource type="Texture2D" uid="uid://bt0hgyq07mmcw" path="res://Acorn Mini Game/Textures/Acorn Collectable.png" id="15_2t6sf"]
+[ext_resource type="Script" uid="uid://dtj76gdumhd7k" path="res://Treesap Minigame/sap_ingredient.gd" id="16_4hnh1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dtyt"]
 shader = ExtResource("3_xvegq")
@@ -30,7 +32,7 @@ texture = ExtResource("2_7ub14")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1106144152]
 
-[node name="Tree" type="Area2D" parent="." unique_id=1458463570]
+[node name="Tree" type="Area2D" parent="." unique_id=1458463570 groups=["acornTree"]]
 script = ExtResource("2_h1tt5")
 acorns_scene = ExtResource("3_6dtyt")
 
@@ -91,7 +93,7 @@ text = "Close"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=960170268]
 top_level = true
-z_index = 2
+z_index = 4
 offset_left = -57.0
 offset_top = -326.0
 offset_right = 58.0
@@ -104,7 +106,7 @@ horizontal_alignment = 1
 
 [node name="ColorRect" type="TextureRect" parent="RichTextLabel" unique_id=239147378]
 show_behind_parent = true
-z_index = 1
+z_index = 3
 z_as_relative = false
 layout_mode = 0
 offset_left = 8.0
@@ -127,8 +129,19 @@ icon = ExtResource("12_n76ds")
 flat = true
 icon_alignment = 1
 
+[node name="AcornIngredient" type="Sprite2D" parent="." unique_id=551914466]
+top_level = true
+z_index = 1
+texture_filter = 5
+position = Vector2(0, 451)
+scale = Vector2(0.9510129, 0.95101285)
+texture = ExtResource("15_2t6sf")
+script = ExtResource("16_4hnh1")
+
+[connection signal="ShowIngredient" from="." to="AcornIngredient" method="_on_minigame_show_ingredient"]
 [connection signal="MinigameEnd" from="Tree" to="." method="_on_tree_minigame_end"]
 [connection signal="timeout" from="Tree/Timer" to="Tree" method="_on_timer_timeout"]
 [connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
 [connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]
 [connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
+[connection signal="IngredientDoneShowing" from="AcornIngredient" to="." method="_on_ingredient_done_showing"]

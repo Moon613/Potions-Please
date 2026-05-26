@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="10_d5nnr"]
 [ext_resource type="AudioStream" uid="uid://870rriqmql7e" path="res://Sound Effects/good noise.wav" id="11_e8liw"]
 [ext_resource type="Texture2D" uid="uid://b3eeleqoi23al" path="res://Textures/WoodIndentUIButton.png" id="12_r2i3w"]
+[ext_resource type="Texture2D" uid="uid://coropiyjpridu" path="res://Dragon Egg Minigame/Textures/Dragon Egg Collectable.png" id="14_sykwp"]
+[ext_resource type="Script" uid="uid://dtj76gdumhd7k" path="res://Treesap Minigame/sap_ingredient.gd" id="15_fvj1m"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_61rhm"]
 shader = ExtResource("2_61rhm")
@@ -159,6 +161,14 @@ text = "!"
 icon = ExtResource("12_r2i3w")
 flat = true
 icon_alignment = 1
+
+[node name="EggIngredient" type="Sprite2D" parent="." unique_id=2045037090]
+z_index = 1
+texture_filter = 5
+position = Vector2(0, 451)
+scale = Vector2(0.9510129, 0.95101285)
+texture = ExtResource("14_sykwp")
+script = ExtResource("15_fvj1m")
 
 [connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
 [connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]

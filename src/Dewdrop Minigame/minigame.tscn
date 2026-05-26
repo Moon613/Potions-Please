@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://cd7jmwbd6ejko" path="res://Dewdrop Minigame/Textures/Minigame Indicator Arrow1.png" id="16_0ktjd"]
 [ext_resource type="Texture2D" uid="uid://ga7mmftjjkl" path="res://Dewdrop Minigame/Textures/Space Bar.png" id="16_i1f0g"]
 [ext_resource type="Script" uid="uid://cmxipy8v3u7xp" path="res://Dewdrop Minigame/arrow.gd" id="17_8xp7k"]
+[ext_resource type="Texture2D" uid="uid://dap3qsswx8yg0" path="res://Potion Brewing/Textures/MorningDewIngredient.png" id="20_d2vtf"]
+[ext_resource type="Script" uid="uid://dtj76gdumhd7k" path="res://Treesap Minigame/sap_ingredient.gd" id="20_skdtp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ff77p"]
 size = Vector2(680, 456)
@@ -480,6 +482,14 @@ shape = SubResource("RectangleShape2D_0ktjd")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1208890440]
 root_node = NodePath("../Control/Slider Background")
 libraries/ = SubResource("AnimationLibrary_i1f0g")
+
+[node name="DewIngredient" type="Sprite2D" parent="." unique_id=1002275188]
+z_index = 1
+texture_filter = 5
+position = Vector2(0, 832)
+scale = Vector2(0.9510129, 0.95101285)
+texture = ExtResource("20_d2vtf")
+script = ExtResource("20_skdtp")
 
 [connection signal="RemoveJar" from="." to="Collection Jar" method="_on_minigame_remove_jar"]
 [connection signal="TransitionToDrying" from="." to="Background" method="_on_minigame_transition_to_drying"]

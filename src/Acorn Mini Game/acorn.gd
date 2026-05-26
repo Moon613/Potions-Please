@@ -1,6 +1,7 @@
 extends Node2D
 signal ReturnToOverworld(id: int);
 signal ChangeIngredients(ingr: String, amt: int);
+signal ShowIngredient;
 @onready var tutorial: Popup = $Tutorial
 var acornsCollected: int = 0
 
@@ -27,13 +28,14 @@ func _input(event):
 
 
 func _on_tree_minigame_end() -> void:
-	ChangeIngredients.emit("acorns", acornsCollected)
+	ShowIngredient.emit()
+	
+func _on_ingredient_done_showing():
+	ChangeIngredients.emit("acorns", acornsCollected);
 	ReturnToOverworld.emit(0);
 	GameInfo.finishedGatheringTutorial = true;
-	GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.ACORNS];
+	GameInfo.energy -= GameInfo.minigameEnergy[GameInfo.SceneID.TREESAP];
 	self.queue_free()
-	pass
-
 
 func _on_tutorial_popup_hide() -> void:
 	GameInfo.acornsTutorial = false
