@@ -11,41 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://buef2hfncfker" path="res://Acorn Mini Game/Textures/Basket Back Acorn Minigame.png" id="8_omdso"]
 [ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="8_oqhy2"]
 [ext_resource type="Texture2D" uid="uid://c1g452omww4sy" path="res://Acorn Mini Game/Textures/Basket Front Acorn Minigame.png" id="9_g33fa"]
+[ext_resource type="Texture2D" uid="uid://b3eeleqoi23al" path="res://Textures/WoodIndentUIButton.png" id="12_n76ds"]
+[ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="12_x4yei"]
+[ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="13_x4yei"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6dtyt"]
 shader = ExtResource("3_xvegq")
 shader_parameter/shake_intensity = 0.0
 
-[sub_resource type="FontFile" id="FontFile_oqhy2"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/34/0/ascent = 0.0
-cache/0/34/0/descent = 0.0
-cache/0/34/0/underline_position = 0.0
-cache/0/34/0/underline_thickness = 0.0
-cache/0/34/0/scale = 1.0
-
-[sub_resource type="Gradient" id="Gradient_omdso"]
-offsets = PackedFloat32Array(0.48317307)
-colors = PackedColorArray(0.872223, 0.7005363, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_g33fa"]
-gradient = SubResource("Gradient_omdso")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1a2s5"]
+atlas = ExtResource("13_x4yei")
 
 [node name="minigame" type="Node2D" unique_id=686096718]
 script = ExtResource("1_xc6ns")
@@ -115,24 +90,41 @@ offset_bottom = 8.0
 text = "Close"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=960170268]
-offset_left = -37.0
-offset_top = -324.0
-offset_right = 32.0
-offset_bottom = -284.0
-theme_override_fonts/normal_font = SubResource("FontFile_oqhy2")
+top_level = true
+z_index = 2
+offset_left = -57.0
+offset_top = -326.0
+offset_right = 58.0
+offset_bottom = -271.0
+theme_override_fonts/normal_font = ExtResource("12_x4yei")
 theme_override_font_sizes/normal_font_size = 34
-text = "8:00"
+text = "0:10"
 scroll_active = false
+horizontal_alignment = 1
+
+[node name="ColorRect" type="TextureRect" parent="RichTextLabel" unique_id=239147378]
+show_behind_parent = true
+z_index = 1
+z_as_relative = false
+layout_mode = 0
+offset_left = 8.0
+offset_top = -1.0
+offset_right = 106.0
+offset_bottom = 56.0
+texture = SubResource("AtlasTexture_1a2s5")
+expand_mode = 5
 
 [node name="InfoButton" type="Button" parent="." unique_id=1126856174]
 z_index = 100
-offset_left = 488.0
-offset_top = 232.0
-offset_right = 560.0
-offset_bottom = 304.0
-theme_override_font_sizes/font_size = 32
+offset_left = 514.0
+offset_top = 262.0
+offset_right = 909.0
+offset_bottom = 657.0
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/font_size = 128
 text = "!"
-icon = SubResource("GradientTexture2D_g33fa")
+icon = ExtResource("12_n76ds")
+flat = true
 icon_alignment = 1
 
 [connection signal="MinigameEnd" from="Tree" to="." method="_on_tree_minigame_end"]

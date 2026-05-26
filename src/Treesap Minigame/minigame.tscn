@@ -12,19 +12,13 @@
 [ext_resource type="Script" uid="uid://dtj76gdumhd7k" path="res://Treesap Minigame/sap_ingredient.gd" id="9_78kki"]
 [ext_resource type="AudioStream" uid="uid://cgle7eoxqv4ns" path="res://Sound Effects/TreeTap.wav" id="9_u7w5b"]
 [ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="10_78kki"]
+[ext_resource type="Texture2D" uid="uid://b3eeleqoi23al" path="res://Textures/WoodIndentUIButton.png" id="13_u7w5b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nejc8"]
 size = Vector2(384, 672)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nejc8"]
 radius = 8.0
-
-[sub_resource type="Gradient" id="Gradient_5p73w"]
-offsets = PackedFloat32Array(0.48317307)
-colors = PackedColorArray(0.872223, 0.7005363, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_78kki"]
-gradient = SubResource("Gradient_5p73w")
 
 [node name="Minigame" type="Node2D" unique_id=730915079]
 script = ExtResource("1_nejc8")
@@ -93,15 +87,17 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Close"
 
-[node name="InfoButton" type="Button" parent="." unique_id=1821985008]
+[node name="InfoButton" type="Button" parent="." unique_id=167220304]
 z_index = 100
-offset_left = 488.0
-offset_top = 232.0
-offset_right = 560.0
-offset_bottom = 304.0
-theme_override_font_sizes/font_size = 32
+offset_left = 500.0
+offset_top = 244.0
+offset_right = 895.0
+offset_bottom = 639.0
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/font_size = 128
 text = "!"
-icon = SubResource("GradientTexture2D_78kki")
+icon = ExtResource("13_u7w5b")
+flat = true
 icon_alignment = 1
 
 [connection signal="DrainTaps" from="." to="TapControl" method="_on_minigame_drain_taps"]

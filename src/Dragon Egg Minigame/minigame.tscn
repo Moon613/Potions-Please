@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvxd5us5flyj8" path="res://Dragon Egg Minigame/minigame.gd" id="1_7s6ni"]
 [ext_resource type="Shader" uid="uid://hj5u48gx2pva" path="res://Dragon Egg Minigame/spotlight.gdshader" id="2_61rhm"]
-[ext_resource type="Texture2D" uid="uid://d4emvyohacve7" path="res://Dragon Egg Minigame/Textures/Dragon Cave Background.png" id="2_trafo"]
+[ext_resource type="Texture2D" uid="uid://c26x255v8vhfq" path="res://Dragon Egg Minigame/Textures/Dragon Cave Background.png" id="2_trafo"]
 [ext_resource type="Texture2D" uid="uid://c6voxqdj4lav3" path="res://Dragon Egg Minigame/Textures/Dragon Cave Spikes 1.png" id="3_frocf"]
 [ext_resource type="Texture2D" uid="uid://bn3cl4jwsxs2o" path="res://Dragon Egg Minigame/Textures/Dragon Cave Spikes 2.png" id="3_rl7ms"]
 [ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="3_x7ccp"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://v7lc3d3bco5n" path="res://Dragon Egg Minigame/Textures/Dragon Cave Spikes 3.png" id="6_d0mbj"]
 [ext_resource type="Texture2D" uid="uid://dnsc6sxpj8sd7" path="res://Dragon Egg Minigame/Textures/Dragon Cave Columns 2.png" id="7_heqhd"]
 [ext_resource type="Texture2D" uid="uid://besagowc6ilut" path="res://Dragon Egg Minigame/Textures/Dragon Cave Spikes 4.png" id="8_e8liw"]
+[ext_resource type="Texture2D" uid="uid://f61wrootyang" path="res://Textures/WoodIndentUI.png" id="10_d5nnr"]
 [ext_resource type="AudioStream" uid="uid://870rriqmql7e" path="res://Sound Effects/good noise.wav" id="11_e8liw"]
+[ext_resource type="Texture2D" uid="uid://b3eeleqoi23al" path="res://Textures/WoodIndentUIButton.png" id="12_r2i3w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_61rhm"]
 shader = ExtResource("2_61rhm")
@@ -42,12 +44,8 @@ cache/0/34/0/underline_position = 0.0
 cache/0/34/0/underline_thickness = 0.0
 cache/0/34/0/scale = 1.0
 
-[sub_resource type="Gradient" id="Gradient_e8liw"]
-offsets = PackedFloat32Array(0.48317307)
-colors = PackedColorArray(0.872223, 0.7005363, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_r2i3w"]
-gradient = SubResource("Gradient_e8liw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsgwt"]
+atlas = ExtResource("10_d5nnr")
 
 [node name="Minigame" type="Node2D" unique_id=502785114]
 script = ExtResource("1_7s6ni")
@@ -100,14 +98,25 @@ color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect" unique_id=896025509]
 layout_mode = 0
-offset_left = 542.0
+offset_left = 501.0
 offset_top = 16.0
-offset_right = 611.0
-offset_bottom = 56.0
+offset_right = 652.0
+offset_bottom = 72.0
 theme_override_fonts/normal_font = SubResource("FontFile_61rhm")
 theme_override_font_sizes/normal_font_size = 34
-text = "8:00"
+text = "0:30"
 scroll_active = false
+horizontal_alignment = 1
+
+[node name="ColorRect" type="TextureRect" parent="ColorRect/RichTextLabel" unique_id=2139926345]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 27.0
+offset_top = -3.0
+offset_right = 125.0
+offset_bottom = 54.0
+texture = SubResource("AtlasTexture_hsgwt")
+expand_mode = 5
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=228805459]
 
@@ -138,16 +147,17 @@ text = "Close"
 [node name="CollectionSound" type="AudioStreamPlayer2D" parent="." unique_id=1755908007]
 stream = ExtResource("11_e8liw")
 
-[node name="InfoButton" type="Button" parent="." unique_id=468984109]
-top_level = true
+[node name="InfoButton" type="Button" parent="." unique_id=1556574840]
 z_index = 100
-offset_left = 496.0
-offset_top = 240.0
-offset_right = 568.0
-offset_bottom = 312.0
-theme_override_font_sizes/font_size = 32
+offset_left = 508.0
+offset_top = 252.0
+offset_right = 903.0
+offset_bottom = 647.0
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/font_size = 128
 text = "!"
-icon = SubResource("GradientTexture2D_r2i3w")
+icon = ExtResource("12_r2i3w")
+flat = true
 icon_alignment = 1
 
 [connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]

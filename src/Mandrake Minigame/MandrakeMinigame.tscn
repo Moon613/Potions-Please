@@ -7,13 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dkxl8dtj0svjo" path="res://Mandrake Minigame/Textures/MandrakeItem.png" id="5_5p73w"]
 [ext_resource type="Script" uid="uid://ekw2mwhxvg6y" path="res://Mandrake Minigame/MandrakeIngredient.gd" id="6_nmbyf"]
 [ext_resource type="AudioStream" uid="uid://c8gjvmjahc8s0" path="res://Sound Effects/MandrakeMurder.wav" id="7_nmbyf"]
-
-[sub_resource type="Gradient" id="Gradient_5p73w"]
-offsets = PackedFloat32Array(0.48317307)
-colors = PackedColorArray(0.872223, 0.7005363, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmbyf"]
-gradient = SubResource("Gradient_5p73w")
+[ext_resource type="Texture2D" uid="uid://b3eeleqoi23al" path="res://Textures/WoodIndentUIButton.png" id="8_yocw5"]
 
 [node name="MandrakeMinigame" type="Node2D" unique_id=1821473577]
 y_sort_enabled = true
@@ -59,16 +53,6 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Close"
 
-[node name="InfoButton" type="Button" parent="." unique_id=875421476]
-offset_left = 880.0
-offset_top = 460.0
-offset_right = 952.0
-offset_bottom = 532.0
-theme_override_font_sizes/font_size = 32
-text = "!"
-icon = SubResource("GradientTexture2D_nmbyf")
-icon_alignment = 1
-
 [node name="MandrakeIngredient" type="Sprite2D" parent="." unique_id=205717249]
 position = Vector2(0, 902)
 scale = Vector2(0.75, 0.75)
@@ -78,11 +62,24 @@ script = ExtResource("6_nmbyf")
 [node name="CollectionNoise" type="AudioStreamPlayer2D" parent="." unique_id=58481320]
 stream = ExtResource("7_nmbyf")
 
+[node name="InfoButton" type="Button" parent="." unique_id=1750940921]
+z_index = 100
+offset_left = 888.0
+offset_top = 472.0
+offset_right = 1283.0
+offset_bottom = 867.0
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/font_size = 128
+text = "!"
+icon = ExtResource("8_yocw5")
+flat = true
+icon_alignment = 1
+
 [connection signal="ReturnToOverworld" from="." to="." method="_on_return_to_overworld"]
 [connection signal="ShowIngredient" from="." to="MandrakeIngredient" method="_on_mandrake_minigame_show_ingredient"]
 [connection signal="area_entered" from="Hammer" to="." method="_on_hammer_area_entered"]
 [connection signal="timeout" from="HammerHit" to="." method="_on_hammer_hit_timeout"]
 [connection signal="popup_hide" from="Tutorial" to="." method="_on_tutorial_popup_hide"]
 [connection signal="pressed" from="Tutorial/Button" to="Tutorial" method="_on_button_pressed"]
-[connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]
 [connection signal="IngredientDoneShowing" from="MandrakeIngredient" to="." method="_on_mandrake_ingredient_ingredient_done_showing"]
+[connection signal="pressed" from="InfoButton" to="." method="_on_info_button_pressed"]

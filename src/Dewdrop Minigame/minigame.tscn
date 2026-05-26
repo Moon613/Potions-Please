@@ -12,8 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://d32ktq4hitttn" path="res://Dewdrop Minigame/Textures/OpenRagOverlay.png" id="7_vuaru"]
 [ext_resource type="Script" uid="uid://bin3g35q8wcy3" path="res://Dewdrop Minigame/collection_jar.gd" id="8_osxt6"]
 [ext_resource type="Texture2D" uid="uid://bpwb1xatmcl8v" path="res://Dewdrop Minigame/Textures/DewJarFull.png" id="11_vuaru"]
-[ext_resource type="Script" path="res://Dewdrop Minigame/tutorial.gd" id="13_2l8w5"]
+[ext_resource type="Script" uid="uid://ds1vmqwdhxgid" path="res://Dewdrop Minigame/tutorial.gd" id="13_2l8w5"]
 [ext_resource type="AudioStream" uid="uid://dqhx4rq3ljnpn" path="res://Sound Effects/DewdropCollect.wav" id="13_8xp7k"]
+[ext_resource type="Texture2D" uid="uid://b3eeleqoi23al" path="res://Textures/WoodIndentUIButton.png" id="14_84du3"]
 [ext_resource type="FontFile" uid="uid://oiprunhj1lua" path="res://fonts/KiwiMaru-Regular.ttf" id="15_di2qq"]
 [ext_resource type="Texture2D" uid="uid://cd7jmwbd6ejko" path="res://Dewdrop Minigame/Textures/Minigame Indicator Arrow1.png" id="16_0ktjd"]
 [ext_resource type="Texture2D" uid="uid://ga7mmftjjkl" path="res://Dewdrop Minigame/Textures/Space Bar.png" id="16_i1f0g"]
@@ -133,13 +134,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="Gradient" id="Gradient_6cmm1"]
-offsets = PackedFloat32Array(0.48317307)
-colors = PackedColorArray(0.872223, 0.7005363, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_di2qq"]
-gradient = SubResource("Gradient_6cmm1")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ktjd"]
 resource_local_to_scene = true
@@ -364,22 +358,18 @@ offset_right = 960.0
 offset_bottom = 544.0
 mouse_filter = 2
 
-[node name="InfoButton" type="Button" parent="Control" unique_id=239937128]
+[node name="InfoButton" type="Button" parent="Control" unique_id=1322074501]
 z_index = 100
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.97300005
-anchor_top = 0.94500005
-anchor_right = 0.97300005
-anchor_bottom = 0.94500005
-offset_left = -36.160156
-offset_top = -36.160034
-offset_right = 35.839844
-offset_bottom = 35.839966
-focus_mode = 0
-theme_override_font_sizes/font_size = 32
+layout_mode = 0
+offset_left = 1840.0
+offset_top = 1000.0
+offset_right = 2235.0
+offset_bottom = 1395.0
+scale = Vector2(0.15, 0.15)
+theme_override_font_sizes/font_size = 128
 text = "!"
-icon = SubResource("GradientTexture2D_di2qq")
+icon = ExtResource("14_84du3")
+flat = true
 icon_alignment = 1
 
 [node name="Tutorial" type="Popup" parent="Control" unique_id=1524810777]

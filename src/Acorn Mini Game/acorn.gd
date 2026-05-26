@@ -6,8 +6,11 @@ var acornsCollected: int = 0
 
 func _ready() -> void:
 	ChangeIngredients.connect(GameInfo._change_ingredient_amount);
-	if !GameInfo.acornsTutorial:
-		tutorial.hide()
+	if GameInfo.acornsTutorial:
+		$Tutorial.popup();
+		$Tutorial.move_to_center();
+	else:
+		$Tutorial.hide()
 	if get_tree().current_scene and get_tree().current_scene.has_method("_switch_scene"):
 		ReturnToOverworld.connect(get_tree().current_scene._switch_scene)
 
